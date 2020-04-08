@@ -20,13 +20,22 @@ header{
 	top:		0;
 	background:	#ffc;
 }
-
+div#top a{
+	box-sizing:border-box;
+	border:#000 1px solid;
+}
 --></style>
 </head>
 <body>
 
 <div id="container">
 <header id="menu">めぬー</header>
+<div id="top" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(1fr,1fr);grid-gap:10px;">
+<a>あ</a>
+<a>い</a>
+<a>う</a>
+<a>え</a>
+</div>
 </div><!--//container-->
 
 <script><!--
@@ -38,18 +47,7 @@ navigator.serviceWorker.register('service_worker.js').then(function(registration
 	console.log('ServiceWorker registration failed: ', err);
 });
 }
-<!-- vue.jsの設定関係 -->
-var app = new Vue({
-el: '#app',
-data: {
-	message: 'Hello Vue!'
-},
-methods: {
-	reverseMessage: function () {
-	this.message = this.message.split('').reverse().join('')
-	}
-}
-});
+
 --></script>
 </body>
 </html> 
