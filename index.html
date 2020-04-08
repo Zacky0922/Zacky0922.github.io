@@ -8,20 +8,10 @@
 
 <meta name="robots" content="noindex,nofollow">
 
-<!-- PWA設定 -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="manifest" href="manifest.json">
-<script><!--
-	<!-- service workerの登録関係 -->
-	if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('service_worker.js').then(function(registration) {
-		console.log('ServiceWorker registration successful with scope: ', registration.scope);
-	}).catch(function(err) {
-		console.log('ServiceWorker registration failed: ', err);
-	});
-	}
-	--></script>
+<script type="text/javascript" src="./script/function.js"></script>
+<script type="text/javascript"><!--
+	setHead(0)
+--></script>
 
 
 <Title>Zacky PWA</Title>
