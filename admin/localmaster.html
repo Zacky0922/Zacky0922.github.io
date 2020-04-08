@@ -1,0 +1,135 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//Dth HTML 4.01 Transitional//EN">
+<html Lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+
+<style type="text/css"><!--
+a{
+	cursor:	pointer;
+	text-decoration:	none;
+	border-bottom:	dashed 1px #52f;
+}
+a:hover{
+	background:	#ff8;
+}
+
+div.IPsample{
+	border:	1px dashed #000;
+	margin:		5px 0;
+	padding:	10px;
+	background:	#ccc;
+}
+div.IPsample span{
+	cursor:	pointer;
+	border:	1px solid #000;
+	border-radius:	20px;
+	padding:	5px;
+	margin:	5px;
+}
+div.IPsample span:hover{
+	background:	#ff8;
+}
+
+table{
+	border-collapse: collapse;
+	margin:	15px 0;
+}
+table th,
+table td{
+	border:	1px solid #000;
+	padding:	5px 10px;
+}
+--></style>
+
+<script type="text/javascript"><!--
+function setIP(myIP){
+	document.getElementById("myIP").value = myIP;
+}
+
+function getLink( subURL ){
+	window.open( "http://" + document.getElementById("myIP").value + subURL );
+}
+--></script>
+
+<Title>ローカル管理マスター</Title>
+</head>
+<body>
+
+
+<h2>IPアドレス・ホスト名</h2>
+<input type="text" id="myIP" value="raspberrypi">
+<div class="IPsample">
+	<span onclick="setIP(this.innerText)">raspberrypi</span>
+	<span onclick="setIP(this.innerText)">localhost</span>
+	<span onclick="setIP(this.innerText)">192.168.</span>
+	<span onclick="setIP(this.innerText)">192.168.1.158</span>
+	<span onclick="setIP(this.innerText)">192.168.1.163</span>
+	<span onclick="setIP(this.innerText)">192.168.13.2</span>
+</div>
+
+<h2>ローカルリンク集</h2>
+
+<table>
+<tr>
+	<td>Apache(index)</td>
+	<td><a onclick="getLink(this.innerText)">/index.html</a></td>
+</tr>
+<tr>
+	<td>test.php</td>
+	<td><a onclick="getLink(this.innerText)">/test.php</a></td>
+</tr>
+<tr>
+	<td>Volumio</td>
+	<td><a onclick="getLink(this.innerText)">/</a></td>
+</tr>
+<tr>
+	<td>Volumio Test Player</td>
+	<td><a onclick="getLink(this.innerText)">/dev/</a></td>
+</tr>
+<tr>
+	<td>phpMyAdmin</td>
+	<td><a onclick="getLink(this.innerText)">/phpmyadmin/</a></td>
+</tr>
+<tr>
+	<td>WordPress</td>
+	<td><a onclick="getLink(this.innerText)">/wp/</a></td>
+</tr>
+<tr>
+	<td>WordPress ログイン</td>
+	<td><a onclick="getLink(this.innerText)">/wp/wp-login.php</a></td>
+</tr>
+<tr>
+	<td>Syncthing</td>
+	<td><a onclick="getLink(this.innerText)">:8384</a></td>
+</tr>
+<tr>
+	<td>miniDLNA</td>
+	<td><a onclick="getLink(this.innerText)">:8200</a></td>
+</tr>
+</table>
+
+
+<h2>固定URL</h2>
+<ul>
+	<li><a href="http://volumio.local">Volumio - http://volumio.local</a></li>
+	<li><a href="http://volumio.local/dev/">Volumio Test Player - http://volumio.local/dev/</a></li>
+	<li><a href="http://localhost:8384/">Syncthing(標準ポート) - http://localhost:8384/</a></li>
+</ul>
+
+<h2>Private</h2>
+<ul>
+	<li><a href="http://192.168.1.1">ゲートウェイ - http://192.168.1.1</a></li>
+	<li><a href="http://192.168.1.2">AirStation Settings(自宅) - http://192.168.1.2</a></li>
+	<li><a href="http://192.168.13.1">AirStation Settings(portable) - http://192.168.13.1</a></li>
+</ul>
+
+
+<ul>
+	<li><a href="http://new.zacky.xxxxxxxx.jp/">Zacky's site(仮)</a></li>
+	<li><a href="http://www.zacky.ninja-x.jp/">諸々解説サイト</a></li>
+</ul>
+
+</body>
+</html>
