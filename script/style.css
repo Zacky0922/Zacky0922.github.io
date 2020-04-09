@@ -11,10 +11,46 @@ body{
     padding:    0;
 
 }
+hr{
+    margin: 5px 10px;
+}
 
+a:hover{
+    background: #fcc;
+
+}
 h2{
     text-align: center;
     background: #bbb;
     padding:    5px 0;
     margin:     10px 0 3px;
+}
+
+
+
+
+/* tab関連 */
+div.tabWrapper{}
+div.tabWrapper > div.tabMenu{
+    margin: 0;
+    padding:    0;
+}
+div.tabWrapper > div.tabMenu > span.tabMenuSpan{
+    margin: 0 0 0 10px;
+    padding:    0 5px;
+    border-top:     1px #000 solid;
+    border-left:    1px #000 solid;
+    border-right:   1px #000 solid;
+    background: #fcc;
+}
+div.tabWrapper > div.tabMenu > span.tabMenuSpan.tabInactive{
+    background: none;
+}
+div.tabWrapper > div.tabContent{
+    border: 1px #000 solid;
+    margin: 0;
+}
+
+div.tabWrapper > div.tabContent.tabInactive{
+    display:    none;
 }
