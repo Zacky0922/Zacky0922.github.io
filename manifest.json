@@ -1,10 +1,12 @@
 {
-    "short_name": "Z-PWA",
     "name": "Zacky PWA",
+    "short_name": "Z-PWA",
     "display": "standalone",
+    "orientation": "portrait-primary",
     "start_url": "index.html",
     "background_color": "#00479d",
-    "theme_color": "#f00",
+    "theme_color": "#00479d",
+    "lang": "ja-jp",
     "description": "PWA sample",
     "icons": [
         {
