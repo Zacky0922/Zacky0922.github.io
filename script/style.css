@@ -62,11 +62,11 @@ div.tabWrapper > div.tabMenu{
 div.tabWrapper > div.tabMenu > span.tabMenuSpan{
     margin: 0 10px 0 0;
     padding:    0 10px;
+    white-space: pre;
     border-radius: 8px 8px 0 0;;
     border:     1px var(--z-border-color) solid;
     border-bottom:  none;
     background: var(--z-color-active);
-    white-space: pre;
     cursor: pointer;
 }
 div.tabWrapper > div.tabMenu > span.tabMenuSpan.tabInactive{
