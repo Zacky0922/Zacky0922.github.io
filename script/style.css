@@ -1,22 +1,45 @@
-
-
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&amp;display=swap&amp;subset=japanese');
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    全体設定
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+
+:root{
+    --z-color-hover:    #ff9;
+    --z-color-active:    #faa;
+    --z-border-color:   #000;
+    --z-font-color:     #000;
+}
 
 *{
 	font-family: 'Noto Sans JP', sans-serif;
 	font-size:16px;
 }
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    汎用要素
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+
 body,div#container{
     margin: 0;
     padding:    0;
+    background: #fff;
+    color:  var(--z-font-color);
 }
 hr{
     margin: 5px 10px;
 }
-
+a{
+    cursor: pointer;
+    color:  var(--z-font-color);
+}
 a:hover{
-    background: #fcc;
+    background: var(--z-color-hover);
+}
 
+section{
+    margin: 0 5px 30px;
 }
 h2{
     text-align: center;
@@ -28,32 +51,59 @@ h2{
 
 
 
-/* tab関連 */
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    tab関連
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 div.tabWrapper{
-    margin: 10px;
-
+    margin: 15px;
 }
 div.tabWrapper > div.tabMenu{
     margin: 0;
     padding:    0;
 }
 div.tabWrapper > div.tabMenu > span.tabMenuSpan{
-    margin: 0 0 0 10px;
-    padding:    0 5px;
-    border-top:     1px #000 solid;
-    border-left:    1px #000 solid;
-    border-right:   1px #000 solid;
-    background: #fcc;
+    margin: 0 10px 0 0;
+    padding:    0 10px;
+    border-radius: 8px 8px 0 0;;
+    border:     1px var(--z-border-color) solid;
+    border-bottom:  none;
+    background: var(--z-color-active);
+    white-space: pre;
+    cursor: pointer;
 }
 div.tabWrapper > div.tabMenu > span.tabMenuSpan.tabInactive{
     background: none;
 }
+div.tabWrapper > div.tabMenu > span.tabMenuSpan.tabInactive:hover{
+    background: var(--z-color-hover);
+}
 div.tabWrapper > div.tabContent{
-    border: 1px #000 solid;
+    border: 1px var(--z-border-color) solid;
     margin: 0;
     min-height: 50px;
 }
-
 div.tabWrapper > div.tabContent.tabInactive{
     display:    none;
+}
+
+
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    基本レイアウト for 本サイト
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+header,footer{
+    position: sticky;
+    margin: 0;
+    background: #114;
+    color:  #fff;
+    padding:    10px;
+}
+header{
+    top:    0;
+    margin-bottom:  10px;
+}
+footer{
+    bottom: 0;
+    margin-top: 10px;
 }
