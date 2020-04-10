@@ -49,8 +49,6 @@ h2{
 }
 
 
-
-
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     tab関連
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
@@ -97,14 +95,13 @@ header,footer{
     padding:    10px;
     background: #114;
     color:  #fff;
+    position: sticky;
 }
 header{
-    position: sticky;
     top:    0;
     margin-bottom:  10px;
 }
 footer{
-    position: sticky;
     bottom: 0;
     margin-top: 10px;
 }
