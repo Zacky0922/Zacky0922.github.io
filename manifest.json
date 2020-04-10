@@ -10,9 +10,9 @@
     "description": "PWA sample",
     "icons": [
         {
-            "src": "images/icon.jpg",
+            "src": "script/icon192.png",
             "sizes": "192x192",
-            "type": "image/jpg"
+            "type": "image/png"
         }
     ]
 }
