@@ -3,14 +3,20 @@
 <html lang="ja">
 
 <head>
-  <meta name="generator"
-    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
   <!-- meta設定 -->
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
   <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
   <meta name="robots" content="noindex,nofollow" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
+    gtag('config', 'UA-163335381-1');
+  </script>
   <!-- PWA設定 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,14 +25,6 @@
   <script type="text/javascript" src="./script/function.js"></script>
   <script type="text/javascript">
     setHead(0);
-    //service workerの登録関係
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service_worker.js').then(function (registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }).catch(function (err) {
-        console.log('ServiceWorker registration failed: ', err);
-      });
-    }
   </script>
   <title>Zacky PWA</title>
   <style type="text/css">
@@ -40,7 +38,6 @@
       text-align: center;
       vertical-align: middle;
     }
-
     -->
   </style>
 </head>
@@ -64,8 +61,8 @@
       <h2></h2>
 
     </section>
-        
-        <section>
+
+    <section>
       <h2>Links</h2>
       <div id="linkTab">
         <div id="linkTab_COVID-19">
@@ -77,11 +74,10 @@
               <a href="https://stopcovid19.metro.tokyo.lg.jp/" target="_blank">東京都 新型コロナウイルス感染症対策サイト</a>
             </li>
             <li>
-              <a href="https://saitama.stopcovid19.jp/" target="_blank">埼玉県&#160;新型コロナウイルス感染症対策サイト（非公式）
-                <br /></a>
+              <a href="https://saitama.stopcovid19.jp/" target="_blank">埼玉県 新型コロナウイルス感染症対策サイト（非公式）</a>
             </li>
             <li>
-              <a target="_blank" href="https://www.sosmap.pw/">#sosmapjapan</a>
+              <a target="_blank" href="https://www.sosmap.pw/">sosmapjapan</a>
             </li>
             <li>
               <a href="https://gis.jag-japan.com/covid19jp/" target="_blank">都道府県別新型コロナウイルス感染者数マップ</a>
@@ -164,7 +160,7 @@
             </li>
           </ul>
         </div>
-        <div id="linkTab_SNS・WorkingTool">
+        <div id="linkTab_SNS&WorkingTool">
           <ul>
             <li>
               <a href="http://mixi.jp/" target="_blank">mixi</a>

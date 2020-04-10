@@ -4,8 +4,8 @@
     "display": "standalone",
     "orientation": "portrait-primary",
     "start_url": "index.html",
-    "background_color": "#00479d",
-    "theme_color": "#00479d",
+    "background_color": "#114",
+    "theme_color": "#114",
     "lang": "ja-jp",
     "description": "PWA sample",
     "icons": [

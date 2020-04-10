@@ -1,3 +1,23 @@
+
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    head実行系
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+//service workerの登録関係
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service_worker.js').then(function (registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function (err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
+
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //head内要素生成
 function setHead(lv) { 
 //引数：rootからの階層
