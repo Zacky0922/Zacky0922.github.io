@@ -16,8 +16,40 @@ if ('serviceWorker' in navigator) {
 
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    
+    init
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+//init
+function init() {
+
+    //フッター作成
+    setFooter();
+}
+
+function setFooter() {
+    var myFt = document.createElement("footer");
+    var myDiv = document.createElement("div");
+    var myMenu = [
+        ["menu",    "メニュー"],
+        ["event_note",  "日程"],
+        ["link",    "リンク"],
+        ["settings",    "設定"],
+    ];
+    for (var i = 0; i < myMenu.length; i++){
+        var menuEle = document.createElement("div");
+        var myIcon = document.createElement("span");
+        myIcon.classList.add("material-icons");
+        myIcon.innerText = myMenu[i][0];
+        menuEle.appendChild(myIcon);
+        var myMenuName = document.createElement("span");
+        myMenuName.innerText = myMenu[i][1];
+        menuEle.appendChild(myMenuName);
+        myDiv.appendChild(menuEle);
+    }
+    myFt.appendChild(myDiv);
+    (document.getElementById("container")).appendChild(myFt);
+}
+
+
 //head内要素生成
 function setHead(lv) { 
 //引数：rootからの階層
