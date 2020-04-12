@@ -20,6 +20,8 @@ if ('serviceWorker' in navigator) {
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //init
 function init() {
+    //外部ファイル
+    document.write('<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>');
 
     //フッター作成
     setFooter();

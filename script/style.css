@@ -47,7 +47,7 @@
 
 *{
 	font-family: 'Noto Sans JP', sans-serif;
-	font-size:16px;
+	font-size:  16px;
 }
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
@@ -60,6 +60,9 @@ body,div#container{
     background: #fff;
     color:  var(--z-font-color);
 }
+div#container{
+    height:100vh;
+}
 hr{
     margin: 5px 10px;
 }
@@ -70,7 +73,6 @@ a{
 a:hover{
     background: var(--z-color-hover);
 }
-
 section{
     margin: 0 5px 30px;
 }
@@ -130,24 +132,34 @@ header,footer{
     padding:    10px;
     background: #114;
     color:  #fff;
-    position: -webkit-sticky;
-    position: sticky;
 }
 header{
+    position: -webkit-sticky;
+    position: sticky;
     top:    0;
     margin-bottom:  10px;
 }
 footer{
+    position:    fix;
     bottom: 0;
+    padding:    0;
     margin-top: 10px;
     text-align: center;
 }
 footer > div{
     display:    grid;
     grid-template-columns: repeat(4,1fr);
+    margin: 0;
+    padding: 0;
 }
 footer > div > div{
     display:    inline-block;
+    margin: 0;
+    padding: 5px;
+}
+footer > div > div:hover{
+    background: #ddf;
+    color:  #114;
 }
 footer > div > div > span{
     display:    block;
