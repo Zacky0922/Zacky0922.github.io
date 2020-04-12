@@ -96,6 +96,7 @@ div.tabWrapper > div.tabMenu{
     white-space: pre-wrap;
 }
 div.tabWrapper > div.tabMenu > span.tabMenuSpan{
+    display:    none;
     margin: 0 10px 0 0;
     padding:    0 10px;
     display:    inline-block;
@@ -103,22 +104,23 @@ div.tabWrapper > div.tabMenu > span.tabMenuSpan{
     border-radius: 8px 8px 0 0;;
     border:     1px var(--z-border-color) solid;
     border-bottom:  none;
-    background: var(--z-color-active);
     cursor: pointer;
 }
-div.tabWrapper > div.tabMenu > span.tabMenuSpan.tabInactive{
-    background: none;
+div.tabWrapper > div.tabMenu > span.tabMenuSpan.tabActive{
+    background: inline;
+    background: var(--z-color-active);
 }
-div.tabWrapper > div.tabMenu > span.tabMenuSpan.tabInactive:hover{
+div.tabWrapper > div.tabMenu > span.tabMenuSpan:hover{
     background: var(--z-color-hover);
 }
 div.tabWrapper > div.tabContent{
+    display:    none;
     border: 1px var(--z-border-color) solid;
     margin: 0;
     min-height: 50px;
 }
-div.tabWrapper > div.tabContent.tabInactive{
-    display:    none;
+div.tabWrapper > div.tabContent.tabActive{
+    display:    block;
 }
 
 
