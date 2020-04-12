@@ -62,6 +62,8 @@ body,div#container{
 }
 div#container{
     height:100vh;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 hr{
     margin: 5px 10px;
@@ -117,6 +119,7 @@ div.tabWrapper > div.tabContent{
     display:    none;
     border: 1px var(--z-border-color) solid;
     margin: 0;
+    padding:    10px;
     min-height: 50px;
 }
 div.tabWrapper > div.tabContent.tabActive{
@@ -142,10 +145,11 @@ header{
     margin-bottom:  10px;
 }
 footer{
-    position:    fix;
+    position:    fixed;
     bottom: 0;
     padding:    0;
     margin-top: 10px;
+    width:  100%;
     text-align: center;
 }
 footer > div{

@@ -1,5 +1,45 @@
 
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    読込時、変数受取
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+onloadFunc();
+function onloadFunc() {
+    var scripts = document.getElementsByTagName('script');
+    var src = scripts[scripts.length - 1].src;
 
+    var query = src.substring(src.indexOf('?') + 1);
+    var parameters = query.split('&');
+
+    // URLクエリを分解して取得する
+    var result = new Object();
+    for (var i = 0; i < parameters.length; i++) {
+        var element = parameters[i].split('=');
+
+        var paramName = decodeURIComponent(element[0]);
+        var paramValue = decodeURIComponent(element[1]);
+
+        result[paramName] = paramValue;
+    }
+
+    //受取変数処理
+    //lv
+    if (result["lv"] > 0) {
+        for (var i = 0; i < result["lv"]; i++){
+            g_Lv = g_Lv + "../";
+        }
+    } else {
+        g_Lv = "./";
+    }
+
+}
+
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    グローバル利用変数
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+//HTML階層指定
+var g_Lv = "";
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     head実行系
@@ -13,33 +53,14 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-
-//  MathJax マクロ設定
-document.write('<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>');
-
-//if(false)		//MathJax.js直接記述Macro有効化の為
-MathJax = {
-    tex: {
-        packages: ['base'],        // extensions to use
-        inlineMath: [              // start/end delimiter pairs for in-line math
-            ['$','$'],
-            ['\\(', '\\)']
-        ],
-        displayMath: [             // start/end delimiter pairs for display math
-            ['$$', '$$'],
-            ['\\[', '\\]']
-        ],
-
-    }
-};
-
-
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     init
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //init
 function init() {
     //外部ファイル
+    document.write('<script type="text/javascript" src="' + g_Lv + 'script/MathJaxMacro.js"></script >');
+    document.write('<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script >');
 
     //フッター作成
     setFooter();
@@ -70,22 +91,6 @@ function setFooter() {
 }
 
 
-//head内要素生成
-function setHead(lv) { 
-//引数：rootからの階層
-
-    //階層設定
-    var myLv = "";
-    if (i != 0) {
-        for (var i = 0; i < lv; i++) {
-            myLv = myLv + "../";
-        }
-    }
-
-                
-
-
-}
 
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
