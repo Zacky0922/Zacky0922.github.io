@@ -1,3 +1,9 @@
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    グローバル利用変数
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+//HTML階層指定
+var g_Lv = "";
+
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     読込時、変数受取
@@ -14,10 +20,8 @@ function onloadFunc() {
     var result = new Object();
     for (var i = 0; i < parameters.length; i++) {
         var element = parameters[i].split('=');
-
         var paramName = decodeURIComponent(element[0]);
         var paramValue = decodeURIComponent(element[1]);
-
         result[paramName] = paramValue;
     }
 
@@ -34,17 +38,22 @@ function onloadFunc() {
 }
 
 
-
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    グローバル利用変数
+    汎用関数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-//HTML階層指定
-var g_Lv = "";
+//外部JS読込
+function loadJS(myScripts) {
+    var script = document.createElement('script');
+    script.src = myScripts;
+    document.head.appendChild(script);
+}
+
+
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     head実行系
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-//  service workerの登録関係
+//service workerの登録関係
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service_worker.js').then(function (registration) {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -58,32 +67,49 @@ if ('serviceWorker' in navigator) {
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //init
 function init() {
-    //外部ファイル
-    document.write('<script type="text/javascript" src="' + g_Lv + 'script/MathJaxMacro.js"></script >');
-    document.write('<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script >');
+    //MathJax読込
 
+    //その他、読込時処理
+    loadJS(g_Lv + "script/MathJaxMacro.js");
+    setTimeout(
+        document.write('<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script >'),
+        5000);
     //フッター作成
     setFooter();
 }
 
 function setFooter() {
     var myFt = document.createElement("footer");
+    //Popupメニュー
+    var myMenu = document.createElement("div");
+    var myMenuContents = [
+        [document.createElement("a"), "TOP",     g_Lv],
+        [document.createElement("div"), "高校数学", g_Lv+"高校数学"    ]
+    ];
+    for (var i = 0; i < myMenuContents.length; i++){
+        myMenuContents[i][0].innerText = myMenuContents[i][1];
+        myMenuContents[i][0].onclick = "menuDisp()";
+        myMenu.appendChild(myMenuContents[i][0]);
+    }
+    myFt.appendChild(myMenu);
+
+    //フッター
     var myDiv = document.createElement("div");
-    var myMenu = [
-        ["menu",    "メニュー"],
+    var myFtMenu = [
+        ["menu",        "メニュー"],
         ["event_note",  "日程"],
-        ["link",    "リンク"],
+        ["link",        "リンク"],
         ["settings",    "設定"],
     ];
-    for (var i = 0; i < myMenu.length; i++){
+    for (var i = 0; i < myFtMenu.length; i++){
         var menuEle = document.createElement("div");
         var myIcon = document.createElement("span");
         myIcon.classList.add("material-icons");
-        myIcon.innerText = myMenu[i][0];
+        myIcon.innerText = myFtMenu[i][0];
         menuEle.appendChild(myIcon);
-        var myMenuName = document.createElement("span");
-        myMenuName.innerText = myMenu[i][1];
-        menuEle.appendChild(myMenuName);
+        var myFtMenuName = document.createElement("span");
+        myFtMenuName.innerText = myFtMenu[i][1];
+        menuEle.appendChild(myFtMenuName);
         myDiv.appendChild(menuEle);
     }
     myFt.appendChild(myDiv);
@@ -92,6 +118,14 @@ function setFooter() {
 
 
 
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    表示制御
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+function menuDisp() {
+    
+    alert();
+}
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     タブ

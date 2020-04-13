@@ -175,3 +175,24 @@ footer > div > div > span{
         display:    none;
     }
 }
+
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    基本パーツ
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+
+
+.zBtn {
+    display: inline-block;
+    border: #114 1px solid;
+    background: #114;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    margin: 5px;
+}
+.zBtn:hover {
+    background: #ccf;
+    color: #000;
+}
