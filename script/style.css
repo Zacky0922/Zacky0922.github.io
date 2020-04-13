@@ -152,7 +152,18 @@ footer{
     width:  100%;
     text-align: center;
 }
-footer > div{
+footer > div#ftMenuPopup{
+    display:    none;
+    background: #fff;
+}
+footer > div#ftMenuPopup.menuActive{
+    display:    block;
+}
+footer > div#ftMenuPopup > a{
+    display:    block;
+    border:     #000 1px solid;
+}
+footer > div#ftMenu{
     display:    grid;
     grid-template-columns: repeat(4,1fr);
     margin: 0;
