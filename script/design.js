@@ -1,5 +1,4 @@
-//フッター作成
-setFooter();
+
 
 function setFooter() {
     var myFt = document.createElement("footer");
@@ -42,7 +41,7 @@ function setFooter() {
         menuEle.setAttribute("onclick", myFtMenu[i][2]);
     }
     myFt.appendChild(myDiv);
-    (document.getElementById("container")).appendChild(myFt);
+    document.getElementById("container").appendChild(myFt);
 }
 
 
@@ -62,7 +61,6 @@ function setFooter() {
 */
 function setTab(myId) {
     //引数：ラッパーid
-    alert(myId);
     var myWrapper = document.getElementById(myId);
     myWrapper.classList.add("tabWrapper");
     var myTabMenu = document.createElement("div");

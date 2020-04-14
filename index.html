@@ -20,19 +20,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="./manifest.json">
-
-  <script type="text/javascript" src="./script/admin.js?lv=0"></script>
-
-
+  <script type="text/javascript" src="./script/function.js?lv=0"></script>
   <style type="text/css">
     <!--
     @import url("script/style.css");
-    #top a {
-      box-sizing: border-box;
-      border: #000 1px solid;
-      text-align: center;
-      vertical-align: middle;
-    }
     -->
   </style>
 
@@ -53,13 +44,11 @@
       <a href="%E9%AB%98%E6%A0%A1%E6%95%B0%E5%AD%A6">数学解説</a>
       <a href="admin/localmaster.html">Local<br />
         Master</a>
-    </section>
-    <section>
+    </section><section>
       <h2>test</h2>
       $$a=\dfrac{a}{b}$$
       てすと$\dfrac{1}{2}$
     </section>
-
     <section>
       <h2>Links</h2>
       <div id="linkTab">
@@ -279,6 +268,9 @@
               </ul>
             </div>
           </div>
+          <script type="text/javascript">
+            setTab("数学tab");
+          </script>
 
         </div>
         <div id="linkTab_仕事用">
@@ -526,7 +518,9 @@
                 <li><a href="http://gadgetcafe.jp/" target="_blank">encafe - ガジェットカフェ</a></li>
               </ul>
             </div>
-          </div>
+          </div><script type="text/javascript">
+            setTab("TechArtTab");
+          </script>
         </div>
         <div id="linkTab_Admin">
           <ul>
@@ -538,7 +532,9 @@
             <li><a href="http://www.zacky.xxxxxxxx.jp/" target="_blank">旧サイト</a></li>
           </ul>
         </div>
-      </div>
+      </div><script type="text/javascript">
+        setTab("linkTab");
+      </script>
     </section>
     <section>
       <h2>about Author</h2>
@@ -550,9 +546,6 @@
   <!-- /container -->
 </body>
 <script type="text/javascript">
-    setTab("数学tab");
-    setTab("TechArtTab");
-    setTab("linkTab");
+    init();
 </script>
-
 </html>

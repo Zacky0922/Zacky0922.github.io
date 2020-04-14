@@ -207,3 +207,16 @@ footer > div > div > span{
     background: #ccf;
     color: #000;
 }
+
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    memo
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+
+    #top a {
+      box-sizing: border-box;
+      border: #000 1px solid;
+      text-align: center;
+      vertical-align: middle;
+    }
