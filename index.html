@@ -8,6 +8,11 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
   <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
   <meta name="robots" content="noindex,nofollow" />
+  <!-- PWA設定 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="./manifest.json">
+  <script type="text/javascript" src="./script/function.js?lv=0"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
   <script>
@@ -16,18 +21,8 @@
     gtag('js', new Date());
     gtag('config', 'UA-163335381-1');
   </script>
-  <!-- PWA設定 -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="./manifest.json">
-  <script type="text/javascript" src="./script/function.js?lv=0"></script>
-  <style type="text/css">
-    <!--
-    @import url("script/style.css");
-    -->
-  </style>
 
-  <title>Zacky PWA</title>
+  <title>PWA test Apps</title>
 </head>
 
 <body>
@@ -44,7 +39,8 @@
       <a href="%E9%AB%98%E6%A0%A1%E6%95%B0%E5%AD%A6">数学解説</a>
       <a href="admin/localmaster.html">Local<br />
         Master</a>
-    </section><section>
+    </section>
+    <section>
       <h2>test</h2>
       $$a=\dfrac{a}{b}$$
       てすと$\dfrac{1}{2}$
@@ -90,6 +86,9 @@
             </li>
             <li>
               <a href="https://photos.google.com/" target="_blank">Photo</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" target="_blank">YouTube</a>
             </li>
             <li>
               <a href="https://mail.google.com/" target="_blank">Mail</a>
@@ -365,7 +364,94 @@
             </li>
           </ul>
         </div>
+        <div id="入試情報">
 
+
+          <ul>
+            <li><a href="http://www.dnc.ac.jp/" target="_blank">独立行政法人 大学入試センター</a></li>
+          </ul>
+          <style>
+            table.入試tbl th,td{
+              text-align: center;
+              white-space:  nowrap;
+            }
+          </style>
+          <div class="xScroll centering">
+          <table class="入試tbl">
+            <thead>
+              <tr>
+                <th>予備校・教育事業者</th>
+                <th>模試</th>
+                <th>進学情報</th>
+                <th>教員用</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><a href="http://www.benesse.co.jp/" target="_blank">Benesse</a></th>
+                <td><a href="http://manabi.benesse.ne.jp/assess/moshi/" target="_blank">進研模試</a><br>
+                  <a href="http://manabi.benesse.ne.jp/assess/ss/" target="_blank">スタディーサポート</a><br>
+                  <a href="http://gtec.for-students.jp/" target="_blank">GTEC for STUDENTS</a></td>
+                <td><a href="https://manabi.benesse.ne.jp/wi/jsp/gy1_toroku/login_failure_digi.jsp"
+                    target="_blank">進研模試デジタルサービス</a><br>
+                  <a href="http://manabi.benesse.ne.jp/" target="_blank">マナビジョン</a><br>
+                  <a href="http://manabi.benesse.ne.jp/nyushi/kakomon/" target="_blank">大学入試過去問ダウンロードサービス</a>
+                </td>
+                <td><a href="http://bhso.benesse.ne.jp/" target="_blank">Benesse High School Online</a></td>
+              </tr>
+              <tr>
+                <th><a href="http://www.yozemi.ac.jp" target="_blank">代々木ゼミナール</a></th>
+                <td><a href="http://www.yozemi.ac.jp/test/index.html" target="_blank">代ゼミ模試</a></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th><a href="http://www.kawai-juku.ac.jp/" target="_blank">河合塾</a></th>
+                <td><a href="http://www.kawai-juku.ac.jp/trial-exam/zento/" target="_blank">全統模試</a></td>
+                <td><a href="http://www.keinet.ne.jp/" target="_blank">Kei-Net</a></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th><a href="http://www2.sundai.ac.jp/yobi/sv/index.html" target="_blank">駿台予備校</a></th>
+                <td><a href="http://www2.sundai.ac.jp/yobi/sv/moshi/index.html" target="_blank">駿台模試</a></td>
+                <td><a href="http://www2.sundai.ac.jp/yobi/sv/news/index.html" target="_blank">大学入試情報</a></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th><a href="http://www.toshin.com/" target="_blank">東進ハイスクール</a></th>
+                <td><a href="http://www.toshin.com/hs/event/exam/" target="_blank">東進模試</a><br>
+                  <a href="http://www.toitsutest.com/" target="_blank">全国統一テスト</a></td>
+                <td><a href="http://www.toshin.com/nyushi/index_niji.php" target="_blank">大学入試問題 過去問データベース</a><br>
+                  <a href="http://www.toshin.com/univ/" target="_blank">大学案内</a></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>リクルート</th>
+                <td></td>
+                <td><a href="https://studysapuri.jp/" target="_blank">スタディサプリ</a></td>
+                <td><a href="https://link.studysapuri.jp/ja/login" target="_blank">スタディサプリ<br>for Teachers</a></td>
+              </tr>
+              <tr style="display:none">
+                <th><a href="http://www.zkai.co.jp/" target="_blank">Z会</a></th>
+                <td>会員のみ申込可。<br>
+                  ただし、河合塾共催なので<br>
+                  事実上会員外も申込可</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>その他</th>
+                <td></td>
+                <td>
+                  <a href="http://www.cybercollege.jp/" target="_blank">サイバーカレッジ</a><br>
+                  <a href="http://passnavi.evidus.com/" target="_blank">大学受験パスナビ：旺文社</a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
 
         <div id="linkTab_ペーパークラフト">
           <ul>
@@ -518,7 +604,8 @@
                 <li><a href="http://gadgetcafe.jp/" target="_blank">encafe - ガジェットカフェ</a></li>
               </ul>
             </div>
-          </div><script type="text/javascript">
+          </div>
+          <script type="text/javascript">
             setTab("TechArtTab");
           </script>
         </div>
@@ -532,7 +619,8 @@
             <li><a href="http://www.zacky.xxxxxxxx.jp/" target="_blank">旧サイト</a></li>
           </ul>
         </div>
-      </div><script type="text/javascript">
+      </div>
+      <script type="text/javascript">
         setTab("linkTab");
       </script>
     </section>
@@ -546,6 +634,7 @@
   <!-- /container -->
 </body>
 <script type="text/javascript">
-    init();
+  init();
 </script>
+
 </html>

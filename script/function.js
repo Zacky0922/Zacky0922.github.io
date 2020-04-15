@@ -10,12 +10,25 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    汎用関数
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+//外部JS読込
+function loadScript(myScripts, myType = "text/javascript") {
+    var script = document.createElement('script');
+    script.src = myScripts;
+    script.type = myType;
+    document.head.appendChild(script);
+    //document.write(script.outerHTML);
+}
 
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    読込時、変数受取
+    グローバル利用変数 g_hoge
+    初期読込Script
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-function getLv() {
+//HTML階層指定：読込時、変数受取
+function getParam() {
     var scripts = document.getElementsByTagName('script');
     var src = scripts[scripts.length - 1].src;
 
@@ -31,7 +44,8 @@ function getLv() {
         param[paramName] = paramValue;
     }
 
-    //受取変数処理
+    //受取変数の個別処理
+    //lv    数値→フォルダ指定文字列
     var myLv = "";
     if (param["lv"] > 0) {
         for (var i = 0; i < param["lv"]; i++) {
@@ -40,46 +54,22 @@ function getLv() {
     } else {
         myLv = "./";
     }
-    return myLv;
+    param["lv"] = myLv;
+    return param;
 }
+var getParam = getParam();
 
+//loadScript(getParam["lv"] + "script/style.css","text/css");
+document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/style.css">');
 
+loadScript(getParam["lv"] + "script/design.js");
 
-/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    汎用関数
-    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-//外部JS読込
-function loadScript(myScripts, myType = "text/javascript") {
-    var script = document.createElement('script');
-    script.src = myScripts;
-    script.type = myType;
-    document.head.appendChild(script);
-}
-
-
-
-
-/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    グローバル利用変数 g_hoge
-    初期読込Script
-    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-//HTML階層指定
-var g_Lv = getLv();
-
-
-
-
-
-loadScript(g_Lv + "script/design.js");
-/*
 //MathJax読込
-loadScript(g_Lv + "script/MathJaxMacro.js", "text/x-mathjax-config");
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
-*/
-loadScript(g_Lv + "script/MathJaxMacro.js", "text/x-mathjax-config");
 //document.write('<script src="./script/MathJaxMacro.js" type="text/x-mathjax-config"></script>');
-document.write('<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>');
-
+//loadScript(getParam["lv"] + "script/MathJaxMacro.js", "text/x-mathjax-config");
+loadScript(getParam["lv"] + "script/MathJaxMacro.js");
+//document.write('<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>');
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     init

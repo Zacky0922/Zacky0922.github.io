@@ -6,8 +6,8 @@ function setFooter() {
     var myMenu = document.createElement("div");
     myMenu.id = "ftMenuPopup";
     var myMenuContents = [
-        [document.createElement("a"), "TOP", g_Lv],
-        [document.createElement("a"), "高校数学", g_Lv + "高校数学"]
+        [document.createElement("a"), "TOP", getParam["lv"]],
+        [document.createElement("a"), "高校数学", getParam["lv"] + "高校数学"]
     ];
     for (var i = 0; i < myMenuContents.length; i++) {
         myMenuContents[i][0].innerText = myMenuContents[i][1];

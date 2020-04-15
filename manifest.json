@@ -1,13 +1,13 @@
 {
-    "name": "Zacky PWA",
-    "short_name": "Z-PWA",
+    "name": "Zacky Test App",
+    "short_name": "Z-App",
     "display": "standalone",
     "orientation": "portrait-primary",
-    "start_url": "index.html",
+    "start_url": "https://zacky0922.github.io/index.html",
     "background_color": "#114",
     "theme_color": "#114",
     "lang": "ja-jp",
-    "description": "PWA sample",
+    "description": "PWA sample app",
     "icons": [
         {
             "src": "script/icon192.png",
