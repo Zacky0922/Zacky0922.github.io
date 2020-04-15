@@ -58,10 +58,11 @@
 body,div#container{
     margin: 0;
     padding:    0;
-    background: #fff;
+    background: #bbb;
     color:  var(--z-font-color);
 }
 div#container{
+    /* footerに隠れないように */
     padding-bottom: 30px;
     margin-bottom: 30px;
 }
@@ -77,10 +78,13 @@ a:hover{
 }
 section{
     margin: 0 5px 30px;
+    padding-bottom: 10px;
+    background: #fff;
 }
 h2{
     text-align: center;
-    background: #bbb;
+    background: #222;
+    color:      #fff;
     padding:    5px 0;
     margin:     10px 0 3px;
 }
@@ -137,7 +141,7 @@ div.tabWrapper > div.tabMenu > span.tabMenuSpan{
 div.tabWrapper > div.tabMenu > span.tabMenuSpan.tabActive{
     background: inline;
     background: var(--z-color-active);
-    border-width:   3px;
+    font-weight:    bold;
 }
 div.tabWrapper > div.tabMenu > span.tabMenuSpan:hover{
     background: var(--z-color-hover);
@@ -159,63 +163,65 @@ div.tabWrapper > div.tabContent.tabActive{
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     基本レイアウト for 本サイト
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-header,footer{
-    margin: 0;
-    padding:    10px;
-    background: #114;
-    color:  #fff;
-}
-header{
-    position: -webkit-sticky;
-    position: sticky;
-    top:    0;
-    margin-bottom:  10px;
-}
+
 footer{
     position:    fixed;
     bottom: 0;
+    margin: 0;
     padding:    0;
     margin-top: 10px;
     width:  100%;
     text-align: center;
-}
-footer > div#ftMenuPopup{
-    display:    none;
-    background: #ddd;
-    padding:    20px 25%;
+    background: rgb(127,127,127,0.8);
     border-top: #114 5px solid;
 }
-footer > div#ftMenuPopup.menuActive{
+footer > div#ftMenuPopup,
+footer > div#debugArea{
+    display:    none;
+    background: #ddd;
+    color:  #000;
+    margin: 20px;
+    padding:    15px;
+    border: #114 5px solid;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+footer > div#ftMenuPopup.dispActiveBlock{
     display:    grid;
     grid-template-columns: 1fr;
     grid-gap: 10px;
+    margin-left: 25%;
+    margin-right: 25%;
 }
-footer > div#ftMenuPopup > a{
-    border:     #000 1px solid;
-    background: #114;
-    color:      #fff;
-    padding:    10px 5px;
+
+
+footer > div#debugArea.dispActiveBlock{
+    display:    block;
+    text-align: left;
+    padding:    0;
 }
 footer > div#ftMenu{
     display:    grid;
     grid-template-columns: repeat(4,1fr);
     margin: 0;
     padding: 0;
+    background: #114;
+    color:  #fff;
 }
-footer > div > div{
-    display:    inline-block;
+footer > div#ftMenu > div{
     margin: 0;
     padding: 5px;
+    vertical-align: middle;
 }
-footer > div > div:hover{
+footer > div#ftMenu > div:hover{
     background: #ddf;
     color:  #114;
 }
-footer > div > div > span{
-    display:    block;
+footer > div#ftMenu > div > span{
+    text-align: center;
 }
 @media screen and (max-width: 599px){
-    footer > div > div > span:nth-child(2){
+    footer > div#ftMenu > div > span:nth-child(2){
         display:    none;
     }
 }
@@ -235,6 +241,7 @@ footer > div > div > span{
     padding: 10px;
     margin: 5px;
     min-width:  80px;
+    vertical-align: middle;
 }
 .zBtn:hover {
     background: #ccf;
@@ -245,10 +252,7 @@ footer > div > div > span{
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     memo
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-
     #top a {
-      box-sizing: border-box;
-      border: #000 1px solid;
-      text-align: center;
-      vertical-align: middle;
+        border: #000 1px solid;
+        text-align: center;
     }

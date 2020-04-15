@@ -1,7 +1,7 @@
+debugMsg("loaded - MathJaxMacro.js");
 //	====================================
 //	===	MathJax マクロ設定 by Zacky	====
 //	====================================
-
 MathJax.Hub.Config({
     extensions: [	//拡張機能			個別読込($$～$$内記述)		説明		
         //	'AMScd.js'		//	\(\require{AMScd}\)  		//可換図式	

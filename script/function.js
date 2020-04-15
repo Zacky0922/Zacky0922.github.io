@@ -11,6 +11,19 @@ if ('serviceWorker' in navigator) {
 }
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    debug
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+function debugMsg(msg) {
+    document.getElementById('debugArea').appendChild(
+        document.createElement("br")
+    );
+    document.getElementById('debugArea').appendChild(
+        document.createTextNode(msg)
+    );
+}
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     汎用関数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //外部JS読込
@@ -18,8 +31,8 @@ function loadScript(myScripts, myType = "text/javascript") {
     var script = document.createElement('script');
     script.src = myScripts;
     script.type = myType;
-    document.head.appendChild(script);
-    //document.write(script.outerHTML);
+    //document.head.appendChild(script);
+    document.write(script.outerHTML);
 }
 
 
@@ -59,22 +72,35 @@ function getParam() {
 }
 var getParam = getParam();
 
-//loadScript(getParam["lv"] + "script/style.css","text/css");
-document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/style.css">');
 
-loadScript(getParam["lv"] + "script/design.js");
 
 //MathJax読込
 //document.write('<script src="./script/MathJaxMacro.js" type="text/x-mathjax-config"></script>');
 //loadScript(getParam["lv"] + "script/MathJaxMacro.js", "text/x-mathjax-config");
-loadScript(getParam["lv"] + "script/MathJaxMacro.js");
+//loadScript(getParam["lv"] + "script/MathJaxMacro.js");
 //document.write('<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>');
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
+//loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    init
+    init    onload実行
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+loadScript(getParam["lv"] + "script/design.js");
+
+//loadScript(getParam["lv"] + "script/style.css","text/css");
+document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/style.css">');
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    init    plugin系
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+
 function init() {
+    //MathJax
+    loadScript(getParam["lv"] + "script/MathJaxMacro.js", "text/x-mathjax-config");
+    loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
+   
     //フッター作成
     setFooter();
+
+    debugMsg("Complete - init()");
 }

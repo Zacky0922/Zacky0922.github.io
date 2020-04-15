@@ -12,7 +12,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="./manifest.json">
-  <script type="text/javascript" src="./script/function.js?lv=0"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
   <script>
@@ -21,13 +20,12 @@
     gtag('js', new Date());
     gtag('config', 'UA-163335381-1');
   </script>
-
+<script type="text/javascript" src="./script/function.js?lv=0"></script>
   <title>PWA test Apps</title>
 </head>
 
 <body>
   <div id="container">
-    <header>PWA sample</header>
     <section id="top"
       style="display: grid;grid-auto-flow:dense;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));grid-gap:10px;">
       <a>あ</a>
@@ -36,9 +34,8 @@
       <a>え</a>
       <a>お</a>
       <a>か</a>
-      <a href="%E9%AB%98%E6%A0%A1%E6%95%B0%E5%AD%A6">数学解説</a>
-      <a href="admin/localmaster.html">Local<br />
-        Master</a>
+      <a>き</a>
+      <a>く<br />けけけ</a>
     </section>
     <section>
       <h2>test</h2>
@@ -46,13 +43,22 @@
       てすと$\dfrac{1}{2}$
     </section>
     <section>
+      <h2>test</h2>
+      <div onclick="this.children[1].style.display=='none' ?
+      this.children[1].style.display='block':
+      this.children[1].style.display='none'">
+        <h3>見出し</h3>
+        <div>本文</div>
+      </div>
+    </section>
+    <section>
       <h2>Links</h2>
       <div class="centering">
-        <a href="https://jsh.kgef.ac.jp/" class="zBtn" target="_blank">学校WEBサイト</a>
+        <a href="https://jsh.kgef.ac.jp/" class="zBtn" target="_blank">学校WEBサイト</a><br/>
         <a href="https://jsh.kgef.ac.jp/kg/" class="zBtn" target="_blank">総合</a>
         <a href="https://jsh.kgef.ac.jp/kjs/" class="zBtn" target="_blank">中学</a>
         <a href="https://jsh.kgef.ac.jp/khs/" class="zBtn" target="_blank">高校</a><br/>
-        <a href="https://jsh.kgef.ac.jp/news/14196/" class="zBtn" target="_blank">KGコロナまとめページ</a>
+        <a href="https://jsh.kgef.ac.jp/news/14196/" class="zBtn" target="_blank">KGコロナまとめページ</a><br />
         <a href="https://jsh.kgef.ac.jp/khs/club/brassband/" class="zBtn" target="_blank">吹奏楽部</a>
         <a href="https://jsh.kgef.ac.jp/wp-admin/" class="zBtn" target="_blank">wp-admin</a><br/>
         <a href="https://learn.studysapuri.jp/ja/login" class="zBtn" target="_blank">スタディサプリ<br/>（生徒用login）</a>
@@ -644,6 +650,7 @@
   </div>
   <!-- /container -->
 </body>
+
 <script type="text/javascript">
   init();
 </script>

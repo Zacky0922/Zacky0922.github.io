@@ -1,6 +1,7 @@
 
 
 function setFooter() {
+    
     var myFt = document.createElement("footer");
     //Popupメニュー
     var myMenu = document.createElement("div");
@@ -11,19 +12,26 @@ function setFooter() {
     ];
     for (var i = 0; i < myMenuContents.length; i++) {
         myMenuContents[i][0].innerText = myMenuContents[i][1];
-        myMenuContents[i][0].onclick = "menuDisp()";
+        myMenuContents[i][0].classList.add("zBtn");
+        //myMenuContents[i][0].onclick = "menuDisp()";
         myMenu.appendChild(myMenuContents[i][0]);
     }
     myFt.appendChild(myMenu);
+    
+    //debugArea
+    var debugArea = document.createElement("div");
+    debugArea.id = "debugArea";
+    debugArea.innerText = "<<< debug >>>";
+    myFt.appendChild(debugArea);
 
     //フッター
     var myDiv = document.createElement("div");
     myDiv.id = "ftMenu";
     var myFtMenu = [
-        ["menu", "メニュー", "document.getElementById('ftMenuPopup').classList.toggle('menuActive')"],
+        ["menu", "メニュー", "document.getElementById('ftMenuPopup').classList.toggle('dispActiveBlock')"],
         ["event_note", "日程", ""],
         ["link", "リンク", ""],
-        ["settings", "設定", ""],
+        ["settings", "debug", "document.getElementById('debugArea').classList.toggle('dispActiveBlock')"]
     ];
     for (var i = 0; i < myFtMenu.length; i++) {
         var menuEle = document.createElement("div");
