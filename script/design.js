@@ -1,5 +1,4 @@
 
-
 function setFooter() {
     
     var myFt = document.createElement("footer");
@@ -8,12 +7,20 @@ function setFooter() {
     myMenu.id = "ftMenuPopup";
     var myMenuContents = [
         [document.createElement("a"), "TOP", getParam["lv"]],
-        [document.createElement("a"), "高校数学", getParam["lv"] + "高校数学"]
+        [document.createElement("a"), "数学解説", getParam["lv"] + "高校数学"],
+        [document.createElement("a"), "dummy", ""],
+        [document.createElement("a"), "dummy", ""],
+        [document.createElement("a"), "dummy", ""],
+        [document.createElement("a"), "dummy", ""],
+        [document.createElement("a"), "dummy", ""],
+        [document.createElement("a"), "dummy", ""],
+        [document.createElement("a"), "dummy", ""],
+        [document.createElement("a"), "dummy", ""]
     ];
     for (var i = 0; i < myMenuContents.length; i++) {
         myMenuContents[i][0].innerText = myMenuContents[i][1];
         myMenuContents[i][0].classList.add("zBtn");
-        //myMenuContents[i][0].onclick = "menuDisp()";
+        myMenuContents[i][0].href = myMenuContents[i][2];
         myMenu.appendChild(myMenuContents[i][0]);
     }
     myFt.appendChild(myMenu);
@@ -51,6 +58,7 @@ function setFooter() {
     myFt.appendChild(myDiv);
     document.getElementById("container").appendChild(myFt);
 }
+
 
 
 

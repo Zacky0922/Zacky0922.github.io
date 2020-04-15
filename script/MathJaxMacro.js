@@ -1,4 +1,4 @@
-debugMsg("loaded - MathJaxMacro.js");
+alert("loaded - MathJaxMacro.js");
 //	====================================
 //	===	MathJax マクロ設定 by Zacky	====
 //	====================================

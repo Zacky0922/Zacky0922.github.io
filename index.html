@@ -21,26 +21,30 @@
     gtag('config', 'UA-163335381-1');
   </script>
 <script type="text/javascript" src="./script/function.js?lv=0"></script>
-  <title>PWA test Apps</title>
+  <title>PWA test App</title>
 </head>
 
 <body>
   <div id="container">
-    <section id="top"
-      style="display: grid;grid-auto-flow:dense;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));grid-gap:10px;">
-      <a>あ</a>
-      <a>い</a>
-      <a>う</a>
-      <a>え</a>
-      <a>お</a>
-      <a>か</a>
-      <a>き</a>
-      <a>く<br />けけけ</a>
-    </section>
+
     <section>
-      <h2>test</h2>
+      <h2>debug</h2>
       $$a=\dfrac{a}{b}$$
-      てすと$\dfrac{1}{2}$
+      <p>てすと$\dfrac{1}{2}$</p>
+      <p><script>
+        //MathJaxを動的に変更した場合、下記を実行
+        //MathJax.Hub.Queue(["Typeset",MathJax.Hub,"格納id"]);
+      </script></p>
+      <p id="jQueryCheck">jQuery is NOT ready</p>
+      <p id="dynamicMathJaxTest" onclick="this.innerText='$$\\left(\\dfrac{1}{2}\\right)^2=\\dfrac{1}{4}$$';MathJax.Hub.Queue(['Typeset',MathJax.Hub,'dynamicMathJaxTest']);">dynamicMathJaxTest - Please click me!</p>
+      <script>
+        $(function () { // if document is ready
+          $("#jQueryCheck").empty();
+          $("#jQueryCheck").append("jQuery is ready.");
+        });
+      </script>
+      <p></p>
+
     </section>
     <section>
       <h2>test</h2>

@@ -1,14 +1,3 @@
-/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    head実行系
-    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-//service workerの登録関係
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service_worker.js').then(function (registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }).catch(function (err) {
-        console.log('ServiceWorker registration failed: ', err);
-    });
-}
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     debug
@@ -22,23 +11,8 @@ function debugMsg(msg) {
     );
 }
 
-
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    汎用関数
-    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-//外部JS読込
-function loadScript(myScripts, myType = "text/javascript") {
-    var script = document.createElement('script');
-    script.src = myScripts;
-    script.type = myType;
-    //document.head.appendChild(script);
-    document.write(script.outerHTML);
-}
-
-
-/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    グローバル利用変数 g_hoge
-    初期読込Script
+    グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //HTML階層指定：読込時、変数受取
 function getParam() {
@@ -70,9 +44,8 @@ function getParam() {
     param["lv"] = myLv;
     return param;
 }
+
 var getParam = getParam();
-
-
 
 //MathJax読込
 //document.write('<script src="./script/MathJaxMacro.js" type="text/x-mathjax-config"></script>');
@@ -82,25 +55,53 @@ var getParam = getParam();
 //loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    init    onload実行
+    汎用関数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-loadScript(getParam["lv"] + "script/design.js");
+//外部JS読込
+function loadScript(myScripts, myType = "text/javascript") {
+    var script = document.createElement('script');
+    script.src = myScripts;
+    script.type = myType;
+    document.head.appendChild(script);
+    //document.write(script.outerHTML);
+}
 
-//loadScript(getParam["lv"] + "script/style.css","text/css");
-document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/style.css">');
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    init
+    onload実行  PWA設定・plugin系
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+
+//service workerの登録関係
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(getParam["lv"] + 'service_worker.js').then(function (registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function (err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
+
+//document.write('<script type="text/javascript" src="' + getParam["lv"] + 'script/design.js"></script>');
+loadScript(getParam["lv"] + "script/design.js");
+//jQuery
+document.write('<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>');
+
+//document.write('<script type="text/x-mathjax-config" src="' + getParam["lv"] + 'script/MathJaxMacro.js"></script>');
+loadScript(getParam["lv"] + "script/MathJaxMacro.js", "text/x-mathjax-config");
 
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    init    plugin系
+    init
+    HTML読込後、初期整形処理
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-
 function init() {
+    document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/style.css">');
     //MathJax
-    loadScript(getParam["lv"] + "script/MathJaxMacro.js", "text/x-mathjax-config");
+    
     loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
    
-    //フッター作成
-    setFooter();
 
+    //フッター作成：debugArea生成
+    setFooter();
+    //これ以降、debugMsg()実行可
     debugMsg("Complete - init()");
 }
