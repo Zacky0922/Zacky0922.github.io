@@ -34,6 +34,18 @@
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
 
+
+
+/* 外部リンクアイコン */
+a[target="_blank"]::after{
+    content:    url("g_icon\baseline_link_black_18dp.png");
+    /*
+    content:    '<span class="material-icons">link</span>';
+    */
+}
+
+
+
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     全体設定
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
@@ -41,8 +53,8 @@
 :root{
     --z-color-hover:    #ff9;
     --z-color-active:    #faa;
-    --z-border-color:   #000;
-    --z-font-color:     #000;
+    --z-border-color:   #114;
+    --z-font-color:     #114;
 }
 
 *{
@@ -207,8 +219,6 @@ footer > div#ftMenuPopup.dispActiveBlock{
     display:    grid;
     grid-template-columns: 1fr;
     grid-gap: 10px;
-    margin-left: 25%;
-    margin-right: 25%;
 }
 
 
@@ -269,6 +279,35 @@ footer > div#ftMenu > div > span{
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     memo
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+div.zSnap{
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    /* スマホ対応のため必須 */
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+div.zSnap > *{
+    /* start,center,end */
+    scroll-snap-align: start;
+}
+@media screen and (min-width: 600px){
+    div.zSnap{
+        scroll-snap-type:   none;
+        display:    block;
+    }
+    div.zSnap > div + div{
+        margin-left:    0;
+    }
+}
 
+div.zSnap > div{
+    border: 5px #114 solid;
 
-    
+    min-width:  200px;
+    height: 100%;
+}
+div.zSnap > div > div:nth-child(1){
+    background:#ff0;
+}
