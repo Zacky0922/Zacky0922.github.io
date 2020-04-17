@@ -51,10 +51,14 @@ a[target="_blank"]::after{
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 
 :root{
+    --z-section-bg:     #fff;
     --z-color-hover:    #ff9;
     --z-color-active:    #faa;
-    --z-border-color:   #114;
-    --z-font-color:     #114;
+    --z-border-color:   #002;
+    --z-font-color:     #000;
+    --z-font-color-alt:     #fff;
+    --z-bgcolor-alt:        #002;
+    --z-bgcolor-hover:   #6af;
 }
 
 *{
@@ -103,28 +107,27 @@ a{
     color:  var(--z-font-color);
 }
 a:hover{
-    background: var(--z-color-hover);
+    background: var(--z-bgcolor-hover);
 }
 section{
     margin: 0 5px 30px;
     padding:    0 5px 10px;
-    background: #fff;
+    background: var(--z-section-bg);
 }
 h2{
     text-align: center;
-    background: #222;
-    color:      #fff;
+    background: var(--z-bgcolor-alt);
+    color:      var(--z-font-color-alt);
     padding:    5px 0;
     margin:     10px -5px 3px;
 }
-
 table{
     margin: 5px auto;
     border-collapse:    collapse;
 }
 table th,
 table td{
-    border: 1px #000 solid;
+    border: 1px solid var(--z-border-color);
     padding:    5px
 }
 table th{
@@ -168,12 +171,13 @@ div.tabWrapper > div.tabMenu > span.tabMenuSpan{
     cursor: pointer;
 }
 div.tabWrapper > div.tabMenu > span.tabMenuSpan.tabActive{
-    background: inline;
-    background: var(--z-color-active);
+    display: inline;
+    background: var(--z-bgcolor-alt);
+    color:   var(--z-font-color-alt);
     font-weight:    bold;
 }
 div.tabWrapper > div.tabMenu > span.tabMenuSpan:hover{
-    background: var(--z-color-hover);
+    background: var(--z-bgcolor-hover);
 }
 div.tabWrapper > div.tabContent{
     display:    none;
@@ -297,6 +301,10 @@ div.zSnap > *{
         scroll-snap-type:   none;
         display:    block;
     }
+    div.zSnap > div{
+        display:    inline-block;
+        margin: 0 5px 5px;
+    }
     div.zSnap > div + div{
         margin-left:    0;
     }
@@ -310,4 +318,5 @@ div.zSnap > div{
 }
 div.zSnap > div > div:nth-child(1){
     background:#ff0;
+    text-align: center;
 }

@@ -39,8 +39,9 @@
       </p>
       <p id="jQueryCheck">jQuery is NOT ready</p>
       <p id="dynamicMathJaxTest"
-        onclick="this.innerText='$$\\left(\\dfrac{1}{2}\\right)^2=\\dfrac{1}{4}$$';MathJax.Hub.Queue(['Typeset',MathJax.Hub,'dynamicMathJaxTest']);">
+        onclick="this.innerText='$$\\left(\\dfrac{1}{2}\\right)^2=\\dfrac{1}{4}$$';">
         dynamicMathJaxTest - Please click me!</p>
+      <input type="button" onclick="reMathJax('dynamicMathJaxTest')"></input>
       <script>
         $(function () { // if document is ready
           $("#jQueryCheck").empty();
@@ -261,6 +262,14 @@
             </li>
           </ul>
         </div>
+        
+        <div id="linkTab_大学講座">
+          <ul>
+            <li><a href="https://www.jmooc.jp/" target="_blank">JMOOC</a></li>
+          </ul>
+
+        </div>
+        
         <div id="linkTab_数学">
           <div id="数学tab">
             <div id="数学学習">
@@ -709,9 +718,7 @@
   </div>
   <!-- /container -->
 </body>
-
 <script type="text/javascript">
   init();
 </script>
-
 </html>
