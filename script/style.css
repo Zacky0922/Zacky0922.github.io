@@ -39,8 +39,9 @@
 
 /* 外部リンクアイコン */
 a[target="_blank"]::after{
-    content:    url("g_icon\baseline_link_black_18dp.png");
+    
     /*
+    content:    url("g_icon/baseline_link_black_18dp.png");
     content:    '<span class="material-icons">link</span>';
     */
 }
@@ -64,6 +65,9 @@ a[target="_blank"]::after{
     --z-font-color-alt:     #fff;
 
     --z-bgcolor-hover:   #6af;
+
+    --z-bgcolor-inactive:   #ccc;
+    --z-font-color-inactive:   #555;
 }
 
 *{
@@ -262,8 +266,20 @@ footer > div#ftMenu > div > span{
     }
 }
 
+div.dispToggle{
+    margin: 0;
+    font-size:  smaller;
+    text-align: right;
+    background: var(--z-bgcolor-inactive);
+    color:      var(--z-font-color-inactive);
+}
+div.dispToggle > span.material-icons{
+    vertical-align: middle;
+}
 
-
+.undisp{
+    display:    none !important;
+}
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     基本パーツ
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */

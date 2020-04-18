@@ -1,3 +1,4 @@
+
 // キャッシュファイルの指定
 var CACHE_NAME = 'Zacky PWA';
 var urlsToCache = [
@@ -25,3 +26,4 @@ self.addEventListener('fetch', function(event) {
             })
     );
 });
+

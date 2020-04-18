@@ -1,3 +1,29 @@
+function dispToggle(myObj, mode0, mode1) {
+
+    var iconSpan = document.createElement("span");
+    iconSpan.classList.add("material-icons");
+
+    switch (myObj.innerText.indexOf(mode0)) {
+        case -1:
+            myObj.innerHTML = "";
+            myObj.appendChild(
+                document.createTextNode(mode0)
+            );
+            iconSpan.innerText = "expand_more";
+            myObj.previousElementSibling.classList.add("undisp");
+            break;
+        default:
+            myObj.innerHTML = "";
+            myObj.appendChild(
+                document.createTextNode(mode1)
+            );
+            iconSpan.innerText = "expand_less";
+            myObj.previousElementSibling.classList.remove("undisp");
+    }
+
+    myObj.appendChild(iconSpan);
+}
+
 
 
 function setFooter() {

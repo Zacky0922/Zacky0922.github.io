@@ -48,7 +48,6 @@
         });
       </script>
       <p></p>
-
     </section>
     <section>
       <h2>test</h2>
@@ -59,6 +58,29 @@
         <div>本文</div>
       </div>
     </section>
+    <section>
+      <h2>test</h2>
+      <div>
+        <h3>見出し</h3>
+        <div>DOM</div>
+        <script>
+          function setDispToggle(mode0,mode1){
+            var myDiv = document.createElement("div");
+            myDiv.setAttribute("onClick", "dispToggle(this, '[詳細を開く]', '[詳細を閉じる]')");
+            myDiv.classList.add("dispToggle");
+            document.write(myDiv.outerHTML);
+            
+            dispToggle(myDiv,mode0, mode1);
+          }
+          setDispToggle('[詳細を開く]', '[詳細を閉じる]');
+         
+        </script>
+      </div>
+    </section>
+
+
+
+
     <section>
       <h2>test</h2>
       <div onclick="this.children[1].style.display = (this.children[1].style.display=='none' ? 'block' : 'none')">
