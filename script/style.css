@@ -238,7 +238,7 @@ footer > div#debugArea.dispActiveBlock{
 }
 footer > div#ftMenu{
     display:    grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(5,1fr);
     margin: 0;
     padding: 0;
     background: #114;

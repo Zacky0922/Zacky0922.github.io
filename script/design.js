@@ -36,6 +36,7 @@ function setFooter() {
     var myDiv = document.createElement("div");
     myDiv.id = "ftMenu";
     var myFtMenu = [
+        ["keyboard_backspace", "Back", "history.back()"],
         ["menu", "メニュー", "document.getElementById('ftMenuPopup').classList.toggle('dispActiveBlock')"],
         ["event_note", "日程", ""],
         ["link", "リンク", ""],

@@ -66,7 +66,7 @@ function loadScript(myScripts, myType = "text/javascript") {
     //document.write(script.outerHTML);
 }
 
-//MathJax 
+//MathJax逐次実行
 function reMathJax(id = null) {
     if (id == null) {
         id = "myBody";
