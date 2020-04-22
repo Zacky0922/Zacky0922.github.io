@@ -24,8 +24,13 @@
   <!--
   <script src="./script/MathJaxMacro2.js" type="text/x-mathjax-config"></script>
   -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <!--
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-ams-chtml.js">
+  -->
   <script src="./script/function.js?lv=0" type="text/javascript"></script>
-  <script src="./script/MathJaxMacro.js" type="text/javascript"></script>
+  <script src="./script/MathJaxMacro.js" type="text/x-mathjax-config"></script>
   <title>PWA test App</title>
 </head>
 
@@ -33,12 +38,27 @@
   <div id="container">
 
     <section>
-      <h2>debug</h2>
-      <dl>
+      <h2 onclick="this.parentElement.children[1].classList.toggle('undisp')">debug</h2>
+      <dl class="undisp">
         <dt>MathJax - display mode</dt>
-        <dd>$$a=\dfrac{a}{b}$$</dd>
+        <dd>$$\dfrac{d}{dx}\int_{a}^{x}{f(t)dt} = f(x)$$</dd>
         <dt>MathJax - inline mode</dt>
-        <dd>$a=\dfrac{a}{b}$</dd>
+        <dd>$\Delta\rm{ABC}$について、$a^2+b^2=c^2$が成り立つとき、$c$を斜辺とする直角三角形である。</dd>
+        <dt>MathJax - Real Time Preview (onkeyup)</dt>
+        <dd>
+          <textarea id="realtimePreviewInput" rows="5" cols="40"
+            onkeyup="document.getElementById('realtimePreview').innerText=this.value;
+            reMathJax('realtimePreview')">$$e^{i\theta}=\cos\theta+i\sin\theta$$</textarea>
+          <input type="button" value="init" 
+          onclick="document.getElementById('realtimePreviewInput').value=
+          '$$e^{i\\theta}=\\cos\\theta+i\\sin\\theta$$';
+          document.getElementById('realtimePreview').innerText=
+          document.getElementById('realtimePreviewInput').value;
+          reMathJax('realtimePreview')">
+          <div id="realtimePreview" style="border:#888 1px solid">
+          $$e^{i\theta}=\cos\theta+i\sin\theta$$
+          </div>
+        </dd>
         <dt>jQuery</dt>
         <dd id="jQueryCheck">jQuery is NOT ready.</dd>
         <script>
@@ -51,6 +71,7 @@
         <dt>debugMsg</dt>
         <dd><input type="button" class="zBtn" value="debugMsg('test')" onclick="debugMsg('test')"></dd>
       </dl>
+      
     </section>
     <section>
       <h2>test</h2>

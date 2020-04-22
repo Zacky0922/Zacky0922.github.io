@@ -243,6 +243,7 @@ function reMathJax(id = null) {
     if (id == "myBody") {
         document.body.id = "";
     }
+    debugMsg("reMathJax - " + id);
 }
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
@@ -261,9 +262,9 @@ if ('serviceWorker' in navigator) {
 
 
 
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
+//loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
 
-
+//document.write('<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>')
 
 
 
@@ -284,10 +285,8 @@ document.write('<script src="https://code.jquery.com/jquery-3.4.1.min.js" integr
 function init() {
     document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/style.css">');
    
-
-    //フッター作成：debugArea生成
     setFooter();
-    //これ以降、debugMsg()実行可
+
     debugMsg("Complete - init()");
 }
 

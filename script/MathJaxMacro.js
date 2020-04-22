@@ -62,3 +62,5 @@ MathJax.Hub.Config({
         }
     }
 });
+
+MathJax.Ajax.loadComplete("https://zacky0922.github.io/script/MathJaxMacro.js");
