@@ -1,15 +1,21 @@
-
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     debug
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+var g_debugArea = document.createElement("div");
 function debugMsg(msg) {
-    document.getElementById('debugArea').appendChild(
+    g_debugArea.appendChild(
         document.createElement("br")
     );
-    document.getElementById('debugArea').appendChild(
+    g_debugArea.appendChild(
         document.createTextNode(msg)
     );
+    var myDiv = document.getElementById('debugArea');
+    if (myDiv != undefined) {
+        myDiv.appendChild(g_debugArea);
+    }
 }
+debugMsg("loaded - functions.js");
+
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     グローバル利用変数
@@ -48,31 +54,35 @@ function getParam() {
 var getParam = getParam();
 
 
+function setDispToggle(mode0 = "[省略されているコンテンツを開く]", mode1 ="[表示されているコンテンツを閉じる]") {
+    var myDiv = document.createElement("div");
+    myDiv.setAttribute("onClick", "dispToggle(this)");
+    myDiv.classList.add("dispToggleSW");
+    myDiv.classList.add("noPrint");
+    myDiv.setAttribute("onclick", "dispToggle(this)");
 
-function dispToggle(myObj, mode0, mode1) {
-
-    var iconSpan = document.createElement("span");
-    iconSpan.classList.add("material-icons");
-
-    switch (myObj.innerText.indexOf(mode0)) {
-        case -1:
-            myObj.innerHTML = "";
-            myObj.appendChild(
-                document.createTextNode(mode0)
-            );
-            iconSpan.innerText = "expand_more";
-            myObj.previousElementSibling.classList.add("undisp");
-            break;
-        default:
-            myObj.innerHTML = "";
-            myObj.appendChild(
-                document.createTextNode(mode1)
-            );
-            iconSpan.innerText = "expand_less";
-            myObj.previousElementSibling.classList.remove("undisp");
+    for (var i = 0; i < 2; i++){
+        var myDiv_ = document.createElement("div");
+        myDiv_.innerText = (i == 0 ? mode0 : mode1);
+        var iconSpan = document.createElement("span");
+        iconSpan.classList.add("material-icons");
+        iconSpan.innerText = (i == 0 ? "expand_more" : "expand_less");
+        myDiv_.appendChild(iconSpan);
+        myDiv.appendChild(myDiv_);
     }
+    document.write(myDiv.outerHTML);
 
-    myObj.appendChild(iconSpan);
+   // dispToggle(myDiv);  //myDivが生成・代入後にロードしたい
+
+}
+function dispToggle(myObj) {
+    var myParentClass = myObj.parentElement.classList;
+    myParentClass.toggle("SW_disp");
+    myParentClass.toggle("SW_undisp");
+
+    if (myParentClass.contains("SW_disp") && myParentClass.contains("SW_undisp")) {
+        myParentClass.remove("SW_disp");
+    }
 }
 
 
@@ -249,13 +259,20 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+
+
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
+
+
+
+
+
+
 //document.write('<script type="text/javascript" src="' + getParam["lv"] + 'script/design.js"></script>');
 loadScript(getParam["lv"] + "script/design.js");
 //jQuery
 document.write('<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>');
 
-//document.write('<script type="text/x-mathjax-config" src="' + getParam["lv"] + 'script/MathJaxMacro.js"></script>');
-loadScript(getParam["lv"] + "script/MathJaxMacro.js", "text/x-mathjax-config");
 
 
 
@@ -266,8 +283,6 @@ loadScript(getParam["lv"] + "script/MathJaxMacro.js", "text/x-mathjax-config");
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 function init() {
     document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/style.css">');
-    //MathJax
-    loadScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML");
    
 
     //フッター作成：debugArea生成

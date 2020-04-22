@@ -1,5 +1,4 @@
-alert("loaded - MathJaxMacro.js");
-
+debugMsg("loaded - MathJaxMacro.js");
 //	===	MathJax マクロ設定 ===
 MathJax.Hub.Config({
     extensions: [	//拡張機能			個別読込($$～$$内記述)		説明		

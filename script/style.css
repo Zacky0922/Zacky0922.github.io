@@ -266,19 +266,39 @@ footer > div#ftMenu > div > span{
     }
 }
 
-div.dispToggle{
-    margin: 0;
+
+
+div.SW_undisp > *{
+    display: none;
+}
+div.SW_undisp > div.dispToggleSW{
+    display: block;
+}
+div.SW_undisp > div.dispToggleSW > div:nth-child(2),
+div.SW_disp > div.dispToggleSW > div:nth-child(1){
+    display:    none;
+}
+div.dispToggleSW{
+    margin:0 0 1px;
+    padding:0;
     font-size:  smaller;
     text-align: right;
     background: var(--z-bgcolor-inactive);
     color:      var(--z-font-color-inactive);
 }
-div.dispToggle > span.material-icons{
+div.dispToggleSW span.material-icons{
     vertical-align: middle;
 }
 
+
+
 .undisp{
     display:    none !important;
+}
+@media print{
+    .noPrint{
+        display:    none !important;
+    }
 }
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     基本パーツ

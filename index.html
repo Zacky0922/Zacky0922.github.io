@@ -8,10 +8,6 @@
   <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
   <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
   <meta name="robots" content="noindex,nofollow" />
-  <!-- PWA設定 -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="./manifest.json">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
   <script>
@@ -20,7 +16,16 @@
     gtag('js', new Date());
     gtag('config', 'UA-163335381-1');
   </script>
-  <script type="text/javascript" src="./script/function.js?lv=0"></script>
+  <!-- PWA設定 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="./manifest.json">
+  <!-- MyScripts -->
+  <!--
+  <script src="./script/MathJaxMacro2.js" type="text/x-mathjax-config"></script>
+  -->
+  <script src="./script/function.js?lv=0" type="text/javascript"></script>
+  <script src="./script/MathJaxMacro.js" type="text/javascript"></script>
   <title>PWA test App</title>
 </head>
 
@@ -29,25 +34,23 @@
 
     <section>
       <h2>debug</h2>
-      $$a=\dfrac{a}{b}$$
-      <p>てすと$\dfrac{1}{2}$</p>
-      <p>
+      <dl>
+        <dt>MathJax - display mode</dt>
+        <dd>$$a=\dfrac{a}{b}$$</dd>
+        <dt>MathJax - inline mode</dt>
+        <dd>$a=\dfrac{a}{b}$</dd>
+        <dt>jQuery</dt>
+        <dd id="jQueryCheck">jQuery is NOT ready.</dd>
         <script>
-        //MathJaxを動的に変更した場合、下記を実行
-        //MathJax.Hub.Queue(["Typeset",MathJax.Hub,"格納id"]);
+          $(function () {
+            // if document is ready
+            $("#jQueryCheck").empty();
+            $("#jQueryCheck").append("jQuery is ready.(OK)");
+          });
         </script>
-      </p>
-      <p id="jQueryCheck">jQuery is NOT ready</p>
-      <p id="dynamicMathJaxTest" onclick="this.innerText='$$\\left(\\dfrac{1}{2}\\right)^2=\\dfrac{1}{4}$$';">
-        dynamicMathJaxTest - Please click me!</p>
-      <input type="button" onclick="reMathJax('dynamicMathJaxTest')"></input>
-      <script>
-        $(function () { // if document is ready
-          $("#jQueryCheck").empty();
-          $("#jQueryCheck").append("jQuery is ready.");
-        });
-      </script>
-      <p></p>
+        <dt>debugMsg</dt>
+        <dd><input type="button" class="zBtn" value="debugMsg('test')" onclick="debugMsg('test')"></dd>
+      </dl>
     </section>
     <section>
       <h2>test</h2>
@@ -61,20 +64,20 @@
     <section>
       <h2>test</h2>
       <div>
-        <h3>見出し</h3>
-        <div>DOM</div>
-        <script>
-          function setDispToggle(mode0,mode1){
-            var myDiv = document.createElement("div");
-            myDiv.setAttribute("onClick", "dispToggle(this, '[詳細を開く]', '[詳細を閉じる]')");
-            myDiv.classList.add("dispToggle");
-            document.write(myDiv.outerHTML);
-            
-            dispToggle(myDiv,mode0, mode1);
-          }
-          setDispToggle('[詳細を開く]', '[詳細を閉じる]');
-         
-        </script>
+        <h3>見出し</h3><div class="SW_undisp">
+          <div>DOM</div>
+          <div>DOM</div>
+          <div>DOM</div>
+          <script>
+            setDispToggle('[詳細を開く]', '[詳細を閉じる]');
+          </script>
+        </div>
+        <div class="SW_disp">
+          <div>DOM</div>
+          <script>
+            setDispToggle('[詳細を開く]', '[詳細を閉じる]');
+          </script>
+        </div>
       </div>
     </section>
 
