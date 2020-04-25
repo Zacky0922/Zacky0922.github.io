@@ -15,6 +15,7 @@ function debugMsg(msg) {
     }
 }
 debugMsg("loaded - functions.js");
+debugMsg("My Location - " + location.href);
 
 function getOnline() {
     return (location.href.indexOf("http") == -1);
