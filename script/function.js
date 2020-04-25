@@ -314,7 +314,12 @@ function init() {
     }
 
     setFooter();
-
     debugMsg("Complete - init()");
+
+    if (!getOnline()) {
+        for (var i = 0; i < document.getElementsByClassName("debug").length; i++){
+            document.getElementsByClassName("debug")[i].classList.add("undisp");
+        }
+    }
 }
 

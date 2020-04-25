@@ -41,11 +41,12 @@
 
     <section>
       <h2 onclick="this.parentElement.children[1].classList.toggle('undisp')">debug</h2>
-      <dl id="debugCheck">
+      <dl class="debug">
         <dt>MathJax - display mode</dt>
         <dd>$$\dfrac{d}{dx}\int_{a}^{x}{f(t)dt} = f(x)$$</dd>
         <dt>MathJax - inline mode</dt>
-        <dd>$\Delta\rm{ABC}$について、$a^2+b^2=c^2$が成り立つとき、$c$を斜辺とする直角三角形である。</dd>
+        <dd>$\Delta\rm{ABC}$について、$a^2+b^2=c^2$が成り立つとき、$c$を斜辺とする直角三角形である。<br/>
+        \(\sin^2\theta+\cos^2\theta =1\)は、三平方の定理の応用である。</dd>
         <dt>MathJax - Real Time Preview (onkeyup)</dt>
         <dd>
           <textarea id="realtimePreviewInput" rows="5" 
@@ -89,25 +90,14 @@
         <dt>debugMsg</dt>
         <dd><input type="button" class="zBtn" value="debugMsg('test')" onclick="debugMsg('test')"></dd>
       </dl>
-      <script>
-        if(!getOnline()){
-          document.getElementById("debugCheck").classList.add("undisp");
-        }
-      </script>
+
     </section>
-    <section>
-      <h2>test</h2>
-      <div onclick="this.children[1].style.display=='none' ?
-          this.children[1].style.display='block':
-          this.children[1].style.display='none'">
-        <h3>見出し</h3>
-        <div>本文</div>
-      </div>
-    </section>
+
     <section>
       <h2>test</h2>
       <div>
-        <h3>見出し</h3><div class="SW_undisp">
+        <h3>見出し</h3>
+        <div class="SW_undisp">
           <div>DOM</div>
           <div>DOM</div>
           <div>DOM</div>
@@ -124,16 +114,6 @@
       </div>
     </section>
 
-
-
-
-    <section>
-      <h2>test</h2>
-      <div onclick="this.children[1].style.display = (this.children[1].style.display=='none' ? 'block' : 'none')">
-        <h3>見出し</h3>
-        <div>本文</div>
-      </div>
-    </section>
     <section>
       <h2>snap test</h2>
       <div class="zSnap pickupTopics">

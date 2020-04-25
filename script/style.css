@@ -347,6 +347,7 @@ div.zSnap > *{
     scroll-snap-align: start;
 }
 @media screen and (min-width: 600px){
+    /*
     div.zSnap{
         scroll-snap-type:   none;
         display:    block;
@@ -356,6 +357,7 @@ div.zSnap > *{
         display:    inline-block;
         vertical-align: middle;
     }
+    */
 }
 
 div.pickupTopics > div{
