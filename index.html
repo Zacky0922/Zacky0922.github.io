@@ -21,16 +21,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="./manifest.json">
   <!-- MyScripts -->
+  <script src="./script/function.js?lv=0" type="text/javascript"></script>
   <!--
   <script src="./script/MathJaxMacro2.js" type="text/x-mathjax-config"></script>
   -->
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+  
+  <script src="./script/MathJaxMacro.js" type="text/x-mathjax-config"></script>
+  <script type="text/javascript" defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
   <!--
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-ams-chtml.js">
   -->
-  <script src="./script/function.js?lv=0" type="text/javascript"></script>
-  <script src="./script/MathJaxMacro.js" type="text/x-mathjax-config"></script>
   <title>PWA test App</title>
 </head>
 
@@ -39,14 +41,14 @@
 
     <section>
       <h2 onclick="this.parentElement.children[1].classList.toggle('undisp')">debug</h2>
-      <dl class="undisp">
+      <dl id="debugCheck">
         <dt>MathJax - display mode</dt>
         <dd>$$\dfrac{d}{dx}\int_{a}^{x}{f(t)dt} = f(x)$$</dd>
         <dt>MathJax - inline mode</dt>
         <dd>$\Delta\rm{ABC}$について、$a^2+b^2=c^2$が成り立つとき、$c$を斜辺とする直角三角形である。</dd>
         <dt>MathJax - Real Time Preview (onkeyup)</dt>
         <dd>
-          <textarea id="realtimePreviewInput" rows="5" cols="40"
+          <textarea id="realtimePreviewInput" rows="5" 
             onkeyup="document.getElementById('realtimePreview').innerText=this.value;
             reMathJax('realtimePreview')">$$e^{i\theta}=\cos\theta+i\sin\theta$$</textarea>
           <input type="button" value="init" 
@@ -68,10 +70,30 @@
             $("#jQueryCheck").append("jQuery is ready.(OK)");
           });
         </script>
+        <dt>abc.js</dt>
+        <dd>
+          <div class="score">
+            L:1/4
+            CDEFGABc
+          </div>
+          <div class="score">
+            M:4/4
+            L:1/8
+            K:C
+            V:1
+            "C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
+            V:2 bass
+            C,G,F,G,
+          </div>
+        </dd>
         <dt>debugMsg</dt>
         <dd><input type="button" class="zBtn" value="debugMsg('test')" onclick="debugMsg('test')"></dd>
       </dl>
-      
+      <script>
+        if(!getOnline()){
+          document.getElementById("debugCheck").classList.add("undisp");
+        }
+      </script>
     </section>
     <section>
       <h2>test</h2>

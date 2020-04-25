@@ -16,6 +16,9 @@ function debugMsg(msg) {
 }
 debugMsg("loaded - functions.js");
 
+function getOnline() {
+    return (location.href.indexOf("http") == -1);
+}
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     グローバル利用変数
@@ -271,6 +274,12 @@ if ('serviceWorker' in navigator) {
 
 //document.write('<script type="text/javascript" src="' + getParam["lv"] + 'script/design.js"></script>');
 loadScript(getParam["lv"] + "script/design.js");
+
+loadScript(getParam["lv"] + "script/abcjs/abcjs_basic_5.9.1-min.js");
+loadScript(getParam["lv"] + "script/abcjs/abcjs_basic_midi_3.2.1-min.js");
+//loadScript(getParam["lv"] + "script/abcjs/acoustic_grand_piano-ogg.js");
+document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/abcjs/abcjs-midi.css">');
+document.write('<link rel ="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">');
 //jQuery
 document.write('<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>');
 
@@ -284,7 +293,25 @@ document.write('<script src="https://code.jquery.com/jquery-3.4.1.min.js" integr
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 function init() {
     document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/style.css">');
-   
+    var myScore = document.getElementsByClassName("score");
+
+    ABCJS.midi.soundfontUrl = getParam["lv"] + "script/abcjs/";
+    for (var i = 0; i < myScore.length; i++) {
+        var myScript = myScore[i].innerHTML;
+        myScore[i].innerHTML = "";
+
+        var myScr = document.createElement("div");
+        myScr.id = "score_" + i;
+        myScore[i].appendChild(myScr);
+
+        var myMid = document.createElement("div");
+        myMid.id = "midi_" + i;
+        myScore[i].appendChild(myMid);
+
+        ABCJS.renderAbc("score_" + i, myScript);
+        ABCJS.renderMidi("midi_" + i, myScript, {}, { generateInline: true }, {});
+    }
+
     setFooter();
 
     debugMsg("Complete - init()");
