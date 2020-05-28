@@ -2,8 +2,9 @@
 // キャッシュファイルの指定
 var CACHE_NAME = '模試タイマーv20200602';
 var urlsToCache = [
-    './',
+    'index.html'
 ];
+
 
 // インストール処理
 self.addEventListener('install', function(event) {
