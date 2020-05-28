@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+	<style>
+		body,
+		div#container {
+			padding: 0;
+			margin: 0;
+			text-align: center;
+			font-size: large;
+			background: #114;
+			color: #ffe;
+		}
+
+		div#container {
+			margin: 5px;
+			display: grid;
+			grid-gap: 10px;
+			grid-template-areas:
+				"left	r1"
+				"left	r2"
+				"ft		ft";
+		}
+
+		div#container>div {
+			padding: 5px;
+			background: rgba(255, 255, 255, 0.2);
+		}
+
+
+		table {
+			margin: 10px auto;
+			border-collapse: collapse;
+		}
+
+		table td,
+		table th {
+			border: 1px solid #ffe;
+			padding: 10px;
+			text-align: center;
+		}
+	</style>
+	<script>
+
+	</script>
+	<title>模試タイマー</title>
+</head>
+
+<body>
+	<div id="container">
+		<div style="grid-area:left">
+			<h2>6月2日(火)<br />到達度テスト</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>教科</th>
+						<th>時間</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>国語</th>
+						<td>9：00～9：50</td>
+					</tr>
+					<tr>
+						<th>数学</th>
+						<td>10：00～10：50</td>
+					</tr>
+					<tr>
+						<th>英語</th>
+						<td>11：00～11：50</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+		<div style="grid-area:r1">
+			<h2>現在時刻</h2>
+			<div id="nowTime"></div>
+			<script>
+				var nowTime = function () {
+					var now = new Date();
+					document.getElementById("nowTime").innerText = "" +
+						now.getHours() + "時 " +
+						(now.getMinutes() < 10 ? "0" : "") + now.getMinutes() + "分 " +
+						(now.getSeconds() < 10 ? "0" : "") + now.getSeconds() + "秒";
+				}
+				setInterval(nowTime, 200);
+			</script>
+		</div>
+
+
+		<div style="grid-area:r2;display: flex;justify-content: center;align-items: center;">
+			<div id="testTime"></div>
+			<script>
+				//配列設定	表示項目、期限年月日時刻（月-1）
+				var setTimer = [
+					["国語開始まで", new Date(2020, 5, 2, 9, 0)],
+					["国語終了まで", new Date(2020, 5, 2, 9, 50)],
+					["数学開始まで", new Date(2020, 5, 2, 10, 0)],
+					["数学終了まで", new Date(2020, 5, 2, 10, 50)],
+					["英語開始まで", new Date(2020, 5, 2, 11, 0)],
+					["英語終了まで", new Date(2020, 5, 2, 11, 50)]
+				];
+				var testTime = function () {
+					var now = new Date();
+					for (var i = 0; i < setTimer.length; i++) {
+						if (setTimer[i][1] > now) {
+							var diffTime = setTimer[i][1] - now;	//シリアル値ミリ秒
+							diffTime = Math.ceil(diffTime / 1000);
+							//表示数値（日・時・分・秒）
+							var dhms = [
+								Math.floor(diffTime / (24 * 60 * 60)),
+								Math.floor(diffTime / (60 * 60)) % 24,
+								Math.floor(diffTime / 60) % 60,
+								Math.floor(diffTime / 1) % 60
+							];
+							document.getElementById("testTime").innerText = "" +
+								setTimer[i][0] + "\n" +
+								(dhms[0] == 0 ? "" : dhms[0] + "日 ") +
+								(dhms[1] == 0 ? "" : dhms[1] + "時間 ") +
+								(dhms[2] == 0 ? "" : dhms[2] + "分 ") +
+								(dhms[3] == 0 ? "" : dhms[3] + "秒 ");
+							return;
+						}
+					}
+					document.getElementById("testTime").innerText = "今日のテストは終了しました。";
+				}
+				setInterval(testTime, 200);
+			</script>
+		</div>
+
+
+		<div style="grid-area:ft">
+			<textarea style="width:90%;height:100px;color:#ffe;font-size:x-large;background:rgba(0,0,0,0);border:1px solid #ccc;">先生からのコメント</textarea>
+		</div>
+	</div>
+	<!-- /container -->
+</body>
+
+</html>
