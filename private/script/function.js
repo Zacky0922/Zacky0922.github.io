@@ -259,6 +259,10 @@ function reMathJax(id = null) {
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service_worker.js').then(function (registration) {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        registration.onupdatefound = function () {
+            console.log('アップデートがあります！');
+            registration.update();
+        }
     }).catch(function (err) {
         console.log('ServiceWorker registration failed: ', err);
     });
