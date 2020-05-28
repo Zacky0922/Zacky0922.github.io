@@ -3,7 +3,7 @@
     "short_name": "模試タイマー",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "https://zacky0922.github.io/PWApps/模試タイマーv20200602/模試タイマー/模試タイマー.html",
+    "start_url": "https://zacky0922.github.io/PWApps/timer_20200602/index.html",
     "background_color": "#114",
     "theme_color": "#114",
     "lang": "ja-jp",
