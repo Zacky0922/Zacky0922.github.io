@@ -2,7 +2,7 @@
 // キャッシュファイルの指定
 var CACHE_NAME = 'Zacky PWA';
 var urlsToCache = [
-    './',
+    'index.html',
 ];
 
 // インストール処理

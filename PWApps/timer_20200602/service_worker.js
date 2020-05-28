@@ -1,5 +1,6 @@
 
 // キャッシュファイルの指定
+// オフライン利用可
 var CACHE_NAME = '模試タイマーv20200602';
 var urlsToCache = [
     'index.html'
