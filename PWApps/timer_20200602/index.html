@@ -23,15 +23,19 @@
 	<script>
 	//service workerの登録関係
 	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('service_worker.js').then(function (registration) {
-			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-			registration.onupdatefound = function () {
-				console.log('アップデートがあります！');
-				registration.update();
-			}
-		}).catch(function (err) {
-			console.log('ServiceWorker registration failed: ', err);
-		});
+		navigator.serviceWorker
+			.register('/serviceworker.js')
+			.then(registration => {
+				// 登録成功
+				registration.onupdatefound = function () {
+					console.log('アップデートがあります！');
+					registration.update();
+				}
+			})
+			.catch(err => {
+				// 登録失敗
+				console.log('ServiceWorker registration failed: ', err);
+			});
 	}
 	</script>
 
@@ -139,9 +143,11 @@
 				];
 				var testTime = function () {
 					var now = new Date();
+					var diffTime;
 					for (var i = 0; i < setTimer.length; i++) {
-						if (setTimer[i][1] > now) {
-							var diffTime = setTimer[i][1] - now;	//シリアル値ミリ秒
+						diffTime = setTimer[i][1].getTime() - now.getTime();
+						//alert(diffTime);
+						if (diffTime > 0) {
 							diffTime = Math.ceil(diffTime / 1000);
 							//表示数値（日・時・分・秒）
 							var dhms = [
@@ -160,6 +166,7 @@
 						}
 					}
 					document.getElementById("testTime").innerText = "今日のテストは終了しました。";
+					clearInterval(testTime);
 				}
 				setInterval(testTime, 200);
 			</script>
