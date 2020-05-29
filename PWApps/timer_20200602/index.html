@@ -27,6 +27,7 @@
 			.register('/serviceworker.js')
 			.then(registration => {
 				// 登録成功
+				console.log('ServiceWorker registration successful with scope: ', registration.scope);
 				registration.onupdatefound = function () {
 					console.log('アップデートがあります！');
 					registration.update();
