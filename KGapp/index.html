@@ -26,7 +26,7 @@
 		//service workerの登録関係
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker
-				.register('./ServiceWorker.js')
+				.register('./serviceWorker.js')
 				.then(registration => {
 					// 登録成功
 					console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -57,7 +57,7 @@
 		/* PCレイアウト */
 		@media screen and (min-width:600px) {
 			div#container {
-				grid-template-columns: 3fr minmax(max-content,1fr);
+				grid-template-columns: minmax(max-content,3fr) minmax(max-content,1fr);
 				grid-template-areas:
 					"notice	links"
 					"ft		ft";
@@ -98,6 +98,14 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			<h2>閲覧専用</h2>
+			<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));">
+				<a class="zBtn" href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc=%7ba9791a21-8d19-4f27-ba9d-868039d2792b%7d&action=embedview&wdAllowInteractivity=False&ActiveCell='%E9%9B%86%E8%A8%88'!B28&wdInConfigurator=True">通学方法調査</a>
+				<a class="zBtn" href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">出欠確認</a>
+				<a class="zBtn" href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7bf97a00e7-cb58-4e6f-850f-2ed85b87b1f3%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&ActiveCell='%E5%AD%A6%E5%B9%B4%E9%9B%86%E8%A8%88'!D1&wdInConfigurator=True">生徒健康観察</a>
+				<a class="zBtn" href="">進路希望調査（準備中）</a>
+				<a class="zBtn" href="">生徒会選挙（準備中）</a>
 			</div>
 		</div>
 		<div style="grid-area:links">
@@ -153,8 +161,9 @@
 					<dd>未確認</dd>
 				</dl>
 			</div>
-			<script type="text/javascript" src="./ServiceWorker.js"></script>
-			<div style="text-align:right">Latest：<script>document.write(cacheVersion());</script><a class="zBtn">PWA update<br/>（準備中）</a></div>
+			<script type="text/javascript" src="./serviceWorker.js"></script>
+			<div style="text-align:right">Latest：<script>document.write(cacheVersion());</script>
+				<a class="zBtn" onclick="cacheUnregister()">PWA update<br/>（準備中）</a></div>
 		</div>
 
 	</div><!-- /container -->

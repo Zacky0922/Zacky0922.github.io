@@ -2,12 +2,19 @@ function cacheVersion(){
     return 'v2020/06/02-1';
 }
 
+//キャッシュ更新？
+function cacheUnregister() {
+
+}
+
+// ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ 
+// ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ 
+// ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ 
 
 // キャッシュファイルの指定
-// オフライン利用可
+// オフライン利用可（最低1つ無いとアプリ化しない？）
 var CACHE_NAME = cacheVersion();
 var urlsToCache = [
-    //'index.html'
     'index.html'
 ];
 
@@ -33,4 +40,3 @@ self.addEventListener('fetch', function(event) {
             })
     );
 });
-
