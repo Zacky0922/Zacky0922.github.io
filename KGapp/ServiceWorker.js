@@ -1,7 +1,11 @@
+function cacheVersion(){
+    return 'v2020/06/02-1';
+}
+
 
 // キャッシュファイルの指定
 // オフライン利用可
-var CACHE_NAME = 'cache_0602-1';
+var CACHE_NAME = cacheVersion();
 var urlsToCache = [
     //'index.html'
     'index.html'
