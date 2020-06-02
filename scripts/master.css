@@ -1,0 +1,44 @@
+/* Google Font & Icon */
+@import url('./css/googleFontIcon.css');
+
+/* 汎用部品 */
+
+@import url("./css/header.css");
+@import url("./css/table.css");
+@import url("./css/lists.css");
+
+/* 個別部品 */
+@import url("./css/zBtn.css");
+
+
+/* 変数設定 */
+:root{
+    /* 標準 */
+    --z-fontcolor:     #fff;
+    --z-bgcolor:       #113;
+
+    --z-border-color:   #99f;
+
+    /* 個別部品 */
+    --z-ele-bgcolor:    #339;
+    
+    --z-ele-bgcolor-alt:    #aaf;
+    --z-ele-fontcolor-alt:  #113;
+}
+
+/* 全般設定 */
+*{
+    font-size:  16px;
+    box-sizing: border-box;
+}
+
+body,
+div#container {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	font-size: large;
+	background: #114;
+	color: #ffe;
+}
+

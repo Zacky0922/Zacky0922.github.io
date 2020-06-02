@@ -1,0 +1,20 @@
+/* テーブルラッパー */
+div.zTbl{
+    overflow-x: auto;
+}
+
+div.zTbl table{
+    margin: 5px auto;
+    border-collapse:    collapse;
+}
+
+div.zTbl table th,
+div.zTbl table td{
+    border: 1px solid var(--z-border-color);
+    padding:    5px 10px
+}
+
+div.zTbl table th{
+    text-align: center;
+    background: var(--z-ele-bgcolor);;
+}

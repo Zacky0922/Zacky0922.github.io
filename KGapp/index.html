@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-163335381-1');
+	</script>
+	<!-- PWA設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="manifest" href="./manifest.json">
+	<script>
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('/serviceworker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../scripts/master.css">
+	<style>
+		div#container {
+			margin: 5px;
+			display: grid;
+			grid-gap: 10px;
+			grid-template-areas:
+				"notice	notice	KGlinks"
+				"notice	notice	links"
+				"ft		ft		ft";
+		}
+
+		div#container>div {
+			border: rgba(255, 255, 255, 0.3) 5px solid;
+			border-radius: 10px;
+			padding: 10px;
+		}
+	</style>
+	<title>KGapp</title>
+</head>
+
+<body>
+	<div id="container">
+
+		<div style="grid-area:notice;text-align:left;">
+			<h2>連絡事項</h2>
+			<dl class="zList">
+				<dt>タイトル</dt>
+				<dd>コンテンツ</dd>
+			</dl>
+
+			<div class="zTbl">
+				<table>
+					<caption>Schedule</caption>
+					<thead>
+						<tr>
+							<th>月日</th>
+							<th>内容</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>6/4木</th>
+							<td>分散登校開始</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div style="grid-area:KGlinks;display:grid;">
+			<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
+			<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
+			<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
+		</div>
+
+		<div style="grid-area:links;display:grid;">
+			<a class="zBtn" target="_blank" href="https://learn.studysapuri.jp/ja/login">スタディサプリ</a>
+			<script>
+				var ua = navigator.userAgent;
+				if (ua.indexOf('Win') > 0) {
+					document.write(""+
+						'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>'+
+						'<a class="zBtn" target="_blank" href="msteams:/">Teams：PCアプリ版</a >'
+					);
+				}
+				// URIスキーマ調べる？
+				// else if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0) {}
+				// else if (ua.indexOf('Android') > 0) {}
+				else {
+					document.write("" +
+						'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams</a>'
+					);
+				}
+			</script>
+		</div>
+
+		<div style="grid-area:ft">
+		</div>
+		
+	</div>
+	<!-- /container -->
+</body>
+
+</html>

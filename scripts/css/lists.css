@@ -1,0 +1,12 @@
+ul.zList, ol.zList, dl.zList{
+    margin: 5px;
+}
+
+dl.zList dt{
+    font-weight: bold;
+}
+
+dl.zList li,
+dl.zList dd{
+    margin:     3px 0 3px 30px;
+}
