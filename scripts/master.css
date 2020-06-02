@@ -10,6 +10,8 @@
 /* 個別部品 */
 @import url("./css/zBtn.css");
 
+/* 機能モジュール */
+@import url("./css/zHoverDisp.css");
 
 /* 変数設定 */
 :root{
@@ -18,6 +20,8 @@
     --z-bgcolor:       #113;
 
     --z-border-color:   #99f;
+
+    --z-letterspacing: 0.2em;  /* 見出し用文字間隔 */
 
     /* 個別部品 */
     --z-ele-bgcolor:    #339;

@@ -8,6 +8,10 @@ div.zTbl table{
     border-collapse:    collapse;
 }
 
+div.zTbl table caption{
+    letter-spacing: var(--z-letterspacing);
+}
+
 div.zTbl table th,
 div.zTbl table td{
     border: 1px solid var(--z-border-color);
@@ -16,5 +20,6 @@ div.zTbl table td{
 
 div.zTbl table th{
     text-align: center;
+    letter-spacing: var(--z-letterspacing);
     background: var(--z-ele-bgcolor);;
 }

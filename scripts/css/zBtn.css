@@ -4,6 +4,7 @@
     border: 1px solid var(--z-border-color);
     background: var(--z-ele-bgcolor);
     color: var(--z-fontcolor);
+    text-align: center;
     text-decoration: none;
     padding: 10px;
     margin: 5px;

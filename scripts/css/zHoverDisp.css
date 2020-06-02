@@ -1,0 +1,8 @@
+
+.zHoverDisp{
+    display:    none;
+}
+
+*:hover > .zHoverDisp{
+    display:    block;
+}
