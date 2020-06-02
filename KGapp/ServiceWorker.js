@@ -1,5 +1,5 @@
 function cacheVersion(){
-    return 'v2020/06/02-1';
+    return 'v2020/06/02-2';
 }
 
 //キャッシュ更新？
