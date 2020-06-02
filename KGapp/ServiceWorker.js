@@ -1,10 +1,10 @@
 
 // キャッシュファイルの指定
 // オフライン利用可
-var CACHE_NAME = 'cache_0602-0';
+var CACHE_NAME = 'cache_0602-1';
 var urlsToCache = [
     //'index.html'
-    '/'
+    'index.html'
 ];
 
 
