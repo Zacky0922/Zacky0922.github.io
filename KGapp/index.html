@@ -100,14 +100,15 @@
 				</table>
 			</div>
 			<h2>閲覧専用</h2>
-			<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));">
-				<a class="zBtn" href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc=%7ba9791a21-8d19-4f27-ba9d-868039d2792b%7d&action=embedview&wdAllowInteractivity=False&ActiveCell='%E9%9B%86%E8%A8%88'!B28&wdInConfigurator=True">通学方法調査</a>
-				<a class="zBtn" href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">出欠確認</a>
-				<a class="zBtn" href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7bf97a00e7-cb58-4e6f-850f-2ed85b87b1f3%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&ActiveCell='%E5%AD%A6%E5%B9%B4%E9%9B%86%E8%A8%88'!D1&wdInConfigurator=True">生徒健康観察</a>
-				<a class="zBtn" href="">進路希望調査（準備中）</a>
-				<a class="zBtn" href="">生徒会選挙（準備中）</a>
+			<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));">
+				<a class="zBtn" target="_blank" href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc=%7ba9791a21-8d19-4f27-ba9d-868039d2792b%7d&action=embedview&wdAllowInteractivity=False&ActiveCell='%E9%9B%86%E8%A8%88'!B28&wdInConfigurator=True">通学方法調査</a>
+				<a class="zBtn" target="_blank" href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">出欠確認</a>
+				<a class="zBtn" target="_blank" href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7bf97a00e7-cb58-4e6f-850f-2ed85b87b1f3%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&ActiveCell='%E5%AD%A6%E5%B9%B4%E9%9B%86%E8%A8%88'!D1&wdInConfigurator=True">生徒健康観察</a>
+				<a class="zBtn" target="_blank" href="">進路希望調査（準備中）</a>
+				<a class="zBtn" target="_blank" href="">生徒会選挙（準備中）</a>
 			</div>
 		</div>
+
 		<div style="grid-area:links">
 			<h2>Links</h2>
 			<div>
@@ -129,8 +130,9 @@
 							var ua = navigator.userAgent;
 							if (ua.indexOf('Win') > 0) {
 								document.write("" +
+									'<a class="zBtn" target="_blank" href="msteams:/">Teams：Winアプリ版</a >'+
 									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>' +
-									'<a class="zBtn" target="_blank" href="msteams:/">Teams：Winアプリ版</a >'
+									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/01.%E9%80%A3%E7%B5%A1%E4%BA%8B%E9%A0%85?threadId=19:f344daa94d6344e4ab821dd8b96d4e70@thread.tacv2&ctx=channel&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252F%25E9%2580%25A3%25E7%25B5%25A1%25E4%25BA%258B%25E9%25A0%2585%252F%25E6%2597%25A5%25E5%25A0%25B1">Teams日報：ブラウザ版</a>'
 								);
 							}
 							// URIスキーマ調べる？
@@ -142,6 +144,7 @@
 								);
 							}
 						</script>
+						<a class="zBtn" target="_blank" href="msteams:/">スキーマmsteams</a>
 					</div>
 				</div>
 			</div>
