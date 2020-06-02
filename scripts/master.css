@@ -3,6 +3,7 @@
 
 /* 汎用部品 */
 
+@import url("./css/scrollbar.css");
 @import url("./css/header.css");
 @import url("./css/table.css");
 @import url("./css/lists.css");
@@ -12,6 +13,9 @@
 
 /* 機能モジュール */
 @import url("./css/zHoverDisp.css");
+
+
+
 
 /* 変数設定 */
 :root{
@@ -45,4 +49,6 @@ div#container {
 	background: #114;
 	color: #ffe;
 }
+
+
 

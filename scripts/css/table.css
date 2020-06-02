@@ -1,6 +1,11 @@
 /* テーブルラッパー */
 div.zTbl{
-    overflow-x: auto;
+	margin:		1px auto;
+	padding:	0;
+    text-align:	center;
+	overflow:	auto;
+    overflow-x:	auto;
+    /* width決めないとダメ？ */
 }
 
 div.zTbl table{
@@ -15,7 +20,8 @@ div.zTbl table caption{
 div.zTbl table th,
 div.zTbl table td{
     border: 1px solid var(--z-border-color);
-    padding:    5px 10px
+    padding:    5px 10px;
+    white-space:    nowrap;
 }
 
 div.zTbl table th{

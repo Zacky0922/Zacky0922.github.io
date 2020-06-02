@@ -24,7 +24,7 @@
 		//service workerの登録関係
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker
-				.register('/serviceworker.js')
+				.register('ServiceWorker.js')
 				.then(registration => {
 					// 登録成功
 					console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -39,26 +39,31 @@
 				});
 		}
 	</script>
-
+	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="../scripts/master.css">
 	<style>
-		
 		div#container {
 			margin: 5px;
 			display: grid;
 			grid-gap: 10px;
-			grid-column: 1;
+			grid-template-areas:
+				"notice"
+				"links"
+				"ft";
 		}
-		@media screen and (min-width:600px){
-			div#container{
-				grid-template-columns: 3;
+		/* PCレイアウト */
+		@media screen and (min-width:600px) {
+			div#container {
+				grid-template-columns: 3fr minmax(max-content,1fr);
 				grid-template-areas:
-				"notice	notice	links"
-				"ft		ft		ft";
+					"notice	links"
+					"ft		ft";
+
 			}
 		}
+
 		div#container>div {
-			text-align:left;
+			text-align: left;
 			border: rgba(255, 255, 255, 0.3) 5px solid;
 			border-radius: 10px;
 			padding: 10px;
@@ -84,56 +89,68 @@
 					</thead>
 					<tbody>
 						<tr>
-							<th>6/4木</th>
+							<th>6／4木</th>
 							<td>分散登校開始</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-
-		<div style="grid-area:links;display:grid;">
-			<h2>学校関係</h2>
-			<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
-			<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
-			<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
-			<h2>外部利用サイト</h2>
-			<a class="zBtn" target="_blank" href="https://learn.studysapuri.jp/ja/login">スタディサプリ</a>
-			<script>
-				var ua = navigator.userAgent;
-				if (ua.indexOf('Win') > 0) {
-					document.write(""+
-						'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>'+
-						'<a class="zBtn" target="_blank" href="msteams:/">Teams：PCアプリ版</a >'
-					);
-				}
-				// URIスキーマ調べる？
-				// else if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0) {}
-				// else if (ua.indexOf('Android') > 0) {}
-				else {
-					document.write("" +
-						'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams</a>'
-					);
-				}
-			</script>
+		<div style="grid-area:links">
+			<h2>Links</h2>
+			<div>
+				<h2>◆学校関係◆</h2>
+				<div class="zHoverDisp-sp">
+					<div style="grid-area:links;display:grid;">
+						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
+						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
+						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
+					</div>
+				</div>
+			</div>
+			<div>
+				<h2>◆外部サイト◆</h2>
+				<div class="zHoverDisp-sp">
+					<div style="grid-area:links;display:grid;">
+						<a class="zBtn" target="_blank" href="https://learn.studysapuri.jp/ja/login">スタディサプリ</a>
+						<script>
+							var ua = navigator.userAgent;
+							if (ua.indexOf('Win') > 0) {
+								document.write("" +
+									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>' +
+									'<a class="zBtn" target="_blank" href="msteams:/">Teams：Winアプリ版</a >'
+								);
+							}
+							// URIスキーマ調べる？
+							// else if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0) {}
+							// else if (ua.indexOf('Android') > 0) {}
+							else {
+								document.write("" +
+									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams</a>'
+								);
+							}
+						</script>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div style="grid-area:ft">
-			本ページを「ホームに追加」で、アプリ（PWA）として利用できます。<br/>
+			本ページを「ホームに追加」で、アプリ（PWA）として利用できます。<br />
 			※オフライン使用不可＝キャッシュ無効（調整中）・・・将来的にはオフライン利用もできるようにする
 			<div>
-			<h3>動作確認済み環境（PWA）</h3>
+				<h3>動作確認済み環境（PWA）</h3>
 				<dl class="zHoverDisp zList">
-				<dt>Windows</dt>
-				<dd>Chrome</dd>
-				<dt>Android</dt>
-				<dd>標準ブラウザ、Chrome</dd>
-				<dt>iOS</dt>
-				<dd>未確認</dd>
-			</dl>
+					<dt>Windows</dt>
+					<dd>Chrome</dd>
+					<dt>Android</dt>
+					<dd>標準ブラウザ、Chrome</dd>
+					<dt>iOS</dt>
+					<dd>未確認</dd>
+				</dl>
 			</div>
 		</div>
-		
+
 	</div><!-- /container -->
 </body>
 

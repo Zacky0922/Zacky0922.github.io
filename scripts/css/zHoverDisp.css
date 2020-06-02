@@ -1,8 +1,24 @@
+/*
+    .zHoverDisp-sp
+    スマホのみ
+    display:none/block;
+    切替
+*/
+
 
 .zHoverDisp{
     display:    none;
 }
-
 *:hover > .zHoverDisp{
     display:    block;
 }
+
+@media screen and (max-width:599px){
+    .zHoverDisp-sp{
+        display:    none;
+    }
+    *:hover > .zHoverDisp-sp{
+        display:    block;
+    }
+}
+

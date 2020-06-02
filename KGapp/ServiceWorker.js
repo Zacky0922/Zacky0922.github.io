@@ -3,7 +3,8 @@
 // オフライン利用可
 var CACHE_NAME = 'cache_0602';
 var urlsToCache = [
-    'index.html'
+    //'index.html'
+    '/'
 ];
 
 
