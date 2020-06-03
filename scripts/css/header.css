@@ -7,13 +7,41 @@ h1{
     font-size:  150%;
 }
 
-h2{
+
+
+
+h2.zHead{
     text-align: center;
     font-size:  130%;
+    position:	relative;
+	top:		0;
+	z-index:	5;
+    text-align:	center;
+    padding:    5px 10px;
 }
+h2.zHead:before,
+h2.zHead:after{
+	content:	" ";
+	/* absoluteで中央寄せ　l=r=0 & margin:auto */
+	position:	absolute;
+	left:		0;
+	right:		0;
+	margin:		auto;
+	width:		60%;
+	min-width:	140px;
+	max-width:	300px;
+	height:		7px;
+	background:	-webkit-repeating-linear-gradient(
+					-45deg, var(--z-ele-bgcolor), var(--z-ele-bgcolor) 3px, var(--z-ele-bgcolor-alt) 2px, var(--z-ele-bgcolor-alt) 5px);
+	background:	repeating-linear-gradient(
+					-45deg, var(--z-ele-bgcolor), var(--z-ele-bgcolor) 3px, var(--z-ele-bgcolor-alt) 2px, var(--z-ele-bgcolor-alt) 5px);
+}
+h2.zHead:before{	top:		0;	}
+h2.zHead:after{	    bottom:		0;	}
 
-h3{
+h3.zHead{
     font-size:  115%;
+    text-align: center;
 }
 
 h4{

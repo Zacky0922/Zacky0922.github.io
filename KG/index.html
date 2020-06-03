@@ -78,10 +78,11 @@
 </head>
 
 <body>
+	<p style="text-align:left;">（教員用便利リンク集）</p>
 	<div id="container">
 
 		<div style="grid-area:notice">
-			<h2>閲覧専用（要サインイン）</h2>
+			<h2 class="zHead">閲覧専用（要サインイン）</h2>
 			<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));">
 				<a class="zBtn" target="_blank" href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc=%7ba9791a21-8d19-4f27-ba9d-868039d2792b%7d&action=embedview&wdAllowInteractivity=False&ActiveCell='%E9%9B%86%E8%A8%88'!B28&wdInConfigurator=True">通学方法調査</a>
 				<a class="zBtn" target="_blank" href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">出欠確認</a>
@@ -91,12 +92,26 @@
 			</div>
 			<p>ファイルの欠損が見られるので、まだExcelを直接開いている方がいらっしゃるようです。<br/>
 			必ず、閲覧専用から確認してください。</p>
+			<div>
+				<h2 class="zHead">印刷したいとき</h2>
+				<div class="zHoverDisp-sp">
+					<a href="pict/印刷テンプレート.xlsx" class="zBtn">テンプレートファイル<br/>（印刷テンプレート.xlsx）</a>をダウンロードしてください。<br/>
+					※以下の作業は、必ずセルではなく「列」を選択してください。
+					<ol>
+						<li>プレビューモード「Ａ～（印刷右端列）」を選択＆コピー</li>
+						<li>該当テンプレートの「Ａ列」を選択し、貼付け</li>
+					</ol>
+					※貼付け後のデータは、数式ではなく「値」になるため、自動更新されません。<br/>
+
+					<a href="pict/テンプレコピペ.png"><img src="pict/テンプレコピペ.png" width="300px"/></a>
+				</div>
+			</div>
 		</div>
 
 		<div style="grid-area:links">
-			<h2>Links</h2>
+			<h2 class="zHead">Links</h2>
 			<div>
-				<h2>◆学校関係◆</h2>
+				<h3 class="zHead">◆学校関係◆</h3>
 				<div class="zHoverDisp-sp">
 					<div style="grid-area:links;display:grid;">
 						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
@@ -106,7 +121,7 @@
 				</div>
 			</div>
 			<div>
-				<h2>◆外部サイト◆</h2>
+				<h3 class="zHead">◆外部サイト◆</h3>
 				<div class="zHoverDisp-sp">
 					<div style="grid-area:links;display:grid;">
 						<a class="zBtn" target="_blank" href="http://bhso.benesse.ne.jp/">Benesse High School Online</a>
@@ -135,7 +150,7 @@
 		</div>
 
 		<div style="grid-area:ft">
-			現状は、本ページをブックマークすると便利だと思います。<br/>
+			本ページをブックマークすると便利だと思います。<br/>
 			※PWA対応準備中・・・対応すれば、PC/スマホからアプリとして使えます。
 		</div>
 
