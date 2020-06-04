@@ -13,6 +13,7 @@
 
 /* 機能モジュール */
 @import url("./css/zHoverDisp.css");
+@import url("./css/zHiddenBlock.css");
 
 
 
@@ -54,5 +55,15 @@ div#container {
 	color: #ffe;
 }
 
+.undisp{
+    display:    none;
+}
 
 
+
+label{
+    font:       inherit;
+    color:      inherit;
+    background: none;
+    display:    inherit;
+}

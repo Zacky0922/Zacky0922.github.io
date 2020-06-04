@@ -1,0 +1,22 @@
+/*  <label for="hoge">hoge</label>
+    <input type="checkbox" class="zHiddenBlock" id="hoge" checked="checked" />
+    <div>
+        チェックボックス直後 ＝ この要素 の表示が切り替わる。
+        ・初期状態はcheckedで指定
+        ・div以外でもok
+        ・labelとチェックボックスは離れてもok
+    </div>
+*/
+
+input.zHiddenBlock{
+    display:    none;
+}
+input.zHiddenBlock + *{
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+input.zHiddenBlock:checked + *{
+    height: auto;
+    opacity: 1;
+}

@@ -44,8 +44,10 @@
 		*/
 	</script>
 
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="../scripts/master.css">
+	<!-- JS/CSS master -->
+	<script type="text/javascript" src="../scripts/master.js?lv=1"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/master.css" />
+
 	<style>
 		div#container {
 			margin: 5px;
@@ -54,7 +56,8 @@
 			grid-template-areas:
 				"notice"
 				"links"
-				"ft";
+				"ft"
+				"debugArea";
 		}
 
 		/* PCレイアウト */
@@ -63,7 +66,8 @@
 				grid-template-columns: 3fr minmax(max-content, 1fr);
 				grid-template-areas:
 					"notice	links"
-					"ft		ft";
+					"ft		ft"
+					"debugArea debugArea";
 			}
 		}
 
@@ -79,7 +83,7 @@
 </head>
 
 <body>
-	<p style="text-align:left;">（教員用便利リンク集）<br />Last Update：6/3　進路希望調査link追加</p>
+	<p style="text-align:left;">（教員用便利リンク集）<br />Last Update：6/4　link欄fix</p>
 	<div id="container">
 		<div style="grid-area:notice">
 			<h2 class="zHead">閲覧専用（要サインイン）</h2>
@@ -95,83 +99,93 @@
 			</div>
 			<p>ファイル欠損防止のため、必ず閲覧専用から確認してください。<br />
 				健康観察：データが怪しいときは、「日付→年組」の順で操作すると、うまくいくかも…？</p>
+
+			<h2 class="zHead"><label for="印刷したいとき">印刷したいとき</label></h2>
+			<input type="checkbox" class="zHiddenBlock" id="印刷したいとき" checked="checked" />
 			<div>
-				<h2 class="zHead">印刷したいとき</h2>
-				<div class="zHoverDisp-sp">
-					<a href="pict/印刷テンプレート.xlsx" class="zBtn">健康観察テンプレ<br />（印刷テンプレート.xlsx）</a>をダウンロードしてください。<br />
-					※以下の作業は、必ずセルではなく「列」を選択してください。
-					<ol>
-						<li>プレビューモード「Ａ～（印刷右端列）」を選択＆コピー</li>
-						<li>該当テンプレートの「Ａ列」を選択し、貼付け</li>
-					</ol>
-					※貼付け後のデータは「値」です。<br />
-					自動更新されないので、ご注意ください。<br />
+				<a href="pict/印刷テンプレート.xlsx" class="zBtn">健康観察テンプレ<br />（印刷テンプレート.xlsx）</a>をダウンロードしてください。<br />
+				※以下の作業は、必ずセルではなく「列」を選択してください。
+				<ol>
+					<li>プレビューモード「Ａ～（印刷右端列）」を選択＆コピー</li>
+					<li>該当テンプレートの「Ａ列」を選択し、貼付け</li>
+				</ol>
+				※貼付け後のデータは「値」です。<br />
+				自動更新されないので、ご注意ください。<br />
 
-					<a href="pict/テンプレコピペ.png"><img src="pict/テンプレコピペ.png" width="300px" /></a>
+				<a href="pict/テンプレコピペ.png"><img src="pict/テンプレコピペ.png" width="300px" /></a>
 
-				</div>
 			</div>
+
 		</div>
 
 		<div style="grid-area:links">
 			<h2 class="zHead">Links</h2>
+			<p>※クリックで展開</p>
 			<div>
-				<h3 class="zHead">◆学校関係◆</h3>
-				<div class="zHoverDisp-sp">
-					<div style="grid-area:links;display:grid;">
-						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
-						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
-						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
-					</div>
+				<h3 class="zHead"><label for="学校関係">◆学校関係◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="学校関係" checked="checked" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
+				</div>
+
+			</div>
+			<div>
+				<h3 class="zHead"><label for="intranet">◆intranet◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="intranet" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="http://192.168.20.41/iraimenu.HTM">支払依頼</a>
+					<a class="zBtn" target="_blank" href="KobetsuSoudanIkkatsu.html">個別相談<br />一括印刷ツール</a>
+					<div style="text-align:center">※個別相談は2021年度分<br />
+						から別システムに移行予定</div>
+				</div>
+
+			</div>
+			<div>
+				<h3 class="zHead"><label for="外部サイト">◆外部サイト◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="外部サイト" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="http://bhso.benesse.ne.jp/">Benesse High School Online</a>
+					<a class="zBtn" target="_blank" href="https://link.studysapuri.jp/ja/login">スタディサプリ<br />for
+						TEACHERS</a>
+					<a class="zBtn" target="_blank" href="https://machicomi.jp/admin/login.html">マチコミ(管理画面)
+					</a>
 				</div>
 			</div>
 			<div>
-				<h3 class="zHead">◆Intranet◆</h3>
-				<div class="zHoverDisp-sp">
-					<div style="grid-area:links;display:grid;">
-						<a class="zBtn" target="_blank" href="http://192.168.20.41/iraimenu.HTM">支払依頼</a>
-						<a class="zBtn" target="_blank" href="KobetsuSoudanIkkatsu.html">個別相談<br />一括印刷ツール</a>
-						<div style="text-align:center">※個別相談は2021年度分<br />
-							から別システムに移行予定</div>
-					</div>
-				</div>
-			</div>
-			<div>
-				<h3 class="zHead">◆外部サイト◆</h3>
-				<div class="zHoverDisp-sp">
-					<div style="grid-area:links;display:grid;">
-						<a class="zBtn" target="_blank" href="http://bhso.benesse.ne.jp/">Benesse High School Online</a>
-						<a class="zBtn" target="_blank" href="https://link.studysapuri.jp/ja/login">スタディサプリ<br />for
-							TEACHERS</a>
-						<a class="zBtn" target="_blank" href="https://machicomi.jp/admin/login.html">マチコミ(管理画面)
-						</a>
-						<script>
-							var ua = navigator.userAgent;
-							if (ua.indexOf('Win') > 0) {
-								document.write("" +
-									'<a class="zBtn" target="_blank" href="msteams:/">Teams：Winアプリ版</a >' +
-									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>' +
-									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/01.%E9%80%A3%E7%B5%A1%E4%BA%8B%E9%A0%85?threadId=19:f344daa94d6344e4ab821dd8b96d4e70@thread.tacv2&ctx=channel&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252F%25E9%2580%25A3%25E7%25B5%25A1%25E4%25BA%258B%25E9%25A0%2585%252F%25E6%2597%25A5%25E5%25A0%25B1">Teams日報：ブラウザ版</a>'
-								);
-							}
-							// URIスキーマ調べる？
-							// else if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0) {}
-							// else if (ua.indexOf('Android') > 0) {}
-							else {
-								document.write("" +
-									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>'
-								);
-							}
-						</script>
-					</div>
+				<h3 class="zHead"><label for="Teams">◆Teams◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="Teams" checked="checked" />
+				<div style="grid-area:links;display:grid;">
+					<script>
+						var ua = navigator.userAgent;
+						if (ua.indexOf('Win') > 0) {
+							document.write(
+								'<a class="zBtn" target="_blank" href="msteams:/">Winアプリ版</a >' +
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">ブラウザ版</a>' +
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/%EF%BC%96%E6%9C%88?threadId=19:8f578b7b692545e6be7331cec748b352@thread.tacv2&ctx=channel">日報：6月<br/>ブラウザ版</a>' +
+
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/%EF%BC%97%E6%9C%88?threadId=19:e0f13549c0cd404384b050f02e57dcce@thread.tacv2&ctx=channel">日報：7月<br/>ブラウザ版</a>' +
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/01.%E9%80%A3%E7%B5%A1%E4%BA%8B%E9%A0%85?threadId=19:f344daa94d6344e4ab821dd8b96d4e70@thread.tacv2&ctx=channel&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252F%25E9%2580%25A3%25E7%25B5%25A1%25E4%25BA%258B%25E9%25A0%2585%252F%25E6%2597%25A5%25E5%25A0%25B1">日報：旧「職員会議」<br/>ブラウザ版</a>'
+							);
+						}
+						// URIスキーマ調べる？
+						// else if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0) {}
+						// else if (ua.indexOf('Android') > 0) {}
+						else {
+							document.write(
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>'
+							);
+						}
+					</script>
 				</div>
 			</div>
 		</div>
 
 		<div style="grid-area:ft">
 			<p>本ページをブックマークすると便利だと思います。<br />
-			スマホからも利用可能ですが、「閲覧専用」は超重たいと思います。<br />
-			※PWA対応準備中・・・対応すれば、PC/スマホからアプリとして使えます。</p>
+				スマホからも利用可能ですが、「閲覧専用」は超重たいと思います。<br />
+				※PWA対応準備中・・・対応すれば、PC/スマホからアプリとして使えます。</p>
 			<p style="display:none">何かあれば、コチラから本ページ管理者へ報告してください。 <br />
 				<a class="zBtn" target="_blank"
 					href="https://teams.microsoft.com/_#/conversations/19:238a7e12-4099-4e4f-8efc-d9c52c31dc57_a2ac2f38-b668-4769-9552-9829ea148620@unq.gbl.spaces?ctx=chat">
@@ -180,7 +194,16 @@
 				<a class="zBtn">Teamsチャット：アプリ版</a>
 			</p>
 		</div>
-
+		<div id="debugArea" style="grid-area:debugArea">
+			<input type="text" size="30" placeholder="Input Password for Debug mode"
+				onkeyup="if(this.value=='debug'){this.parentElement.children[1].classList.remove('undisp')}" />
+			<div class="undisp">
+				<p>debugするときはここでやる。</p>
+				<h2><label for="debug_hidden">てすと</label></h2>
+				<input type="checkbox" class="zHiddenBlock" id="debug_hidden" />
+				<div>HiddenBlock</div>
+			</div>
+		</div>
 	</div><!-- /container -->
 </body>
 
