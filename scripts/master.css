@@ -59,9 +59,21 @@ div#container {
     display:    none;
 }
 
-.zClickable{
+
+
+.zClickable:hover{
     cursor: pointer;
+    animation:  zClickableBlink 0.5s ease-in-out;
 }
+@keyframes zClickableBlink{
+    0%{     background: none;   }
+    25%{    background: rgba(255,255,0,0.2);    }
+    50%{    background: none;   }
+    75%{    background: rgba(255,255,0,0.2);    }
+    100%{   background: none;   }
+}
+
+
 
 label{
     font:       inherit;

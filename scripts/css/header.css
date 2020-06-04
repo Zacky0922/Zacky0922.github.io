@@ -9,8 +9,9 @@ h1{
 }
 
 h2.zHead ~ h2.zHead{
-	margin-top:	15px;
+	margin-top:	40px;
 }
+
 h2.zHead{
     text-align: center;
     font-size:  130%;
