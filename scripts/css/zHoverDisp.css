@@ -5,20 +5,17 @@
     切替
 */
 
-
 .zHoverDisp{
     display:    none;
 }
-*:hover > .zHoverDisp{
-    display:    block;
-}
-
 @media screen and (max-width:599px){
     .zHoverDisp-sp{
         display:    none;
     }
-    *:hover > .zHoverDisp-sp{
-        display:    block;
-    }
+}
+
+*:hover > .zHoverDisp,
+*:hover > .zHoverDisp-sp{
+    display:    block;
 }
 

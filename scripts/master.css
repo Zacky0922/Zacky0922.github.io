@@ -27,6 +27,9 @@
 
     --z-letterspacing: 0.2em;  /* 見出し用文字間隔 */
 
+    /* animation */
+    --z-anime-duration: 0.4s;
+
     /* 個別部品 */
     --z-ele-bgcolor:    #339;
     
@@ -38,6 +41,7 @@
 *{
     font-size:  16px;
     box-sizing: border-box;
+    transition-duration:	var(--z-anime-duration);
 }
 
 body,

@@ -10,8 +10,12 @@
     margin: 5px;
     min-width:  80px;
     vertical-align: middle;
+
+
 }
 .zBtn:hover{
     background: var(--z-ele-bgcolor-alt);
     color: var(--z-ele-fontcolor-alt);
 }
+
+

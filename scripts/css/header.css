@@ -8,7 +8,9 @@ h1{
     font-size:  150%;
 }
 
-
+h2.zHead ~ h2.zHead{
+	margin-top:	15px;
+}
 h2.zHead{
     text-align: center;
     font-size:  130%;
