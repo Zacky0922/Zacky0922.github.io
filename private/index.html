@@ -25,7 +25,7 @@
   <!--
   <script src="./script/MathJaxMacro2.js" type="text/x-mathjax-config"></script>
   -->
-  
+
   <script src="./script/MathJaxMacro.js" type="text/x-mathjax-config"></script>
   <script type="text/javascript" defer
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
@@ -45,21 +45,19 @@
         <dt>MathJax - display mode</dt>
         <dd>$$\dfrac{d}{dx}\int_{a}^{x}{f(t)dt} = f(x)$$</dd>
         <dt>MathJax - inline mode</dt>
-        <dd>$\Delta\rm{ABC}$について、$a^2+b^2=c^2$が成り立つとき、$c$を斜辺とする直角三角形である。<br/>
-        \(\sin^2\theta+\cos^2\theta =1\)は、三平方の定理の応用である。</dd>
+        <dd>$\Delta\rm{ABC}$について、$a^2+b^2=c^2$が成り立つとき、$c$を斜辺とする直角三角形である。<br />
+          \(\sin^2\theta+\cos^2\theta =1\)は、三平方の定理の応用である。</dd>
         <dt>MathJax - Real Time Preview (onkeyup)</dt>
         <dd>
-          <textarea id="realtimePreviewInput" rows="5" 
-            onkeyup="document.getElementById('realtimePreview').innerText=this.value;
+          <textarea id="realtimePreviewInput" rows="5" onkeyup="document.getElementById('realtimePreview').innerText=this.value;
             reMathJax('realtimePreview')">$$e^{i\theta}=\cos\theta+i\sin\theta$$</textarea>
-          <input type="button" value="init" 
-          onclick="document.getElementById('realtimePreviewInput').value=
+          <input type="button" value="init" onclick="document.getElementById('realtimePreviewInput').value=
           '$$e^{i\\theta}=\\cos\\theta+i\\sin\\theta$$';
           document.getElementById('realtimePreview').innerText=
           document.getElementById('realtimePreviewInput').value;
           reMathJax('realtimePreview')">
           <div id="realtimePreview" style="border:#888 1px solid">
-          $$e^{i\theta}=\cos\theta+i\sin\theta$$
+            $$e^{i\theta}=\cos\theta+i\sin\theta$$
           </div>
         </dd>
         <dt>jQuery</dt>
@@ -365,6 +363,11 @@
                 <li><a href="http://www.osaka-kyoiku.ac.jp/~tomodak/" target="_blank">VISUAL数学を目指して</a><br>
                   グラフ描画ソフトGRAPES開発者、大阪教育大学 友田勝久先生のサイトです。<br />
                   難しい関数のグラフも、この"GRAPES"というソフトで一発描画できますので、悩んだ時に是非。</li>
+                <li><a href="https://grapes-light.app/" target="_blank">GRAPES-light</a><br>
+                  GRAPESのWEB版です。</li>
+
+
+
                 <li><a href="http://www.geogebra.org/" target="_blank">GeoGebra</a><br>
                   代数(algebra)・幾何(geometry)で利用可能なグラフ・図形描画ソフトです。<br />
                   図中に表示する数式には、$\LaTeX$の利用もでき、ソフト上で描画したグラフ・図形を動的なコンテンツとしてWeb上で利用できる形で出力できます。<br />
@@ -973,9 +976,9 @@
     <section>
       <h2>about Author</h2>
       <p>Zacky<br />
-        <a href="https://github.com/Zacky0922/Zacky0922.github.io" target="_blank">GitHub</a> / 
-      <a href="../">がらくたindex</a> / 
-      <a href="../KGapp/index.html">KGapp</a></p>
+        <a href="https://github.com/Zacky0922/Zacky0922.github.io" target="_blank">GitHub</a> /
+        <a href="../">がらくたindex</a> /
+        <a href="../KGapp/index.html">KGapp</a></p>
     </section>
   </div>
   <!-- /container -->
