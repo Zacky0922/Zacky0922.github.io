@@ -59,7 +59,9 @@ div#container {
     display:    none;
 }
 
-
+.zClickable{
+    cursor: pointer;
+}
 
 label{
     font:       inherit;
