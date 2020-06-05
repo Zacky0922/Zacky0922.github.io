@@ -64,6 +64,7 @@
 		/* PCレイアウト */
 		@media screen and (min-width:600px) {
 			div#container {
+				max-width:100%;
 				grid-template-columns: 3fr minmax(max-content, 1fr);
 				grid-template-areas:
 					"notice	links"
@@ -111,7 +112,7 @@
 			<p>ファイル欠損防止のため、必ず閲覧専用から確認してください。<br />
 				健康観察：データが怪しいときは、「日付→年組」の順で操作すると、うまくいくかも…？</p>
 
-			<label for="印刷したいとき" class="zBtn zClickable">印刷したいとき</label>
+			<label for="印刷したいとき" class="zBtn">印刷したいとき</label>
 			<input type="checkbox" class="zHiddenBlock" id="印刷したいとき" />
 			<div>
 				<a href="pict/印刷テンプレート.xlsx" class="zBtn">健康観察テンプレ<br />（印刷テンプレート.xlsx）</a>をダウンロードしてください。<br />
