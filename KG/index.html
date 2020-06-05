@@ -84,7 +84,7 @@
 </head>
 
 <body>
-	<p style="text-align:left;">（教員用便利リンク集）<br />Last Update：6/5　健康観察URL更新・入力用link追加</p>
+	<p style="text-align:left;">（教職員用便利リンク集）<br />Last Update：6/5　健康観察URL更新・入力用link追加</p>
 	<div id="container">
 		<div style="grid-area:notice">
 			<h2 class="zHead">入力用（要サインイン）</h2>
@@ -111,8 +111,8 @@
 			<p>ファイル欠損防止のため、必ず閲覧専用から確認してください。<br />
 				健康観察：データが怪しいときは、「日付→年組」の順で操作すると、うまくいくかも…？</p>
 
-			<h2 class="zHead"><label for="印刷したいとき" class="zClickable">印刷したいとき</label></h2>
-			<input type="checkbox" class="zHiddenBlock" id="印刷したいとき" checked="checked" />
+			<label for="印刷したいとき" class="zBtn zClickable">印刷したいとき</label>
+			<input type="checkbox" class="zHiddenBlock" id="印刷したいとき" />
 			<div>
 				<a href="pict/印刷テンプレート.xlsx" class="zBtn">健康観察テンプレ<br />（印刷テンプレート.xlsx）</a>をダウンロードしてください。<br />
 				※以下の作業は、必ずセルではなく「列」を選択してください。
@@ -126,7 +126,34 @@
 				<a href="pict/テンプレコピペ.png"><img src="pict/テンプレコピペ.png" style="width:600px;max-width:95%;" /></a>
 
 			</div>
-
+			<h2 class="zHead">備忘録</h2>
+			<div class="zTbl">
+				<table>
+					<caption>検定一覧</caption>
+					<thead>
+						<tr>
+							<th>検定</th>
+							<th>申込〆切</th>
+							<th>試験日</th>
+							<th>備考</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>数学検定</th>
+							<td>6月12日(金)<br />一貫：10日(水)</td>
+							<td>7月18日(土)</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>日本語ワープロ検定<br />情報処理技能検定</th>
+							<td>7月3日(金)</td>
+							<td>7月31日(金)</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 
 		<div style="grid-area:links">
@@ -207,9 +234,10 @@
 		</div>
 		<div id="debugArea" style="grid-area:debugArea">
 			<input type="text" size="30" style="max-width:95%;" placeholder="Input Password for Debug mode"
-				onkeyup="if(this.value=='debug'){this.parentElement.children[1].classList.remove('undisp')}" />
+				onkeyup="if( (this.value=='debug') || (!getOnline()) ){this.parentElement.children[1].classList.remove('undisp')}" />
 			<div class="undisp">
-				<a class="zBtn" onclick="location.href='file:///C:/z/GitHub/Zacky0922.github.io/KG/index.html'">local直link</a>
+				<a class="zBtn" target="_blank"
+					href="file:///C:/z/GitHub/Zacky0922.github.io/KG/index.html">local直link</a>
 				<h3>Forms編集</h3>
 				<div>
 					<a class="zBtn"
@@ -222,6 +250,13 @@
 						href="https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId#formId=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUN1M3VFhOTjJIMEpEOUlJWUtWSk1POFRBQiQlQCN0PWcu&XlWorkbookId=https%3A%2F%2Fkgefac.sharepoint.com%2Fsites%2Fmsteams_1d13d1%2F_layouts%2F15%2FDoc.aspx%3Fsourcedoc%3D%7B01441946-ac10-4aaa-a306-174c89d96977%7D%26action%3Dedit%26wdSkeletonState%3D%7B%22IsEnabled%22%3Atrue%2C%22Options%22%3A32%7D%26wdenableroaming%3D1%26wdorigin%3DItemsView%26wdhostclicktime%3D1590044294091%26wdredirectionreason%3DForce_SingleStepBoot&Host=Excel">生徒会選挙</a>
 					<a class="zBtn"
 						href="https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId&Fragment=formId%3Dz327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURDFXQlA3NjgwRFlXUjIwNzlaSkhLR0xENyQlQCN0PWcu%26XlWorkbookId%3Dhttps%253A%252F%252Fkgefac.sharepoint.com%252Fsites%252Fmsteams_1d13d1%252F_layouts%252F15%252FDoc.aspx%253Fsourcedoc%253D%257B0f7bff64-91a6-4bbb-8df1-7dd9f9564f1e%257D%2526action%253Dedit%2526wdSkeletonState%253D%257B%2522IsEnabled%2522%253Atrue%252C%2522Options%2522%253A32%257D%2526wdenableroaming%253D1%2526wdorigin%253DItemsView%2526wdhostclicktime%253D1589521327036%2526wdredirectionreason%253DForce_SingleStepBoot%26Host%3DExcel">通学方法調査</a>
+				</div>
+				<h3>オンライン五峯祭に向けて</h3>
+				<div>
+					<a class="zBtn" href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
+					<iframe
+						src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=NjNxcnBqbzd2bm9vbmkyZWhkcGw1dHZtMDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Z3ZsOGQ5cmZmczc1MHVwZGdua3FmOTR2cjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWYwMzhqa2w0ZTRnNGh2NjFtaXR0cm1ibTUwa25ydHVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB&amp;color=%23F09300&amp;color=%23616161&amp;showNav=1&amp;showDate=1&amp;title=KG%E4%BA%94%E5%B3%AF%E7%A5%AD2020"
+						style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 				</div>
 
 			</div>
