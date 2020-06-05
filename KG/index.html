@@ -235,10 +235,15 @@
 		</div>
 		<div id="debugArea" style="grid-area:debugArea">
 			<input type="text" size="30" style="max-width:95%;" placeholder="Input Password for Debug mode"
-				onkeyup="if( (this.value=='debug') || (!getOnline()) ){this.parentElement.children[1].classList.remove('undisp')}" />
+		onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}" onkeyup="if( this.value=='debug' ){this.parentElement.children[1].classList.remove('undisp')}" />
 			<div class="undisp">
 				<a class="zBtn" target="_blank"
 					href="file:///C:/z/GitHub/Zacky0922.github.io/KG/index.html">local直link</a>
+				<div>
+					<a class="zBtn" onclick="this.parentElement.children[1].innerText=debugMsgText">debugMsg</a>
+					<div style="border:1px dashed #fff;"></div>
+				</div>
+				
 				<h3>Forms編集</h3>
 				<div>
 					<a class="zBtn"

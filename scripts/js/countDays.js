@@ -1,4 +1,0 @@
-loadJScounter_loaded++;
-
-
-

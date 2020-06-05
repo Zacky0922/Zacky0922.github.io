@@ -1,5 +1,15 @@
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    デバッグメッセージ処理
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+var debugMsgText = "◆debug msg";
+function debugMsg(msg) {
+    debugMsgText = debugMsgText + "\n" + msg;
+}
+
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //HTML階層指定：読込時、変数受取
@@ -10,6 +20,8 @@ function getParam() {
     var query = src.substring(src.indexOf('?') + 1);
     var parameters = query.split('&');
 
+    debugMsg("master.js? 引渡し変数一覧");
+
     // URLクエリを分解して取得する
     var param = new Object();
     for (var i = 0; i < parameters.length; i++) {
@@ -17,6 +29,7 @@ function getParam() {
         var paramName = decodeURIComponent(element[0]);
         var paramValue = decodeURIComponent(element[1]);
         param[paramName] = paramValue;
+        debugMsg(" // param[" + paramName + "] = " + paramValue);
     }
 
     //受取変数の個別処理
@@ -32,7 +45,6 @@ function getParam() {
     param["lv"] = myLv;
     return param;
 }
-
 var getParam = getParam();
 
 
@@ -49,44 +61,30 @@ function getOnline() {
 
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    デバッグメッセージ処理
-    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-var debugMsgText = "";
-var debugMsgHTML = document.createTextNode("");
-function debugMsg(msg) {
-    debugMsgText = debugMsgText + "\n" + msg;
-    //debugMsgHTML.appendChild(document.createElement("br"));
-    //debugMsgHTML.appendChild(document.createTextNode(msg));
-    //console.log(msg);
-    //document.getElementById("debugArea").innerHTML = debugMsgHTML;
-}
-
-
-
-/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     JS loader
     被読込ファイル冒頭に、必ず以下を記載
     loadJScounter_loaded++;
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
-    "countDays.js",
-    "setTab.js"
+    "setTab.js",
+    "txReplace.js",
+    "date.js"
 ];
 var loadJScounter_setScriptTag = 0; //タグ設置数
 var loadJScounter_loaded = 0;       //読込完了数
 
-var z_JSloadFunc = setInterval(function () {
+var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == myScripts.length) {
         //全部読込完了
-        clearInterval(z_JSloadFunc);
+        debugMsg("master.js:JSloadFunc Complete!");
+        clearInterval(JSloadFunc);
     } else if (loadJScounter_setScriptTag == loadJScounter_loaded) {
         //既設置分、読込完了
         var myScript = document.createElement("script");
         myScript.type = "text/javascript";
         myScript.src = getParam["lv"] + "scripts/js/" + myScripts[loadJScounter_setScriptTag++];
         document.head.appendChild(myScript);
-        debugMsg(loadJScounter_setScriptTag);
     }else{
         return;
     }

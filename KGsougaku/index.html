@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-163335381-1');
+	</script>
+
+	<!-- PWA設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link rel="manifest" href="./manifest.json">-->
+	<script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+	</script>
+
+	<!-- JS/CSS master -->
+	<script type="text/javascript" src="../scripts/master.js?lv=1"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/master.css" />
+
+	<style>
+		div#container {
+			margin: 5px;
+			display: grid;
+			grid-gap: 10px;
+			grid-template-columns: 100%;
+			grid-template-areas:
+				"notice"
+				"links"
+				"ft"
+				"debugArea";
+		}
+
+		/* PCレイアウト */
+		@media screen and (min-width:600px) {
+			div#container {
+				max-width:100%;
+				grid-template-columns: 3fr minmax(max-content, 1fr);
+				grid-template-areas:
+					"notice	links"
+					"ft		ft"
+					"debugArea debugArea";
+			}
+		}
+
+		div#container>div {
+			text-align: left;
+			border: rgba(255, 255, 255, 0.3) 5px solid;
+			border-radius: 10px;
+			padding: 10px;
+		}
+	</style>
+
+	<title>KG総学 - WEBサイトを作ろう！</title>
+</head>
+
+<body>
+	<div id="container">
+		<div style="grid-area:notice">
+			<h2 class="zHead">総合的な学習の時間 - WEBサイトを作ろう！</h2>
+			<dl class="zList">
+				<dt>はじめに</dt>
+				<dd>タグとはなにか？ - html,head,bodyタグ</dd>
+				<dt>文字の表示と装飾</dt>
+				<dd>p,div,span,brタグ と style要素</dd>
+				<dt>表の表示</dt>
+				<dd>tableタグ</dd>
+				<dt>画像の表示</dt>
+				<dd>imgタグ</dd>
+				<dt>style要素について</dt>
+				<dd>文字（色・サイズ・太さ）,背景（色）,枠線(色・太さ)</dd>
+				<dt>外部スタイルシートとclass</dt>
+				<dd>styleの一括指定</dd>
+			</dl>
+		</div>
+
+		<div style="grid-area:links">
+			<h2 class="zHead">Links</h2>
+			<p style="text-align:right">※クリックで展開</p>
+			<div>
+				<h3 class="zHead"><label for="学校関係" class="zClickable">◆学校関係◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="学校関係" checked="checked" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
+				</div>
+			</div>
+		</div>
+
+		<div style="grid-area:ft">
+			<p>本ページをブックマークすると便利だと思います。<br />
+				※PWA対応準備中・・・対応すれば、PC/スマホからアプリとして使えます。</p>
+
+		</div>
+		<div id="debugArea" style="grid-area:debugArea">
+			<input type="text" size="30" style="max-width:95%;" placeholder="Input Password for Debug mode"
+				onkeyup="if( (this.value=='debug') || (!getOnline()) ){this.parentElement.children[1].classList.remove('undisp')}" />
+			<div class="undisp">
+				<a class="zBtn" target="_blank"
+					href="file:///C:/z/GitHub/Zacky0922.github.io/KGsougaku/index.html">local直link</a>
+			</div>
+		</div>
+	</div><!-- /container -->
+</body>
+
+</html>
