@@ -64,7 +64,7 @@
 		/* PCレイアウト */
 		@media screen and (min-width:600px) {
 			div#container {
-				max-width:100%;
+				max-width: 100%;
 				grid-template-columns: 3fr minmax(max-content, 1fr);
 				grid-template-areas:
 					"notice	links"
@@ -85,7 +85,7 @@
 </head>
 
 <body>
-	<p style="text-align:left;">（教職員用便利リンク集）<br />Last Update：6/5　健康観察URL更新・入力用link追加</p>
+	<p style="text-align:left;">（教職員用便利リンク集）<br />Last Update：6/6　健康観察：カスタム名表登録について</p>
 	<div id="container">
 		<div style="grid-area:notice">
 			<h2 class="zHead">入力用（要サインイン）</h2>
@@ -111,7 +111,6 @@
 			</div>
 			<p>ファイル欠損防止のため、必ず閲覧専用から確認してください。<br />
 				健康観察：データが怪しいときは、「日付→年組」の順で操作すると、うまくいくかも…？</p>
-
 			<label for="印刷したいとき" class="zBtn">印刷したいとき</label>
 			<input type="checkbox" class="zHiddenBlock" id="印刷したいとき" />
 			<div>
@@ -126,6 +125,13 @@
 
 				<a href="pict/テンプレコピペ.png"><img src="pict/テンプレコピペ.png" style="width:600px;max-width:95%;" /></a>
 
+			</div>
+			<div>
+				<h4 class="zHead">健康観察：カスタム名表</h4>
+				ダウンロードして編集後、ご提出ください。<br />
+				<a class="zBtn" target="_blank"
+					href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?OR=teams&action=edit&sourcedoc={46C2EA38-BFEA-4FC6-B5CA-676BF422DA04}">カスタム名表
+					登録シート<br />（要サインイン）</a>
 			</div>
 			<h2 class="zHead">備忘録</h2>
 			<div class="zTbl">
@@ -235,7 +241,8 @@
 		</div>
 		<div id="debugArea" style="grid-area:debugArea">
 			<input type="text" size="30" style="max-width:95%;" placeholder="Input Password for Debug mode"
-		onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}" onkeyup="if( this.value=='debug' ){this.parentElement.children[1].classList.remove('undisp')}" />
+				onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}"
+				onkeyup="if( this.value=='debug' ){this.parentElement.children[1].classList.remove('undisp')}" />
 			<div class="undisp">
 				<a class="zBtn" target="_blank"
 					href="file:///C:/z/GitHub/Zacky0922.github.io/KG/index.html">local直link</a>
@@ -243,7 +250,7 @@
 					<a class="zBtn" onclick="this.parentElement.children[1].innerText=debugMsgText">debugMsg</a>
 					<div style="border:1px dashed #fff;"></div>
 				</div>
-				
+
 				<h3>Forms編集</h3>
 				<div>
 					<a class="zBtn"
