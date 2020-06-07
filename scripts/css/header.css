@@ -34,7 +34,11 @@ h2.zHead:after{
 	max-width:	300px;
 	height:		7px;
 	background:	-webkit-repeating-linear-gradient(
-					-45deg, rgba(0,0,0,0), rgba(0,0,0,0) 4px, var(--z-ele-bgcolor-alt) 2px, var(--z-ele-bgcolor-alt) 6px);
+					-45deg,
+					rgba(0,0,0,0),
+					rgba(0,0,0,0) 4px,
+					var(--z-ele-bgcolor-alt) 2px,
+					var(--z-ele-bgcolor-alt) 6px);
 	background:	repeating-linear-gradient(
 					-45deg, rgba(0,0,0,0), rgba(0,0,0,0) 4px, var(--z-ele-bgcolor-alt) 2px, var(--z-ele-bgcolor-alt) 6px);
 }

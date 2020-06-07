@@ -1,0 +1,16 @@
+.zUnderconstruction{
+    color:  #fff;
+    font-weight: bolder;
+	text-shadow: var(--z-preset-unerconstruction-text-shadow);
+	background: var(--z-preset-unerconstruction-bg);
+}
+
+.zPickup{
+  display:  block;
+  height:   120px;
+
+
+  background: var(--z-preset-graphPaper);
+
+
+}

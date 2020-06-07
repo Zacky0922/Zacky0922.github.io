@@ -1,9 +1,11 @@
+
 /* 汎用部品 */
 @import url("./css/header.css");
 @import url("./css/lists.css");
 @import url("./css/scrollbar.css");
 @import url("./css/table.css");
 
+@import "./css/preset-cssImage.css";
 
 
 

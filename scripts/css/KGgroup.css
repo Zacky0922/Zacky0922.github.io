@@ -1,6 +1,11 @@
 /* 五峯祭 団体紹介 */
 
+div.KGgpWrapper{
+
+}
+
 div.KGgp{
+    display:    inline-block;
     width:  200px;
     padding:    10px;
     border-radius: 10px;

@@ -1,0 +1,92 @@
+/* 背景模様集 */
+/* background: var(--z-preset-bg); */
+
+/* 備忘録
+	複数の背景設定は、
+	先に書く	前景	・・・　要alpha値設定（後景が潰れる）
+	後に書く	後景
+*/
+
+:root{
+	/*	バーバリー風タータンチェック
+	background: var(--z-preset-burberry);
+	*/
+    --z-preset-burberry:
+		repeating-linear-gradient( 0deg,
+			rgba(   0,   0,   0, 0.4) 0px 4px, /*黒*/
+			rgba( 255, 255, 255, 0.4) 4px 8px, /*白*/
+			rgba(   0,   0,   0, 0.4) 8px 12px, /*黒*/
+			rgba( 255, 255, 255, 0.4) 12px 16px, /*白*/
+			rgba(   0,   0,   0, 0.4) 16px 20px, /*黒*/
+			rgba( 209, 172, 118, 0.4) 20px 30px, /*香*/
+			rgba( 213,   0,   0, 0.4) 30px 32px,/*赤*/
+			rgba( 209, 172, 118, 0.4) 32px 36px, /*香*/
+			rgba( 213,   0,   0, 0.4) 36px 38px,/*赤*/
+			rgba( 209, 172, 118, 0.4) 38px 48px /*香*/
+		),
+			repeating-linear-gradient( 90deg,
+			rgba(   0,   0,   0, 1) 0px 3px, /*黒*/
+			rgba( 255, 255, 255, 1) 3px 6px, /*白*/
+			rgba(   0,   0,   0, 1) 6px 9px, /*黒*/
+			rgba( 255, 255, 255, 1) 9px 12px, /*白*/
+			rgba(   0,   0,   0, 1) 12px 15px, /*黒*/
+			rgba( 209, 172, 118, 1) 15px 30px, /*香*/
+			rgba( 213,   0,   0, 0.8) 30px 31px,/*赤*/
+			rgba( 209, 172, 118, 1) 31px 33px, /*香*/
+			rgba( 213,   0,   0, 0.8) 33px 34px,/*赤*/
+			rgba( 209, 172, 118, 1) 34px 49px /*香*/
+		);
+
+	/*	工事中
+	color:  #fff;
+	font-weight: bolder;
+	text-shadow: var(--z-preset-unerconstruction-text-shadow);
+	background: var(--z-preset-unerconstruction-bg);
+	*/
+	--z-preset-unerconstruction-text-shadow-color:	#000;
+	--z-preset-unerconstruction-text-shadow-size:	2px;
+	--z-preset-unerconstruction-text-shadow:
+		calc(var(--z-preset-unerconstruction-text-shadow-size))
+		calc(var(--z-preset-unerconstruction-text-shadow-size))
+		0px var(--z-preset-unerconstruction-text-shadow-color),
+		calc(-1 * var(--z-preset-unerconstruction-text-shadow-size))
+		calc(var(--z-preset-unerconstruction-text-shadow-size))
+		0px var(--z-preset-unerconstruction-text-shadow-color),
+		calc(var(--z-preset-unerconstruction-text-shadow-size))
+		calc(-1 * var(--z-preset-unerconstruction-text-shadow-size))
+		0px var(--z-preset-unerconstruction-text-shadow-color),
+		calc(-1 * var(--z-preset-unerconstruction-text-shadow-size))
+		calc(-1 * var(--z-preset-unerconstruction-text-shadow-size))
+		0px var(--z-preset-unerconstruction-text-shadow-color);
+	--z-preset-unerconstruction-bg:
+		repeating-linear-gradient( 135deg,
+			#ff6 0px 15px,
+			#888 15px 30px,
+			#ff6 30px 45px,
+			#888 45px 60px
+		);
+
+	/* 方眼紙（背景別設定可）
+	background:	var(--z-preset-graphPaper), #fff;
+	*/
+	--z-preset-graphPaper:
+		repeating-linear-gradient( 0deg,
+			#66c 0px 1px,
+			transparent 1px 15px
+		),
+		repeating-linear-gradient( 90deg,
+			#66c 0px 1px,
+			transparent 1px 15px
+		);
+
+	/* ベタ色は別途設定
+		background: var(--z-preset-bg-sample), #fff;
+	*/
+	--z-preset-bg-sample:
+		repeating-linear-gradient( 45deg,
+			transparent 0px 15px,
+			rgba( 255, 0, 0, 0.4) 15px 30px,
+			transparent 30px 45px,
+			rgba( 255, 0, 0, 0.4) 45px 60px
+		);
+}
