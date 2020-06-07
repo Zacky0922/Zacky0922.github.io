@@ -1,0 +1,28 @@
+/* 汎用部品 */
+@import url("./css/header.css");
+@import url("./css/lists.css");
+@import url("./css/scrollbar.css");
+@import url("./css/table.css");
+
+
+
+
+/*  */
+
+
+.centeringOverflow-x{
+    margin:		1px auto;
+	padding:	0;
+    text-align:	center;
+    overflow-x:	auto;
+}
+
+
+
+/* そのうち、form.cssを作って整理 */
+label{
+    font:       inherit;
+    color:      inherit;
+    background: none;
+    display:    inherit;
+}

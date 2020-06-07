@@ -11,17 +11,18 @@
 @import url("./css/zHoverDisp.css");
 @import url("./css/zHiddenBlock.css");
 
-/* 五峯祭サンプル */
+/* 五峯祭モジュール */
 @import "./css/KGgroup.css";
+@import "./css/KGnews.css";
 
 
 /* 変数設定 */
 :root{
     /* 標準 */
-    --z-fontcolor:     #fff;
-    --z-bgcolor:       #113;
+    --z-fontcolor:     #113;
+    --z-bgcolor:       #ccf;
 
-    --z-border-color:   #99f;
+    --z-border-color:   #339;
 
     --z-letterspacing: 0.2em;  /* 見出し用文字間隔 */
 
@@ -29,9 +30,9 @@
     --z-anime-duration: 0.4s;
 
     /* 個別部品 */
-    --z-ele-bgcolor:    #339;
+    --z-ele-bgcolor:    #ccf;
     
-    --z-ele-bgcolor-alt:    #aaf;
+    --z-ele-bgcolor-alt:    #88f;
     --z-ele-fontcolor-alt:  #113;
 }
 
@@ -76,7 +77,3 @@ div#container {
 
 
 
-
-.prettyprint{
-    background: #fff;
-}

@@ -8,23 +8,28 @@ div.zTbl{
     /* width決めないとダメ？ */
 }
 
-div.zTbl table{
+div.zTbl table,
+table.zTbl{
     margin: 5px auto;
     border-collapse:    collapse;
 }
 
-div.zTbl table caption{
+div.zTbl table caption,
+table.zTbl caption{
     letter-spacing: var(--z-letterspacing);
 }
 
 div.zTbl table th,
-div.zTbl table td{
+div.zTbl table td,
+table.zTbl th,
+table.zTbl td{
     border: 1px solid var(--z-border-color);
     padding:    5px 10px;
     white-space:    nowrap;
 }
 
-div.zTbl table th{
+div.zTbl table th,
+table.zTbl th{
     text-align: center;
     letter-spacing: var(--z-letterspacing);
     background: var(--z-ele-bgcolor);;
