@@ -1,7 +1,11 @@
 .zUnderconstruction{
     color:  #fff;
     font-weight: bolder;
-	text-shadow: var(--z-preset-unerconstruction-text-shadow);
+    /*
+  text-shadow: var(--z-preset-unerconstruction-text-shadow);
+  */
+  -webkit-text-stroke: 1px rgba(0,0,0,0.3);
+  text-stroke:1px rgba(0,0,0,0.3);
 	background: var(--z-preset-unerconstruction-bg);
 }
 
