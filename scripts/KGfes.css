@@ -90,7 +90,7 @@ div#container {
     overflow-x: auto;
 }
 .zSnapX > *{
-    max-width:  min(90vw,400px);
+    max-width:  min(75vw,400px);
 }
 /* スマホのみ横スクロール */
 @media screen and (max-width:600px){
@@ -100,6 +100,6 @@ div#container {
         overflow-x: auto;
     }
     .zSnapX > *{
-        max-width:  min(90vw,400px);
+        max-width:  min(75vw,400px);
     }
 }

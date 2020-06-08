@@ -1,7 +1,7 @@
 ul.news{
     padding:    0;
     list-style: none;
-    max-height: 150px;
+    max-height: min(30vh,30%);
     overflow-y: auto;
 }
 ul.news li{
