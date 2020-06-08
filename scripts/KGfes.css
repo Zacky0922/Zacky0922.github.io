@@ -89,3 +89,17 @@ div#container {
     scroll-snap-type: x mandatory;
     overflow-x: auto;
 }
+.zSnapX > *{
+    max-width:  400px;
+}
+/* スマホのみ横スクロール */
+@media screen and (max-width:600px){
+    .zSnapX-sp{
+        display:    flex;
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+    }
+    .zSnapX > *{
+        max-width:  500px;
+    }
+}
