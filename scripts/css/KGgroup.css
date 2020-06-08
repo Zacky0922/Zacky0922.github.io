@@ -1,22 +1,23 @@
 /* 五峯祭 団体紹介 */
 
-div.KGgpWrapper{
-
-}
-
-div.KGgp{
+div.KGgpWrapper > *{
     display:    inline-block;
-    width:  200px;
+    scroll-snap-align: center;
+    max-width:  400px;
+    min-width:  300px;
     padding:    10px;
+    margin: 5px;
     border-radius: 10px;
+    border: #ccc 5px solid;
     text-align: center;
+    background: #fff;
 }
 
-div.KGgp h3,
-div.KGgp h4{
-
-
+div.KGgpWrapper > div.演劇{
+    background: #ada;
 }
-div.KGgp img{
+
+
+div.KGgpWrapper > div > img{
     width:  100%;
 }

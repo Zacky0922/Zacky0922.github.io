@@ -1,18 +1,21 @@
-/* Google Font & Icon */
-@import url('./css/googleFontIcon.css');
 
 /* 汎用部品 */
 @import url("./common.css");
 
-/* 個別部品 */
-@import url("./css/zBtn.css");
-
 /* 機能モジュール */
+@import url("./css/zBtn.css");
 @import url("./css/zHoverDisp.css");
 @import url("./css/zHiddenBlock.css");
+@import url("./css/zBaloon.css");
 
-/* 五峯祭サンプル */
-@import "./css/KGgroup.css";
+/* Google Font & Icon */
+@import url('./css/googleIcon.css');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese');
+*{
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+
 
 
 /* 変数設定 */

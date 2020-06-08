@@ -38,26 +38,8 @@
 		);
 
 	/*	工事中
-	color:  #fff;
-	font-weight: bolder;
-	text-shadow: var(--z-preset-unerconstruction-text-shadow);
 	background: var(--z-preset-unerconstruction-bg);
 	*/
-	--z-preset-unerconstruction-text-shadow-color:	#000;
-	--z-preset-unerconstruction-text-shadow-size:	2px;
-	--z-preset-unerconstruction-text-shadow:
-		calc(var(--z-preset-unerconstruction-text-shadow-size))
-		calc(var(--z-preset-unerconstruction-text-shadow-size))
-		0px var(--z-preset-unerconstruction-text-shadow-color),
-		calc(-1 * var(--z-preset-unerconstruction-text-shadow-size))
-		calc(var(--z-preset-unerconstruction-text-shadow-size))
-		0px var(--z-preset-unerconstruction-text-shadow-color),
-		calc(var(--z-preset-unerconstruction-text-shadow-size))
-		calc(-1 * var(--z-preset-unerconstruction-text-shadow-size))
-		0px var(--z-preset-unerconstruction-text-shadow-color),
-		calc(-1 * var(--z-preset-unerconstruction-text-shadow-size))
-		calc(-1 * var(--z-preset-unerconstruction-text-shadow-size))
-		0px var(--z-preset-unerconstruction-text-shadow-color);
 	--z-preset-unerconstruction-bg:
 		repeating-linear-gradient( 135deg,
 			#ff6 0px 15px,
@@ -66,6 +48,17 @@
 			#888 45px 60px
 		);
 
+	/*	工事中
+	background: var(--z-preset-unerconstruction-bg-alpha);
+	*/
+	--z-preset-unerconstruction-bg-alpha:
+		repeating-linear-gradient( 135deg,
+			rgba(255, 255, 127, 0.7) 0px 15px,
+			rgba(127, 127, 127, 0.7) 15px 30px,
+			rgba(255, 255, 127, 0.7) 30px 45px,
+			rgba(127, 127, 127, 0.7) 45px 60px
+		);
+	
 	/* 方眼紙（背景別設定可）
 	background:	var(--z-preset-graphPaper), #fff;
 	*/

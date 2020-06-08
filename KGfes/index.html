@@ -66,6 +66,10 @@
 			div#gridWrapper {
 				max-width: 100%;
 				grid-template-columns: 3fr minmax(max-content, 1fr);
+				-moz-grid-template-areas:
+					"pickup news"
+					"groups groups"
+					"ft ft";
 				grid-template-areas:
 					"pickup news"
 					"groups groups"
@@ -101,38 +105,79 @@
 			<h2>Pick Up</h2>
 			<div class="zUnderconstruction" style="text-align:center;font-size:3em;">準備中</div>
 			<a class="zPickup">あ</a>
-			<h2>参加団体の方へ</h2>
+
 		</section>
+
+
 		<section style="grid-area:groups">
-			<div class="KGgpWrapper">
-		<div class="KGgp 演劇 中学">
-			<h3>中学</h3>
-			<h4>演劇</h4>
-			<img src="pict/gp.png">
-			<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+			<div class="KGgpWrapper zSnapX">
+				<div class="演劇 中学">
+					<h3>中学</h3>
+					<h4>演劇</h4>
+					<img src="pict/gp.png">
+					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+				</div>
+				<div class="研究発表 中学">
+					<h3>中学</h3>
+					<h4>研究発表</h4>
+					<img src="pict/gp.png">
+					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+				</div>
+				<div class="ダンス 高１ 高校">
+					<h3>高１ 高校</h3>
+					<h4>ダンス</h4>
+					<img src="pict/gp.png">
+					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+				</div>
+				<div class="演劇 高１ 高校">
+					<h3>高１ 高校</h3>
+					<h4>演劇</h4>
+					<img src="pict/gp.png">
+					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+				</div>
+				<div class="演劇 高１ 高校">
+					<h3>高１ 高校</h3>
+					<h4>演劇</h4>
+					<img src="pict/gp.png">
+					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+				</div>
+				<div class="演劇 高１ 高校">
+					<h3>高１ 高校</h3>
+					<h4>演劇</h4>
+					<img src="pict/gp.png">
+					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+				</div>
+				<div class="演劇 高１ 高校">
+					<h3>高１ 高校</h3>
+					<h4>演劇</h4>
+					<img src="pict/gp.png">
+					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+				</div>
+
+			</div>
+
+		</section>
+		<section style="grid-area:ft">
+		<div>
+			<div>
+				<input type="text" size="30" style="max-width:95%;" placeholder="参加団体専用"
+					onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}"
+					onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('undisp')}" />
+				<div class="undisp">
+					<div>
+						作業進行状況<a class="zBtn" target="_blank" href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
+						<div class="centeringOverflow-x">
+							<iframe
+								src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=NjNxcnBqbzd2bm9vbmkyZWhkcGw1dHZtMDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Z3ZsOGQ5cmZmczc1MHVwZGdua3FmOTR2cjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWYwMzhqa2w0ZTRnNGh2NjFtaXR0cm1ibTUwa25ydHVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB&amp;color=%23F09300&amp;color=%23616161&amp;showNav=1&amp;showDate=1&amp;title=KG%E4%BA%94%E5%B3%AF%E7%A5%AD2020"
+								style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+						</div>
+					</div>
+		
+				</div>
+			</div>
 		</div>
-		<div class="KGgp 研究発表 中学">
-			<h3>中学</h3>
-			<h4>研究発表</h4>
-			<img src="pict/gp.png">
-			<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
-		</div>
-		<div class="KGgp ダンス 高１ 高校">
-			<h3>高１ 高校</h3>
-			<h4>ダンス</h4>
-			<img src="pict/gp.png">
-			<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
-		</div>
-		<div class="KGgp 演劇 高１ 高校">
-			<h3>高１ 高校</h3>
-			<h4>演劇</h4>
-			<img src="pict/gp.png">
-			<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
-		</div>
-	</div>
-	
-	</section>
-		<section style="grid-area:ft"></section>
+		
+		</section>
 
 	</div><!-- /container -->
 </body>

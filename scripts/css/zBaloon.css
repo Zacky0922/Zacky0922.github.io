@@ -1,0 +1,43 @@
+.zBaloonL,.zBaloonR{
+    --z-bln-tsuno:  8px;
+    --z-bln-color:  #ccc;   /* 標準色 */
+    position:   relative;
+    background: var(--z-bln-color);
+    margin: var(--z-ele-margin) var(--z-bln-tsuno);
+    padding:    var(--z-ele-padding);
+    border-radius: 7px;
+    max-width:      calc(95% - var(--z-bln-tsuno));
+    min-height:     calc(25px + var(--z-bln-tsuno));
+}
+
+.zBaloonL:after,.zBaloonR:after{
+    position: absolute;
+    top:    7px;
+    content:    "";
+    width:  0;
+    height: 0;
+    border: var(--z-bln-tsuno) solid transparent;
+}
+
+/* ツノ左側 */
+.zBaloonL:after{
+    left:   calc(-2 * var(--z-bln-tsuno) );
+    border-right: var(--z-bln-tsuno) solid var(--z-bln-color);
+}
+/* ツノ右側 */
+.zBaloonR:after{
+    right:   calc(-2 * var(--z-bln-tsuno) );
+    border-left: var(--z-bln-tsuno) solid var(--z-bln-color);
+}
+
+
+/* 色設定 */
+
+/* 赤 */
+.zBaloon_red{                 background: #e77;   }
+.zBaloonL.zBaloon_red:after{  border-right-color:  #e77;   }
+.zBaloonR.zBaloon_red:after{  border-left-color:   #e77;   }
+/* 緑 */
+.zBaloon_green{                 background: #7e7;   }
+.zBaloonL.zBaloon_green:after{  border-right-color:  #7e7;   }
+.zBaloonR.zBaloon_green:after{  border-left-color:   #7e7;   }

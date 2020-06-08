@@ -1,20 +1,28 @@
-/* Google Font & Icon */
-@import url('./css/googleFontIcon.css');
 
 /* 汎用部品 */
 @import url("./common.css");
 
-/* 個別部品 */
-@import url("./css/zBtn.css");
-
 /* 機能モジュール */
+@import url("./css/zBtn.css");
 @import url("./css/zHoverDisp.css");
 @import url("./css/zHiddenBlock.css");
+@import url("./css/zBaloon.css");
 
 /* 五峯祭モジュール */
 @import "./css/KGgroup.css";
 @import "./css/KGnews.css";
 @import "./css/KGpickup.css";
+
+/* Google Fonts & Icon */
+@import "./css/googleIcon.css";
+@import "https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap";
+*{
+	font-family: 'Kosugi Maru', sans-serif;
+    font-size:  16px;
+    line-height:    1.25;
+    box-sizing: border-box;
+    transition-duration:	var(--z-anime-duration);
+}
 
 
 /* 変数設定 */
@@ -31,6 +39,9 @@
     --z-anime-duration: 0.4s;
 
     /* 個別部品 */
+    --z-ele-margin:    5px;
+    --z-ele-padding:    5px;
+
     --z-ele-bgcolor:    #ccf;
     
     --z-ele-bgcolor-alt:    #88f;
@@ -39,11 +50,6 @@
 
 
 /* 全般設定 */
-*{
-    font-size:  16px;
-    box-sizing: border-box;
-    transition-duration:	var(--z-anime-duration);
-}
 
 body,
 div#container {
@@ -78,3 +84,8 @@ div#container {
 
 
 
+.zSnapX{
+    display:    flex;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+}
