@@ -95,7 +95,7 @@ div#container {
 /* スマホのみ横スクロール */
 @media screen and (max-width:600px){
     .zSnapX-sp{
-        display:    flex;
+        display:    flex !important;
         scroll-snap-type: x mandatory;
         overflow-x: auto;
     }
