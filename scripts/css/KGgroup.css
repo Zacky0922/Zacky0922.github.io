@@ -3,7 +3,7 @@
 div.KGgpWrapper > div{
     display:    inline-block;
     scroll-snap-align: center;
-    min-width:  70%;
+    min-width:  300px;
     padding:    10px;
     margin: 5px;
     border-radius: 10px;
