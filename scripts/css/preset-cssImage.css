@@ -26,7 +26,24 @@
 			rgba( 255, 255, 255,   0) calc(0 * var(--z-preset-checker-interval)) calc(1 * var(--z-preset-checker-interval)),
 			rgba( 127, 127, 255, 0.4) calc(1 * var(--z-preset-checker-interval)) calc(2 * var(--z-preset-checker-interval))
 		);
-	
+
+	/* ストライプ（斜め縞模様） */
+	/* オレンジ
+	background: var(--z-preset-stripe-orange);
+	*/
+	--z-preset-stripe-orange:
+		repeating-linear-gradient( 45deg,
+			#f80 calc(0 * var(--z-preset-checker-interval)) calc(1 * var(--z-preset-checker-interval)),
+			#fff calc(1 * var(--z-preset-checker-interval)) calc(2 * var(--z-preset-checker-interval))
+		);
+	/* 濃い青
+	background: var(--z-preset-stripe-orange);
+	*/
+	--z-preset-stripe-blue:
+		repeating-linear-gradient( 45deg,
+			#114 calc(0 * var(--z-preset-checker-interval)) calc(1 * var(--z-preset-checker-interval)),
+			#88b calc(1 * var(--z-preset-checker-interval)) calc(2 * var(--z-preset-checker-interval))
+		);
 
 	/*	バーバリー風タータンチェック
 	background: var(--z-preset-burberry);
@@ -62,10 +79,8 @@
 	*/
 	--z-preset-工事中-bg:
 		repeating-linear-gradient( 135deg,
-			#ff6 0px 15px,
-			#888 15px 30px,
-			#ff6 30px 45px,
-			#888 45px 60px
+			#ff6 calc(0 * var(--z-preset-checker-interval)) calc(1 * var(--z-preset-checker-interval)),
+			#888 calc(1 * var(--z-preset-checker-interval)) calc(2 * var(--z-preset-checker-interval))
 		);
 
 	/*	工事中
@@ -91,6 +106,20 @@
 			#66c 0px 1px,
 			transparent 1px 15px
 		);
+
+	/* 木の風味
+	background:	var(--z-preset-likewood);
+	*/
+	--z-preset-likewood:
+		radial-gradient(
+			#ffa600 80%,
+			#8f6200 100%
+			);
+
+
+
+
+
 
 	/* ベタ色は別途設定
 		background: var(--z-preset-bg-sample), #fff;
