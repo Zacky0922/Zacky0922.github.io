@@ -8,6 +8,26 @@
 */
 
 :root{
+	/* 一括設定変数 */
+	/* チェック模様間隔 */
+	--z-preset-checker-interval:	18px;
+
+
+	/* チェック柄 */
+	/* 青
+	background: var(--z-preset-checker-blue);
+	*/
+	--z-preset-checker-blue:
+		repeating-linear-gradient( 0deg,
+			rgba( 255, 255, 255,   0) calc(0 * var(--z-preset-checker-interval)) calc(1 * var(--z-preset-checker-interval)),
+			rgba( 127, 127, 255, 0.4) calc(1 * var(--z-preset-checker-interval)) calc(2 * var(--z-preset-checker-interval))
+		),
+		repeating-linear-gradient( 90deg,
+			rgba( 255, 255, 255,   0) calc(0 * var(--z-preset-checker-interval)) calc(1 * var(--z-preset-checker-interval)),
+			rgba( 127, 127, 255, 0.4) calc(1 * var(--z-preset-checker-interval)) calc(2 * var(--z-preset-checker-interval))
+		);
+	
+
 	/*	バーバリー風タータンチェック
 	background: var(--z-preset-burberry);
 	*/
@@ -40,7 +60,7 @@
 	/*	工事中
 	background: var(--z-preset-unerconstruction-bg);
 	*/
-	--z-preset-unerconstruction-bg:
+	--z-preset-工事中-bg:
 		repeating-linear-gradient( 135deg,
 			#ff6 0px 15px,
 			#888 15px 30px,
@@ -51,7 +71,7 @@
 	/*	工事中
 	background: var(--z-preset-unerconstruction-bg-alpha);
 	*/
-	--z-preset-unerconstruction-bg-alpha:
+	--z-preset-工事中-bg-alpha:
 		repeating-linear-gradient( 135deg,
 			rgba(255, 255, 127, 0.7) 0px 15px,
 			rgba(127, 127, 127, 0.7) 15px 30px,

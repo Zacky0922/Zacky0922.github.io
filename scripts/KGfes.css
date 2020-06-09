@@ -50,14 +50,15 @@
 
 
 /* 全般設定 */
-
+body{
+	background: var(--z-preset-checker-blue);
+}
 body,
 div#container {
 	padding: 0;
 	margin: 0;
 	text-align: center;
 	font-size: large;
-	background: var(--z-bgcolor);
 	color: var(--z-fontcolor);
 }
 

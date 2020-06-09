@@ -6,7 +6,7 @@
   */
   -webkit-text-stroke: 1px rgba(0,0,0,0.3);
   text-stroke:1px rgba(0,0,0,0.3);
-	background: var(--z-preset-unerconstruction-bg);
+	background: var(--z-preset-工事中-bg);
 }
 
 .zPickup{

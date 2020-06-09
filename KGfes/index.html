@@ -52,7 +52,7 @@
 		div#gridWrapper {
 			margin: 5px;
 			display: grid;
-			grid-gap: 10px;
+			grid-gap: 15px;
 			grid-template-columns: 100%;
 			grid-template-areas:
 				"news"
@@ -79,9 +79,11 @@
 
 		div#gridWrapper>section {
 			text-align: left;
-			border: rgba(255, 255, 255, 0.3) 5px solid;
+			border: #ffd 8px solid;
 			border-radius: 10px;
 			padding: 10px;
+			background:	rgba(220,220,255,0.9);
+			box-shadow: 2px 2px 6px rgba(0,0,31,0.75);
 		}
 	</style>
 
@@ -89,6 +91,10 @@
 </head>
 
 <body>
+	<div style="background:url('pict/header.png');background-size:cover;height:23.59vw;min-height:150px;margin:0;padding:10px 30px;text-align:left;color:#fff;text-shadow: 2px 2px 3px rgba(94, 94, 62, 0.7);">
+		<span style="font-size:min(16vw,64px);">第23回 五峯祭</span>（サイト下書き）<br/>
+		<span style="font-size:min(16vw,32px);">2020.09.12-13(Sat-Sun)</span>
+	</div>
 	<div id="gridWrapper">
 		<section style="grid-area:news">
 			<h2>NEWS</h2>
