@@ -11,7 +11,9 @@
 
 /*  */
 
-
+.zCentering{
+    text-align:center;
+}
 .centeringOverflow-x{
     margin:		1px auto;
 	padding:	0;
