@@ -79,7 +79,7 @@ var loadJScounter_loaded = 0;       //読込完了数
 var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == myScripts.length) {
         //全部読込完了
-        debugMsg("master.js:JSloadFunc Complete!");
+        debugMsg("master.js:JSloadFunc [" + loadJScounter_loaded +"] Complete!");
         clearInterval(JSloadFunc);
     } else if (loadJScounter_setScriptTag == loadJScounter_loaded) {
         //既設置分、読込完了
