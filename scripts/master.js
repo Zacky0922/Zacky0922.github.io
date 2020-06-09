@@ -67,9 +67,11 @@ function getOnline() {
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
-    "setTab.js",
-    "txReplace.js",
-    "date.js"
+    "js/setTab.js",
+    "js/txReplace.js",
+    "js/date.js",
+    "ext-js/jquery-3.5.1.min.js",
+    "ext-js/rssread.js"
 ];
 var loadJScounter_setScriptTag = 0; //タグ設置数
 var loadJScounter_loaded = 0;       //読込完了数
@@ -83,7 +85,7 @@ var JSloadFunc = setInterval(function () {
         //既設置分、読込完了
         var myScript = document.createElement("script");
         myScript.type = "text/javascript";
-        myScript.src = getParam["lv"] + "scripts/js/" + myScripts[loadJScounter_setScriptTag++];
+        myScript.src = getParam["lv"] + "scripts/" + myScripts[loadJScounter_setScriptTag++];
         document.head.appendChild(myScript);
     }else{
         return;
