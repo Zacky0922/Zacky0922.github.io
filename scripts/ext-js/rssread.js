@@ -23,7 +23,9 @@ jQuery( function() {
 			dataType: 'xml' ,
 			async: true ,
 			cache: false ,
-			error: function(){ alert('RSS読み込みエラーです。' + datasrc ); } ,
+			error: function () {
+				//alert('RSS読み込みエラーです。' + datasrc);
+			},
 			success: function( xml ){
 				var loop = '';
 				// ATOM
