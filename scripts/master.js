@@ -66,6 +66,7 @@ function getOnline() {
     loadJScounter_loaded++;
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 debugMsg("JS loader");
+
 var loadJScounter_loaded = 0;
 
 //読込ファイルリスト（自作分のみ）
@@ -82,19 +83,23 @@ var extScripts = [
     "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
 ];
 
+//読込
+function jsLoader(mySrc) {
+    if (false) {
+        var myScript = document.createElement("script");
+        myScript.type = "text/javascript";
+        myScript.src = mySrc;
+        document.head.appendChild(myScript);
+    } else {
+        document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
+    }
+    debugMsg("// js loading - " + mySrc);
+}
 for (var i = 0; i < extScripts.length; i++) {
-    var extScript = document.createElement("script");
-    extScript.type = "text/javascript";
-    extScript.src = extScripts[i];
-    document.head.appendChild(extScript);
-    debugMsg("// js loading - " + extScripts[i]);
+    jsLoader(extScripts[i]);
 }
 for (var i = 0; i < myScripts.length; i++) {
-    var myScript = document.createElement("script");
-    myScript.type = "text/javascript";
-    myScript.src = getParam["lv"] + "scripts/" + myScripts[i];
-    document.head.appendChild(myScript);
-    debugMsg("// js loading - " + myScripts[i]);
+    jsLoader(getParam["lv"] + "scripts/" + myScripts[i]);
 }
 
 var JSloadFunc = setInterval(function () {
