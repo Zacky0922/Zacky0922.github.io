@@ -114,7 +114,8 @@
 			<h2>Pick Up</h2>
 			<div class="zCentering">
 				<div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:10px;">
-					<iframe style="width:500px;height:315px;max-width:100%" src="https://www.youtube.com/embed/IFPyjCgvYhA" frameborder="0"
+					<iframe style="width:500px;height:315px;max-width:100%"
+						src="https://www.youtube.com/embed/IFPyjCgvYhA" frameborder="0"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen></iframe>
 				</div>
@@ -178,17 +179,16 @@
 						onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}"
 						onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('undisp')}" />
 					<div class="undisp">
-							<h3>作業進行状況</h3>
-							<a class="zBtn" target="_blank"
-								href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
-							<div class="centeringOverflow-x">
-								<iframe
-									src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=NjNxcnBqbzd2bm9vbmkyZWhkcGw1dHZtMDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Z3ZsOGQ5cmZmczc1MHVwZGdua3FmOTR2cjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWYwMzhqa2w0ZTRnNGh2NjFtaXR0cm1ibTUwa25ydHVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB&amp;color=%23F09300&amp;color=%23616161&amp;showNav=1&amp;showDate=1&amp;title=KG%E4%BA%94%E5%B3%AF%E7%A5%AD2020"
-									style="border:solid 1px #777" width="800" height="600" frameborder="0"
-									scrolling="no"></iframe>
-							</div>
+						<h3>作業進行状況</h3>
+						<a class="zBtn" target="_blank" href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
+						<div class="centeringOverflow-x">
+							<iframe
+								src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=NjNxcnBqbzd2bm9vbmkyZWhkcGw1dHZtMDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Z3ZsOGQ5cmZmczc1MHVwZGdua3FmOTR2cjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWYwMzhqa2w0ZTRnNGh2NjFtaXR0cm1ibTUwa25ydHVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB&amp;color=%23F09300&amp;color=%23616161&amp;showNav=1&amp;showDate=1&amp;title=KG%E4%BA%94%E5%B3%AF%E7%A5%AD2020"
+								style="border:solid 1px #777" width="800" height="600" frameborder="0"
+								scrolling="no"></iframe>
+						</div>
 						<h3>出展団体向けテンプレート</h3>
-						<p>以下のテンプレートなら、言ってもらえれば使えます。<br/>他にも、「こんなテンプレートがあると便利」等の要望があれば、お気軽にどうぞ。</p>
+						<p>以下のテンプレートなら、言ってもらえれば使えます。<br />他にも、「こんなテンプレートがあると便利」等の要望があれば、お気軽にどうぞ。</p>
 						<h3>画像展示向け：額縁的な</h3>
 						<div class="KGgallery">
 							<div style="background:#fff;width:200px;height:200px"></div>
@@ -200,7 +200,6 @@
 								height: 200px;
 								margin: 5px;
 							}
-
 						</style>
 						<h3>ホログラム風（表彰向け？）：ビック○マンのレアシール的な</h3>
 						<div class="sample">
@@ -209,17 +208,41 @@
 							<div style="background:var(--z-preset-holo-silver);"></div>
 							<div style="background:var(--z-preset-holo-bronze);"></div>
 						</div>
-						<div style="text-stroke:1px #000;-webkit-text-stroke:1px #000;font-size:3em;" class="zTextmask">文字背景を装飾画像に■◆●</div>
+						<div style="text-stroke:1px #000;-webkit-text-stroke:1px #000;font-size:3em;" class="zTextmask">
+							文字背景を装飾画像に■◆●</div>
 						<div class="sample">
 							<div style="background:var(--z-preset-transparent-bg)"></div>
 						</div>
 						<h3>実験用</h3>
 						<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
 						<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
+						<h3>jQuery</h3>
+						<div id="jQueryCheck">jQuery is NOT ready.</div><script>
+							$(function () {
+								// if document is ready
+								$("#jQueryCheck").empty();
+								$("#jQueryCheck").append("jQuery is ready.(OK)");
+							});
+						</script>
+						<h3>abc.js</h3>
+						<div>
+							<div class="score">
+								L:1/4
+								CDEFGABc
+							</div>
+							<div class="score">
+								M:4/4
+								L:1/8
+								K:C
+								V:1
+								"C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
+								V:2 bass
+								C,G,F,G, r
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
 		</section>
 
 	</div><!-- /container -->

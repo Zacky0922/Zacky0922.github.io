@@ -29,7 +29,7 @@ function getParam() {
         var paramName = decodeURIComponent(element[0]);
         var paramValue = decodeURIComponent(element[1]);
         param[paramName] = paramValue;
-        debugMsg(" // param[" + paramName + "] = " + paramValue);
+        debugMsg("// param[" + paramName + "] = " + paramValue);
     }
 
     //受取変数の個別処理
@@ -71,7 +71,8 @@ var myScripts = [
     "js/txReplace.js",
     "js/date.js",
     "ext-js/jquery-3.5.1.min.js",
-    "ext-js/rssread.js"
+    "ext-js/abcjs/abcjs_basic_5.9.1-min.js",
+    "ext-js/abcjs/abcjs_basic_midi_3.2.1-min.js"
 ];
 var loadJScounter_setScriptTag = 0; //タグ設置数
 var loadJScounter_loaded = 0;       //読込完了数
@@ -82,6 +83,7 @@ var JSloadFunc = setInterval(function () {
         debugMsg("master.js:JSloadFunc [" + loadJScounter_loaded +"] Complete!");
         clearInterval(JSloadFunc);
     } else if (loadJScounter_setScriptTag == loadJScounter_loaded) {
+        debugMsg("// js loading - " + myScripts[loadJScounter_setScriptTag]);
         //既設置分、読込完了
         var myScript = document.createElement("script");
         myScript.type = "text/javascript";
@@ -92,3 +94,25 @@ var JSloadFunc = setInterval(function () {
     }
 }, 50);
 
+var extScripts = [
+    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
+];
+var extLoadJScounter_setScriptTag = 0; //タグ設置数
+var extLoadJScounter_loaded = 0;       //読込完了数
+
+var extJSloadFunc = setInterval(function () {
+    if (extLoadJScounter_loaded == extScripts.length) {
+        //全部読込完了
+        debugMsg("master.js:JSloadFunc [" + extLoadJScounter_loaded + "] Complete!");
+        clearInterval(JSloadFunc);
+    } else if (extLoadJScounter_setScriptTag == extLoadJScounter_loaded) {
+        debugMsg("// js loading - " + extScripts[extLoadJScounter_setScriptTag]);
+        //既設置分、読込完了
+        var myScript = document.createElement("script");
+        myScript.type = "text/javascript";
+        myScript.src = extScripts[extLoadJScounter_setScriptTag++];
+        document.head.appendChild(myScript);
+    } else {
+        return;
+    }
+}, 50);
