@@ -66,14 +66,10 @@
 			div#gridWrapper {
 				max-width: 100%;
 				grid-template-columns: 3fr minmax(max-content, 1fr);
-				-moz-grid-template-areas:
-					"pickup news"
-					"groups groups"
-					"ft ft";
 				grid-template-areas:
 					"pickup news"
-					"groups groups"
-					"ft ft";
+					"ft ft"
+					"groups groups";
 			}
 		}
 
@@ -182,8 +178,8 @@
 						onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}"
 						onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('undisp')}" />
 					<div class="undisp">
-						<div>
-							作業進行状況<a class="zBtn" target="_blank"
+							<h3>作業進行状況</h3>
+							<a class="zBtn" target="_blank"
 								href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
 							<div class="centeringOverflow-x">
 								<iframe
@@ -191,7 +187,6 @@
 									style="border:solid 1px #777" width="800" height="600" frameborder="0"
 									scrolling="no"></iframe>
 							</div>
-						</div>
 						<h3>出展団体向けテンプレート</h3>
 						<p>以下のテンプレートなら、言ってもらえれば使えます。<br/>他にも、「こんなテンプレートがあると便利」等の要望があれば、お気軽にどうぞ。</p>
 						<h3>画像展示向け：額縁的な</h3>
@@ -205,14 +200,17 @@
 								height: 200px;
 								margin: 5px;
 							}
+
 						</style>
-						<h3>ホログラム風CSS（表彰に使えるテンプレート？）：ビック○マンのレアシール的な</h3>
+						<h3>ホログラム風（表彰向け？）：ビック○マンのレアシール的な</h3>
 						<div class="sample">
-							<div style="background:var(--z-preset-holo);background-size:20px 20px, 100% 100%;"></div>
-							<div style="background:var(--z-preset-holo-gold);background-size:20px 20px, 100% 100%;"></div>
-							<div style="background:var(--z-preset-holo-silver);background-size:20px 20px, 100% 100%;"></div>
-							<div style="background:var(--z-preset-holo-bronze);background-size:20px 20px, 100% 100%;"></div>
+							<div style="background:var(--z-preset-holo);"></div>
+							<div style="background:var(--z-preset-holo-gold);"></div>
+							<div style="background:var(--z-preset-holo-silver);"></div>
+							<div style="background:var(--z-preset-holo-bronze);"></div>
 						</div>
+						<div style="background:var(--z-preset-holo);background-clip:text;-webkit-background-clip:text;color:transparent;font-weight:bolder;font-size:3em;text-stroke:1px #000;-webkit-text-stroke:1px #000;">文字背景を装飾画像にできます■◆■</div>
+
 						<h3>実験用</h3>
 						<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
 						<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
@@ -223,6 +221,7 @@
 		</section>
 
 	</div><!-- /container -->
+	<footer>(c) Kokusai Gakuin Junior & Senior High School 2020</footer>
 </body>
 
 </html>
