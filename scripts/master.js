@@ -96,7 +96,7 @@ for (var i = 0; i < myScripts.length; i++) {
     document.head.appendChild(myScript);
     debugMsg("// js loading - " + myScripts[i]);
 }
-
+/*
 var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == myScripts.length) {
         //全部読込完了
@@ -107,6 +107,19 @@ var JSloadFunc = setInterval(function () {
         return;
     }
 }, 50);
+*/
+for (var i = 0; i < 1; ){}
+if (loadJScounter_loaded == myScripts.length) {
+    //全部読込完了
+    debugMsg("master.js:JSloadFunc [" + loadJScounter_loaded + "] Complete!");
+    //clearInterval(JSloadFunc);
+    i++;
+    zOnload();
+} else {
+    return;
+}
+}
+
 
 //各種js読込完了後、実行
 function zOnload() {
