@@ -117,9 +117,38 @@
 			);
 
 
-
-
-
+	/*	ホログラム */
+	/* マスク素材 */
+	--z-preset-holo-mask:
+		conic-gradient(from -45deg,
+			rgba(127,127,127,0.9) 0%,
+			rgba(191,191,191,0.5) 12.5%,
+			rgba(255,255,255,0.9) 25%,
+			rgba(191,191,191,0.5) 37.5%,
+			rgba(127,127,127,0.9) 50%,
+			rgba(191,191,191,0.5) 62.5%,
+			rgba(255,255,255,0.9) 75%,
+			rgba(191,191,191,0.5) 87.5%,
+			rgba(127,127,127,0.9) 100%
+			);
+	/*	
+	background:var(); background-size:20px 20px, 100% 100%;
+	*/
+	/*	虹色ホログラム	*/
+	--z-preset-holo:
+		var(--z-preset-holo-mask),
+		linear-gradient(135deg,
+			#f00 0%,
+			#ff0 30%,
+			#0f0 43%,
+			#0ff 57%,
+			#00f 70%,
+			#f0f 100%
+		);
+	/* 金銀銅ホログラム */
+	--z-preset-holo-gold:	var(--z-preset-holo-mask),#ff0;
+	--z-preset-holo-silver:	var(--z-preset-holo-mask),#888;
+	--z-preset-holo-bronze:	var(--z-preset-holo-mask),#f80;
 
 	/* ベタ色は別途設定
 		background: var(--z-preset-bg-sample), #fff;
