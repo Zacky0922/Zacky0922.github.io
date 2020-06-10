@@ -71,7 +71,7 @@ var loadJScounter_loaded = 0;
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
     "ext-js/abcjs/abcjs_basic_5.9.1-min.js",
-    "ext-js/abcjs/abcjs_basic_midi_3.2.1-min.js",
+    "ext-js/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
     "ext-js/jquery-3.5.1.min.js",
     "js/setTab.js",
     "js/txReplace.js",
@@ -119,13 +119,15 @@ function zOnload() {
         var myScr = document.createElement("div");
         myScr.id = "score_" + i;
         myScore[i].appendChild(myScr);
-
+        ABCJS.renderAbc("score_" + i, myScript);
+        /*
+        //midi関連処理
         var myMid = document.createElement("div");
         myMid.id = "midi_" + i;
         myScore[i].appendChild(myMid);
 
-        ABCJS.renderAbc("score_" + i, myScript);
         ABCJS.renderMidi("midi_" + i, myScript, {}, { generateInline: true }, {});
+        */
     }
 
 
