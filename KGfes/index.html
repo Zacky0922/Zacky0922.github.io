@@ -82,8 +82,8 @@
 			border: #ffd 8px solid;
 			border-radius: 10px;
 			padding: 10px;
-			background:	rgba(220,220,255,0.9);
-			box-shadow: 2px 2px 6px rgba(0,0,31,0.75);
+			background: rgba(220, 220, 255, 0.9);
+			box-shadow: 2px 2px 6px rgba(0, 0, 31, 0.75);
 		}
 	</style>
 
@@ -92,14 +92,20 @@
 
 <body>
 	<div class="zUnderconstruction" style="text-align:center;font-size:3em;">準備中</div>
-	<div style="background:url('pict/header.png');background-size:cover;background-position:center center;height:23.59vw;min-height:150px;max-height:300px;margin:0;padding:10px;text-align:left;color:#fff;text-shadow: 2px 2px 3px rgba(94, 94, 62, 0.7);">
-		<span style="font-size:min(16vw,64px);">第23回 五峯祭</span>（サイト下書き）<br/>
+	<div
+		style="background:url('pict/header.png');background-size:cover;background-position:center center;height:23.59vw;min-height:150px;max-height:300px;margin:0;padding:10px;text-align:left;color:#fff;text-shadow: 2px 2px 3px rgba(94, 94, 62, 0.7);">
+		<span style="font-size:min(16vw,64px);">第23回 五峯祭</span>（サイト下書き）<br />
 		<span style="font-size:min(16vw,32px);">2020.09.12-13(Sat-Sun)</span>
 	</div>
 	<div id="gridWrapper">
 		<section style="grid-area:news">
 			<h2>NEWS</h2>
 			<ul class="news">
+				<li>
+					<span>06.10</span>
+					<span>出展者</span><br />
+					<span>WEBテンプレ掲載（参加団体専用）</span>
+				</li>
 				<li>
 					<span>06.08</span>
 					<span>運営</span><br />
@@ -111,16 +117,18 @@
 		<section style="grid-area:pickup">
 			<h2>Pick Up</h2>
 			<div class="zCentering">
-			<div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:10px;">
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/IFPyjCgvYhA" frameborder="0"
-				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			</div>
+				<div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:10px;">
+					<iframe style="width:500px;height:315px;max-width:100%" src="https://www.youtube.com/embed/IFPyjCgvYhA" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</div>
 			</div>
 		</section>
 
 
 		<section style="grid-area:groups">
-			<div class="KGgpWrapper zSnapX-sp" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px,300px));">
+			<div class="KGgpWrapper zSnapX-sp"
+				style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px,300px));">
 				<div class="演劇 中学">
 					<h3>中学</h3>
 					<h4>演劇</h4>
@@ -165,48 +173,56 @@
 				</div>
 
 			</div>
-			<h3>sample</h3>
-			<div class="KGgallery">
-				<div style="background:#fff;width:200px;height:200px">額縁風？<br/>画像系の展示はこんな雰囲気かな？</div>
-			</div>
-			<style>
-				.sample > *{
-					display:inline-block;
-					width:		200px;
-					height:		200px;
-					margin:		5px;
-				}
-			</style>
-			<h3>ホログラム風CSS（表彰に使えるテンプレート？）：ビック○マンのレアシール的な</h3>
-			<div class="sample">
-				<div style="background:var(--z-preset-holo);background-size:20px 20px, 100% 100%;"></div>
-				<div style="background:var(--z-preset-holo-gold);background-size:20px 20px, 100% 100%;"></div>
-				<div style="background:var(--z-preset-holo-silver);background-size:20px 20px, 100% 100%;"></div>
-				<div style="background:var(--z-preset-holo-bronze);background-size:20px 20px, 100% 100%;"></div>
-			</div>
+
 		</section>
 		<section style="grid-area:ft">
-		<div>
 			<div>
-				<input type="text" size="30" style="max-width:95%;" placeholder="参加団体専用"
-					onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}"
-					onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('undisp')}" />
-				<div class="undisp">
-					<div>
-						作業進行状況<a class="zBtn" target="_blank" href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
-						<div class="centeringOverflow-x">
-							<iframe
-								src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=NjNxcnBqbzd2bm9vbmkyZWhkcGw1dHZtMDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Z3ZsOGQ5cmZmczc1MHVwZGdua3FmOTR2cjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWYwMzhqa2w0ZTRnNGh2NjFtaXR0cm1ibTUwa25ydHVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB&amp;color=%23F09300&amp;color=%23616161&amp;showNav=1&amp;showDate=1&amp;title=KG%E4%BA%94%E5%B3%AF%E7%A5%AD2020"
-								style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+				<div>
+					<input type="text" size="30" style="max-width:95%;" placeholder="参加団体専用"
+						onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}"
+						onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('undisp')}" />
+					<div class="undisp">
+						<div>
+							作業進行状況<a class="zBtn" target="_blank"
+								href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
+							<div class="centeringOverflow-x">
+								<iframe
+									src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=NjNxcnBqbzd2bm9vbmkyZWhkcGw1dHZtMDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Z3ZsOGQ5cmZmczc1MHVwZGdua3FmOTR2cjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWYwMzhqa2w0ZTRnNGh2NjFtaXR0cm1ibTUwa25ydHVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB&amp;color=%23F09300&amp;color=%23616161&amp;showNav=1&amp;showDate=1&amp;title=KG%E4%BA%94%E5%B3%AF%E7%A5%AD2020"
+									style="border:solid 1px #777" width="800" height="600" frameborder="0"
+									scrolling="no"></iframe>
+							</div>
 						</div>
+						<h3>出展団体向けテンプレート</h3>
+						<p>以下のテンプレートなら、言ってもらえれば使えます。</p>
+						<h3>画像展示向け：額縁的な</h3>
+						<div class="KGgallery">
+							<div style="background:#fff;width:200px;height:200px"></div>
+						</div>
+						<style>
+							.sample>* {
+								display: inline-block;
+								width: 200px;
+								height: 200px;
+								margin: 5px;
+							}
+						</style>
+						<h3>ホログラム風CSS（表彰に使えるテンプレート？）：ビック○マンのレアシール的な</h3>
+						<div class="sample">
+							<div style="background:var(--z-preset-holo);background-size:20px 20px, 100% 100%;"></div>
+							<div style="background:var(--z-preset-holo-gold);background-size:20px 20px, 100% 100%;">
+							</div>
+							<div style="background:var(--z-preset-holo-silver);background-size:20px 20px, 100% 100%;">
+							</div>
+							<div style="background:var(--z-preset-holo-bronze);background-size:20px 20px, 100% 100%;">
+							</div>
+						</div>
+						<h3>実験用</h3>
+						<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
+						<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
 					</div>
-		<h3>実験用</h3>
-		<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
-		<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
 				</div>
 			</div>
-		</div>
-		
+
 		</section>
 
 	</div><!-- /container -->
