@@ -111,7 +111,7 @@ var JSloadFunc = setInterval(function () {
 function zOnload() {
     //abc.js描画実行
     var myScore = document.getElementsByClassName("score");
-    ABCJS.midi.soundfontUrl = getParam["lv"] + "scripts/ext-js/abcjs/";
+    //ABCJS.midi.soundfontUrl = getParam["lv"] + "scripts/ext-js/abcjs/";
     for (var i = 0; i < myScore.length; i++) {
         var myScript = myScore[i].innerHTML;
         myScore[i].innerHTML = "";
