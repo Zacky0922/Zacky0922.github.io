@@ -72,12 +72,13 @@ var loadJScounter_loaded = 0;
 var myScripts = [
     "ext-js/abcjs/abcjs_basic_5.9.1-min.js",
     //"ext-js/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
-    "ext-js/jquery-3.5.1.min.js",
+    //"ext-js/jquery-3.5.1.min.js",
     "js/setTab.js",
     "js/txReplace.js",
     "js/date.js"
 ];
 var extScripts = [
+    "https://code.jquery.com/jquery-3.4.1.min.js",
     "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
 ];
 
