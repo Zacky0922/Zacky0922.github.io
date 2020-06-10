@@ -65,54 +65,70 @@ function getOnline() {
     被読込ファイル冒頭に、必ず以下を記載
     loadJScounter_loaded++;
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+debugMsg("JS loader");
+var loadJScounter_loaded = 0;
+
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
+    "ext-js/abcjs/abcjs_basic_5.9.1-min.js",
+    "ext-js/abcjs/abcjs_basic_midi_3.2.1-min.js",
+    "ext-js/jquery-3.5.1.min.js",
     "js/setTab.js",
     "js/txReplace.js",
-    "js/date.js",
-    "ext-js/jquery-3.5.1.min.js",
-    "ext-js/abcjs/abcjs_basic_5.9.1-min.js",
-    "ext-js/abcjs/abcjs_basic_midi_3.2.1-min.js"
+    "js/date.js"
 ];
-var loadJScounter_setScriptTag = 0; //タグ設置数
-var loadJScounter_loaded = 0;       //読込完了数
+var extScripts = [
+    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
+];
+
+for (var i = 0; i < myScripts.length;i++){
+    var myScript = document.createElement("script");
+    myScript.type = "text/javascript";
+    myScript.src = getParam["lv"] + "scripts/" + myScripts[i];
+    document.head.appendChild(myScript);
+    debugMsg("// js loading - " + myScripts[i]);
+}
+for (var i = 0; i < extScripts.length; i++) {
+    var extScript = document.createElement("script");
+    extScript.type = "text/javascript";
+    extScript.src = extScripts[i];
+    document.head.appendChild(extScript);
+    debugMsg("// js loading - " + extScripts[i]);
+}
 
 var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == myScripts.length) {
         //全部読込完了
         debugMsg("master.js:JSloadFunc [" + loadJScounter_loaded +"] Complete!");
         clearInterval(JSloadFunc);
-    } else if (loadJScounter_setScriptTag == loadJScounter_loaded) {
-        debugMsg("// js loading - " + myScripts[loadJScounter_setScriptTag]);
-        //既設置分、読込完了
-        var myScript = document.createElement("script");
-        myScript.type = "text/javascript";
-        myScript.src = getParam["lv"] + "scripts/" + myScripts[loadJScounter_setScriptTag++];
-        document.head.appendChild(myScript);
+        zOnload();
     }else{
         return;
     }
 }, 50);
 
-var extScripts = [
-    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
-];
-var extLoadJScounter_setScriptTag = 0; //タグ設置数
-var extLoadJScounter_loaded = 0;       //読込完了数
+//各種js読込完了後、実行
+function zOnload() {
+    //abc.js描画実行
+    var myScore = document.getElementsByClassName("score");
+    ABCJS.midi.soundfontUrl = getParam["lv"] + "scripts/ext-js/abcjs/";
+    for (var i = 0; i < myScore.length; i++) {
+        var myScript = myScore[i].innerHTML;
+        myScore[i].innerHTML = "";
 
-var extJSloadFunc = setInterval(function () {
-    if (extLoadJScounter_loaded == extScripts.length) {
-        //全部読込完了
-        debugMsg("master.js:JSloadFunc [" + extLoadJScounter_loaded + "] Complete!");
-        clearInterval(JSloadFunc);
-    } else if (extLoadJScounter_setScriptTag == extLoadJScounter_loaded) {
-        debugMsg("// js loading - " + extScripts[extLoadJScounter_setScriptTag]);
-        //既設置分、読込完了
-        var myScript = document.createElement("script");
-        myScript.type = "text/javascript";
-        myScript.src = extScripts[extLoadJScounter_setScriptTag++];
-        document.head.appendChild(myScript);
-    } else {
-        return;
+        var myScr = document.createElement("div");
+        myScr.id = "score_" + i;
+        myScore[i].appendChild(myScr);
+
+        var myMid = document.createElement("div");
+        myMid.id = "midi_" + i;
+        myScore[i].appendChild(myMid);
+
+        ABCJS.renderAbc("score_" + i, myScript);
+        ABCJS.renderMidi("midi_" + i, myScript, {}, { generateInline: true }, {});
     }
-}, 50);
+
+
+
+
+}
