@@ -1,7 +1,6 @@
 ul.news{
     padding:    0;
     list-style: none;
-    max-height: min(30vh,30%);
     overflow-y: auto;
 }
 ul.news li{
@@ -21,6 +20,8 @@ ul.news li span:nth-child(2){
 
 @media screen and (min-width:600px){
     ul.news li > br{
+        /*
         display:none;
+        */
     }
 }
