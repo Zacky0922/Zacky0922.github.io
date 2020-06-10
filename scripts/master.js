@@ -82,19 +82,19 @@ var extScripts = [
     "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
 ];
 
-for (var i = 0; i < myScripts.length;i++){
-    var myScript = document.createElement("script");
-    myScript.type = "text/javascript";
-    myScript.src = getParam["lv"] + "scripts/" + myScripts[i];
-    document.head.appendChild(myScript);
-    debugMsg("// js loading - " + myScripts[i]);
-}
 for (var i = 0; i < extScripts.length; i++) {
     var extScript = document.createElement("script");
     extScript.type = "text/javascript";
     extScript.src = extScripts[i];
     document.head.appendChild(extScript);
     debugMsg("// js loading - " + extScripts[i]);
+}
+for (var i = 0; i < myScripts.length; i++) {
+    var myScript = document.createElement("script");
+    myScript.type = "text/javascript";
+    myScript.src = getParam["lv"] + "scripts/" + myScripts[i];
+    document.head.appendChild(myScript);
+    debugMsg("// js loading - " + myScripts[i]);
 }
 
 var JSloadFunc = setInterval(function () {
