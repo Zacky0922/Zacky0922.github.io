@@ -71,7 +71,7 @@ var loadJScounter_loaded = 0;
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
     "ext-js/abcjs/abcjs_basic_5.9.1-min.js",
-    "ext-js/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
+    //"ext-js/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
     "ext-js/jquery-3.5.1.min.js",
     "js/setTab.js",
     "js/txReplace.js",
