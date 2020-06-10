@@ -45,6 +45,15 @@
 			#88b calc(1 * var(--z-preset-checker-interval)) calc(2 * var(--z-preset-checker-interval))
 		);
 
+
+	/*	市松模様	*/
+	/*	透明bg	*/
+	--z-preset-transparent-bg:
+		repeating-conic-gradient( 
+			#fff 0deg 90deg,
+			#bbb 90deg 180deg
+			) left top / 20px 20px;
+
 	/*	バーバリー風タータンチェック
 	background: var(--z-preset-burberry);
 	*/
@@ -167,4 +176,12 @@
 		var(--z-preset-holo-mask) top left / 25px 25px,#888;
 	--z-preset-holo-bronze:	
 		var(--z-preset-holo-mask) top left / 25px 25px,#f80;
+}
+
+
+.z工事中{
+    color:  #fff;
+	-webkit-text-stroke: 1px #000;
+	text-stroke:1px #000;
+	background: var(--z-preset-工事中-bg);
 }
