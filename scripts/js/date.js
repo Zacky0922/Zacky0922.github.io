@@ -28,3 +28,28 @@ function countDays(y, m, d, Dspan = 1) {
     }
     
 }
+
+
+
+function countdownTimer(ele,y,m,d,hr,min){
+
+    var targetday = new Date(y, m - 1, d, hr, min);
+
+    var _countdownTimer = setInterval(function () {
+        var today = new Date();
+        var diff = Math.ceil(
+            (targetday.getTime() - today.getTime())/1000
+            );    //sec
+        var sec = diff % 60;
+        min = (diff -= sec)%(60*60);
+        min /= 60;
+        hr = (diff -= min*60)%(24*60*60);
+        hr /= 60*60;
+        d = (diff-=hr*60*60) / (24*60*60);
+        ele.innerHTML = d + "日"+hr+"時間"+min+"分"+sec+"秒";
+    }, 166);
+    
+    //var days = Math.ceil(diff / (24*60*60));
+    //var sec = (diff - days*24*60);
+
+}
