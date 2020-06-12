@@ -10,7 +10,7 @@
     margin: 5px;
     min-width:  80px;
     vertical-align: middle;
-
+    transition-duration:	var(--z-anime-duration);
 
 }
 .zBtn:hover{

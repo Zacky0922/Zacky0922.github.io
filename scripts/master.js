@@ -48,7 +48,6 @@ function getParam() {
 var getParam = getParam();
 
 
-
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     オンライン状況取得
     online  = true
@@ -57,7 +56,6 @@ var getParam = getParam();
 function getOnline() {
     return (location.href.indexOf("http") > -1);
 }
-
 
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
@@ -72,15 +70,16 @@ var loadJScounter_loaded = 0;
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
     "ext-js/abcjs/abcjs_basic_5.9.1-min.js",
-    //"ext-js/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
-    //"ext-js/jquery-3.5.1.min.js",
+    "ext-js/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
+    "ext-js/jquery-3.5.1.min.js",
     "js/setTab.js",
     "js/txReplace.js",
     "js/date.js"
 ];
 var extScripts = [
     "https://code.jquery.com/jquery-3.4.1.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
+    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML",
+    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css"
 ];
 
 //読込
@@ -107,7 +106,7 @@ var JSloadFunc = setInterval(function () {
         //全部読込完了
         debugMsg("master.js:JSloadFunc [" + loadJScounter_loaded +"] Complete!");
         clearInterval(JSloadFunc);
-        zOnload();
+        
     }else{
         return;
     }
@@ -149,8 +148,31 @@ function zOnload() {
         ABCJS.renderMidi("midi_" + i, myScript, {}, { generateInline: true }, {});
         */
     }
-
-
-
-
 }
+
+
+
+window.addEventListener('load', (event) => {
+
+    // init
+    zOnload();
+
+    //五峯祭フォーマット
+    if (getParam["mode"] == "kgfes") {
+        var ele = document.createElement("div");
+        ele.classList.add("z工事中");
+        ele.innerHTML = "準備中";
+        ele.style = "font-size:3em;text-align:center";
+        document.body.prepend(ele);
+
+        var myHeader = document.createElement("header");
+        myHeader.innerHTML = '<span style="font-size: min(16vw, 64px); ">第23回 五峯祭</span>（サイト下書き）<br />' +
+            '<span style="font-size:min(16vw,32px);"> 2020.09.12-13(Sat-Sun)</span >"';
+        document.body.prepend(myHeader);
+
+        var myFooter = document.createElement("footer");
+        myFooter.innerHTML = '<a href="https://jsh.kgef.ac.jp/">Kokusai Gakuin Junior & Senior High School</a> 2020';
+        document.body.appendChild(myFooter);
+
+    }
+});

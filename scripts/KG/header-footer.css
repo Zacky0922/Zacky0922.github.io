@@ -1,0 +1,19 @@
+header{
+    background: url("../../KGfes/pict/header.png");
+    background-size:    cover;
+    background-position: center center;
+    height: 24vw;
+    min-height: 150px;
+    max-height: 300px;
+    margin:     0;
+    padding:    10px;
+    text-align: left;
+    color:  #fff;
+    text-shadow:    2px 2px 3px rgba(94,94,62,0.7);
+}
+footer{
+    background:  #114;
+    color:  #fff;
+    padding:    10px 0;
+
+}

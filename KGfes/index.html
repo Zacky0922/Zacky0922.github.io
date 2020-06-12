@@ -45,7 +45,7 @@
 	</script>
 
 	<!-- JS/CSS master -->
-	<script type="text/javascript" src="../scripts/master.js?lv=1"></script>
+	<script type="text/javascript" src="../scripts/master.js?lv=1&mode=kgfes"></script>
 	<link rel="stylesheet" type="text/css" href="../scripts/KGfes.css" />
 
 	<style>
@@ -79,7 +79,7 @@
 			border-radius: 10px;
 			padding: 10px;
 			background: rgba(220, 220, 255, 0.9);
-			box-shadow: 2px 2px 6px rgba(0, 0, 31, 0.75);
+			box-shadow: 3px 3px 5px #002;
 		}
 	</style>
 
@@ -87,12 +87,6 @@
 </head>
 
 <body>
-	<div class="z工事中" style="text-align:center;font-size:3em;">準備中</div>
-	<div
-		style="background:url('pict/header.png');background-size:cover;background-position:center center;height:23.59vw;min-height:150px;max-height:300px;margin:0;padding:10px;text-align:left;color:#fff;text-shadow: 2px 2px 3px rgba(94, 94, 62, 0.7);">
-		<span style="font-size:min(16vw,64px);">第23回 五峯祭</span>（サイト下書き）<br />
-		<span style="font-size:min(16vw,32px);">2020.09.12-13(Sat-Sun)</span>
-	</div>
 	<div id="gridWrapper">
 		<section style="grid-area:news">
 			<h2>NEWS</h2>
@@ -188,7 +182,9 @@
 								scrolling="no"></iframe>
 						</div>
 						<h3>出展団体向けテンプレート</h3>
-						<p>以下のテンプレートなら、言ってもらえれば使えます。<br />他にも、「こんなテンプレートがあると便利」等の要望があれば、お気軽にどうぞ。</p>
+						<p>以下のテンプレートなら、言ってもらえれば使えます。<br />
+							他にも、「こんなテンプレートがあると便利」等の要望があれば、お気軽にどうぞ。<br/>
+							現在、Google Chrome[PC/Android]でのみ動作確認済み（順次、各種ブラウザのベンダープレフィックス対応します）</p>
 						<h3>画像展示向け：額縁的な</h3>
 						<div class="KGgallery">
 							<div style="background:#fff;width:200px;height:200px"></div>
@@ -214,35 +210,39 @@
 							<div style="background:var(--z-preset-transparent-bg)"></div>
 						</div>
 						<h3>実験用</h3>
-						<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
-						<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
-						<h3>jQuery</h3>
-						<div id="jQueryCheck">jQuery is NOT ready.</div><script>
-							$(function () {
-								// if document is ready
-								$("#jQueryCheck").empty();
-								$("#jQueryCheck").append("jQuery is ready.(OK)");
-							});
-						</script>
-						<h3>abc.js</h3>
-						<div>
-							<div class="score">
-								L:1/4
-								CDEFGABc
+						<a class="zBtn" onclick="document.getElementById('zOptioncheck').classList.toggle('undisp')">Option tools check</a>
+						<div class="undisp" id="zOptioncheck">
+							<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
+							<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
+							<h3>jQuery</h3>
+							<div id="jQueryCheck">jQuery is NOT ready.</div>
+							<script>
+								$(function () {
+									// if document is ready
+									$("#jQueryCheck").empty();
+									$("#jQueryCheck").append("jQuery is ready.(OK)");
+								});
+							</script>
+							<h3>abc.js</h3>
+							<div>
+								<div class="score">
+									L:1/4
+									CDEFGABc
+								</div>
+								<div class="score">
+									M:4/4
+									L:1/8
+									K:C
+									V:1
+									"C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
+									V:2 bass
+									C,G,F,G, F,A,c,F, | G,B,d,G, C,E,G,c,||
+								</div>
 							</div>
-							<div class="score">
-								M:4/4
-								L:1/8
-								K:C
-								V:1
-								"C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
-								V:2 bass
-								C,G,F,G, F,A,c,F, | G,B,d,G, C,E,G,c,||
+							<h3>MathJax</h3>
+							<div>
+								$$\dfrac{1}{2}$$
 							</div>
-						</div>
-						<h3>MathJax</h3>
-						<div>
-							$$\dfrac{1}{2}$$
 						</div>
 					</div>
 				</div>
@@ -250,7 +250,6 @@
 		</section>
 
 	</div><!-- /container -->
-	<footer>(c) Kokusai Gakuin Junior & Senior High School 2020</footer>
 </body>
 
 </html>

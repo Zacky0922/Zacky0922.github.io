@@ -2,23 +2,17 @@
 /* 汎用部品 */
 @import url("./common.css");
 
-/* 機能モジュール */
-@import url("./css/zBtn.css");
-@import url("./css/zHoverDisp.css");
-@import url("./css/zHiddenBlock.css");
-@import url("./css/zBaloon.css");
-
 /* 五峯祭モジュール */
-@import "./css/KGgallery.css";
-@import "./css/KGgroup.css";
-@import "./css/KGnews.css";
-@import "./css/KGpickup.css";
+@import "./KG/gallery.css";
+@import "./KG/group.css";
+@import "./KG/header-footer.css";
+@import "./KG/news.css";
+@import "./KG/pickup.css";
 
-/* Google Fonts & Icon */
-@import "./css/googleIcon.css";
+/* Google Font */
 @import "https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap";
 
-/* 標準設定 */
+/*  標準設定 */
 *{
 	font-family: 'Kosugi Maru', sans-serif;
     font-size:  16px;

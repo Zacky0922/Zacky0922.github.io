@@ -150,7 +150,7 @@
 			rgba(255,255,255,0.9),
 			rgba(191,191,191,0.7),
 			rgba(127,127,127,0.9) 180deg
-			);
+			) top left / 25px 25px;
 
 	/*
 	background:var(--z-preset-holo);
@@ -160,7 +160,7 @@
 	*/
 	/*	虹色ホログラム	*/
 	--z-preset-holo:
-		var(--z-preset-holo-mask) top left / 25px 25px,
+		var(--z-preset-holo-mask),
 		linear-gradient(135deg,
 			#f00 0%,
 			#ff0 25%,
@@ -171,11 +171,11 @@
 		);
 	/* 金銀銅ホログラム */
 	--z-preset-holo-gold:	
-		var(--z-preset-holo-mask) top left / 25px 25px,#ff0;
+		var(--z-preset-holo-mask),#ff0;
 	--z-preset-holo-silver:	
-		var(--z-preset-holo-mask) top left / 25px 25px,#888;
+		var(--z-preset-holo-mask),#888;
 	--z-preset-holo-bronze:	
-		var(--z-preset-holo-mask) top left / 25px 25px,#f80;
+		var(--z-preset-holo-mask),#f80;
 }
 
 

@@ -2,15 +2,10 @@
 /* 汎用部品 */
 @import url("./common.css");
 
-/* 機能モジュール */
-@import url("./css/zBtn.css");
-@import url("./css/zHoverDisp.css");
-@import url("./css/zHiddenBlock.css");
-@import url("./css/zBaloon.css");
-
-/* Google Font & Icon */
-@import url('./css/googleIcon.css');
+/* Google Font */
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese');
+
+/*  標準設定 */
 *{
 	font-family: 'Noto Sans JP', sans-serif;
 }
@@ -39,21 +34,23 @@
 }
 
 
+
+
+
 /* 全般設定 */
 *{
     font-size:  16px;
     box-sizing: border-box;
-    transition-duration:	var(--z-anime-duration);
+    
 }
 
-body,
-div#container {
+body,div#container {
 	padding: 0;
 	margin: 0;
-	text-align: center;
-	font-size: large;
 	background: var(--z-bgcolor);
 	color: var(--z-fontcolor);
+	text-align: center;
+	font-size: large;
 }
 
 .undisp{
@@ -78,8 +75,3 @@ div#container {
 
 
 
-
-
-.prettyprint{
-    background: #fff;
-}

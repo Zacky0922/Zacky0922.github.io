@@ -5,6 +5,19 @@
 @import url("./css/scrollbar.css");
 @import url("./css/table.css");
 
+/* 機能モジュール */
+@import url("./css/zBtn.css");
+@import url("./css/zHoverDisp.css");
+@import url("./css/zHiddenBlock.css");
+@import url("./css/zBaloon.css");
+
+/* Google Icon */
+@import "./css/googleIcon.css";
+/*  PrettyPrint：コード整形 */
+@import ".css/prettyprint.css";
+
+
+
 @import "./css/preset-cssImage.css";
 
 @import "./ext-js/abcjs/abcjs-midi.css";
@@ -37,4 +50,8 @@ label{
     color:      inherit;
     background: none;
     display:    inherit;
+}
+
+a{
+    color:  inherit;
 }
