@@ -69,19 +69,28 @@ var loadJScounter_loaded = 0;
 
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
+    //外部js＝ローカルDL
     "ext-js/abcjs/abcjs_basic_5.9.1-min.js",
     "ext-js/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
     "ext-js/jquery-3.5.1.min.js",
+
+    //外部jsの初期化
+    "ext-js/abcjs_init.js",
+    //"ext-js/chartjs_init.js",
+
+    //自作js
     "js/setTab.js",
     "js/txReplace.js",
     "js/date.js",
+
     //特殊版
     "KGfes/KGfes.js"
 ];
 var extScripts = [
     "https://code.jquery.com/jquery-3.4.1.min.js",
     "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML",
-    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css"
+    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css",
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"
 ];
 
 //読込
@@ -96,6 +105,7 @@ function jsLoader(mySrc) {
     }
     debugMsg("// js loading - " + mySrc);
 }
+
 for (var i = 0; i < extScripts.length; i++) {
     jsLoader(extScripts[i]);
 }
@@ -106,59 +116,42 @@ for (var i = 0; i < myScripts.length; i++) {
 var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == myScripts.length) {
         //全部読込完了
-        debugMsg("master.js:JSloadFunc [" + loadJScounter_loaded +"] Complete!");
+        debugMsg("master.js:JSloadFunc Complete!\n" +
+            "// local = " + myScripts.length +
+            " / ext = " + extScripts.length);
         clearInterval(JSloadFunc);
-        
+        jsLoaded();
     }else{
         return;
     }
 }, 50);
 
-/*
-for (var i = 0; i < 1; ){}
-if (loadJScounter_loaded == myScripts.length) {
-    //全部読込完了
-    debugMsg("master.js:JSloadFunc [" + loadJScounter_loaded + "] Complete!");
-    //clearInterval(JSloadFunc);
-    i++;
-    zOnload();
-} else {
-    return;
+
+//js onload
+function jsLoaded() {
+
+    //五峯祭フォーマット
+    if (getParam["mode"] == "kgfes") {
+        KGfes_init();
+    }
 }
-}
-*/
 
 //標準onload
 function zOnload() {
-    //abc.js描画実行
-    var myScore = document.getElementsByClassName("score");
-    ABCJS.midi.soundfontUrl = getParam["lv"] + "scripts/ext-js/abcjs/";
-    for (var i = 0; i < myScore.length; i++) {
-        var myScript = myScore[i].innerHTML;
-        myScore[i].innerHTML = "";
 
-        var myScr = document.createElement("div");
-        myScr.id = "score_" + i;
-        myScore[i].appendChild(myScr);
-        ABCJS.renderAbc("score_" + i, myScript);
 
-        //midi関連処理
-        var myMid = document.createElement("div");
-        myMid.id = "midi_" + i;
-        myScore[i].appendChild(myMid);
-        ABCJS.renderMidi("midi_" + i, myScript, {}, { generateInline: true }, {});
-    }
 }
 
 
 
 window.addEventListener('load', (event) => {
 
+    //外部js初期化
+    //abc.js描画実行
+    absjs_init();   //ext-js/abcjs_init.js
+    //chartjs_init(); //ext-js/chartjs_init.js
     // init
     zOnload();
 
-    //五峯祭フォーマット
-    if (getParam["mode"] == "kgfes") {
-        KGfes_init();
-    }
+
 });

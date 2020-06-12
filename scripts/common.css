@@ -11,24 +11,33 @@
 @import url("./css/zHiddenBlock.css");
 @import url("./css/zBaloon.css");
 
-/* Google Icon */
-@import "./css/googleIcon.css";
+
+/*  ext-css */
+/*  chart.js */
+@import "./ext-css/chartjs.css";
+/*  Google Icon */
+@import "./ext-css/googleIcon.css";
 /*  PrettyPrint：コード整形 */
-@import "./css/prettyprint.css";
+@import "./ext-css/prettyprint.css";
 
 
 /*  preset */
-@import "./css/preset-cssImage.css";
-@import "./css/preset-holo.css";
+@import "./css-preset/cssImage.css";
+@import "./css-preset/holo.css";
 
+
+/*  abcjs */
 @import "./ext-js/abcjs/abcjs-midi.css";
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css";
+
+
 
 /*  */
 
 .zCentering{
-    text-align:center;
+    text-align: center;
 }
+
 .centeringOverflow-x{
     margin:		1px auto;
 	padding:	0;
@@ -57,8 +66,17 @@ a{
     color:  inherit;
 }
 
+
 .undisp{
+    height: 10px;
+    overflow-y: hidden;
+    background: #f00;
+}
+.zUndisp{
+    display:    none;
+    /* chart.jsとの相性悪い？　・・・　読込時、H=W=0 になる（画面サイズ変更で規定サイズに）
     height: 0;
     width:  0;
     overflow:   hidden;
+    */
 }

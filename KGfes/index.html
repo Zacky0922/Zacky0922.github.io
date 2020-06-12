@@ -105,10 +105,76 @@
 		</section>
 
 		<section style="grid-area:pickup">
+			<div class="zCentering" style="font-size:1.5em;">
+				五峯祭（2020.9.12）<script>countDays(2020,9,12)</script>
+			</div>
 			<h2>Pick Up</h2>
+			<div class="zTbl">
+			<table>
+				<caption>動作確認</caption>
+				<thead>
+					<tr>
+						<th>ブラウザ</th>
+						<th>Win</th>
+						<th>Mac</th>
+						<th>iOS</th>
+						<th>Android</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="5">順次、確認中。（確認協力者募集中）<br/>
+							すべてChrome/Winベースで開発しているので、<br />それと見比べていただければOKです。<br/>
+							現状、ベンダープレフィックスはすべて未実装です。<br />
+							「width＜600px」のとき、スマホ向け表示に切り替わります。<br/>
+							画面サイズを変更しての動作確認もお願いします。
+						</td>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr>
+						<th>Chrome</th>
+						<td>○</td>
+						<td></td>
+						<td></td>
+						<td>○</td>
+					</tr>
+					<tr>
+						<th>Safari</th>
+						<td>-</td>
+						<td></td>
+						<td></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<th>Android Web View</th>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>Edge</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+
+			<h2>動画掲載例</h2>
 			<div class="zCentering">
 				<div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:10px;">
-					<iframe style="width:500px;height:315px;max-width:100%"
+					<iframe style="width:500px;height:315px;max-width:95%;"
 						src="https://www.youtube.com/embed/IFPyjCgvYhA" frameborder="0"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen></iframe>
@@ -170,9 +236,9 @@
 			<div>
 				<div>
 					<input type="text" size="30" style="max-width:95%;" placeholder="参加団体専用"
-						onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}"
-						onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('undisp')}" />
-					<div class="undisp">
+						onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('zUndisp')}"
+						onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('zUndisp')}" />
+					<div class="zUndisp">
 						<h3>作業進行状況</h3>
 						<a class="zBtn" target="_blank" href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
 						<div class="centeringOverflow-x">
@@ -183,7 +249,7 @@
 						</div>
 						<h3>出展団体向けテンプレート</h3>
 						<p>以下のテンプレートなら、言ってもらえれば使えます。<br />
-							他にも、「こんなテンプレートがあると便利」等の要望があれば、お気軽にどうぞ。<br/>
+							他にも、「こんなテンプレートがあると便利」等の要望があれば、お気軽にどうぞ。<br />
 							現在、Google Chrome[PC/Android]でのみ動作確認済み（順次、各種ブラウザのベンダープレフィックス対応します）</p>
 						<h3>画像展示向け：額縁的な</h3>
 						<div class="KGgallery">
@@ -209,11 +275,15 @@
 						<div class="sample">
 							<div style="background:var(--z-preset-transparent-bg)"></div>
 						</div>
+
 						<h3>実験用</h3>
-						<a class="zBtn" onclick="document.getElementById('zOptioncheck').classList.toggle('undisp')">Option tools check</a>
-						<div class="undisp" id="zOptioncheck">
+						<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
+						<a class="zBtn"
+							onclick="document.getElementById('zOptioncheck').classList.toggle('zUndisp')">Option tools
+							check</a>
+						<div class="zUndisp" id="zOptioncheck">
 							<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
-							<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
+
 							<h3>jQuery</h3>
 							<div id="jQueryCheck">jQuery is NOT ready.</div>
 							<script>
@@ -223,9 +293,9 @@
 									$("#jQueryCheck").append("jQuery is ready.(OK)");
 								});
 							</script>
-							<h3>abc.js</h3>
+							<h3>abc.js：再生機能調整中</h3>
 							<div>
-								<div class="score">
+								<div class="score abcPlay">
 									L:1/4
 									CDEFGABc
 								</div>
@@ -239,10 +309,38 @@
 									C,G,F,G, F,A,c,F, | G,B,d,G, C,E,G,c,||
 								</div>
 							</div>
-							<h3>MathJax</h3>
+							<h3>MathJax：調整中</h3>
 							<div>
 								$$\dfrac{1}{2}$$
 							</div>
+							<h3>chart.js</h3>
+							<canvas id="chart1" class="chartjs"></canvas>
+							<script>
+								var ctx = document.getElementById("chart1");
+								var myPieChart = new Chart(ctx, {
+									type: 'pie',
+									data: {
+										labels: ["A型", "O型", "B型", "AB型"],
+										datasets: [{
+											backgroundColor: [
+												"#BB5179",
+												"#FAFF67",
+												"#58A27C",
+												"#3C00FF"
+											],
+											data: [38, 31, 21, 10]
+										}]
+									},
+									options: {
+										title: {
+											display: true,
+											text: '血液型 割合'
+										},
+										responsive: true,
+										maintainAspectRatio: false
+									}
+								});
+							</script>
 						</div>
 					</div>
 				</div>

@@ -67,13 +67,14 @@
 				max-width: 100%;
 				grid-template-columns: 3fr minmax(max-content, 1fr);
 				grid-template-areas:
+					"notice	5mine"
 					"notice	links"
 					"ft		ft"
 					"debugArea debugArea";
 			}
 		}
 
-		div#container>div {
+		div#container>section {
 			text-align: left;
 			border: rgba(255, 255, 255, 0.3) 5px solid;
 			border-radius: 10px;
@@ -87,7 +88,7 @@
 <body>
 	<p style="text-align:left;">（教職員用便利リンク集）<br />Last Update：6/6　健康観察：カスタム名表登録について</p>
 	<div id="container">
-		<div style="grid-area:notice">
+		<section style="grid-area:notice">
 			<h2 class="zHead">入力用（要サインイン）</h2>
 			<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));">
 				<a class="zBtn" target="_blank"
@@ -132,6 +133,10 @@
 					href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?OR=teams&action=edit&sourcedoc={46C2EA38-BFEA-4FC6-B5CA-676BF422DA04}">カスタム名表
 					登録シート<br />（要サインイン）</a>
 			</div>
+			<h2 class="zHead">保健関連</h2>
+			<div class="zCentering">
+			<a class="zBtn" href="https://www.wbgt.env.go.jp/graph_ref_td.php?region=03&prefecture=43&point=43241" target="_blank">環境省 熱中症予防情報サイト<br/>暑さ指数(WBGT)：さいたま</a>
+			</div>
 			<h2 class="zHead">備忘録</h2>
 			<div class="zTbl">
 				<table>
@@ -166,9 +171,14 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
-
-		<div style="grid-area:links">
+		</section>
+		<section style="grid-area:5mine">
+			<h2 class="zHead">五峯祭</h2>
+			<div class="zCentering">
+			<a class="zBtn" target="_blank" href="../KGfes/index.html">五峯祭 特設サイト<br/>（案・作成中）</a>
+			</div>
+		</section>
+		<section style="grid-area:links">
 			<h2 class="zHead">Links</h2>
 			<p style="text-align:right">※クリックで展開</p>
 			<div>
@@ -230,9 +240,9 @@
 					</script>
 				</div>
 			</div>
-		</div>
+		</section>
 
-		<div style="grid-area:ft">
+		<section style="grid-area:ft">
 			<p>本ページをブックマークすると便利だと思います。<br />
 				スマホからも利用可能ですが、「閲覧専用」は超重たいと思います。<br />
 				※PWA対応準備中・・・対応すれば、PC/スマホからアプリとして使えます。</p>
@@ -243,12 +253,12 @@
 				</a>
 				<a class="zBtn">Teamsチャット：アプリ版</a>
 			</p>
-		</div>
-		<div id="debugArea" style="grid-area:debugArea">
+		</section>
+		<section id="debugArea" style="grid-area:debugArea">
 			<input type="text" size="30" style="max-width:95%;" placeholder="Input Password for Debug mode"
-				onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('undisp')}"
-				onkeyup="if( this.value=='debug' ){this.parentElement.children[1].classList.remove('undisp')}" />
-			<div class="undisp">
+				onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('zUndisp')}"
+				onkeyup="if( this.value=='debug' ){this.parentElement.children[1].classList.remove('zUndisp')}" />
+			<div class="zUndisp">
 				<a class="zBtn" target="_blank"
 					href="file:///C:/z/GitHub/Zacky0922.github.io/KG/index.html">local直link</a>
 				<div>
@@ -270,9 +280,9 @@
 						href="https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId&Fragment=formId%3Dz327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURDFXQlA3NjgwRFlXUjIwNzlaSkhLR0xENyQlQCN0PWcu%26XlWorkbookId%3Dhttps%253A%252F%252Fkgefac.sharepoint.com%252Fsites%252Fmsteams_1d13d1%252F_layouts%252F15%252FDoc.aspx%253Fsourcedoc%253D%257B0f7bff64-91a6-4bbb-8df1-7dd9f9564f1e%257D%2526action%253Dedit%2526wdSkeletonState%253D%257B%2522IsEnabled%2522%253Atrue%252C%2522Options%2522%253A32%257D%2526wdenableroaming%253D1%2526wdorigin%253DItemsView%2526wdhostclicktime%253D1589521327036%2526wdredirectionreason%253DForce_SingleStepBoot%26Host%3DExcel">通学方法調査</a>
 				</div>
 				<hr>
-				<a class="zBtn" target="_blank" href="../KGfes/index.html">五峯祭 特設サイト（案・作成中）</a>
+				
 			</div>
-		</div>
+		</section>
 	</div><!-- /container -->
 </body>
 

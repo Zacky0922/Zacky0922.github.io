@@ -12,6 +12,6 @@ function KGfes_init() {
     document.body.prepend(myHeader);
 
     var myFooter = document.createElement("footer");
-    myFooter.innerHTML = '<a href="https://jsh.kgef.ac.jp/">Kokusai Gakuin Junior & Senior High School</a> 2020';
+    myFooter.innerHTML = '(C) <a href="https://jsh.kgef.ac.jp/">Kokusai Gakuin Junior & Senior High School</a> 2020';
     document.body.appendChild(myFooter);
 }

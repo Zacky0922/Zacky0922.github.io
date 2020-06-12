@@ -1,6 +1,6 @@
 loadJScounter_loaded++;
 //https://kantaro-cgi.com/program/rssread-js/manual/
-//
+
 /*
 # ====================================================================
 #             【 カンタローCGI：RSS読み込みJavaScript 】
