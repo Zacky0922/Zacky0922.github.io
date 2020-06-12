@@ -59,6 +59,21 @@ function getOnline() {
 
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    CSS loader
+    被読込ファイル冒頭に、必ず以下を記載
+    loadJScounter_loaded++;
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+if (getParam["css"] == undefined) {
+    getParam["css"] = "master.css";
+}
+var myCSS = document.createElement("link");
+myCSS.rel = "stylesheet";
+myCSS.type = "text/css";
+myCSS.href = getParam["lv"] + "scripts/" + getParam["css"];
+document.head.appendChild(myCSS);
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     JS loader
     被読込ファイル冒頭に、必ず以下を記載
     loadJScounter_loaded++;
@@ -95,7 +110,7 @@ var extScripts = [
 
 //読込
 function jsLoader(mySrc) {
-    if (true) {
+    if (false) {
         var myScript = document.createElement("script");
         myScript.type = "text/javascript";
         myScript.src = mySrc;
@@ -113,6 +128,7 @@ for (var i = 0; i < myScripts.length; i++) {
     jsLoader(getParam["lv"] + "scripts/" + myScripts[i]);
 }
 
+var JSloaded_flag = false;
 var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == myScripts.length) {
         //全部読込完了
@@ -121,10 +137,11 @@ var JSloadFunc = setInterval(function () {
             " / ext = " + extScripts.length);
         clearInterval(JSloadFunc);
         jsLoaded();
+        JSloaded_flag = true;
     }else{
         return;
     }
-}, 50);
+}, 1);
 
 
 //js onload
