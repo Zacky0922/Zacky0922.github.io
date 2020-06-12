@@ -84,7 +84,7 @@ var myScripts = [
     "js/date.js",
 
     //特殊版
-    "KGfes/KGfes.js"
+    "KGfes/kgfes.js"
 ];
 var extScripts = [
     "https://code.jquery.com/jquery-3.4.1.min.js",
