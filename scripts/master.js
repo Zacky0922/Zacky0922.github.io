@@ -95,7 +95,7 @@ var extScripts = [
 
 //読込
 function jsLoader(mySrc) {
-    if (false) {
+    if (true) {
         var myScript = document.createElement("script");
         myScript.type = "text/javascript";
         myScript.src = mySrc;
