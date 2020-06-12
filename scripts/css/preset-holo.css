@@ -1,0 +1,40 @@
+:root{
+    
+	/*	ホログラム
+		（注）ショートハンドのため、非対応ブラウザ要確認
+	*/
+	/*	ホログラム用キラキラ風味マスク */
+	--z-preset-holo-mask:
+		repeating-conic-gradient( from -45deg,
+			rgba(127,127,127,0.9) ,
+			rgba(191,191,191,0.7),
+			rgba(255,255,255,0.9),
+			rgba(191,191,191,0.7),
+			rgba(127,127,127,0.9) 180deg
+			) top left / 25px 25px;
+
+	/*
+	background:var(--z-preset-holo);
+	background:var(--z-preset-holo-gold);
+	background:var(--z-preset-holo-silver);
+	background:var(--z-preset-holo-bronze);
+	*/
+	/*	虹色ホログラム	*/
+	--z-preset-holo:
+		var(--z-preset-holo-mask),
+		linear-gradient(135deg,
+			#f00 0%,
+			#ff0 25%,
+			#0f0 45%,
+			#0ff 55%,
+			#00f 75%,
+			#f0f 100%
+		);
+	/* 金銀銅ホログラム */
+	--z-preset-holo-gold:	
+		var(--z-preset-holo-mask),#ff0;
+	--z-preset-holo-silver:	
+		var(--z-preset-holo-mask),#888;
+	--z-preset-holo-bronze:	
+		var(--z-preset-holo-mask),#f80;
+}

@@ -3,11 +3,11 @@
 @import url("./common.css");
 
 /* 五峯祭モジュール */
-@import "./KG/gallery.css";
-@import "./KG/group.css";
-@import "./KG/header-footer.css";
-@import "./KG/news.css";
-@import "./KG/pickup.css";
+@import "./KGfes/gallery.css";
+@import "./KGfes/group.css";
+@import "./KGfes/header-footer.css";
+@import "./KGfes/news.css";
+@import "./KGfes/pickup.css";
 
 /* Google Font */
 @import "https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap";
@@ -59,12 +59,6 @@ div#container {
 	text-align: center;
 	font-size: large;
 	color: var(--z-fontcolor);
-}
-
-.undisp{
-    height: 0;
-    width:  0;
-    overflow:   hidden;
 }
 
 

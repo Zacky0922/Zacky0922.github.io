@@ -14,11 +14,12 @@
 /* Google Icon */
 @import "./css/googleIcon.css";
 /*  PrettyPrint：コード整形 */
-@import ".css/prettyprint.css";
+@import "./css/prettyprint.css";
 
 
-
+/*  preset */
 @import "./css/preset-cssImage.css";
+@import "./css/preset-holo.css";
 
 @import "./ext-js/abcjs/abcjs-midi.css";
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css";
@@ -54,4 +55,10 @@ label{
 
 a{
     color:  inherit;
+}
+
+.undisp{
+    height: 0;
+    width:  0;
+    overflow:   hidden;
 }

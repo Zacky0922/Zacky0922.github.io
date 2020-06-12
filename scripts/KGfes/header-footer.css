@@ -7,9 +7,18 @@ header{
     max-height: 300px;
     margin:     0;
     padding:    10px;
+    line-height: 1rem;
     text-align: left;
     color:  #fff;
     text-shadow:    2px 2px 3px rgba(94,94,62,0.7);
+    position:   sticky;
+    top:0;
+}
+
+header + div.z工事中{
+    font-size:  3em;
+    text-align: center;
+    margin-bottom:  30px;
 }
 footer{
     background:  #114;

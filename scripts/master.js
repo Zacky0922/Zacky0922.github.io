@@ -74,7 +74,9 @@ var myScripts = [
     "ext-js/jquery-3.5.1.min.js",
     "js/setTab.js",
     "js/txReplace.js",
-    "js/date.js"
+    "js/date.js",
+    //特殊版
+    "KGfes/KGfes.js"
 ];
 var extScripts = [
     "https://code.jquery.com/jquery-3.4.1.min.js",
@@ -126,11 +128,11 @@ if (loadJScounter_loaded == myScripts.length) {
 }
 */
 
-//各種js読込完了後、実行
+//標準onload
 function zOnload() {
     //abc.js描画実行
     var myScore = document.getElementsByClassName("score");
-    //ABCJS.midi.soundfontUrl = getParam["lv"] + "scripts/ext-js/abcjs/";
+    ABCJS.midi.soundfontUrl = getParam["lv"] + "scripts/ext-js/abcjs/";
     for (var i = 0; i < myScore.length; i++) {
         var myScript = myScore[i].innerHTML;
         myScore[i].innerHTML = "";
@@ -139,14 +141,12 @@ function zOnload() {
         myScr.id = "score_" + i;
         myScore[i].appendChild(myScr);
         ABCJS.renderAbc("score_" + i, myScript);
-        /*
+
         //midi関連処理
         var myMid = document.createElement("div");
         myMid.id = "midi_" + i;
         myScore[i].appendChild(myMid);
-
         ABCJS.renderMidi("midi_" + i, myScript, {}, { generateInline: true }, {});
-        */
     }
 }
 
@@ -159,20 +159,6 @@ window.addEventListener('load', (event) => {
 
     //五峯祭フォーマット
     if (getParam["mode"] == "kgfes") {
-        var ele = document.createElement("div");
-        ele.classList.add("z工事中");
-        ele.innerHTML = "準備中";
-        ele.style = "font-size:3em;text-align:center";
-        document.body.prepend(ele);
-
-        var myHeader = document.createElement("header");
-        myHeader.innerHTML = '<span style="font-size: min(16vw, 64px); ">第23回 五峯祭</span>（サイト下書き）<br />' +
-            '<span style="font-size:min(16vw,32px);"> 2020.09.12-13(Sat-Sun)</span >"';
-        document.body.prepend(myHeader);
-
-        var myFooter = document.createElement("footer");
-        myFooter.innerHTML = '<a href="https://jsh.kgef.ac.jp/">Kokusai Gakuin Junior & Senior High School</a> 2020';
-        document.body.appendChild(myFooter);
-
+        KGfes_init();
     }
 });

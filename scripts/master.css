@@ -2,6 +2,8 @@
 /* 汎用部品 */
 @import url("./common.css");
 
+/* 機能モジュール */
+
 /* Google Font */
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese');
 
@@ -53,11 +55,7 @@ body,div#container {
 	font-size: large;
 }
 
-.undisp{
-    height: 0;
-    width:  0;
-    overflow:   hidden;
-}
+
 
 
 
