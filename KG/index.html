@@ -56,6 +56,8 @@
 			grid-template-columns: 100%;
 			grid-template-areas:
 				"notice"
+				"health"
+				"5mine"
 				"links"
 				"ft"
 				"debugArea";
@@ -67,6 +69,7 @@
 				max-width: 100%;
 				grid-template-columns: 3fr minmax(max-content, 1fr);
 				grid-template-areas:
+					"notice	health"
 					"notice	5mine"
 					"notice	links"
 					"ft		ft"
@@ -133,10 +136,7 @@
 					href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?OR=teams&action=edit&sourcedoc={46C2EA38-BFEA-4FC6-B5CA-676BF422DA04}">カスタム名表
 					登録シート<br />（要サインイン）</a>
 			</div>
-			<h2 class="zHead">保健関連</h2>
-			<div class="zCentering">
-			<a class="zBtn" href="https://www.wbgt.env.go.jp/graph_ref_td.php?region=03&prefecture=43&point=43241" target="_blank">環境省 熱中症予防情報サイト<br/>暑さ指数(WBGT)：さいたま</a>
-			</div>
+			
 			<h2 class="zHead">備忘録</h2>
 			<div class="zTbl">
 				<table>
@@ -170,6 +170,13 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+		</section>
+		<section style="grid-area:health">
+			<h2 class="zHead">保健関連</h2>
+			<div class="zCentering">
+				<a class="zBtn" href="https://www.wbgt.env.go.jp/graph_ref_td.php?region=03&prefecture=43&point=43241"
+					target="_blank">環境省 熱中症予防情報サイト<br />暑さ指数(WBGT)：さいたま</a>
 			</div>
 		</section>
 		<section style="grid-area:5mine">
