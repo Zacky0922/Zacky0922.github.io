@@ -41,8 +41,8 @@ function KGfes_init() {
         setBurgerMenu(
             createMenuUl(
                 [
-                    ["index", "#"],
-                    ["sub", "#"]
+                    ["index", "index.html"],
+                    ["sub", "index.html"]
                 ]
             )
         )

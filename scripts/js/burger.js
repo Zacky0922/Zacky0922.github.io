@@ -28,7 +28,7 @@ function createMenuUl(menu) {
     for (var i = 0; i < menu.length; i++){
         var li = document.createElement("li");
         li.innerText = menu[i][0];
-        li.setAttribute("onclick", "document.location="+menu[i][1]);
+        li.setAttribute("onclick", "location.href='"+menu[i][1]+"'");
         ul.appendChild(li);
     }
     return ul;
