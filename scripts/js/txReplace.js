@@ -2,7 +2,7 @@ loadJScounter_loaded++;
 
 
 
-//検索文字一般化用配列(1→0)
+//文字列正規化用配列(1→0)
 var zTxReplace = [
     [
         //数字(全角→半角)
@@ -128,7 +128,7 @@ var zTxReplace = [
     ]
 ];
 
-//debug：置換配列の正誤チェック
+//debug：文字列正規化用配列の正誤チェック
 if (zTxReplace[0].length != zTxReplace[1].length) {
-    alert("Alert! - zTxReplacee内の置換リスト要素数が異なります");
+    alert("Alert! - txReplace.js内の文字列正規化用配列要素数が異なります");
 }

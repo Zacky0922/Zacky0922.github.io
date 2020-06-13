@@ -114,9 +114,10 @@
 			<h2>Pick Up</h2>
 			<div class="zTbl">
 			<table>
-				<caption>動作確認</caption>
+				<caption>動作確認（確認日）</caption>
 				<thead>
 					<tr>
+						<th>エンジン</th>
 						<th>ブラウザ</th>
 						<th>Win</th>
 						<th>Mac</th>
@@ -126,9 +127,9 @@
 				</thead>
 				<tfoot>
 					<tr>
-						<td colspan="5">順次、確認中。（確認協力者募集中）<br/>
-							すべてChrome/Winベースで開発しているので、<br />それと見比べていただければOKです。<br/>
-							現状、ベンダープレフィックスはほぼ未実装です。<br />
+						<td colspan="6">順次、確認中。（確認協力者募集中）<br/>
+							すべてChrome/Winベースで開発しているので、それと見比べればOKです。<br/>
+							現状、Bender Prefixはほぼ未実装なので、Webkit以外はエラーがあります<br />
 							「width＜600px」のとき、スマホ向け表示に切り替わります。<br/>
 							画面サイズを変更しての動作確認もお願いします。
 						</td>
@@ -136,27 +137,30 @@
 				</tfoot>
 				<tbody>
 					<tr>
+						<th rowspan="2">Webkit</th>
 						<th>Chrome</th>
-						<td>○</td>
+						<td>★</td>
 						<td></td>
 						<td></td>
-						<td>○</td>
+						<td>6/13</td>
 					</tr>
 					<tr>
 						<th>Safari</th>
 						<td>-</td>
 						<td></td>
-						<td></td>
+						<td>6/12</td>
 						<td>-</td>
 					</tr>
 					<tr>
+						<th>Webkit？</th>
 						<th>Android Web View</th>
 						<td>-</td>
 						<td>-</td>
 						<td>-</td>
-						<td></td>
+						<td>6/12</td>
 					</tr>
 					<tr>
+						<th>Trident</th>
 						<th>Edge</th>
 						<td></td>
 						<td></td>
@@ -164,6 +168,7 @@
 						<td></td>
 					</tr>
 					<tr>
+						<th></th>
 						<th></th>
 						<td></td>
 						<td></td>
@@ -240,7 +245,7 @@
 				<div>
 					<input type="text" size="30" style="max-width:95%;" placeholder="参加団体専用"
 						onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('zUndisp')}"
-						onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('zUndisp')}" />
+						onchange="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('zUndisp')}" />
 					<div class="zUndisp">
 						<h3>作業進行状況</h3>
 						<a class="zBtn" target="_blank" href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
