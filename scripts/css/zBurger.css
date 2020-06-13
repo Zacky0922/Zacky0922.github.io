@@ -1,19 +1,24 @@
 
-
-
-
+/*  ラッパー部 */
 div#zBurgerMenuWrap{
-    position:   fixed;
-    text-align:left;
     padding:    0;
     margin: 0;
-    top:0;
-    left:0;
+    text-align:right;
 }
-div#zBurgerMenuWrap *{
-    z-index:    100;
+@media screen and (min-width:600px){
+div#zBurgerMenuWrap{
+    position:   relative;
+}
+}
+@media screen and (max-width:599px){
+div#zBurgerMenuWrap{
+    position:   fixed;
+    top:0;
+    right:0;
+}
 }
 
+/*  制御部 */
 div#zBurgerMenuWrap label{
     display:        inline-block;
     margin: var(--z-spacing);
@@ -23,33 +28,84 @@ div#zBurgerMenuWrap label{
     border-radius:  100vh;
     background:     #ff0;
 }
-div#zBurgerMenuWrap label *{
-    vertical-align: middle;
+
+@media screen and (min-width:600px){
+div#zBurgerMenuWrap label{
+    display:none;
 }
+}
+
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox{
     display:    none;
 }
+
+
+
+
+
+/*  表示部 */
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger{
-    height:0;
-    width:0;
-    overflow-y: hidden;
     list-style: none;
     padding:0;
     margin:0;
-    transition:var(--z-anime-duration) ease-in-out;
 }
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox:checked + ul.zBurger{
-    display:    block;
-    width:50vw;
-    height: 50vh;
     background: rgba(200,200,255,1);
 }
-
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger > li{
-    border: 1px solid var(--z-border-color);
-    margin:var(--z-spacing);
     padding:var(--z-spacing);
 }
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger > li:hover{
     background: rgba(255,191,191,0.5);
 }
+
+@media screen and (min-width:600px){
+div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger{
+    display:    grid;
+    gap:    var(--z-spacing);
+    grid-template-columns: repeat(auto-fill,minmax(100px,1fr))
+}
+div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger > li{
+    display:    inline-block;
+    margin:0;
+    text-align:center;
+}
+}
+
+@media screen and (max-width:599px){
+div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger{
+    height:0;
+    width:0;
+    overflow-y: hidden;
+    transition:var(--z-anime-duration) ease-in-out;
+
+}
+div#zBurgerMenuWrap input#zBurgerMenuCheckbox:checked + ul.zBurger{
+    display:    block;
+    width:50vw;
+    height: 50vh;
+}
+div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger > li{
+    margin:var(--z-spacing);
+    text-align: left;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width:600px){
+
+}
+@media screen and (max-width:599px){
+
+}
+
+

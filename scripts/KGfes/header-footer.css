@@ -18,6 +18,7 @@ header{
 }
 header span#KGfesTitle{
     font-size:  1.5em;
+    text-shadow: 2px 2px 2px rgba(63,63,0,0.5);
 }
 
 @media screen and (min-width:600px){
@@ -29,25 +30,21 @@ header span#KGfesTitle{
     }
 }
 
-ul#KGfesMenu{
-    display:    grid;
-    gap:    0;
-    grid-template-columns: repeat(3,minmax(max-content,1fr));
-    margin:0;
-    padding:0;
-    background:	#cce;	/* 保険。本当は外したい。 */
-    position:   relative;
-    z-index:    150;
-    /*
-    position:   sticky;
-    top:0;
-    */
+@media screen and (min-width:600px){
+    header ul.KGfesMenu{
+        margin: var(--z-spacing) calc(-1 * var(--z-spacing)) calc(-1 * var(--z-spacing)) !important;
+    }
+    header ul.KGfesMenu > li{
+        background: rgba(255,255,255,0.5);
+    }
 }
-ul#KGfesMenu li{
-    display:    inline-block;
-    padding:    var(--z-spacing) 0;
-    margin:     0;
+@media screen and (max-width:599px){
+    header ul.KGfesMenu{
+        z-index:    150;
+    }
 }
+
+
 
 div.z工事中{
     font-size:  3em;
