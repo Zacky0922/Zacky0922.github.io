@@ -76,7 +76,7 @@ div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger > li{
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger{
     height:0;
     width:0;
-    overflow-y: hidden;
+    overflow: hidden;
     transition:var(--z-anime-duration) ease-in-out;
 
 }
