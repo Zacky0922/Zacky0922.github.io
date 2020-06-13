@@ -263,7 +263,7 @@
 		</section>
 		<section id="debugArea" style="grid-area:debugArea">
 			<input type="text" size="30" style="max-width:95%;" placeholder="Input Password for Debug mode"
-				onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('zUndisp')}"
+				onkeyup="if(!getOnline()){this.parentElement.children[1].classList.remove('zUndisp')}"
 				onchange="if( this.value=='debug' ){this.parentElement.children[1].classList.remove('zUndisp')}" />
 			<div class="zUndisp">
 				<a class="zBtn" target="_blank"
