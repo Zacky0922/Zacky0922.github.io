@@ -94,9 +94,10 @@ var myScripts = [
     //"ext-js/chartjs_init.js",
 
     //自作js
+    "js/burger.js",
+    "js/date.js",
     "js/setTab.js",
     "js/txReplace.js",
-    "js/date.js",
 
     //特殊版
     "KGfes/kgfes.js"

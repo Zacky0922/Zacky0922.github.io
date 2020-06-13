@@ -5,9 +5,9 @@ function createKGfesMenu(){
     var ul = document.createElement("ul");
     ul.id = "KGfesMenu";
     var menu = [
-        ["Top", ""],
-        ["Event",   "event.html"],
-        ["Special", "sp.html"]
+        ["Top", "#"],
+        ["Event",   "#"],
+        ["Special", "#"]
     ];
     for(var i = 0 ; i < menu.length; i++){
         var li = document.createElement("li");
@@ -30,10 +30,35 @@ function KGfes_init() {
 
     var myHeader = document.createElement("header");
     myHeader.innerHTML = '<span id="KGfesTitle">第23回 五峯祭</span>（サイト下書き）<br />' +
-        '<span id="KGfesPeriod">2020.09.12-13(Sat-Sun)</span >"';
+        '<span id="KGfesPeriod">2020.09.12-13(Sat-Sun)</span >';
     document.body.prepend(myHeader);
+
+
+
+
+    //burder menu
+    document.body.prepend(
+        setBurgerMenu(
+            createMenuUl(
+                [
+                    ["index", "#"],
+                    ["sub", "#"]
+                ]
+            )
+        )
+    );
+
+
+
+
+
 
     var myFooter = document.createElement("footer");
     myFooter.innerHTML = '(C) <a href="https://jsh.kgef.ac.jp/">Kokusai Gakuin Junior & Senior High School</a> 2020';
     document.body.appendChild(myFooter);
+
+
+
+
+
 }

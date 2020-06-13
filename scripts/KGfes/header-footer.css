@@ -1,4 +1,5 @@
 header{
+    position: relative;
     background: url("../../KGfes/pict/header.png");
     background-size:    cover;
     background-position: center center;
@@ -12,6 +13,8 @@ header{
     text-align: left;
     color:  #fff;
     text-shadow:    2px 2px 3px rgba(94,94,62,0.7);
+    
+    z-index:    200;
 }
 header span#KGfesTitle{
     font-size:  1.5em;
@@ -32,10 +35,13 @@ ul#KGfesMenu{
     grid-template-columns: repeat(3,minmax(max-content,1fr));
     margin:0;
     padding:0;
-	background:	#cce;	/* 保険。本当は外したい。 */
+    background:	#cce;	/* 保険。本当は外したい。 */
+    position:   relative;
+    z-index:    150;
+    /*
     position:   sticky;
     top:0;
-    z-index:    100;
+    */
 }
 ul#KGfesMenu li{
     display:    inline-block;
@@ -43,7 +49,7 @@ ul#KGfesMenu li{
     margin:     0;
 }
 
-header + #KGfesMenu + div.z工事中{
+div.z工事中{
     font-size:  3em;
     text-align: center;
     margin-bottom:  30px;
