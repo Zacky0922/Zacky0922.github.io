@@ -30,17 +30,15 @@ header span#KGfesTitle{
     }
 }
 
+header ul.KGfesMenu{
+    z-index: 150;
+}
 @media screen and (min-width:600px){
     header ul.KGfesMenu{
         margin: var(--z-spacing) calc(-1 * var(--z-spacing)) calc(-1 * var(--z-spacing)) !important;
     }
     header ul.KGfesMenu > li{
         background: rgba(255,255,255,0.5);
-    }
-}
-@media screen and (max-width:599px){
-    header ul.KGfesMenu{
-        z-index:    150;
     }
 }
 
