@@ -101,6 +101,7 @@ var myScripts = [
     //特殊版
     "KGfes/kgfes.js"
 ];
+//CDN jsファイル
 var extScripts = [
     "https://code.jquery.com/jquery-3.4.1.min.js",
     "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML",
@@ -167,6 +168,7 @@ window.addEventListener('load', (event) => {
     //abc.js描画実行
     absjs_init();   //ext-js/abcjs_init.js
     //chartjs_init(); //ext-js/chartjs_init.js
+
     // init
     zOnload();
 
