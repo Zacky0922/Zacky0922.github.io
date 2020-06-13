@@ -11,11 +11,9 @@ function createKGfesMenu(){
     ];
     for(var i = 0 ; i < menu.length; i++){
         var li = document.createElement("li");
-        var a = document.createElement("a");
-        a.innerText = menu[i][0];
-        a.href = menu[i][1];
-        a.target = "_self";
-        li.appendChild(a);
+        li.innerText = menu[i][0];
+        li.classList.add("zBtn");
+        li.setAttribute("onclick","document.location='" + menu[i][1]+"'");
         ul.appendChild(li);
     }
     document.body.prepend(ul);
@@ -31,8 +29,8 @@ function KGfes_init() {
     createKGfesMenu();
 
     var myHeader = document.createElement("header");
-    myHeader.innerHTML = '<span style="font-size: min(16vw, 64px); ">第23回 五峯祭</span>（サイト下書き）<br />' +
-        '<span style="font-size:min(16vw,32px);"> 2020.09.12-13(Sat-Sun)</span >"';
+    myHeader.innerHTML = '<span id="KGfesTitle">第23回 五峯祭</span>（サイト下書き）<br />' +
+        '<span id="KGfesPeriod">2020.09.12-13(Sat-Sun)</span >"';
     document.body.prepend(myHeader);
 
     var myFooter = document.createElement("footer");

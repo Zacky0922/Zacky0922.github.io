@@ -4,9 +4,7 @@ header{
     background-position: center center;
     white-space: nowrap;;
     width:	100%;
-	height: 20vw;
-    min-height: 150px;
-    max-height: 25vh;
+
 	overflow: auto;
     margin:     0;
     padding:    10px;
@@ -14,22 +12,37 @@ header{
     text-align: left;
     color:  #fff;
     text-shadow:    2px 2px 3px rgba(94,94,62,0.7);
-    position:   sticky;
-    top:0;
-    z-index:    100;
+}
+header span#KGfesTitle{
+    font-size:  2em;
+}
+
+@media screen and (min-width:600px){
+    header span#KGfesTitle{
+        font-size:  3em;
+    }
+    header span#KGfesPeriod{
+        font-size:  1.5em;
+    }
 }
 
 ul#KGfesMenu{
     display:    grid;
-    grid-template-columns: repeat(auto-fix,minmax(max-content,1fr));
+    gap:    0;
+    grid-template-columns: repeat(3,minmax(max-content,1fr));
+    margin:0;
+    padding:0;
+        position:   sticky;
+    top:0;
+    z-index:    100;
 }
 ul#KGfesMenu li{
     display:    inline-block;
-    padding:    0;
-    margin:     0 var(--z-spacing);
+    padding:    var(--z-spacing) 0;
+    margin:     0;
 }
 
-header+ #KGfesMenu + div.z工事中{
+header + #KGfesMenu + div.z工事中{
     font-size:  3em;
     text-align: center;
     margin-bottom:  30px;
