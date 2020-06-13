@@ -9,7 +9,7 @@ function setBurgerMenu(ul) {
     checkbox.id = "zBurgerMenuCheckbox";
     //checkbox.style.display = "none";
     var label = document.createElement("label");
-    label.innerHTML = "<span>icon<br/>準備中</span>";
+    label.innerHTML = "<img src='"+getParam["lv"]+"KGfes/pict/logo.png' width='40px' height='40px'>";
     label.setAttribute("for", "zBurgerMenuCheckbox");
 
     //ラッパー

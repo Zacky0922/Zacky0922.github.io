@@ -19,9 +19,8 @@ div#zBurgerMenuWrap label{
     border-radius:  100vh;
     background:     #ff0;
 }
-div#zBurgerMenuWrap label span{
+div#zBurgerMenuWrap label *{
     vertical-align: middle;
-
 }
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox{
     display:    none;

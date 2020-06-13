@@ -85,3 +85,10 @@ div#container {
         max-width:  min(75vw,400px);
     }
 }
+div#zBurgerMenuWrap label img{
+    animation: kgiconRotate 3s linear infinite;
+}
+@keyframes kgiconRotate{
+    0%  {transform: rotate(0deg);}
+    100%  {transform: rotate(360deg)}
+}
