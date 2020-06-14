@@ -2,7 +2,7 @@ loadJScounter_loaded++;
 
 //引数：メニューul＝DOM
 function setBurgerMenu(ul) {
-    ul.classList.add("zBurger");
+    ul.classList.add("zBurger","noScrollbar");
 
     var checkbox = document.createElement("input");
     checkbox.type = "checkbox";
