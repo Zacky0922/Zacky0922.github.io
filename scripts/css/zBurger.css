@@ -4,6 +4,7 @@ div#zBurgerMenuWrap{
     --z-burger-label-size:  50px;
     --z-burger-ul-bgcolor:  rgba(0,0,63,0.8);
     --z-burger-li-hover-bgcolor:    rgba(255,191,191,0.5);
+    --z-burger-fontcolor:   #fff;
 }
 
 /*  ラッパー部 */
@@ -11,6 +12,7 @@ div#zBurgerMenuWrap{
     padding:    0;
     margin: 0;
     text-align:right;
+    color:  var(--z-burger-fontcolor);
 }
 @media screen and (min-width:600px){
 div#zBurgerMenuWrap{
@@ -88,9 +90,9 @@ div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger{
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox:checked + ul.zBurger{
     display:    block;
     width:50vw;
-    max-width:  100vw !important;
     min-width:  120px;
     height: 50vh;
+    min-height: 400px;
     overflow-y: auto;
     background: var(--z-burger-ul-bgcolor);
 }

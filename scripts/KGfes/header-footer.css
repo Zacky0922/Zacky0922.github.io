@@ -3,22 +3,21 @@ header{
     background: url("../../KGfes/pict/header.png");
     background-size:    cover;
     background-position: center center;
-    white-space: nowrap;;
+    white-space: nowrap;
     width:	100%;
-
 	overflow: auto;
     margin:     0;
     padding:    10px;
     line-height: 1rem;
     text-align: left;
-    color:  #fff;
-    text-shadow:    2px 2px 3px rgba(94,94,62,0.7);
-    
     z-index:    200;
+}
+header > span{
+    color:  #fff;
+    text-shadow:    2px 2px 2px rgba(0, 0, 255, 0.8);
 }
 header span#KGfesTitle{
     font-size:  1.5em;
-    text-shadow: 2px 2px 2px rgba(63,63,0,0.5);
 }
 
 @media screen and (min-width:600px){

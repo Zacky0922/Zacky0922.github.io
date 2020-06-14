@@ -16,12 +16,14 @@ function KGfes_init() {
     document.body.prepend(myHeader);
 
     //burder menu
-    var menuUl = createMenuUl(
-        [
-            ["index", "index.html"],
-            ["sub", "index.html"]
-        ]
-    );
+    var menuUl = createMenuUl([
+        ["Home", "index.html"],
+        ["Intro", "index.html"],
+        ["Live!", "index.html"],
+        ["Events", "index.html"],
+        ["Contests","index.html"],
+        ["Special", "index.html"]
+    ]);
     menuUl.classList.add("KGfesMenu");
     myHeader.appendChild(
         setBurgerMenu(menuUl)
