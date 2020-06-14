@@ -96,6 +96,7 @@ var myScripts = [
     //自作js
     "js/burger.js",
     "js/date.js",
+    "js/develop.js",
     "js/setTab.js",
     "js/txReplace.js",
 
