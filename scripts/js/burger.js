@@ -34,5 +34,3 @@ function createMenuUl(menu) {
     return ul;
 }
 
-
-

@@ -99,6 +99,7 @@ var myScripts = [
     "js/develop.js",
     "js/setTab.js",
     "js/txReplace.js",
+    "js/pageMenu.js",
 
     //特殊版
     "KGfes/kgfes.js"
@@ -153,6 +154,7 @@ function jsLoaded() {
     //五峯祭フォーマット
     if (getParam["mode"] == "kgfes") {
         KGfes_init();
+        getPageMenu("PageMenu");
     }
 }
 

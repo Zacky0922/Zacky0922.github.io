@@ -8,6 +8,7 @@
 @import "./KGfes/header-footer.css";
 @import "./KGfes/news.css";
 @import "./KGfes/pickup.css";
+@import "./KGfes/pageMenu.css";
 
 /* Google Font */
 @import "https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap";
@@ -76,20 +77,22 @@ div#container {
     max-width:  min(75vw,400px);
 }
 /* スマホのみ横スクロール */
-@media screen and (max-width:600px){
+@media screen and (max-width:599px){
     .zSnapX-sp{
-        display:    flex !important;
-        scroll-snap-type: x mandatory;
-        overflow-x: auto;
-    }
-    .zSnapX > *{
-        max-width:  min(75vw,400px);
+
     }
 }
+
+
 div#zBurgerMenuWrap label img{
     animation: kgiconRotate 3s linear infinite;
 }
 @keyframes kgiconRotate{
     0%  {transform: rotate(0deg);}
     100%  {transform: rotate(360deg)}
+}
+
+.debug{
+    background: var(--z-preset-工事中-bg);
+    /*  display:    none; */
 }

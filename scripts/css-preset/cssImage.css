@@ -141,9 +141,4 @@
 }
 
 
-.z工事中{
-    color:  #fff;
-	-webkit-text-stroke: 1px #000;
-	text-stroke:1px #000;
-	background: var(--z-preset-工事中-bg);
-}
+

@@ -54,6 +54,7 @@
 			grid-gap: 15px;
 			grid-template-columns: 100%;
 			grid-template-areas:
+				"menu"
 				"news"
 				"pickup"
 				"groups"
@@ -66,9 +67,10 @@
 				max-width: 100%;
 				grid-template-columns: 3fr minmax(max-content, 1fr);
 				grid-template-areas:
+					"menu menu"
 					"pickup news"
-					"ft ft"
-					"groups groups";
+					"groups groups"
+					"ft ft";
 			}
 		}
 
@@ -88,8 +90,9 @@
 
 <body>
 	<div id="gridWrapper">
+		<section id="PageMenu" style="grid-area:menu"></section>
 		<section style="grid-area:news">
-			<h2>NEWS</h2>
+			<h2 class="zHeadList" id="NEWS">NEWS</h2>
 			<ul class="news">
 				<li>
 					<span>06.10</span>
@@ -106,85 +109,81 @@
 
 		<section style="grid-area:pickup">
 			<div class="zCentering" style="font-size:1.5em;">
-				五峯祭（2020.9.12）<script>countDays(2020,9,12)</script>
+				五峯祭（2020.9.12）
+				<script>countDays(2020, 9, 12)</script>
 			</div>
 			<div>2020.9.12 10時まで、あと<span id="countdownSec"></span></div>
 			<script>
-				countdownTimer(document.getElementById("countdownSec"),2020,9,12,10,0);
+				countdownTimer(document.getElementById("countdownSec"), 2020, 9, 12, 10, 0);
 			</script>
-			<h2>Pick Up</h2>
+			<h2 class="zHeadList" id="Pick Up">Pick Up</h2>
 			<div class="zTbl">
-			<table>
-				<caption>動作確認（確認日）</caption>
-				<thead>
-					<tr>
-						<th>エンジン</th>
-						<th>ブラウザ</th>
-						<th>Win</th>
-						<th>Mac</th>
-						<th>iOS</th>
-						<th>Android</th>
-					</tr>
-				</thead>
-				<tfoot>
-					<tr>
-						<td colspan="6">順次、確認中。（確認協力者募集中）<br/>
-							すべてChrome/Winベースで開発しているので、それと見比べればOKです。<br/>
-							現状、Bender Prefixはほぼ未実装なので、Webkit以外はエラーがあります<br />
-							「width＜600px」のとき、スマホ向け表示に切り替わります。<br/>
-							画面サイズを変更しての動作確認もお願いします。
-						</td>
-					</tr>
-				</tfoot>
-				<tbody>
-					<tr>
-						<th rowspan="2">Webkit</th>
-						<th>Chrome</th>
-						<td>★</td>
-						<td></td>
-						<td></td>
-						<td>6/13</td>
-					</tr>
-					<tr>
-						<th>Safari</th>
-						<td>-</td>
-						<td></td>
-						<td>6/12</td>
-						<td>-</td>
-					</tr>
-					<tr>
-						<th>Webkit？</th>
-						<th>Android Web View</th>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>6/12</td>
-					</tr>
-					<tr>
-						<th>Trident</th>
-						<th>Edge</th>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<th></th>
-						<th></th>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
+				<table>
+					<caption>動作確認（確認日）</caption>
+					<thead>
+						<tr>
+							<th>エンジン</th>
+							<th>ブラウザ</th>
+							<th>Win</th>
+							<th>Mac</th>
+							<th>iOS</th>
+							<th>Android</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td colspan="6">順次、確認中。（確認協力者募集中）<br />
+								すべてChrome/Winベースで開発しているので、それと見比べればOKです。<br />
+								現状、Bender Prefixはほぼ未実装なので、Webkit以外はエラーがあります<br />
+								「width＜600px」のとき、スマホ向け表示に切り替わります。<br />
+								画面サイズを変更しての動作確認もお願いします。
+							</td>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr>
+							<th rowspan="2">Webkit</th>
+							<th>Chrome</th>
+							<td>★</td>
+							<td></td>
+							<td></td>
+							<td>6/13</td>
+						</tr>
+						<tr>
+							<th>Safari</th>
+							<td>-</td>
+							<td></td>
+							<td>6/12</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<th>Webkit？</th>
+							<th>Android Web View</th>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>6/12</td>
+						</tr>
+						<tr>
+							<th>Trident</th>
+							<th>Edge</th>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th></th>
+							<th></th>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 
-			<h2>作業備忘録</h2>
-			<ul>
-				<li>メニュー：リンク先未作成</li>
-				<li>メニュー：Responsiveバーガーメニュー化？</li>
-			</ul>
 			<h2>動画掲載例</h2>
 			<div class="zCentering">
 				<div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:10px;">
@@ -198,165 +197,251 @@
 
 
 		<section style="grid-area:groups">
-			<div class="KGgpWrapper zSnapX-sp"
-				style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px,300px));">
-				<div class="演劇 中学">
-					<h3>中学</h3>
-					<h4>演劇</h4>
-					<img src="pict/gp.png">
-					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+			<h2 class="zHeadList" id="団体紹介">団体紹介</h2>
+				<div class="debug">PC表示：画像だけ（grid一覧）<br/>MOB表示：団体名＋出展名＋画像＋団体説明（横スナップ）</div>
+				<div class="KGgpWrapper">
+					<div class="中学">
+						<h3>中学</h3>
+						<h4>合唱</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん</div>
+					</div>
+					<div class="高校">
+						<h3>高校 食物調理コース</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
+					<div class="">
+						<h3>団体</h3>
+						<h4>タイトル</h4>
+						<img src="pict/gp.png">
+						<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
+					</div>
 				</div>
-				<div class="研究発表 中学">
-					<h3>中学</h3>
-					<h4>研究発表</h4>
-					<img src="pict/gp.png">
-					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
-				</div>
-				<div class="ダンス 高１ 高校">
-					<h3>高１ 高校</h3>
-					<h4>ダンス</h4>
-					<img src="pict/gp.png">
-					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
-				</div>
-				<div class="演劇 高１ 高校">
-					<h3>高１ 高校</h3>
-					<h4>演劇</h4>
-					<img src="pict/gp.png">
-					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
-				</div>
-				<div class="演劇 高１ 高校">
-					<h3>高１ 高校</h3>
-					<h4>演劇</h4>
-					<img src="pict/gp.png">
-					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
-				</div>
-				<div class="演劇 高１ 高校">
-					<h3>高１ 高校</h3>
-					<h4>演劇</h4>
-					<img src="pict/gp.png">
-					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
-				</div>
-				<div class="演劇 高１ 高校">
-					<h3>高１ 高校</h3>
-					<h4>演劇</h4>
-					<img src="pict/gp.png">
-					<div>団体紹介 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん</div>
-				</div>
-
-			</div>
-
 		</section>
+
 		<section style="grid-area:ft">
+			<h2 class="zHeadList" id="参加団体向けスケジュール">参加団体向けスケジュール</h2>
+			<div class="zTbl">
+				<table>
+					<caption>スケジュール（変更になる場合もあります）</caption>
+					<thead>
+						<tr>
+							<th>日時</th>
+							<th>内容</th>
+							<th>備考</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>06.30火 17時</th>
+							<td>企画書：提出締切</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>07.04土 PM</th>
+							<td>団体代表者打合せ</td>
+							<td>※時間・場所は調整中</td>
+						</tr>
+						<tr>
+							<th>07.31金 17時</th>
+							<td>WEBパンフ原稿：提出締切</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>08.28金 17時</th>
+							<td>コンテンツ：1次〆切</td>
+							<td>提出し次第、著作権等のチェック<br />
+								アウトの場合、2次〆切までに修正・再提出</td>
+						</tr>
+						<tr>
+							<th>09.05土 17時</th>
+							<td>コンテンツ：2次〆切</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>09.12土</th>
+							<td>五峯祭本番</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			<div>
-				<div>
-					<input type="text" size="30" style="max-width:95%;" placeholder="参加団体専用"
-						onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('zUndisp')}"
-						onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('zUndisp')}" />
-					<div class="zUndisp">
-						<h3>作業進行状況</h3>
-						<a class="zBtn" target="_blank" href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
-						<div class="centeringOverflow-x">
-							<iframe
-								src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=NjNxcnBqbzd2bm9vbmkyZWhkcGw1dHZtMDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Z3ZsOGQ5cmZmczc1MHVwZGdua3FmOTR2cjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWYwMzhqa2w0ZTRnNGh2NjFtaXR0cm1ibTUwa25ydHVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB&amp;color=%23F09300&amp;color=%23616161&amp;showNav=1&amp;showDate=1&amp;title=KG%E4%BA%94%E5%B3%AF%E7%A5%AD2020"
-								style="border:solid 1px #777" width="800" height="600" frameborder="0"
-								scrolling="no"></iframe>
-						</div>
-						<h3>出展団体向けテンプレート</h3>
-						<p>以下のテンプレートなら、言ってもらえれば使えます。<br />
-							他にも、「こんなテンプレートがあると便利」等の要望があれば、お気軽にどうぞ。<br />
-							現在、Google Chrome[PC/Android]でのみ動作確認済み（順次、各種ブラウザのベンダープレフィックス対応します）</p>
-						<h3>画像展示向け：額縁的な</h3>
-						<div class="KGgallery">
-							<div style="background:#fff;width:200px;height:200px"></div>
-						</div>
-						<style>
-							.sample>* {
-								display: inline-block;
-								width: 200px;
-								height: 200px;
-								margin: 5px;
-							}
-						</style>
-						<h3>ホログラム風（表彰向け？）：ビック○マンのレアシール的な</h3>
-						<div class="sample">
-							<div style="background:var(--z-preset-holo);"></div>
-							<div style="background:var(--z-preset-holo-gold);"></div>
-							<div style="background:var(--z-preset-holo-silver);"></div>
-							<div style="background:var(--z-preset-holo-bronze);"></div>
-						</div>
-						<div style="text-stroke:1px #000;-webkit-text-stroke:1px #000;font-size:3em;" class="zTextmask">
-							文字背景を装飾画像に■◆●</div>
-						<div class="sample">
-							<div style="background:var(--z-preset-transparent-bg)"></div>
-						</div>
+				<input type="text" size="30" style="max-width:95%;" placeholder="参加団体専用"
+					onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('zUndisp')}"
+					onkeyup="if( this.value=='5931fes' ){this.parentElement.children[1].classList.remove('zUndisp')}" />
+				<div class="zUndisp">
+					<h3>作業進行状況</h3>
+					<a class="zBtn" target="_blank" href="https://trello.com/b/bqhGSOZ2">KG五峯祭2020／Trello</a><br />
+					<div class="centeringOverflow-x">
+						<iframe
+							src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FTokyo&amp;src=NjNxcnBqbzd2bm9vbmkyZWhkcGw1dHZtMDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Z3ZsOGQ5cmZmczc1MHVwZGdua3FmOTR2cjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWYwMzhqa2w0ZTRnNGh2NjFtaXR0cm1ibTUwa25ydHVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB&amp;color=%23F09300&amp;color=%23616161&amp;showNav=1&amp;showDate=1&amp;title=KG%E4%BA%94%E5%B3%AF%E7%A5%AD2020"
+							style="border:solid 1px #777" width="800" height="600" frameborder="0"
+							scrolling="no"></iframe>
+					</div>
+					<h3>出展団体向けテンプレート</h3>
+					<p>以下のテンプレートなら、言ってもらえれば使えます。<br />
+						他にも、「こんなテンプレートがあると便利」等の要望があれば、お気軽にどうぞ。<br />
+						現在、Google Chrome[PC/Android]でのみ動作確認済み（順次、各種ブラウザのベンダープレフィックス対応します）</p>
+					<h3>画像展示向け：額縁的な</h3>
+					<div class="KGgallery">
+						<div style="background:#fff;width:200px;height:200px"></div>
+					</div>
+					<style>
+						.sample>* {
+							display: inline-block;
+							width: 200px;
+							height: 200px;
+							margin: 5px;
+						}
+					</style>
+					<h3>ホログラム風（表彰向け？）：ビック○マンのレアシール的な</h3>
+					<div class="sample">
+						<div style="background:var(--z-preset-holo);"></div>
+						<div style="background:var(--z-preset-holo-gold);"></div>
+						<div style="background:var(--z-preset-holo-silver);"></div>
+						<div style="background:var(--z-preset-holo-bronze);"></div>
+					</div>
+					<div style="text-stroke:1px #000;-webkit-text-stroke:1px #000;font-size:3em;" class="zTextmask">
+						文字背景を装飾画像に■◆●</div>
+					<div class="sample">
+						<div style="background:var(--z-preset-transparent-bg)"></div>
+					</div>
 
-						<h3>実験用</h3>
-						<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
-						<a class="zBtn" onclick="alert(getSpec())">getSpec</a>
-						<a class="zBtn"
-							onclick="document.getElementById('zOptioncheck').classList.toggle('zUndisp')">Option tools
-							check</a>
-						<div class="zUndisp" id="zOptioncheck">
-							<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
+					<h3>実験用</h3>
+					<a class="zBtn" onclick="alert(debugMsgText)">debug</a>
+					<a class="zBtn" onclick="alert(getSpec())">getSpec</a>
+					<a class="zBtn" onclick="document.getElementById('zOptioncheck').classList.toggle('zUndisp')">Option
+						tools
+						check</a>
+					<div class="zUndisp" id="zOptioncheck">
+						<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
 
-							<h3>jQuery</h3>
-							<div id="jQueryCheck">jQuery is NOT ready.</div>
-							<script>
-								$(function () {
-									// if document is ready
-									$("#jQueryCheck").empty();
-									$("#jQueryCheck").append("jQuery is ready.(OK)");
-								});
-							</script>
-							<h3>abc.js</h3>
-							<div>
-								<div class="score abcPlay">
-									L:1/4
-									CDEFGABc
-								</div>
-								<div class="score">
-									M:4/4
-									L:1/8
-									K:C
-									V:1
-									"C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
-									V:2 bass
-									C,G,F,G, F,A,c,F, | G,B,d,G, C,E,G,c,||
-								</div>
+						<h3>jQuery</h3>
+						<div id="jQueryCheck">jQuery is NOT ready.</div>
+						<script>
+							$(function () {
+								// if document is ready
+								$("#jQueryCheck").empty();
+								$("#jQueryCheck").append("jQuery is ready.(OK)");
+							});
+						</script>
+						<h3>abc.js</h3>
+						<div>
+							<div class="score abcPlay">
+								L:1/4
+								CDEFGABc
 							</div>
-							<h3>MathJax：調整中</h3>
-							<div>
-								$$\dfrac{1}{2}$$
+							<div class="score">
+								M:4/4
+								L:1/8
+								K:C
+								V:1
+								"C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
+								V:2 bass
+								C,G,F,G, F,A,c,F, | G,B,d,G, C,E,G,c,||
 							</div>
-							<h3>chart.js</h3>
-							<canvas id="chart1" class="chartjs"></canvas>
-							<script>
-								var ctx = document.getElementById("chart1");
-								var myPieChart = new Chart(ctx, {
-									type: 'pie',
-									data: {
-										labels: ["A型", "O型", "B型", "AB型"],
-										datasets: [{
-											backgroundColor: [
-												"#BB5179",
-												"#FAFF67",
-												"#58A27C",
-												"#3C00FF"
-											],
-											data: [38, 31, 21, 10]
-										}]
+						</div>
+						<h3>MathJax：調整中</h3>
+						<div>
+							$$\dfrac{1}{2}$$
+						</div>
+						<h3>chart.js</h3>
+						<canvas id="chart1" class="chartjs"></canvas>
+						<script>
+							var ctx = document.getElementById("chart1");
+							var myPieChart = new Chart(ctx, {
+								type: 'pie',
+								data: {
+									labels: ["A型", "O型", "B型", "AB型"],
+									datasets: [{
+										backgroundColor: [
+											"#BB5179",
+											"#FAFF67",
+											"#58A27C",
+											"#3C00FF"
+										],
+										data: [38, 31, 21, 10]
+									}]
+								},
+								options: {
+									title: {
+										display: true,
+										text: '血液型 割合'
 									},
-									options: {
-										title: {
-											display: true,
-											text: '血液型 割合'
-										},
-										responsive: true,
-										maintainAspectRatio: false
-									}
-								});
-							</script>
-						</div>
+									responsive: true,
+									maintainAspectRatio: false
+								}
+							});
+						</script>
 					</div>
 				</div>
 			</div>

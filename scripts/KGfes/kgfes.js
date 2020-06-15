@@ -5,7 +5,7 @@ loadJScounter_loaded++;
 
 function KGfes_init() {
     var ele = document.createElement("div");
-    ele.classList.add("z工事中");
+    ele.classList.add("z工事中","debug");
     ele.innerHTML = "準備中";
     document.body.prepend(ele);
 
@@ -21,8 +21,9 @@ function KGfes_init() {
         ["Intro", "index.html"],
         ["Live!", "index.html"],
         ["Events", "index.html"],
-        ["Contests","index.html"],
-        ["Special", "index.html"]
+        ["Contest","index.html"],
+        ["Special", "index.html"],
+        ["Link先：未作成","index.html"]
     ]);
     menuUl.classList.add("KGfesMenu");
     myHeader.appendChild(

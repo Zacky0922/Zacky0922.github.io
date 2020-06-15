@@ -14,11 +14,11 @@ function getSpec() {
     var osList = [
         ["windows", "Windows"],
         ["mac", "Mac"],
-        ["linux", "Linux"],
         ["android", "Android"],
         ["iphone", "iOS"],
         ["ipad", "iOS"],
-        ["ios","iOS"]
+        ["ios", "iOS"],
+        ["linux", "Linux"]
     ];
     tx += "OS\n　";
     for (var i = 0; i < osList.length;i++){
@@ -55,7 +55,7 @@ function getSpec() {
         ["trident", "Trident"],
         ["gecko","gecko"]
     ];
-    tx += "Engine\n　";
+    tx += "Rendering Engine\n　";
     for (var i = 0; i < egList.length; i++) {
         if (ua.indexOf(egList[i][0]) > -1) {
             tx += egList[i][1] + "\n";
@@ -70,7 +70,7 @@ function getSpec() {
     tx += "Device Screen XY：\n　" +
         window.parent.screen.width + " x " +
         window.parent.screen.height + "\n";
-    tx += "Browser XY：\n　" +
+    tx += "Displayable Area XY：\n　" +
         window.innerWidth + " x " +
         window.innerHeight + "\n";
 

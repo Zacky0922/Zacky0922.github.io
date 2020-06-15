@@ -44,10 +44,13 @@ header ul.KGfesMenu{
 
 
 
-div.z工事中{
+.z工事中{
     font-size:  3em;
     text-align: center;
     margin-bottom:  30px;
+    color:  #fff;
+	-webkit-text-stroke: 1px #000;
+	text-stroke:1px #000;
 }
 
 footer{

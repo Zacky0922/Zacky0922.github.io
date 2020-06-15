@@ -5,6 +5,11 @@ div#zBurgerMenuWrap{
     --z-burger-ul-bgcolor:  rgba(0,0,63,0.8);
     --z-burger-li-hover-bgcolor:    rgba(255,191,191,0.5);
     --z-burger-fontcolor:   #fff;
+
+    /*  通常表示 */
+
+    /*  バーガー表示 */
+
 }
 
 /*  ラッパー部 */
@@ -61,6 +66,7 @@ div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger{
 
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger > li{
     padding:var(--z-spacing);
+    cursor: pointer;
 }
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger > li:hover{
     background: var(--z-burger-li-hover-bgcolor);
@@ -70,7 +76,7 @@ div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger > li:hover{
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger{
     display:    grid;
     gap:    var(--z-spacing);
-    grid-template-columns: repeat(auto-fill,minmax(100px,1fr))
+    grid-template-columns: repeat(auto-fit,minmax(100px,1fr))
 }
 div#zBurgerMenuWrap input#zBurgerMenuCheckbox + ul.zBurger > li{
     display:    inline-block;
