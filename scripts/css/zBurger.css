@@ -32,19 +32,30 @@ div#zBurgerMenuWrap{
 }
 }
 
+
 /*  制御部 */
-div#zBurgerMenuWrap label{
-    display:        inline-block;
-    margin: var(--z-spacing);
+div#zBurgerMenuWrap >div{
+    display:inline-block;
+    text-align:right;
+    margin:0;
+    padding:var(--z-spacing);
+}
+div#zBurgerMenuWrap >div >label{
+    display:        table-cell;
+    margin: 0;
     text-align: center;
     height: var(--z-burger-label-size);
     width:  var(--z-burger-label-size);
     border-radius:  100vh;
     background:     var(--z-burger-label-bgcolor);
+    vertical-align: middle;
+}
+div#zBurgerMenuWrap label > *{
+    vertical-align: middle;
 }
 
 @media screen and (min-width:600px){
-div#zBurgerMenuWrap label{
+div#zBurgerMenuWrap >div{
     display:none;
 }
 }

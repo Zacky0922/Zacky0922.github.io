@@ -15,7 +15,9 @@ function setBurgerMenu(ul) {
     //ラッパー
     var wrap = document.createElement("div");
     wrap.id = "zBurgerMenuWrap";
-    wrap.appendChild(label);
+    var lblWrap = document.createElement("div");
+    lblWrap.appendChild(label);
+    wrap.appendChild(lblWrap);
     wrap.appendChild(checkbox);
     wrap.appendChild(ul);
 
