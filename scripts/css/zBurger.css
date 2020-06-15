@@ -47,6 +47,7 @@ div#zBurgerMenuWrap >div >label{
     height: var(--z-burger-label-size);
     width:  var(--z-burger-label-size);
     border-radius:  100vh;
+    border: 1px solid var(--z-border-color);
     background:     var(--z-burger-label-bgcolor);
     vertical-align: middle;
 }

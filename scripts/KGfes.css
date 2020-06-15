@@ -94,5 +94,5 @@ div#zBurgerMenuWrap label img{
 
 .debug{
     background: var(--z-preset-工事中-bg);
-    /*  display:    none; */
+    /*  display:    none !important; */
 }
