@@ -53,7 +53,7 @@ function getSpec() {
     var egList = [
         ["webkit", "Webkit"],
         ["trident", "Trident"],
-        ["gecko","gecko"]
+        ["gecko","Gecko"]
     ];
     tx += "Rendering Engine：\n　";
     for (var i = 0; i < egList.length; i++) {
@@ -64,6 +64,7 @@ function getSpec() {
             tx += "other\n";
         }
     }
+    
     /*  画面サイズ関係
     https://web-designer.cman.jp/javascript_ref/window/size/
     */
