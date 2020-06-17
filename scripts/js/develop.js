@@ -20,7 +20,7 @@ function getSpec() {
         ["ios", "iOS"],
         ["linux", "Linux"]
     ];
-    tx += "OS\n　";
+    tx += "OS：\n　";
     for (var i = 0; i < osList.length;i++){
         if (ua.indexOf(osList[i][0]) > -1) {
             tx += osList[i][1] + "\n";
@@ -39,7 +39,7 @@ function getSpec() {
         ["edge", "Edge"],
         ["ie","Internet Explorer"]
     ];
-    tx += "Browser\n　";
+    tx += "Browser：\n　";
     for (var i = 0; i < brList.length; i++) {
         if (ua.indexOf(brList[i][0]) > -1) {
             tx += brList[i][1] + "\n";
@@ -55,7 +55,7 @@ function getSpec() {
         ["trident", "Trident"],
         ["gecko","gecko"]
     ];
-    tx += "Rendering Engine\n　";
+    tx += "Rendering Engine：\n　";
     for (var i = 0; i < egList.length; i++) {
         if (ua.indexOf(egList[i][0]) > -1) {
             tx += egList[i][1] + "\n";
