@@ -10,7 +10,7 @@ header{
     padding:    10px;
     line-height: 1rem;
     text-align: left;
-    z-index:    200;
+    z-index:    100 !important;
 }
 header > span{
     color:  #fff;
@@ -29,9 +29,6 @@ header span#KGfesTitle{
     }
 }
 
-header ul.KGfesMenu{
-    z-index: 150;
-}
 @media screen and (min-width:600px){
     header ul.KGfesMenu{
         margin: var(--z-spacing) calc(-1 * var(--z-spacing)) calc(-1 * var(--z-spacing)) !important;
