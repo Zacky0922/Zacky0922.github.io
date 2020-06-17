@@ -32,7 +32,7 @@
 		);
 	/* 金銀銅ホログラム */
 	--z-preset-holo-gold:	
-		var(--z-preset-holo-mask),#ff0;
+		var(--z-preset-holo-mask),linear-gradient(-45deg,#ff8,#dd0);
 	--z-preset-holo-silver:	
 		var(--z-preset-holo-mask),#888;
 	--z-preset-holo-bronze:	

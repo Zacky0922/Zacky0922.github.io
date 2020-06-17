@@ -35,11 +35,35 @@ div.KGgpWrapper > div{
         border:none;
         margin:0;
         padding:0;
+        position:relative;
+    }
+    div.KGgpWrapper > div > img{
+        display:    block;
     }
     div.KGgpWrapper > div h3,
     div.KGgpWrapper > div h4,
     div.KGgpWrapper > div div{
         display:none;
+        border: none;
+    }
+
+    div.KGgpWrapper > div:hover h3,
+    div.KGgpWrapper > div:hover h4,
+    div.KGgpWrapper > div:hover div{
+        display:block;
+        position:absolute;
+        padding:    var(--z-spacing);
+        margin:0;
+        background:rgba(0,0,63,0.7);
+        left:0;
+        text-align:left;
+        color:#fff;
+    }
+    div.KGgpWrapper > div:hover h4{
+        top:    calc(1em + calc(3.5 * var(--z-spacing)));
+    }
+    div.KGgpWrapper > div:hover div{
+        bottom:0;
     }
 }
 
