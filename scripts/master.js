@@ -102,7 +102,8 @@ var myScripts = [
     "js/pageMenu.js",
 
     //特殊版
-    "KGfes/kgfes.js"
+    "KGfes/kgfes.js",
+    "KGfes/kgfes-bg.js"
 ];
 //CDN jsファイル
 var extScripts = [
@@ -148,14 +149,10 @@ var JSloadFunc = setInterval(function () {
 }, 1);
 
 
-//js onload
+//js onload：js読込完了＝body未確定
 function jsLoaded() {
 
-    //五峯祭フォーマット
-    if (getParam["mode"] == "kgfes") {
-        KGfes_init();
-        getPageMenu("PageMenu");
-    }
+
 }
 
 //標準onload
@@ -176,5 +173,12 @@ window.addEventListener('load', (event) => {
     // init
     zOnload();
 
+    getPageMenu("PageMenu");
+
+    //五峯祭フォーマット
+    if (getParam["mode"] == "kgfes") {
+        KGfes_init();
+        kgfesBG();
+    }
 
 });

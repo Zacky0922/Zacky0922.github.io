@@ -13,6 +13,23 @@
 /* Google Font */
 @import "https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap";
 
+*{
+    --z-kgfes-bg:   linear-gradient(5deg,  transparent 0% 20%,     #fcc 20% 23%,   transparent 23% 100%),
+                    linear-gradient(20deg,  transparent 0% 80%,     #ccf 80% 83%,   transparent 83% 100%),
+                    linear-gradient(25deg,  transparent 0% 50%,     #cfc 50% 53%,   transparent 53% 100%),
+                    linear-gradient(40deg,  transparent 0% 33%,     #ffc 33% 36%,   transparent 36% 100%),
+                    linear-gradient(65deg,  transparent 0% 72%,     #cff 72% 75%,   transparent 75% 100%),
+                    linear-gradient(78deg,  transparent 0% 14%,     #88f 14% 17%,   transparent 17% 100%),
+                    linear-gradient(95deg,  transparent 0% 89%,     #8f8 89% 92%,   transparent 92% 100%),
+                    linear-gradient(125deg,  transparent 0% 27%,     #fcf 27% 30%,   transparent 30% 100%),
+                    linear-gradient(142deg,  transparent 0% 3%,     #f88 3% 6%,   transparent 6% 100%),
+                    linear-gradient(170deg,  transparent 0% 61%,     #fcc 61% 64%,   transparent 64% 100%);
+
+}
+.kgfes-bg{
+    background: var(--z-kgfes-bg);
+}
+
 /*  標準設定 */
 body{
     background: var(--z-preset-checker-blue);

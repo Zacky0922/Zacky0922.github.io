@@ -47,7 +47,8 @@ header span#KGfesTitle{
     margin-bottom:  30px;
     color:  #fff;
 	-webkit-text-stroke: 1px #000;
-	text-stroke:1px #000;
+    text-stroke:1px #000;
+    z-index:    1 !important;
 }
 
 footer{

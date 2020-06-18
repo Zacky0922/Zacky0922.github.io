@@ -18,6 +18,10 @@ div#zBurgerMenuWrap{
     margin: 0;
     text-align:right;
     color:  var(--z-burger-fontcolor);
+    z-index:200;
+}
+div#zBurgerMenuWrap *{
+    z-index:200;
 }
 @media screen and (min-width:600px){
 div#zBurgerMenuWrap{

@@ -90,7 +90,7 @@
 
 <body>
 	<div id="gridWrapper">
-		<section id="PageMenu" style="grid-area:menu"></section>
+		<section id="PageMenu" style="grid-area:menu;background:rgba(255,255,255,0.85);padding:20px"></section>
 		<section style="grid-area:news">
 			<h2 class="zHeadList" id="NEWS">NEWS</h2>
 			<ul class="news">
@@ -345,7 +345,7 @@
 						document.getElementById('debugTx').value = getSpec() + "\n\n" + debugMsgText;
 						document.getElementById('debugTx').select();
 						document.execCommand('copy');
-						alert("デバッグ情報をクリップボードにコピーしました");
+						alert("(Win,Android)\nデバッグ情報をクリップボードにコピーしました。\n(iOS非対応かも？)\n下記textareaから手動取得してください。");
 					}
 				</script>
 				<a class="zBtn" onclick="KGfesDebug()">debug/getSpec</a><br/>
@@ -391,6 +391,7 @@
 						文字背景を装飾画像に■◆●</div>
 					<div class="sample">
 						<div style="background:var(--z-preset-transparent-bg)"></div>
+						<div id="kgfes-bg"></div>
 					</div>
 
 					<h3>実験用</h3>

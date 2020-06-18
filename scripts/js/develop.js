@@ -13,11 +13,11 @@ function getSpec() {
     ua = ua.toLowerCase();
     var osList = [
         ["windows", "Windows"],
-        ["mac", "Mac"],
         ["android", "Android"],
-        ["iphone", "iOS"],
-        ["ipad", "iOS"],
+        ["iphone", "iPhone/iOS"],
+        ["ipad", "iPad/iOS"],
         ["ios", "iOS"],
+        ["mac", "Mac"],
         ["linux", "Linux"]
     ];
     tx += "OS：\n　";
