@@ -95,6 +95,7 @@ var myScripts = [
 
     //自作js
     "js/burger.js",
+    "js/customRandom.js",
     "js/date.js",
     "js/develop.js",
     "js/setTab.js",
