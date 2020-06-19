@@ -102,9 +102,9 @@ var myScripts = [
     "js/txReplace.js",
     "js/pageMenu.js",
 
-    //myTools
-    "myTools/develop.js",
-    "myTools/burger/burger.js"
+    //zTools
+    "zTools/develop.js",
+    "zTools/burger/burger.js"
 ];
 
 //CDN jsファイル

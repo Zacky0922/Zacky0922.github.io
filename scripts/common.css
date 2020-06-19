@@ -10,9 +10,9 @@
 @import url("./css/zHiddenBlock.css");
 @import url("./css/zBaloon.css");
 
-/* myTools */
-@import "./myTools/zBtn.css";
-@import "./myTools/burger/burger.css";
+/* zTools */
+@import "./zTools/zBtn.css";
+@import "./zTools/burger/burger.css";
 
 
 /*  ext-css */

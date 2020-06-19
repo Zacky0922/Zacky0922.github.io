@@ -19,7 +19,7 @@ function KGfes_init() {
     var menuUl = createMenuUl([
         ["Home", "index.html"],
         ["Intro", "index.html"],
-        ["Live!", "index.html"],
+        ["Live!", "live.html"],
         ["Events", "index.html"],
         ["Contest","index.html"],
         ["Special", "index.html"],
