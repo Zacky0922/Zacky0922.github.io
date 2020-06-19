@@ -73,7 +73,7 @@
 			}
 		}
 
-		div#container>div {
+		div#container>section {
 			text-align: left;
 			border: rgba(255, 255, 255, 0.3) 5px solid;
 			border-radius: 10px;
@@ -85,14 +85,14 @@
 
 <body>
 	<div id="container">
-		<div style="grid-area:notice">
+		<section style="grid-area:notice">
 			<h2 class="zHead">総合的な学習の時間 - WEBサイトを作ろう！</h2>
 			<dl class="zList">
 				<dt><a href="start.html">はじめに</a></dt>
 				<dd>タグとはなにか？ - html,head,bodyタグ</dd>
 				<dt>文字の表示と装飾</dt>
 				<dd>p,div,span,brタグ と style要素</dd>
-				<dt>表の表示</dt>
+				<dt><a href="table.html">表の表示</a></dt>
 				<dd>tableタグ</dd>
 				<dt>画像の表示</dt>
 				<dd>imgタグ</dd>
@@ -101,9 +101,9 @@
 				<dt>外部スタイルシートとclass</dt>
 				<dd>styleの一括指定</dd>
 			</dl>
-		</div>
+		</section>
 
-		<div style="grid-area:links">
+		<section style="grid-area:links">
 			<h2 class="zHead">Links</h2>
 			<p style="text-align:right">※クリックで展開</p>
 			<div>
@@ -118,21 +118,19 @@
 				<input type="checkbox" class="zHiddenBlock" id="参考リンク" checked="checked" />
 				<div style="grid-area:links;display:grid;">
 					<a class="zBtn" target="_blank" href="http://www.htmq.com/">HTMLクイックリファレンス</a>
+					<a class="zBtn" target="_blank" href="https://codepen.io/">CodePen</a>
 				</div>
 			</div>
-		</div>
+		</section>
 
-		<div style="grid-area:ft">
+		<section style="grid-area:ft">
 			<p>本ページをブックマークすると便利だと思います。</p>
 
-		</div>
-		<div id="debugArea" style="grid-area:debugArea">
-			<input type="text" size="30" style="max-width:95%;" placeholder="Input Password for Debug mode"
-				onkeyup="if( (this.value=='debug') || (!getOnline()) ){this.parentElement.children[1].classList.remove('zUndisp')}" />
-			<div class="zUndisp">
-				no content
-			</div>
-		</div>
+		</section>
+		<section id="debugArea" style="grid-area:debugArea">
+
+
+		</section>
 	</div><!-- /container -->
 </body>
 

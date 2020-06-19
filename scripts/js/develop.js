@@ -3,7 +3,9 @@ loadJScounter_loaded++;
 
 function getSpec() {
 
-    var tx = "User Agent：\n　";
+    var tx = "Time\n　" + (new Date()).toString() + "\n";
+
+    tx += "User Agent：\n　";
 
     /*  User Agent */
     var ua = window.navigator.userAgent;

@@ -342,14 +342,13 @@
 			<div>
 				<script>
 					function KGfesDebug() {
-						document.getElementById('debugTx').value = getSpec() + "\n\n" + debugMsgText;
+						document.getElementById('debugTx').value = getSpec() + "\n" + debugMsgText;
 						document.getElementById('debugTx').select();
 						document.execCommand('copy');
-						alert("(Win,Android)\nデバッグ情報をクリップボードにコピーしました。\n(iOS非対応かも？)\n下記textareaから手動取得してください。");
 					}
 				</script>
 				<a class="zBtn" onclick="KGfesDebug()">debug/getSpec</a><br/>
-				<textarea id="debugTx"></textarea>
+				<textarea id="debugTx" style="width:100%;height:150px;"></textarea>
 			</div>
 			<div>
 				<input type="text" size="30" style="max-width:95%;" placeholder="参加団体専用"

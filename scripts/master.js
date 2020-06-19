@@ -1,14 +1,3 @@
-
-/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    デバッグメッセージ処理
-    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-var debugMsgText = "◆debug msg";
-function debugMsg(msg) {
-    debugMsgText = debugMsgText + "\n" + msg;
-}
-
-
-
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
@@ -20,7 +9,6 @@ function getParam() {
     var query = src.substring(src.indexOf('?') + 1);
     var parameters = query.split('&');
 
-    debugMsg("master.js? 引渡し変数一覧");
 
     // URLクエリを分解して取得する
     var param = new Object();
@@ -29,7 +17,6 @@ function getParam() {
         var paramName = decodeURIComponent(element[0]);
         var paramValue = decodeURIComponent(element[1]);
         param[paramName] = paramValue;
-        debugMsg("// param[" + paramName + "] = " + paramValue);
     }
 
     //受取変数の個別処理
@@ -47,6 +34,22 @@ function getParam() {
 }
 var getParam = getParam();
 
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    デバッグメッセージ処理
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+var debugMsgText = "◆debug msg";
+function debugMsg(msg) {
+    debugMsgText = debugMsgText + "\n" + msg;
+}
+
+
+// 引渡し変数確認
+debugMsg("master.js? 引渡し変数一覧");
+for (i in getParam) {
+    debugMsg(" > getParam[" + i + "] = " + getParam[i]);
+}
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     オンライン状況取得
@@ -66,6 +69,7 @@ function getOnline() {
 if (getParam["css"] == undefined) {
     getParam["css"] = "master.css";
 }
+
 var myCSS = document.createElement("link");
 myCSS.rel = "stylesheet";
 myCSS.type = "text/css";
@@ -73,14 +77,12 @@ myCSS.href = getParam["lv"] + "scripts/" + getParam["css"];
 document.head.appendChild(myCSS);
 
 
+
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     JS loader
     被読込ファイル冒頭に、必ず以下を記載
     loadJScounter_loaded++;
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-debugMsg("JS loader");
-
-var loadJScounter_loaded = 0;
 
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
@@ -101,11 +103,17 @@ var myScripts = [
     "js/setTab.js",
     "js/txReplace.js",
     "js/pageMenu.js",
-
-    //特殊版
-    "KGfes/kgfes.js",
-    "KGfes/kgfes-bg.js"
 ];
+//モード別実装
+switch (getParam["mode"]) {
+    case "kgfes":
+        myScripts.push(
+            "KGfes/kgfes.js",
+            "KGfes/kgfes-bg.js"
+        );
+        break;
+    default:
+}
 //CDN jsファイル
 var extScripts = [
     "https://code.jquery.com/jquery-3.4.1.min.js",
@@ -115,7 +123,7 @@ var extScripts = [
 ];
 
 //読込
-function jsLoader(mySrc) {
+function jsLoader_(mySrc) {
     if (false) {
         var myScript = document.createElement("script");
         myScript.type = "text/javascript";
@@ -124,26 +132,28 @@ function jsLoader(mySrc) {
     } else {
         document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
     }
-    debugMsg("// js loading - " + mySrc);
+    debugMsg(" > " + mySrc);
 }
+function jsLoader() {
+    debugMsg("jsLoader");
+    for (var i = 0; i < extScripts.length; i++) {
+        jsLoader_(extScripts[i]);
+    }
+    for (var i = 0; i < myScripts.length; i++) {
+        jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);
+    }
+}
+jsLoader();
 
-for (var i = 0; i < extScripts.length; i++) {
-    jsLoader(extScripts[i]);
-}
-for (var i = 0; i < myScripts.length; i++) {
-    jsLoader(getParam["lv"] + "scripts/" + myScripts[i]);
-}
-
-var JSloaded_flag = false;
+var loadJScounter_loaded = 0;
 var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == myScripts.length) {
         //全部読込完了
         debugMsg("master.js:JSloadFunc Complete!\n" +
-            "// local = " + myScripts.length +
+            " > local = " + myScripts.length +
             " / ext = " + extScripts.length);
         clearInterval(JSloadFunc);
         jsLoaded();
-        JSloaded_flag = true;
     }else{
         return;
     }

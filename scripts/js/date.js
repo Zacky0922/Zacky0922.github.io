@@ -1,8 +1,8 @@
 loadJScounter_loaded++;
 
+//現在の年月日時分秒を取得
 function nowTime() {
     var now = new Date();
-
 }
 
 //引数：年月日、行事の実施日数
