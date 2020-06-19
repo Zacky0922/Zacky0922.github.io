@@ -6,11 +6,13 @@
 @import url("./css/table.css");
 
 /* 機能モジュール */
-@import url("./css/zBtn.css");
 @import url("./css/zHoverDisp.css");
 @import url("./css/zHiddenBlock.css");
 @import url("./css/zBaloon.css");
-@import "./css/zBurger.css";
+
+/* myTools */
+@import "./myTools/zBtn.css";
+@import "./myTools/burger/burger.css";
 
 
 /*  ext-css */

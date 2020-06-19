@@ -91,19 +91,30 @@ var myScripts = [
     "ext-js/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
     "ext-js/jquery-3.5.1.min.js",
 
-    //外部jsの初期化
+    //
     "ext-js/abcjs_init.js",
     //"ext-js/chartjs_init.js",
 
     //自作js
-    "js/burger.js",
     "js/customRandom.js",
     "js/date.js",
-    "js/develop.js",
     "js/setTab.js",
     "js/txReplace.js",
     "js/pageMenu.js",
+
+    //myTools
+    "myTools/develop.js",
+    "myTools/burger/burger.js"
 ];
+
+//CDN jsファイル
+var extScripts = [
+    "https://code.jquery.com/jquery-3.4.1.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML",
+    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css",
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"
+];
+
 //モード別実装
 switch (getParam["mode"]) {
     case "kgfes":
@@ -114,13 +125,7 @@ switch (getParam["mode"]) {
         break;
     default:
 }
-//CDN jsファイル
-var extScripts = [
-    "https://code.jquery.com/jquery-3.4.1.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML",
-    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css",
-    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"
-];
+
 
 //読込
 function jsLoader_(mySrc) {
