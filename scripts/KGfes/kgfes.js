@@ -20,10 +20,9 @@ function KGfes_init() {
         [getGicon("home").outerHTML + " Top", "index.html"],
         [getGicon("tag_faces").outerHTML + " Intro", "intro.html"],
         [getGicon("cast").outerHTML + " Live!", " live.html"],
-        [getGicon("event_note").outerHTML + " Events", "index.html"],
+        [getGicon("event_note").outerHTML + " Events", "event.html"],
         [getGicon("fact_check").outerHTML + " Contest", "contest.html"],
-        [getGicon("star_border").outerHTML + " Special", "index.html"],
-        ["Link先：未作成", "index.html"]
+        [getGicon("star_border").outerHTML + " Special", "special.html"]
     ]);
     menuUl.classList.add("KGfesMenu");
     myHeader.appendChild(
