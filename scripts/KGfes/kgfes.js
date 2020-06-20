@@ -20,7 +20,7 @@ function KGfes_init() {
         [getGicon("home").outerHTML + " Top", "index.html"],
         [getGicon("tag_faces").outerHTML + " Intro", "intro.html"],
         [getGicon("cast").outerHTML + " Live!", " live.html"],
-        [getGicon("event_note").outerHTML + " Events", "event.html"],
+        [getGicon("event_note").outerHTML + " Events", "events.html"],
         [getGicon("fact_check").outerHTML + " Contest", "contest.html"],
         [getGicon("star_border").outerHTML + " Special", "special.html"]
     ]);

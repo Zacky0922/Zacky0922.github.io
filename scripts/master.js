@@ -145,7 +145,8 @@ switch (getParam["mode"]) {
     case "kgfes":
         myScripts.push(
             "KGfes/kgfes.js",
-            "KGfes/kgfes-bg.js"
+            "KGfes/kgfes-bg.js",
+            "KGfes/eventList.js",
         );
         break;
     default:
