@@ -35,6 +35,7 @@ header span#KGfesTitle{
     header ul.KGfesMenu > li{
         background: rgba(255,255,255,0.8);
         color:  var(--z-fontcolor);
+        vertical-align: middle;
     }
 }
 

@@ -19,6 +19,9 @@
   -moz-osx-font-smoothing: grayscale;
   /* IEサポート */
   font-feature-settings: 'liga';
+
+  /* Zacky */
+  vertical-align: middle;
 }
 /* アイコンサイズ */
 .material-icons.md-18 { font-size: 18px; }

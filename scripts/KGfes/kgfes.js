@@ -5,7 +5,7 @@ loadJScounter_loaded++;
 
 function KGfes_init() {
     var ele = document.createElement("div");
-    ele.classList.add("z工事中","debug");
+    ele.classList.add("z工事中", "debug");
     ele.innerHTML = "準備中";
     document.body.prepend(ele);
 
@@ -17,13 +17,13 @@ function KGfes_init() {
 
     //burder menu
     var menuUl = createMenuUl([
-        ["Top", "index.html"],
-        ["Intro", "intro.html"],
-        ["Live!", "live.html"],
-        ["Events", "index.html"],
-        ["Contest","contest.html"],
-        ["Special", "index.html"],
-        ["Link先：未作成","index.html"]
+        [getGicon("home").outerHTML + " Top", "index.html"],
+        [getGicon("tag_faces").outerHTML + " Intro", "intro.html"],
+        [getGicon("cast").outerHTML + " Live!", " live.html"],
+        [getGicon("event_note").outerHTML + " Events", "index.html"],
+        [getGicon("fact_check").outerHTML + " Contest", "contest.html"],
+        [getGicon("star_border").outerHTML + " Special", "index.html"],
+        ["Link先：未作成", "index.html"]
     ]);
     menuUl.classList.add("KGfesMenu");
     myHeader.appendChild(

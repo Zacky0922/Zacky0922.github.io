@@ -15,13 +15,10 @@
 @import "./zTools/burger/burger.css";
 
 
-/*  ext-css */
-/*  chart.js */
-@import "./ext-css/chartjs.css";
-/*  Google Icon */
-@import "./ext-css/googleIcon.css";
-/*  PrettyPrint：コード整形 */
-@import "./ext-css/prettyprint.css";
+/*  extTools */
+@import "./extTools/chartjs/chartjs.css";
+@import "./extTools/googleicon/googleicon.css";
+@import "./extTools/prettyprint.css";
 
 
 /*  preset */

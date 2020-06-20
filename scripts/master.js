@@ -114,7 +114,7 @@ var myScripts = [
 
     //
     "ext-js/abcjs_init.js",
-    //"ext-js/chartjs_init.js",
+    //"./extTools/chartjs/chartjs_init.js",
 
     //自作js
     "js/customRandom.js",
@@ -123,6 +123,9 @@ var myScripts = [
     "js/txReplace.js",
     "js/pageMenu.js",
 
+    //extTools
+    "extTools/googleicon/googleicon.js",
+    
     //zTools
     "zTools/develop.js",
     "zTools/burger/burger.js"

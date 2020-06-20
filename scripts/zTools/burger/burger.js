@@ -29,7 +29,7 @@ function createMenuUl(menu) {
     var ul = document.createElement("ul");
     for (var i = 0; i < menu.length; i++){
         var li = document.createElement("li");
-        li.innerText = menu[i][0];
+        li.innerHTML = menu[i][0];
         li.setAttribute("onclick", "location.href='"+menu[i][1]+"'");
         ul.appendChild(li);
     }
