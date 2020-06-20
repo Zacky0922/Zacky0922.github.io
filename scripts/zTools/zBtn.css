@@ -6,16 +6,13 @@
     color: var(--z-fontcolor);
     text-align: center;
     text-decoration: none;
+    vertical-align: middle;
     padding: 10px;
     margin: 5px;
     min-width:  80px;
-    vertical-align: middle;
     transition-duration:	var(--z-anime-duration);
-
 }
 .zBtn:hover{
     background: var(--z-ele-bgcolor-alt);
     color: var(--z-ele-fontcolor-alt);
 }
-
-
