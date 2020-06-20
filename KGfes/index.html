@@ -381,7 +381,11 @@
 						文字背景を装飾画像に■◆●</div>
 					<div class="sample">
 						<div style="background:var(--z-preset-transparent-bg)"></div>
-						<div id="kgfes-bg"></div>
+						<div style="background:linear-gradient(0deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
+						<div style="background:linear-gradient(10deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
+						<div style="background:linear-gradient(45deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
+						<div style="background:linear-gradient(90deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
+						<div style="background:linear-gradient(180deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
 					</div>
 
 					<h3>実験用</h3>
@@ -417,10 +421,12 @@
 								C,G,F,G, F,A,c,F, | G,B,d,G, C,E,G,c,||
 							</div>
 						</div>
-						<h3>MathJax：調整中</h3>
+						<h3>MathJax</h3>
+						displaystyle：
 						<div>
 							$$\dfrac{1}{2}$$
 						</div>
+						<div>inlinestyle：\(\dfrac{1}{2}\)</div>
 						<h3>chart.js</h3>
 						<canvas id="chart1" class="chartjs"></canvas>
 						<script>
