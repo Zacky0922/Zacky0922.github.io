@@ -17,11 +17,11 @@ function KGfes_init() {
 
     //burder menu
     var menuUl = createMenuUl([
-        ["Home", "index.html"],
-        ["Intro", "index.html"],
+        ["Top", "index.html"],
+        ["Intro", "intro.html"],
         ["Live!", "live.html"],
         ["Events", "index.html"],
-        ["Contest","index.html"],
+        ["Contest","contest.html"],
         ["Special", "index.html"],
         ["Link先：未作成","index.html"]
     ]);
