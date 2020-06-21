@@ -129,12 +129,12 @@
 					<tr>
 						<td colspan="5">
 							<span id="KGcountdownMs"
-								style="display:inline-block;height:2px;background:#f00;transition:65ms linear"></span>
+								style="display:inline-block;height:2px;transition:65ms linear"></span>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="5">
-							until Saturday, 12th September 2020, 10:00
+							until Saturday,12th September 2020,10:00
 						</td>
 					</tr>
 				</tfoot>
@@ -143,7 +143,8 @@
 			<script>
 				//カウントダウン設定
 				//制限時間以降が未設定……
-
+				var w_old = 0;
+				var w_diff = 0;
 				var zCountdown_ = setInterval(function () {
 					var myDiff = zCountdown(new Date(), new Date(2020, 9 - 1, 12, 10, 00, 00));
 					var s = "<span style='color:transparent;padding:0;margin:0'>s</span>";
@@ -158,8 +159,12 @@
 						"<td>" + "hour" + (myDiff[4] % 24 <= 1 ? s : "s") + "</td>" +
 						"<td>" + "minute" + (myDiff[5] % 60 <= 1 ? s : "s") + "</td>" +
 						"<td>" + "second" + (myDiff[6] % 60 <= 1 ? s : "s") + "</td></tr>";
-					document.getElementById("KGcountdownMs").parentElement.style.textAlign = (myDiff[6] % 2 == 0 ? "right":"left");
-					document.getElementById("KGcountdownMs").style.width = (myDiff[6] % 2 == 0 ? myDiff[7] % 1000 : 1000 - (myDiff[7] % 1000))  / 10 + "%";
+					var w_new = (myDiff[6] % 2 == 0 ? myDiff[7] % 1000 : 1000 - (myDiff[7] % 1000));
+					w_diff = w_new - w_old;
+					document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
+					document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
+					document.getElementById("KGcountdownMs").style.background = "hsl("+((myDiff[7]%2000)/2000*360)+",100%,50%)";
+					w_old = w_new;
 				}, 66);
 			</script>
 
