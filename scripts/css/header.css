@@ -8,8 +8,8 @@ h1{
     font-size:  150%;
 }
 
-h2.zHead ~ h2.zHead{
-	margin-top:	40px;
+* > h2.zHead:first-child{
+	margin-top:	var(--z-spacing);
 }
 
 h2.zHead{
@@ -19,7 +19,8 @@ h2.zHead{
 	top:		0;
 	z-index:	5;
     text-align:	center;
-    padding:    8px 10px;
+	padding:    8px 10px;
+	margin:	40px;
 }
 h2.zHead:before,
 h2.zHead:after{

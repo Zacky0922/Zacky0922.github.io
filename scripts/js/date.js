@@ -48,7 +48,7 @@ function countDays(y, m, d, Dspan = 1) {
 }
 
 
-
+//要調整
 function countdownTimer(ele, y, m, d, hr, min) {
 
     var targetday = new Date(y, m - 1, d, hr, min);
@@ -70,4 +70,22 @@ function countdownTimer(ele, y, m, d, hr, min) {
     //var days = Math.ceil(diff / (24*60*60));
     //var sec = (diff - days*24*60);
 
+}
+
+function zCountdown(from, to) {
+    var diff = to.getTime() - from.getTime();   //msec
+
+    var myReturn = [
+        //年・月・週・日
+        0,  //年：未対応
+        0,  //月：未対応
+        Math.floor(diff / (1000 * 60 * 60 * 24 * 7)),
+        Math.floor(diff / (1000 * 60 * 60 * 24)),
+        //時・分・秒・ミリ秒
+        Math.floor(diff / (1000 * 60 * 60)),
+        Math.floor(diff / (1000 * 60)),
+        Math.floor(diff / (1000)),
+        diff
+    ];
+    return myReturn;
 }

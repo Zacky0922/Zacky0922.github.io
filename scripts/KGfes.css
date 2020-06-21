@@ -12,7 +12,7 @@
 @import "./KGfes/events.css";
 
 /* Google Font */
-@import "https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&display=swap";
 
 *{
     --z-kgfes-bg:   linear-gradient(5deg,  transparent 0% 20%,     #fcc 20% 23%,   transparent 23% 100%),
@@ -59,6 +59,49 @@ div#container {
 */
 
 
+#toGoUp{
+    display:    inline-block;
+    position:   fixed;
+    right:  0;
+    bottom: 0;
+    margin: var(--z-spacing);
+    padding:0;
+    color:  rgba(63,63,63,0.8);
+}
+#toGoUp span{
+    margin:0;
+    padding:0;
+    font-size:  5em;
+}
+
+/* カウントダウン */
+table#KGcountdownWrap{
+    margin: calc(4*var(--z-spacing)) auto;
+    padding:    var(--z-spacing);
+    font-family: 'Sriracha', cursive;
+    border-top: var(--z-border-color) 5px solid;
+    border-bottom: var(--z-border-color) 5px solid;
+}
+table#KGcountdownWrap *{
+    margin:0;
+    padding:0;
+    text-align: center;
+    white-space: nowrap;
+    border:none;
+    line-height: 1;
+}
+table#KGcountdownWrap tbody th{
+    font-size:  2.5em;
+}
+table#KGcountdownWrap tbody td{
+    padding:    0 var(--z-spacing);
+}
+table#KGcountdownWrap tfoot tr:first-child{
+    font-size:  0;
+    line-height: 0;
+    height: calc(2 * var(--z-spacing));
+    vertical-align: middle;
+}
 
 /* 変数設定 */
 :root{

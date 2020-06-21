@@ -3,7 +3,9 @@ loadJScounter_loaded++;
 
 
 
-function KGfes_init() {
+function KGfes_init(dir) {
+    dir = dir + "KGfes/";
+
     var ele = document.createElement("div");
     ele.classList.add("z工事中", "debug");
     ele.innerHTML = "準備中";
@@ -15,14 +17,15 @@ function KGfes_init() {
         '<span id="KGfesPeriod">2020.09.12-13(Sat-Sun)</span >';
     document.body.prepend(myHeader);
 
-    //burder menu
+    //burger menu setting
     var menuUl = createMenuUl([
-        [getGicon("home").outerHTML + " Top", "index.html"],
-        [getGicon("tag_faces").outerHTML + " Intro", "intro.html"],
-        [getGicon("cast").outerHTML + " Live!", " live.html"],
-        [getGicon("event_note").outerHTML + " Events", "events.html"],
-        [getGicon("fact_check").outerHTML + " Contest", "contest.html"],
-        [getGicon("star_border").outerHTML + " Special", "special.html"]
+        [getGicon("home").outerHTML + " Top", dir+"index.html"],
+        [getGicon("tag_faces").outerHTML + " Intro", dir + "intro.html"],
+        [getGicon("event_note").outerHTML + " Events", dir + "events.html"],
+        [getGicon("collections_bookmark").outerHTML + " Gallery", dir + "gallery/index.html"],
+        [getGicon("fact_check").outerHTML + " Contest", dir + "contest.html"],
+        [getGicon("cast").outerHTML + " Live!", dir +"live.html"],
+        [getGicon("star_border").outerHTML + " Special", dir +"special.html"]
     ]);
     menuUl.classList.add("KGfesMenu");
     myHeader.appendChild(
@@ -36,5 +39,32 @@ function KGfes_init() {
 
 
 
+    //ページトップへ戻るボタン
+    var toGoUp = document.createElement("a");
+    toGoUp.innerHTML = getGicon("arrow_circle_up").outerHTML;
+    toGoUp.id = "toGoUp";
+    toGoUp.classList.add("zUndisp");
+    toGoUp.href = "#top";
+    document.body.appendChild(toGoUp);
+    document.body.id = "top";
 
 }
+
+
+
+
+$(function () {
+    $(window).scroll(function () {
+        toGoUpDisp();
+    });
+    
+    function toGoUpDisp() {
+        $("#toGoUp").each(function () {
+            if ($(window).scrollTop() <= 300) {
+                this.classList.add("zUndisp");
+            } else if ($(window).scrollTop() > 300) {
+                this.classList.remove("zUndisp");
+            };
+        });
+    };
+});

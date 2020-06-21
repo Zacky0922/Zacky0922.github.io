@@ -38,31 +38,35 @@ var getParam = getParam();
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     デバッグメッセージ処理
-    第二引数：階層設定（最後は必ず閉じましょう）
+    第二引数：階層設定（最後は必ず閉じること）
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+var debugMsgTime = new Date();
 var debugMsgText = "◆debug msg";
 var debugMsgLogLv = 0;
 function debugMsg(msg, group = 0) {
+    var indent = " > ";
+    msg = (debugMsgLogLv == 0 ? "" : indent) + msg;
     switch (group) {
         case 1:
-            debugMsgText = debugMsgText + "\n" + (debugMsgLogLv == 0 ? "" : " > ") + msg;
+            debugMsgText = debugMsgText + "\n" + msg;
             console.groupCollapsed(msg);
             debugMsgLogLv++;
             break;
         case 0:
-            debugMsgText = debugMsgText + "\n" + (debugMsgLogLv == 0 ? "" : " > ") +  msg;
+            debugMsgText = debugMsgText + "\n" + msg;
             console.log(msg);
             break;
         case -1:
-            if (msg != "") {
-                debugMsgText = debugMsgText + "\n" + (debugMsgLogLv == 0 ? "" : " > ") +  msg;
+            if (msg != "" && msg != indent) {
+                debugMsgText = debugMsgText + "\n" + msg;
                 console.log(msg);
             }
             console.groupEnd();
             debugMsgLogLv--;
+            break;
+        default:
     }
 }
-
 
 
 // 引渡し変数確認
@@ -105,6 +109,15 @@ document.head.appendChild(myCSS);
     loadJScounter_loaded++;
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 
+//CDN jsファイル
+var extScripts = [
+    "https://code.jquery.com/jquery-3.4.1.min.js",
+    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css",
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
+    //"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
+    "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+];
+
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
     //外部js＝ローカルDL
@@ -131,15 +144,6 @@ var myScripts = [
     "zTools/burger/burger.js"
 ];
 
-//CDN jsファイル
-var extScripts = [
-    "https://code.jquery.com/jquery-3.4.1.min.js",
-    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css",
-    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
-    //"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
-    "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-];
-
 //モード別実装
 switch (getParam["mode"]) {
     case "kgfes":
@@ -164,6 +168,7 @@ function jsLoader_(mySrc) {
     }
     debugMsg("" + mySrc);
 }
+
 function jsLoader() {
     debugMsg("jsLoader", 1);
     for (var i = 0; i < extScripts.length; i++) {
@@ -180,9 +185,9 @@ var loadJScounter_loaded = 0;
 var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == myScripts.length) {
         //全部読込完了
-        debugMsg("master.js:JSloadFunc Complete!", 1);
-        debugMsg("local = " + myScripts.length +
-            " / ext = " + extScripts.length, -1);
+        debugMsg("master.js - JSloadFunc Complete!", 1);
+        debugMsg("local = " + myScripts.length)
+        debugMsg("ext = " + extScripts.length, -1);
         clearInterval(JSloadFunc);
         jsLoaded();
     } else {
@@ -219,8 +224,14 @@ window.addEventListener('load', (event) => {
 
     //五峯祭フォーマット
     if (getParam["mode"] == "kgfes") {
-        KGfes_init();
+        KGfes_init(getParam["lv"]);
         kgfesBG();
     }
+    debugMsg("eventListener:loaded - " + ((new Date()).getTime() - debugMsgTime.getTime()) + "msec");
 
 });
+
+
+
+
+

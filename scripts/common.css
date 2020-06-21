@@ -89,7 +89,7 @@ a{
     background: #f00;
 }
 .zUndisp{
-    display:    none;
+    display:    none !important;
     /* chart.jsとの相性悪い？　・・・　読込時、H=W=0 になる（画面サイズ変更で規定サイズに）
     height: 0;
     width:  0;

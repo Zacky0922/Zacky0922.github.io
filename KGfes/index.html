@@ -92,18 +92,18 @@
 	<div id="gridWrapper">
 		<section id="PageMenu" style="grid-area:menu;background:rgba(255,255,255,0.85);padding:20px"></section>
 		<section style="grid-area:news">
-			<h2 class="zHeadList" id="NEWS">NEWS</h2>
+			<h2 class="zHeadList zHead" id="NEWS">NEWS</h2>
 			<ul class="news">
 				<li>
-				<span>06.20</span>
-				<span>運営</span><br />
-				<span>各ページup</span>
-			</li>
-			<li>
-				<span>06.17</span>
-				<span>運営</span><br />
-				<span>団体紹介表示fix</span>
-			</li>
+					<span>06.20</span>
+					<span>運営</span><br />
+					<span>各ページup</span>
+				</li>
+				<li>
+					<span>06.17</span>
+					<span>運営</span><br />
+					<span>団体紹介表示fix</span>
+				</li>
 				<li>
 					<span>06.10</span>
 					<span>出展者</span><br />
@@ -118,15 +118,52 @@
 		</section>
 
 		<section style="grid-area:pickup">
-			<div class="zCentering" style="font-size:1.5em;">
-				五峯祭（2020.9.12）
-				<script>countDays(2020, 9, 12)</script>
+			<div class="zCentering">
+				<script>
+					document.write("五峯祭（2020.9.12）");
+					countDays(2020, 9, 12);
+				</script>
 			</div>
-			<div>2020.9.12 10時まで、あと<span id="countdownSec"></span></div>
+			<table id="KGcountdownWrap">
+				<tfoot>
+					<tr>
+						<td colspan="5">
+							<span id="KGcountdownMs"
+								style="display:inline-block;height:2px;background:#f00;transition:65ms linear"></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							until Saturday, 12th September 2020, 10:00
+						</td>
+					</tr>
+				</tfoot>
+				<tbody id="KGcountdown"></tbody>
+			</table>
 			<script>
-				countdownTimer(document.getElementById("countdownSec"), 2020, 9, 12, 10, 0);
+				//カウントダウン設定
+				//制限時間以降が未設定……
+
+				var zCountdown_ = setInterval(function () {
+					var myDiff = zCountdown(new Date(), new Date(2020, 9 - 1, 12, 10, 00, 00));
+					var s = "<span style='color:transparent;padding:0;margin:0'>s</span>";
+					document.getElementById("KGcountdown").innerHTML = "" +
+						"<tr><th>" + myDiff[2] + "</th>" +
+						"<th>" + myDiff[3] % 7 + "</th>" +
+						"<th>" + myDiff[4] % 24 + "</th>" +
+						"<th>" + myDiff[5] % 60 + "</th>" +
+						"<th>" + myDiff[6] % 60 + "</th></tr>" +
+						"<tr><td>" + "week" + (myDiff[2] <= 1 ? s : "s") + "</td>" +
+						"<td>" + "day" + (myDiff[3] % 7 <= 1 ? s : "s") + "</td>" +
+						"<td>" + "hour" + (myDiff[4] % 24 <= 1 ? s : "s") + "</td>" +
+						"<td>" + "minute" + (myDiff[5] % 60 <= 1 ? s : "s") + "</td>" +
+						"<td>" + "second" + (myDiff[6] % 60 <= 1 ? s : "s") + "</td></tr>";
+					document.getElementById("KGcountdownMs").parentElement.style.textAlign = (myDiff[6] % 2 == 0 ? "right":"left");
+					document.getElementById("KGcountdownMs").style.width = (myDiff[6] % 2 == 0 ? myDiff[7] % 1000 : 1000 - (myDiff[7] % 1000))  / 10 + "%";
+				}, 66);
 			</script>
-			<h2 class="zHeadList" id="Pick Up">Pick Up</h2>
+
+			<h2 class="zHeadList zHead" id="Pick Up">Pick Up</h2>
 			<div class="zTbl">
 				<table>
 					<caption>動作確認（確認日）</caption>
@@ -198,7 +235,7 @@
 
 
 		<section style="grid-area:groups">
-			<h2 class="zHeadList" id="団体紹介">団体紹介</h2>
+			<h2 class="zHeadList zHead" id="団体紹介">団体紹介</h2>
 			<div class="debug">PC表示：画像だけ（grid一覧）<br />MOB表示：団体名＋出展名＋画像＋団体説明（横スナップ）</div>
 			<div class="KGgpWrapper">
 				<div class="中学">
@@ -289,7 +326,7 @@
 		</section>
 
 		<section style="grid-area:ft">
-			<h2 class="zHeadList" id="参加団体向けスケジュール">参加団体向けスケジュール</h2>
+			<h2 class="zHeadList zHead" id="参加団体向け">参加団体向け</h2>
 			<div class="zTbl">
 				<table>
 					<caption>スケジュール（変更になる場合もあります）</caption>
@@ -343,7 +380,7 @@
 						document.execCommand('copy');
 					}
 				</script>
-				<a class="zBtn" onclick="KGfesDebug()">debug/getSpec</a><br/>
+				<a class="zBtn" onclick="KGfesDebug()">debug/getSpec</a><br />
 				<textarea id="debugTx" style="width:100%;height:150px;"></textarea>
 			</div>
 			<div>
@@ -386,11 +423,21 @@
 						文字背景を装飾画像に■◆●</div>
 					<div class="sample">
 						<div style="background:var(--z-preset-transparent-bg)"></div>
-						<div style="background:linear-gradient(0deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
-						<div style="background:linear-gradient(10deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
-						<div style="background:linear-gradient(45deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
-						<div style="background:linear-gradient(90deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
-						<div style="background:linear-gradient(180deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)"></div>
+						<div
+							style="background:linear-gradient(0deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)">
+						</div>
+						<div
+							style="background:linear-gradient(10deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)">
+						</div>
+						<div
+							style="background:linear-gradient(45deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)">
+						</div>
+						<div
+							style="background:linear-gradient(90deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)">
+						</div>
+						<div
+							style="background:linear-gradient(180deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)">
+						</div>
 					</div>
 
 					<h3>実験用</h3>
