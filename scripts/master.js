@@ -138,7 +138,7 @@ var myScripts = [
 
     //extTools
     "extTools/googleicon/googleicon.js",
-    
+
     //zTools
     "zTools/develop.js",
     "zTools/burger/burger.js"
@@ -227,7 +227,7 @@ window.addEventListener('load', (event) => {
         KGfes_init(getParam["lv"]);
         kgfesBG();
     }
-    debugMsg("eventListener:loaded - " + ((new Date()).getTime() - debugMsgTime.getTime()) + "msec");
+    debugMsg("eventListener:loaded - " + (((new Date()).getTime() - debugMsgTime.getTime()) / 1000) + "sec");
 
 });
 
