@@ -13,6 +13,7 @@ function eventList_init(id) {
         ele["画像"] = events[i].children[2].src;
         ele["紹介文"] = events[i].children[3].innerHTML;
         events[i].innerHTML = "";
+        events[i].classList.add("eventArticles");
 
         //時間／WEBギャラリー判定・要素追加
         var time = document.createElement("div");
@@ -51,12 +52,26 @@ function eventList_init(id) {
         text.setAttribute("style", "grid-area:event-text");
         text.innerHTML = ele["紹介文"];
         events[i].appendChild(text);
+
+
     }
 
 
     //日付順並べ替え
-    sort_flag = false;
-    while (sort_flag) {
-        
+    var sort_flag = false;
+    while (true) {
+        sort_flag = true;
+        for (var i = 0; i < events.length - 1; i++){
+            //if(events[i])
+        }
+
+        if (sort_flag) {
+            break;
+        }
     }
-}
+};
+
+$(document.getElementById("eventList").children[0]).hover(
+    $(events[i].children[2]).show(400),
+    $(events[i].children[2]).hide(400)
+);

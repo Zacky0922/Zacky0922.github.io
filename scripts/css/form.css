@@ -1,0 +1,4 @@
+form.zForm fieldset input,
+form.zForm fieldset label{
+    display:    inline;
+}
