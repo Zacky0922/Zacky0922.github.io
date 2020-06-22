@@ -3,11 +3,13 @@ loadJScounter_loaded++;
 //MathJax逐次実行
 function reMathJax(id = null) {
     if (id == null) {
-        id = "zBody";
-        document.body.id = id;
+        return;
+        
+        //ページ全体の再描画設定は…？
+        
+    } else {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, id]);
     }
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, id]);
-    debugMsg("reMathJax - " + id);
 }
 
 
