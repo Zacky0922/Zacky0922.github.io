@@ -49,38 +49,17 @@
 
 	<style>
 		div#gridWrapper {
-			margin: 5px;
+			margin: var(--z-spacing);
 			display: grid;
 			grid-gap: 15px;
-			grid-template-columns: 100%;
-				grid-template-areas:
-					"menu"
-					"main";
-		}
-
-		/* PCレイアウト */
-		@media screen and (min-width:600px) {
-			div#gridWrapper {
-				max-width: 100%;
-				grid-template-columns: 3fr minmax(max-content, 1fr);
-				grid-template-areas:
-					"main menu"
-					"main .";
-			}
-		}
-
-		div#gridWrapper>section {
-			text-align: left;
-			border: #ffd 8px solid;
-			border-radius: 10px;
-			padding: 10px;
-			background: rgba(220, 220, 255, 0.9);
-			box-shadow: 3px 3px 5px #002;
-			overflow-x: auto;
+			grid-template-columns: minmax(max-content,3fr) minmax(max-content,1fr);
+			grid-template-areas:
+				"main	menu"
+				"main	.";
 		}
 	</style>
 
-	<title>五峯祭 特設サイトsample</title>
+	<title>Introduction</title>
 </head>
 
 <body>

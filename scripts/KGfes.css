@@ -25,7 +25,6 @@
                     linear-gradient(125deg,  transparent 0% 27%,     #fcf 27% 30%,   transparent 30% 100%),
                     linear-gradient(142deg,  transparent 0% 3%,     #f88 3% 6%,   transparent 6% 100%),
                     linear-gradient(170deg,  transparent 0% 61%,     #fcc 61% 64%,   transparent 64% 100%);
-
 }
 .kgfes-bg{
     background: var(--z-kgfes-bg);
@@ -57,6 +56,31 @@ div#container {
     .zHead      5
     ヘッダー    100
 */
+
+div#gridWrapper>section{
+	text-align: left;
+	border: #ffd var(--z-spacing) solid;
+	border-radius: var(--z-spacing);
+    padding: var(--z-spacing);
+    margin: 0;
+	background: rgba(220, 220, 255, 0.9);
+	box-shadow: 3px 3px 5px #002;
+	overflow-x: auto;
+}
+/* MOBレイアウト */
+@media screen and (max-width:599px) {
+	div#gridWrapper {
+		display:    block !important;
+		margin:     0 !important;
+    }
+    div#gridWrapper>section{
+	    border-radius: 0 !important;
+        margin: var(--z-spacing) 0 !important;
+    }
+}
+
+
+
 
 
 #toGoUp{

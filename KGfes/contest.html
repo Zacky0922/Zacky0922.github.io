@@ -49,38 +49,17 @@
 
 	<style>
 		div#gridWrapper {
-			margin: 5px;
+			margin: var(--z-spacing);
 			display: grid;
 			grid-gap: 15px;
-			grid-template-columns: 100%;
-				grid-template-areas:
-					"menu"
-					"main";
-		}
-
-		/* PCレイアウト */
-		@media screen and (min-width:600px) {
-			div#gridWrapper {
-				max-width: 100%;
-				grid-template-columns: 3fr minmax(max-content, 1fr);
-				grid-template-areas:
-					"main menu"
-					"main .";
-			}
-		}
-
-		div#gridWrapper>section {
-			text-align: left;
-			border: #ffd 8px solid;
-			border-radius: 10px;
-			padding: 10px;
-			background: rgba(220, 220, 255, 0.9);
-			box-shadow: 3px 3px 5px #002;
-			overflow-x: auto;
+			grid-template-columns: minmax(max-content,3fr) minmax(max-content,1fr);
+			grid-template-areas:
+				"main	menu"
+				"main	.";
 		}
 	</style>
 
-	<title>五峯祭 特設サイトsample</title>
+	<title>Contest</title>
 </head>
 
 <body>
@@ -90,7 +69,7 @@
 		<section style="grid-area:main">
 			<h2 class="zHeadList zHead" id="contest">Contest</h2>
 			<h3 class="zHead">優秀企画投票</h3>
-			<p>今回の五峯祭のNo.!企画を決定します！</p>
+			<p>今回の五峯祭のNo.1企画を決定します！</p>
 			<p style="text-align:right">（他、掲載準備中）</p>
 		</section>
 	</div><!-- /container -->

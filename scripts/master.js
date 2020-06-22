@@ -226,6 +226,7 @@ window.addEventListener('load', (event) => {
     if (getParam["mode"] == "kgfes") {
         KGfes_init(getParam["lv"]);
         kgfesBG();
+        document.title = document.title + " - 五峯祭2020sample";
     }
     debugMsg("eventListener:loaded - " + (((new Date()).getTime() - debugMsgTime.getTime()) / 1000) + "sec");
 
