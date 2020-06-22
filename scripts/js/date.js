@@ -81,11 +81,14 @@ function zCountdown(from, to) {
         0,  //月：未対応
         Math.floor(diff / (1000 * 60 * 60 * 24 * 7)),
         Math.floor(diff / (1000 * 60 * 60 * 24)),
-        //時・分・秒・ミリ秒
+
+        //h,min,sec,msec
         Math.floor(diff / (1000 * 60 * 60)),
         Math.floor(diff / (1000 * 60)),
-        Math.floor(diff / (1000)),
+        Math.floor(diff / 1000),
         diff
     ];
+
+    //返り値はすべて「from～to」：msec >= 1000 の可能性有
     return myReturn;
 }

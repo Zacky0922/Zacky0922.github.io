@@ -52,7 +52,7 @@
 			margin: var(--z-spacing);
 			display: grid;
 			grid-gap: 15px;
-			grid-template-columns: minmax(max-content,3fr) minmax(max-content,1fr);
+			grid-template-columns: minmax(max-content, 3fr) minmax(max-content, 1fr);
 			grid-template-areas:
 				"pickup	menu"
 				"pickup	news"
@@ -125,21 +125,25 @@
 					var myDiff = zCountdown(new Date(), new Date(2020, 9 - 1, 12, 10, 00, 00));
 					var s = "<span style='color:transparent;padding:0;margin:0'>s</span>";
 					document.getElementById("KGcountdown").innerHTML = "" +
-						"<tr><th>" + myDiff[2] + "</th>" +
+						"<tr>" +
+						"<th>" + myDiff[2] + "</th>" +
 						"<th>" + myDiff[3] % 7 + "</th>" +
 						"<th>" + myDiff[4] % 24 + "</th>" +
 						"<th>" + myDiff[5] % 60 + "</th>" +
-						"<th>" + myDiff[6] % 60 + "</th></tr>" +
-						"<tr><td>" + "week" + (myDiff[2] <= 1 ? s : "s") + "</td>" +
+						"<th>" + myDiff[6] % 60 + "</th>" +
+						"</tr>" +
+						"<tr>" +
+						"<td>" + "week" + (myDiff[2] <= 1 ? s : "s") + "</td>" +
 						"<td>" + "day" + (myDiff[3] % 7 <= 1 ? s : "s") + "</td>" +
 						"<td>" + "hour" + (myDiff[4] % 24 <= 1 ? s : "s") + "</td>" +
 						"<td>" + "minute" + (myDiff[5] % 60 <= 1 ? s : "s") + "</td>" +
-						"<td>" + "second" + (myDiff[6] % 60 <= 1 ? s : "s") + "</td></tr>";
+						"<td>" + "second" + (myDiff[6] % 60 <= 1 ? s : "s") + "</td>" +
+						"</tr>";
 					var w_new = (myDiff[6] % 2 == 0 ? myDiff[7] % 1000 : 1000 - (myDiff[7] % 1000));
 					w_diff = w_new - w_old;
 					document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
 					document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
-					document.getElementById("KGcountdownMs").style.background = "hsl("+((myDiff[7]%2000)/2000*360)+",100%,50%)";
+					document.getElementById("KGcountdownMs").style.background = "hsl(" + ((myDiff[7] % 2000) / 2000 * 360) + ",100%,50%)";
 					w_old = w_new;
 				}, 66);
 			</script>
