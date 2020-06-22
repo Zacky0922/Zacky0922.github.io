@@ -368,6 +368,7 @@
 				<a class="zBtn" onclick="KGfesDebug()">debug/getSpec</a><br />
 				<textarea id="debugTx" style="width:100%;height:150px;"></textarea>
 			</div>
+			<hr/>
 			<div>
 				<input type="text" size="30" style="max-width:95%;" placeholder="参加団体専用"
 					onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('zUndisp')}"
@@ -424,75 +425,82 @@
 							style="background:linear-gradient(180deg,transparent 0px 10px,#f00 10px 15px,transparent 15px 300px)">
 						</div>
 					</div>
-
-					<h3>実験用</h3>
-
-					<a class="zBtn" onclick="document.getElementById('zOptioncheck').classList.toggle('zUndisp')">Option
-						tools
-						check</a>
-					<div class="zUndisp" id="zOptioncheck">
-						<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
-
-						<h3>jQuery</h3>
-						<div id="jQueryCheck">jQuery is NOT ready.</div>
-						<script>
-							$(function () {
-								// if document is ready
-								$("#jQueryCheck").empty();
-								$("#jQueryCheck").append("jQuery is ready.(OK)");
-							});
-						</script>
-						<h3>abc.js</h3>
-						<div>
-							<div class="score abcPlay">
-								L:1/4
-								CDEFGABc
-							</div>
-							<div class="score">
-								M:4/4
-								L:1/8
-								K:C
-								V:1
-								"C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
-								V:2 bass
-								C,G,F,G, F,A,c,F, | G,B,d,G, C,E,G,c,||
-							</div>
+				</div>
+				<a class="zBtn" onclick="document.getElementById('zOptioncheck').classList.toggle('zUndisp')">Option
+					tools
+					check</a>
+				<div class="zUndisp" id="zOptioncheck">
+					<div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
+				
+					<h3>jQuery</h3>
+					<div id="jQueryCheck">jQuery is NOT ready.</div>
+					<script>
+						$(function () {
+							// if document is ready
+							$("#jQueryCheck").empty();
+							$("#jQueryCheck").append("jQuery is ready.(OK)");
+						});
+					</script>
+					<h3>abc.js</h3>
+					<div>
+						<div class="score abcPlay">
+							L:1/4
+							CDEFGABc
 						</div>
-						<h3>MathJax</h3>
-						displaystyle：
-						<div>
-							$$\dfrac{1}{2}$$
+						<div class="score">
+							M:4/4
+							L:1/8
+							K:C
+							V:1
+							"C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
+							V:2 bass
+							C,G,F,G, F,A,c,F, | G,B,d,G, C,E,G,c,||
 						</div>
-						<div>inlinestyle：\(\dfrac{1}{2}\)とか、$\dfrac{3}{4}$とか</div>
-						<h3>chart.js</h3>
-						<canvas id="chart1" class="chartjs"></canvas>
-						<script>
-							var ctx = document.getElementById("chart1");
-							var myPieChart = new Chart(ctx, {
-								type: 'pie',
-								data: {
-									labels: ["A型", "O型", "B型", "AB型"],
-									datasets: [{
-										backgroundColor: [
-											"#BB5179",
-											"#FAFF67",
-											"#58A27C",
-											"#3C00FF"
-										],
-										data: [38, 31, 21, 10]
-									}]
-								},
-								options: {
-									title: {
-										display: true,
-										text: '血液型 割合'
-									},
-									responsive: true,
-									maintainAspectRatio: false
-								}
-							});
-						</script>
 					</div>
+					<h3>MathJax</h3>
+					displaystyle：
+					<div>
+						$$\dfrac{1}{2}$$
+					</div>
+					<div>inlinestyle：\(\dfrac{1}{2}\)とか、$\dfrac{3}{4}$とか</div>
+					<textarea id="realtimePreviewInput" rows="5" onkeyup="document.getElementById('realtimePreview').innerText=this.value;
+					            reMathJax('realtimePreview')">$$e^{i\theta}=\cos\theta+i\sin\theta$$</textarea>
+					<input type="button" value="init" onclick="document.getElementById('realtimePreviewInput').value=
+					          '$$e^{i\\theta}=\\cos\\theta+i\\sin\\theta$$';
+					          document.getElementById('realtimePreview').innerText=
+					          document.getElementById('realtimePreviewInput').value;
+					          reMathJax('realtimePreview')">
+					<div id="realtimePreview" style="border:#888 1px solid">
+						$$e^{i\theta}=\cos\theta+i\sin\theta$$
+					</div>
+					<h3>chart.js</h3>
+					<canvas id="chart1" class="chartjs"></canvas>
+					<script>
+						var ctx = document.getElementById("chart1");
+						var myPieChart = new Chart(ctx, {
+							type: 'pie',
+							data: {
+								labels: ["A型", "O型", "B型", "AB型"],
+								datasets: [{
+									backgroundColor: [
+										"#BB5179",
+										"#FAFF67",
+										"#58A27C",
+										"#3C00FF"
+									],
+									data: [38, 31, 21, 10]
+								}]
+							},
+							options: {
+								title: {
+									display: true,
+									text: '血液型 割合'
+								},
+								responsive: true,
+								maintainAspectRatio: false
+							}
+						});
+					</script>
 				</div>
 			</div>
 		</section>

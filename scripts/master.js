@@ -113,10 +113,10 @@ document.head.appendChild(myCSS);
 var myScripts = [
 
     //MathJax
+    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
+    //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
     "extTools/MathJaxMacro.js",
-    //"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
-    "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",
-    
+
     //CDN
     "https://code.jquery.com/jquery-3.4.1.min.js",
     "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css",
@@ -164,12 +164,14 @@ function jsLoader_(mySrc) {
         document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
     }
 }
-
 function jsLoader() {
     debugMsg("jsLoader", 1);
     for (var i = 0; i < myScripts.length; i++) {
-        jsLoader_(myScripts[i].indexOf("http") > -1 ? myScripts[i] : getParam["lv"] + "scripts/" + myScripts[i]);
-
+        jsLoader_(
+            myScripts[i].indexOf("http") > -1 ?
+                myScripts[i] :
+                getParam["lv"] + "scripts/" + myScripts[i]
+        );
         debugMsg(myScripts[i]);
     }
     debugMsg("", -1);

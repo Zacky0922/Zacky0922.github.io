@@ -1,20 +1,32 @@
 loadJScounter_loaded++;
 
+//MathJax逐次実行
+function reMathJax(id = null) {
+    if (id == null) {
+        id = "zBody";
+        document.body.id = id;
+    }
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, id]);
+    debugMsg("reMathJax - " + id);
+}
+
 
 //	===	MathJax マクロ設定 ===
+//window.MathJax = {
 MathJax.Hub.Config({
     extensions: [	//拡張機能			個別読込($$～$$内記述)		説明		
         //	'AMScd.js'		//	\(\require{AMScd}\)  		//可換図式	
     ],
     tex2jax: {
         inlineMath: [['$', '$'], ["\\(", "\\)"]],
-        displayMath: [['$$', '$$'], ["\\[", "\\]"]]
+        displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+        processEscapes: true    //欄外で$を使用可にする
     },
     TeX: {
         Macros: {
             //\displaystyle簡略表記
             d: '\\displaystyle ',
-            
+
             //定義⇔{def}
             def: '{\\overset{def}{\\iff}}',
 
@@ -75,5 +87,8 @@ MathJax.Hub.Config({
         }
     }
 });
+//};
 
 //MathJax.Ajax.loadComplete("https://zacky0922.github.io/scripts/extTools/MathJaxMacro.js");
+
+
