@@ -109,25 +109,18 @@ document.head.appendChild(myCSS);
     loadJScounter_loaded++;
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 
-//CDN jsファイル
-var extScripts = [
+//読込ファイルリスト（自作分のみ）
+var myScripts = [
+
+    //MathJax
+    "extTools/MathJaxMacro.js",
+    //"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
+    "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",
+    
+    //CDN
     "https://code.jquery.com/jquery-3.4.1.min.js",
     "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css",
     "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
-    //"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"
-    "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-];
-
-//読込ファイルリスト（自作分のみ）
-var myScripts = [
-    //外部js＝ローカルDL
-    "ext-js/abcjs/abcjs_basic_5.9.1-min.js",
-    "ext-js/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
-    "ext-js/jquery-3.5.1.min.js",
-
-    //
-    "ext-js/abcjs_init.js",
-    //"./extTools/chartjs/chartjs_init.js",
 
     //自作js
     "js/customRandom.js",
@@ -137,7 +130,11 @@ var myScripts = [
     "js/pageMenu.js",
 
     //extTools
+    "extTools/abcjs/abcjs_basic_5.9.1-min.js",
+    "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
+    "extTools/abcjs/abcjs_zInit.js",
     "extTools/googleicon/googleicon.js",
+    //"extTools/chartjs/chartjs_init.js",
 
     //zTools
     "zTools/develop.js",
@@ -166,16 +163,14 @@ function jsLoader_(mySrc) {
     } else {
         document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
     }
-    debugMsg("" + mySrc);
 }
 
 function jsLoader() {
     debugMsg("jsLoader", 1);
-    for (var i = 0; i < extScripts.length; i++) {
-        jsLoader_(extScripts[i]);
-    }
     for (var i = 0; i < myScripts.length; i++) {
-        jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);
+        jsLoader_(myScripts[i].indexOf("http") > -1 ? myScripts[i] : getParam["lv"] + "scripts/" + myScripts[i]);
+
+        debugMsg(myScripts[i]);
     }
     debugMsg("", -1);
 }
@@ -186,8 +181,7 @@ var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == myScripts.length) {
         //全部読込完了
         debugMsg("master.js - JSloadFunc Complete!", 1);
-        debugMsg("local = " + myScripts.length)
-        debugMsg("ext = " + extScripts.length, -1);
+        debugMsg("js files = " + myScripts.length, -1);
         clearInterval(JSloadFunc);
         jsLoaded();
     } else {
@@ -214,8 +208,8 @@ window.addEventListener('load', (event) => {
 
     //外部js初期化
     //abc.js描画実行
-    absjs_init();   //ext-js/abcjs_init.js
-    //chartjs_init(); //ext-js/chartjs_init.js
+    absjs_init();   //extTools/abcjs/abcjs_zInit.js
+    //chartjs_init(); //extTools/chartjs_init.js
 
     // init
     zOnload();

@@ -3,7 +3,7 @@ loadJScounter_loaded++;
 
 function absjs_init() {
     var myScore = document.getElementsByClassName("score");
-    ABCJS.midi.soundfontUrl = getParam["lv"] + "scripts/ext-js/abcjs/";
+    ABCJS.midi.soundfontUrl = getParam["lv"] + "scripts/extTools/abcjs/";
     for (var i = 0; i < myScore.length; i++) {
         var myScript = myScore[i].innerHTML;
         myScore[i].innerHTML = "";
