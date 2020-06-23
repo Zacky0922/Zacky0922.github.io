@@ -24,6 +24,8 @@
         * {
             padding: 0;
             margin: 0;
+        }
+        html,body{
             width: 100%;
             height: 100%;
         }
@@ -34,7 +36,7 @@
 <body>
 
     <a-assets>
-        <a-mixin id="translucent" material="opacity: 0.5;"></a-mixin>
+        <a-mixin id="translucent" ></a-mixin>
         <img id="star" src="pict/star.png">
 
     </a-assets>
@@ -43,7 +45,7 @@
         <a-marker preset='hiro'>
             <a-image id="star" src="#star" position="0 0 0" rotation="0 0 0"></a-image>
         <a-box position="0 0 0" rotation="0 0 0" wireframe="true"></a-box>
-        <a-box position="1.5 0 0" rotation="0 0 0" color="rgba(255,0,0,0.8)"></a-box>
+        <a-box position="1.5 0 0" rotation="0 0 0" material="opacity: 0.5;color:#f00;"></a-box>
         <a-box  position="0 1.5 0" rotation="0 0 0" color="#0F0"></a-box>
         <a-box  position="0 0 1.5" rotation="0 0 0" color="#00F"></a-box>
         </a-marker>
