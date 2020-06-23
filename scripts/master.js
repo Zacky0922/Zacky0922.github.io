@@ -146,6 +146,12 @@ var myScripts = [
 ];
 //モード別実装
 switch (getParam["mode"]) {
+    case "lab":
+        myScripts.push(
+            "https://aframe.io/releases/0.6.1/aframe.min.js",
+            "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"
+        );
+        break;
     case "kgfes":
         myScripts.push(
             "KGfes/kgfes.js",
@@ -227,13 +233,17 @@ window.addEventListener('load', (event) => {
     // init
     zOnload();
 
-    getPageMenu("PageMenu");
-
-    //五峯祭フォーマット
-    if (getParam["mode"] == "kgfes") {
-        KGfes_init(getParam["lv"]);
-        kgfesBG();
-        document.title = document.title + " - 五峯祭2020sample";
+    //モード
+    switch (getParam["mode"]) {
+        case "lab":
+            getPageMenu("zPageMenu");
+            break;
+        case "kgfes":
+            getPageMenu("PageMenu");
+            KGfes_init(getParam["lv"]);
+            kgfesBG();
+            document.title = document.title + " - 五峯祭2020sample";
+            break;
     }
     debugMsg("eventListener:loaded - " + (((new Date()).getTime() - debugMsgTime.getTime()) / 1000) + "sec");
 

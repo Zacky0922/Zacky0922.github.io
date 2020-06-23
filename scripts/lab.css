@@ -1,0 +1,65 @@
+
+/* 汎用部品 */
+@import url("./common.css");
+
+
+/* Google Font */
+@import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&display=swap";
+
+
+
+/*  標準設定 */
+body{
+    font-family: 'Kosugi Maru', sans-serif;
+    font-size:  16px;
+    color: var(--z-fontcolor);
+    line-height: 1.5;
+}
+body *{
+    box-sizing: border-box;
+    z-index:    1;
+}
+
+body,
+div#container {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+
+
+div#gridWrapper>section{
+	text-align: left;
+	border: #ffd var(--z-spacing) solid;
+	border-radius: var(--z-spacing);
+    padding: var(--z-spacing);
+    margin: 0;
+	background: rgba(220, 220, 255, 0.9);
+	box-shadow: 3px 3px 5px #002;
+	overflow-x: auto;
+}
+
+
+
+/* 変数設定 */
+:root{
+    /* 標準：色 */
+    --z-fontcolor:     #113;
+    --z-bgcolor:       transparent;
+
+    --z-border-color:   #339;
+
+    --z-ele-bgcolor:    #ccf;
+    
+    --z-ele-bgcolor-alt:    #88f;
+    --z-ele-fontcolor-alt:  #113;
+}
+
+
+
+
+.debug{
+    background: var(--z-preset-工事中-bg);
+    /*  display:    none !important; */
+}
