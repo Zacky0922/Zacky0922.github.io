@@ -102,6 +102,10 @@
 			</div>
 			<script>
 				eventList_init("eventList");
+				$(document.getElementById("eventList").children[0]).hover(
+						$(events[i].children[2]).show(400),
+						$(events[i].children[2]).hide(400)
+					);
 			</script>
 		</section>
 	</div><!-- /container -->

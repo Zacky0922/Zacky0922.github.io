@@ -112,15 +112,20 @@ document.head.appendChild(myCSS);
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
 
+    //jQuery
+    "https://code.jquery.com/jquery-3.4.1.min.js",
+    "extTools/jQuerySetting.js",
+
     //MathJax
     "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
     //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
     "extTools/MathJaxMacro.js",
 
-    //CDN
-    "https://code.jquery.com/jquery-3.4.1.min.js",
-    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css",
+    //prettify
+    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
+    //Chart.js
     "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
+    //"extTools/chartjs/chartjs_init.js",
 
     //自作js
     "js/customRandom.js",
@@ -134,13 +139,11 @@ var myScripts = [
     "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
     "extTools/abcjs/abcjs_zInit.js",
     "extTools/googleicon/googleicon.js",
-    //"extTools/chartjs/chartjs_init.js",
 
     //zTools
     "zTools/develop.js",
     "zTools/burger/burger.js"
 ];
-
 //モード別実装
 switch (getParam["mode"]) {
     case "kgfes":
@@ -152,6 +155,10 @@ switch (getParam["mode"]) {
         break;
     default:
 }
+
+//読込カウンタ
+var loadJScounter_local = 0;
+var loadJScounter_loaded = 0;
 
 //読込
 function jsLoader_(mySrc) {
@@ -167,23 +174,27 @@ function jsLoader_(mySrc) {
 function jsLoader() {
     debugMsg("jsLoader", 1);
     for (var i = 0; i < myScripts.length; i++) {
-        jsLoader_(
-            myScripts[i].indexOf("http") > -1 ?
-                myScripts[i] :
-                getParam["lv"] + "scripts/" + myScripts[i]
-        );
+        if (myScripts[i].indexOf("http") > -1) {
+            jsLoader_(myScripts[i]);
+        } else {
+            jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);
+            loadJScounter_local++;
+        }
         debugMsg(myScripts[i]);
     }
     debugMsg("", -1);
 }
 jsLoader();
 
-var loadJScounter_loaded = 0;
+
 var JSloadFunc = setInterval(function () {
-    if (loadJScounter_loaded == myScripts.length) {
+    if (loadJScounter_loaded == loadJScounter_local) {
         //全部読込完了
         debugMsg("master.js - JSloadFunc Complete!", 1);
-        debugMsg("js files = " + myScripts.length, -1);
+        debugMsg("js files = " + myScripts.length +
+            " / local:" + loadJScounter_local +
+            " + ext:" + (myScripts.length - loadJScounter_local),
+            -1);
         clearInterval(JSloadFunc);
         jsLoaded();
     } else {

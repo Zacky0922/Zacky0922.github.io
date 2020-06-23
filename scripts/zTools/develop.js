@@ -3,7 +3,7 @@ loadJScounter_loaded++;
 
 function getSpec() {
 
-    var tx = "Time\n　" + (new Date()).toString() + "\n";
+    var tx = "Time：\n　" + (new Date()).toString() + "\n";
 
     tx += "User Agent：\n　";
 

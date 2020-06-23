@@ -71,7 +71,3 @@ function eventList_init(id) {
     }
 };
 
-$(document.getElementById("eventList").children[0]).hover(
-    $(events[i].children[2]).show(400),
-    $(events[i].children[2]).hide(400)
-);
