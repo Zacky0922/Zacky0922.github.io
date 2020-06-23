@@ -234,7 +234,7 @@ window.addEventListener('load', (event) => {
     // init
     zOnload();
 
-    //モード
+    //モード別処理
     switch (getParam["mode"]) {
         case "lab":
             getPageMenu("zPageMenu");
