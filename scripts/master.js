@@ -183,7 +183,8 @@ function jsLoader() {
         if (myScripts[i].indexOf("http") > -1) {
             jsLoader_(myScripts[i]);
         } else {
-            jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);
+            jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);  //相対指定
+            //jsLoader_("https://zacky0922.github.io/scripts/" + myScripts[i]); //絶対指定
             loadJScounter_local++;
         }
         debugMsg(myScripts[i]);
@@ -237,6 +238,7 @@ window.addEventListener('load', (event) => {
     switch (getParam["mode"]) {
         case "lab":
             getPageMenu("zPageMenu");
+            document.getElementById("autoDebugMsg").value = debugMsgText;
             break;
         case "kgfes":
             getPageMenu("PageMenu");
