@@ -18,17 +18,23 @@
         gtag('config', 'UA-163335381-1');
     </script>
 
-
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
     <title>AR.js</title>
 </head>
 
 <body>
 
     <a-assets>
-        <a-mixin id="translucent" material="opacity: 0.5"></a-mixin>
+        <a-mixin id="translucent" material="opacity: 0.5;"></a-mixin>
         <img id="star" src="pict/star.png">
 
     </a-assets>
@@ -37,9 +43,9 @@
         <a-marker preset='hiro'>
             <a-image id="star" src="#star" position="0 0 0" rotation="0 0 0"></a-image>
         <a-box position="0 0 0" rotation="0 0 0" wireframe="true"></a-box>
-        <a-box mixin="translucent" position="1.5 0 0" rotation="0 0 0" color="#F00"></a-box>
-        <a-box mixin="translucent" position="0 1.5 0" rotation="0 0 0" color="#0F0"></a-box>
-        <a-box mixin="translucent" position="0 0 1.5" rotation="0 0 0" color="#00F"></a-box>
+        <a-box position="1.5 0 0" rotation="0 0 0" color="rgba(255,0,0,0.8)"></a-box>
+        <a-box  position="0 1.5 0" rotation="0 0 0" color="#0F0"></a-box>
+        <a-box  position="0 0 1.5" rotation="0 0 0" color="#00F"></a-box>
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
