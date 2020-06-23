@@ -63,10 +63,19 @@
             <ul>
                 <li>マーカーの中心 = position="0 0 0"</li>
                 <li>マーカーの1辺 = scale="1 1 1"</li>
+                <li>右手系：X = 右 / Y = 手前 / Z = 下</li>
+                <li>オブジェクト座標指定 = オブジェクトの中心（内部）</li>
+                <li>画像 rotation="0 0 0"<br/>
+                    ⇒　XY平面上にZ正方向を正面（画面下向き）に貼り付け<br/>
+                    ⇒　画面正面方向への配置 rotation="-90 0 0"（回転方向：右手系）<br/>
+                    ※要確認：回転の優先順（X→Y→Z？）順番を考えないと、3Dでは思った方向にならない…</li>
             </ul>
             AR.js sample
             <a href="arjs/marker.html">marker[HIRO]</a> / 
             <a href="arjs/markerless.html">marker less</a>
+            <div class="zCentering">
+                <img src="pict/hiro.jpg" />
+            </div>
         </section>
         <section>
             <textarea id="autoDebugMsg" style="width:100%;height:15em;color:#000;">
