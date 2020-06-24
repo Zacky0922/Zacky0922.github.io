@@ -14,7 +14,7 @@ function setAhrefSmoothLink(){
         // 移動先を取得
         var target = $(href == "#" || href == "" ? 'html' : href);
         // 移動先を調整：上部メニュー等の位置余白調整可
-        var position = target.offset().top + 0;
+        var position = target.offset().top - 20;
         // スムーススクロール
         $('body,html').animate({ scrollTop: position }, speed, 'swing');
 

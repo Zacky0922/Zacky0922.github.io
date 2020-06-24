@@ -132,29 +132,29 @@ var zTxReplace = [
 
 //debug：文字列正規化用配列の正誤チェック
 if (zTxReplace[0].length != zTxReplace[1].length) {
-    alert("Alert! - txReplace.js内の文字列正規化用配列要素数が異なります");
+    alert("Alert! - txReplace.js内の文字配列要素数が異なります");
 }
 
 
 
-function zReplace(myText) {
+function zReplace(tx) {
     //引数：被置換文字列
 
     //置換
     for (var i = 0; i < zTxReplace[0].length; i++) {
-        while (myText != myText.replace(zTxReplace[1][i], zTxReplace[0][i])) {
-            myText = myText.replace(zTxReplace[1][i], zTxReplace[0][i]);
+        while (tx != tx.replace(zTxReplace[1][i], zTxReplace[0][i])) {
+            tx = tx.replace(zTxReplace[1][i], zTxReplace[0][i]);
         }
     }
 
     //先頭スペース（半角）の削除
-    if (myText.indexOf(" ") == 0) { myText = myText.slice(1); }
+    if (tx.indexOf(" ") == 0) { tx = tx.slice(1); }
     //最後尾スペース（半角）の削除
-    if (myText.indexOf(" ") == myText.length - 1) {
-        myText = myText.slice(0, myText.length - 1);
+    if (tx.indexOf(" ") == tx.length - 1) {
+        tx = tx.slice(0, tx.length - 1);
     }
 
-    return myText;
+    return tx;
 }
 
 
@@ -163,12 +163,13 @@ var zTxReplaceStrict = [
     " ",
     ".", "#"
 ];
-function zReplaceStrict(myText) {
+function zReplaceStrict(tx) {
+    zReplace(tx);
     for (var i = 0; i < zTxReplaceStrict.length; i++) {
-        while (myText != myText.replace(zTxReplaceStrict[i], "")) {
-            myText = myText.replace(zTxReplaceStrict[i], "");
+        while (tx != tx.replace(zTxReplaceStrict[i], "_")) {
+            tx = tx.replace(zTxReplaceStrict[i], "_");
         }
     }
-    zReplace(myText);
-    return myText;
+    return tx;
 }
+

@@ -64,20 +64,22 @@
         <section>
             <h2 class="zHead zHeadList">AR.js</h2>
             <ul>
-                <li>マーカーの中心 = position="0 0 0"</li>
-                <li>マーカーの1辺 = scale="1 1 1"</li>
+                <li>マーカーの中心：position="0 0 0"</li>
+                <li>マーカーの1辺：scale="1 1 1"（長方形マーカーの場合は？）</li>
                 <li>右手系：X = 右 / Y = 手前 / Z = 下</li>
-                <li>オブジェクト座標指定 = オブジェクトの中心（内部）</li>
-                <li>画像 rotation="0 0 0"<br />
+                <li>オブジェクト座標指定：オブジェクトの中心（内部）</li>
+                <li>画像：rotation="0 0 0"<br />
                     ⇒　XY平面上にZ正方向を正面（画面下向き）に貼り付け<br />
                     ⇒　画面正面方向への配置 rotation="-90 0 0"（回転方向：右手系）<br />
                     ⇒　回転の処理順 = X→Y→Z（たぶん）</li>
             </ul>
             AR.js sample：
-            <a href="arjs/marker.html">marker[HIRO]</a> /
+            <a href="arjs/marker.html">marker[HIRO]</a> / 
+            <a href="arjs/markerKG.html">marker[KG]</a> /
             <a href="arjs/markerless.html">marker less</a>
             <div class="zCentering">
                 <img src="pict/hiro.jpg" />
+                <img src="pict/pattern-KGARmarker.png" />
             </div>
         </section>
         <section>
