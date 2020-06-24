@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-163335381-1');
+    </script>
+
+    <!-- PWA設定 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="manifest" href="./manifest.json">-->
+    <script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+    </script>
+
+    <!-- JS/CSS master -->
+    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <title>A-Frame</title>
+</head>
+
+<body>
+
+    <a-scene background="color: #fff">
+        <a-assets>
+            <img id="star" src="pict/star.png">
+        </a-assets>
+
+        <a-box position="0 0 0" wireframe="true"></a-box>
+        <!--
+        <a-box position="1 0 0" rotation="0 0 0" material="opacity: 0.3;color:#f00;"></a-box>
+        <a-box position="0 1 0" rotation="0 0 0" material="opacity: 0.3;color:#0f0;"></a-box>
+        <a-box position="0 0 1" rotation="0 0 0" material="opacity: 0.3;color:#00f;"></a-box>
+        -->
+
+        <a-box src="#star" repeat="1 1" position="0 2 -5" rotation="0 45 45" scale="2 2 2" repeat="1 1">
+            <a-animation attribute="rotation" to="0 360 720" direction="alternate" dur="2000" repeat="indefinite"
+                easing="ease">
+            </a-animation>
+        </a-box>
+        <a-image src="#star" position="0 0 -1.5" rotation="0 30 0"></a-image>
+<!--
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+        <a-plane position="1 -1 0" rotation="-90 0 0" width="2" height="2" color="#7BC8A4" src="pict/star.png" shadow>
+        </a-plane>
+    -->
+        <a-entity id position="0 1 2">
+            <a-entity id camera look-controls></a-entity>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>

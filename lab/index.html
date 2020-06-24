@@ -54,7 +54,7 @@
     <div id="gridWrapper">
         <section id="zPageMenu">
             <style>
-                #zPageMenu li{
+                #zPageMenu li {
                     display: inline-block;
                     margin: 5px 20px;
                 }
@@ -62,26 +62,37 @@
             <h2 class="zHead">INDEX</h2>
         </section>
         <section>
-            <h2 class="zHead zHeadList">AR.js</h2>
+            <h2 class="zHead zHeadList">A-Frame</h2>
             <ul>
                 <li>マーカーの中心：position="0 0 0"</li>
                 <li>マーカーの1辺：scale="1 1 1"（長方形マーカーの場合は？）</li>
-                <li>右手系：X = 右 / Y = 手前 / Z = 下</li>
+                <li>座標系：右手系<br/>
+                    A-Frame：X = 右 / Y = 上 / Z = 手前<br/>
+                    AR.js：X = 右 / Y = 手前 / Z = 下</li>
                 <li>オブジェクト座標指定：オブジェクトの中心（内部）</li>
                 <li>画像：rotation="0 0 0"<br />
                     ⇒　XY平面上にZ正方向を正面（画面下向き）に貼り付け<br />
                     ⇒　画面正面方向への配置 rotation="-90 0 0"（回転方向：右手系）<br />
                     ⇒　回転の処理順 = X→Y→Z（たぶん）</li>
             </ul>
+            <hr />
+            <iframe src="ar/index.html" style="width:500px !important;height:500px !important;">
+            </iframe>
+
+        </section>
+        
+        <section>
+            <h2 class="zHead zHeadList">AR.js</h2>
             AR.js sample：
-            <a href="arjs/marker.html">marker[HIRO]</a> / 
-            <a href="arjs/markerKG.html">marker[KG]</a> /
-            <a href="arjs/markerless.html">marker less</a>
+            <a href="ar/marker.html">marker[HIRO]</a> /
+            <a href="ar/markerKG.html">marker[KG]：調整中</a> /
+            <a href="ar/markerless.html">marker less</a>
             <div class="zCentering">
-                <img src="arjs/hiro.jpg" />
-                <img src="arjs/pattern-KGARmarker.png" />
+                <img src="ar/hiro.jpg" />
+                <img src="ar/pattern-KGARmarker.png" />
             </div>
         </section>
+
         <section>
             <h2 class="zHeadList zHead">jQuery</h2>
             <div id="jQueryCheck">jQuery is NOT ready.</div>
