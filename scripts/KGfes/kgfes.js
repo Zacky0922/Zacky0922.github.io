@@ -44,9 +44,8 @@ function KGfes_init(dir) {
     toGoUp.innerHTML = getGicon("arrow_circle_up").outerHTML;
     toGoUp.id = "toGoUp";
     toGoUp.classList.add("zUndisp");
-    toGoUp.href = "#top";
+    toGoUp.href = "#";
     document.body.appendChild(toGoUp);
-    document.body.id = "top";
 
 }
 
@@ -67,4 +66,6 @@ $(function () {
             };
         });
     };
+
+
 });

@@ -72,7 +72,7 @@ function debugMsg(msg, group = 0) {
 // 引渡し変数確認
 debugMsg("master.js? 引渡し変数一覧", 1);
 for (i in getParam) {
-    debugMsg("getParam[" + i + "] = " + getParam[i]);
+    debugMsg('getParam["' + i + '"] = ' + getParam[i]);
 }
 debugMsg("", -1);
 
@@ -112,6 +112,9 @@ document.head.appendChild(myCSS);
 //読込ファイルリスト（自作分のみ）
 var myScripts = [
 
+    //素材script
+    "js/txReplace.js",
+
     //jQuery
     "https://code.jquery.com/jquery-3.4.1.min.js",
     "extTools/jQuerySetting.js",
@@ -131,8 +134,7 @@ var myScripts = [
     "js/customRandom.js",
     "js/date.js",
     "js/setTab.js",
-    "js/txReplace.js",
-    "js/pageMenu.js",
+    "js/pageMenu.js",   //txReplace利用
 
     //extTools
     "extTools/abcjs/abcjs_basic_5.9.1-min.js",
@@ -182,9 +184,11 @@ function jsLoader() {
     for (var i = 0; i < myScripts.length; i++) {
         if (myScripts[i].indexOf("http") > -1) {
             jsLoader_(myScripts[i]);
+        } else if (getParam["lv"] == undefined) {
+            jsLoader_("https://zacky0922.github.io/scripts/" + myScripts[i]); //絶対指定
+            loadJScounter_local++;
         } else {
             jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);  //相対指定
-            //jsLoader_("https://zacky0922.github.io/scripts/" + myScripts[i]); //絶対指定
             loadJScounter_local++;
         }
         debugMsg(myScripts[i]);
@@ -192,7 +196,6 @@ function jsLoader() {
     debugMsg("", -1);
 }
 jsLoader();
-
 
 var JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == loadJScounter_local) {
@@ -234,11 +237,13 @@ window.addEventListener('load', (event) => {
     // init
     zOnload();
 
+
     //モード別処理
     switch (getParam["mode"]) {
         case "lab":
             getPageMenu("zPageMenu");
-            document.getElementById("autoDebugMsg").value = debugMsgText;
+            document.getElementById("autoDebugMsg").value = getSpec() + "\n" + debugMsgText;
+            
             break;
         case "kgfes":
             getPageMenu("PageMenu");
@@ -247,11 +252,11 @@ window.addEventListener('load', (event) => {
             document.title = document.title + " - 五峯祭2020sample";
             break;
     }
+    setAhrefSmoothLink();
+
     debugMsg("eventListener:loaded - " + (((new Date()).getTime() - debugMsgTime.getTime()) / 1000) + "sec");
 
 });
-
-
 
 
 

@@ -63,6 +63,7 @@ var zTxReplace = [
         'ぁ', 'ぃ', 'ぅ', 'ぇ', 'ぉ',
         'っ', 'ゃ', 'ゅ', 'ょ', 'ー',
         //記号
+        ' ',    //全角→半角スペース
         ' '	//ダブルスペース→シングルスペース
     ],
     [
@@ -124,6 +125,7 @@ var zTxReplace = [
         'ァ', 'ィ', 'ゥ', 'ェ', 'ォ',
         'ッ', 'ャ', 'ュ', 'ョ', 'ー',
         //記号
+        '　',    //全角→半角スペース
         '  '	//ダブルスペース→シングルスペース
     ]
 ];
@@ -131,4 +133,42 @@ var zTxReplace = [
 //debug：文字列正規化用配列の正誤チェック
 if (zTxReplace[0].length != zTxReplace[1].length) {
     alert("Alert! - txReplace.js内の文字列正規化用配列要素数が異なります");
+}
+
+
+
+function zReplace(myText) {
+    //引数：被置換文字列
+
+    //置換
+    for (var i = 0; i < zTxReplace[0].length; i++) {
+        while (myText != myText.replace(zTxReplace[1][i], zTxReplace[0][i])) {
+            myText = myText.replace(zTxReplace[1][i], zTxReplace[0][i]);
+        }
+    }
+
+    //先頭スペース（半角）の削除
+    if (myText.indexOf(" ") == 0) { myText = myText.slice(1); }
+    //最後尾スペース（半角）の削除
+    if (myText.indexOf(" ") == myText.length - 1) {
+        myText = myText.slice(0, myText.length - 1);
+    }
+
+    return myText;
+}
+
+
+//厳格版（id設定等）：記号等除去
+var zTxReplaceStrict = [
+    " ",
+    ".", "#"
+];
+function zReplaceStrict(myText) {
+    for (var i = 0; i < zTxReplaceStrict.length; i++) {
+        while (myText != myText.replace(zTxReplaceStrict[i], "")) {
+            myText = myText.replace(zTxReplaceStrict[i], "");
+        }
+    }
+    zReplace(myText);
+    return myText;
 }
