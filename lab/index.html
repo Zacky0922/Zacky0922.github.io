@@ -62,16 +62,16 @@
             <h2 class="zHead">INDEX</h2>
         </section>
 
-                <section>
-                    <h2 class="zHeadList zHead">Links</h2>
-                    <ul>
-                        <li><a target="_target" href="../private/">個人用</a></li>
-                        <li><a target="_target" href="../KG/">KG</a></li>
-                        <li><a target="_target" href="../KGfes/">五峯祭</a></li>
-                        <li><a target="_target" href="../KGsougaku/">総学</a></li>
-                        <li><a target="_target" href="../">がらくたindex</a></li>
-                    </ul>
-                </section>
+        <section>
+            <h2 class="zHeadList zHead">Links</h2>
+            <ul>
+                <li><a target="_target" href="../private/">個人用</a></li>
+                <li><a target="_target" href="../KG/">KG</a></li>
+                <li><a target="_target" href="../KGfes/">五峯祭</a></li>
+                <li><a target="_target" href="../KGsougaku/">総学</a></li>
+                <li><a target="_target" href="../">がらくたindex</a></li>
+            </ul>
+        </section>
 
 
         <section>
@@ -124,6 +124,30 @@
                 });
             </script>
         </section>
+
+        <section>
+            <h2 class="zHeadList zHead">Prettify</h2>
+
+            <h3 class="zHead">簡易エディタ</h3>
+            <section id="quickEditor"></section>
+            <script>
+                setQuickEditor("quickEditor");
+            </script>
+
+            <section style="display:grid;grid-template-columns: 1fr 1fr;">
+                <div>
+                    <textarea style="width:100%;height:300px;"
+                        onkeyup="document.getElementById('quickEdit').innerHTML=this.value;
+                        document.getElementById('quickEditCode').innerText='<!-- ここの内容をHTMLにコピペしましょう -->\n<html>\n<head>\n\t<title>タイトル</title>\n</html>\n<body>\n'+this.value+'\n</body>\n</html>';
+                        document.getElementById('quickEditCode').classList.remove('prettyprinted');PR.prettyPrint()"><p>本文</p></textarea>
+                            <pre style="width:100%;height:300px;" id="quickEditCode" class="prettyprint linenums"></pre>
+                </div>
+                <div id="quickEdit" class="zTbl" style="width:100%;text-align:left;background:#fff;color:#000;"></div>
+                <!--<iframe id="quickEdit"></iframe>-->
+            </section>
+        </section>
+
+
         <section>
             <h2 class="zHeadList zHead">abc.js</h2>
             <div class="score abcPlay">
@@ -157,6 +181,37 @@
             <div id="realtimePreview" style="border:#888 1px solid">
                 $$e^{i\theta}=\cos\theta+i\sin\theta$$
             </div>
+            <hr />
+            <form class="zForm" onkeyup="solve()">
+                <fieldset>
+                    <legend>連立方程式solver</legend>
+                    <input type="text" id="a" size="3" tabindex="1">$x+$<input type="text" id="b" size="3"
+                        tabindex="2">$y=$<input type="text" id="p" size="3" tabindex="3"><br />
+                    <input type="text" id="c" size="3" tabindex="4">$x+$<input type="text" id="d" size="3"
+                        tabindex="5">$y=$<input type="text" id="q" size="3" tabindex="6"><br />
+                    <div id="ans"></div>
+                </fieldset>
+                <script>
+                    function solve() {
+                        var sol = simultaneousEQsolver(
+                            Number(document.getElementById("a").value),
+                            Number(document.getElementById("b").value),
+                            Number(document.getElementById("c").value),
+                            Number(document.getElementById("d").value),
+                            Number(document.getElementById("p").value),
+                            Number(document.getElementById("q").value),
+                            "ans");
+                        if (sol[1][0] == null) {
+                            document.getElementById("ans").innerText = "$$" + sol[0] + "\\\\\\text{解なし}$$";
+                        } else {
+                            document.getElementById("ans").innerText = "$$" + sol[0] +
+                                "\\quad\\Longleftrightarrow\\quad " +
+                                "x=" + sol[1][0] + ",y=" + sol[1][1] + "$$";
+                        }
+                        reMathJax('ans');
+                    }
+                </script>
+            </form>
         </section>
         <section>
             <h2 class="zHeadList zHead">chart.js</h2>
@@ -195,8 +250,10 @@
         <section>
             <h2 class="zHeadList zHead">Debug</h2>
             <textarea id="autoDebugMsg" style="width:100%;height:15em;color:#000;"></textarea>
-            <input type="button" onclick="document.getElementById('autoDebugMsg').value = getSpec() + '\n' + debugMsgText;" value="get debug data" \>
-            <hr/>
+            <input type="button"
+                onclick="document.getElementById('autoDebugMsg').value = getSpec() + '\n' + debugMsgText;"
+                value="get debug data" \>
+            <hr />
             <span class="zDate zDateUndispTo_20200530">zDateUndispTo_20200530</span>
             <span class="zDate zDateUndispFrom_20200530">zDateUndispFrom_20200530</span>
             <span class="zDate zDateUndispTo_20200630">zDateUndispTo_20200630</span>
@@ -206,4 +263,5 @@
 
     </div><!-- /container -->
 </body>
+
 </html>

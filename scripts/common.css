@@ -4,6 +4,7 @@
 @import url("./css/lists.css");
 @import url("./css/scrollbar.css");
 @import url("./css/table.css");
+@import url("./css/form.css");
 
 /* 機能モジュール */
 @import url("./css/zHoverDisp.css");
@@ -18,8 +19,8 @@
 /*  extTools */
 @import "./extTools/chartjs/chartjs.css";
 @import "./extTools/googleicon/googleicon.css";
-@import "./extTools/prettyprint.css";
-
+@import "./extTools/prittyprint/prettyprint.css";
+/* @import "./extTools/ExCodePrettify/jquery.ex-code-prettify.css"; */
 
 /*  preset */
 @import "./css-preset/cssImage.css";

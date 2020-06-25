@@ -124,11 +124,14 @@ var myScripts = [
     //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
     "extTools/MathJaxMacro.js",
 
-    //prettify
-    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
     //Chart.js
     "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
     //"extTools/chartjs/chartjs_init.js",
+
+    //prettify
+    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
+    //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
+    "extTools/prittyprint/prittyprint.js",
 
     //自作js
     "js/customRandom.js",
@@ -141,6 +144,9 @@ var myScripts = [
     "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
     "extTools/abcjs/abcjs_zInit.js",
     "extTools/googleicon/googleicon.js",
+
+    //数学用mathTools
+    "mathTools/algebra.js",
 
     //zTools
     "zTools/develop.js",
@@ -234,6 +240,8 @@ function zOnload() {
 
 window.addEventListener('load', (event) => {
 
+    debugMsg("eventListener:loaded - " + (((new Date()).getTime() - debugMsgTime.getTime()) / 1000) + "sec");
+
     //外部js初期化
     //abc.js描画実行
     absjs_init();   //extTools/abcjs/abcjs_zInit.js
@@ -246,22 +254,22 @@ window.addEventListener('load', (event) => {
     //モード別処理
     switch (getParam["mode"]) {
         case "lab":
-            getPageMenu("zPageMenu");
-            document.getElementById("autoDebugMsg").value = getSpec() + "\n" + debugMsgText;
+            getPageMenu("zPageMenu");   setAhrefSmoothLink();
             zSetUndispDate();
+            document.getElementById("autoDebugMsg").value = getSpec() + "\n" + debugMsgText;
             break;
         case "kgfes":
-            getPageMenu("PageMenu");
+            getPageMenu("PageMenu");    setAhrefSmoothLink();
             KGfes_init(getParam["lv"]);
             kgfesBG();
             document.title = document.title + " - 五峯祭2020sample";
             break;
     }
-    setAhrefSmoothLink();
 
-    debugMsg("eventListener:loaded - " + (((new Date()).getTime() - debugMsgTime.getTime()) / 1000) + "sec");
 
 });
 
 
-
+// □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■
+// □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■
+// □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■

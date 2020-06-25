@@ -1,4 +1,8 @@
-form.zForm fieldset input,
-form.zForm fieldset label{
-    display:    inline;
+form.zForm input,
+form.zForm label{
+    
+}
+
+form.zForm legend{
+    letter-spacing: var(--z-letterspacing);
 }
