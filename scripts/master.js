@@ -149,10 +149,7 @@ var myScripts = [
 //モード別実装
 switch (getParam["mode"]) {
     case "lab":
-        myScripts.push(
-            "https://aframe.io/releases/0.6.1/aframe.min.js",
-            "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"
-        );
+
         break;
     case "kgfes":
         myScripts.push(
@@ -162,6 +159,14 @@ switch (getParam["mode"]) {
         );
         break;
     default:
+}
+switch (getParam["ar"]) {
+    case "true":
+        myScripts.push(
+            "https://aframe.io/releases/0.6.1/aframe.min.js",
+            "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"
+        );
+        default:
 }
 
 //読込カウンタ
@@ -243,7 +248,7 @@ window.addEventListener('load', (event) => {
         case "lab":
             getPageMenu("zPageMenu");
             document.getElementById("autoDebugMsg").value = getSpec() + "\n" + debugMsgText;
-            
+            zSetUndispDate();
             break;
         case "kgfes":
             getPageMenu("PageMenu");
