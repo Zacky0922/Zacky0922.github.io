@@ -130,6 +130,7 @@ var myScripts = [
 
     //A-Frame
     "https://aframe.io/releases/0.6.1/aframe.min.js",
+    //"https://aframe.io/releases/1.0.4/aframe.min.js",
 
     //Chart.js
     "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
