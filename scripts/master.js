@@ -124,6 +124,9 @@ var myScripts = [
     //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
     "extTools/MathJaxMacro.js",
 
+    //A-Frame
+    "https://aframe.io/releases/0.6.1/aframe.min.js",
+
     //Chart.js
     "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
     //"extTools/chartjs/chartjs_init.js",
@@ -168,10 +171,10 @@ switch (getParam["mode"]) {
 }
 switch (getParam["ar"]) {
     case "true":
-        myScripts.push(
+        myScripts =[
             "https://aframe.io/releases/0.6.1/aframe.min.js",
             "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"
-        );
+        ];
         default:
 }
 
