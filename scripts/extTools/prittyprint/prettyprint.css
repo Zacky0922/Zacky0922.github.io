@@ -1,5 +1,6 @@
 .prettyprint{
     background: #fff;
+    overflow: auto;
 }
 li.L0, li.L1, li.L2, li.L3, li.L4,
 li.L5, li.L6, li.L7, li.L8, li.L9{
@@ -7,24 +8,58 @@ li.L5, li.L6, li.L7, li.L8, li.L9{
     color:#000;
 }
 
+
+
+
+/* Quick Editor */
+
 .prettyprintQuickEditor{
     display:    grid;
 	grid-template-columns: 50% 50%;
 	grid-template-areas:
         "prettyprint0    prettyprint2"
         "prettyprint1    prettyprint2";
+    margin: var(--z-spacing) 0;
+    border: 5px solid var(--z-border-color);
+    padding:    1px;
 }
+@media screen and (max-width:600px){
+    .prettyprintQuickEditor{
+    	grid-template-columns: 100%;
+    	grid-template-areas:
+            "prettyprint0"
+            "prettyprint1"
+            "prettyprint2";
+    }
+}
+
 .prettyprintQuickEditor > *{
     min-height: 100px;
     width:100%;
+    min-width:100%;
+    max-width:100%;
+    margin:0;
 }
 .prettyprintQuickEditor > textarea{
     grid-area:  prettyprint0;
-    width:100%;
+    min-height: 200px;
+    font-size:  large;
 }
 .prettyprintQuickEditor > pre{
     grid-area:  prettyprint1;
+    max-height: 80vh;
 }
-.prettyprintQuickEditor > div{
+.prettyprintQuickEditor > div.prettyprintQuickPreviewer{
     grid-area:  prettyprint2;
+    border:     3px solid var(--z-border-color);
+    overflow: auto;
+    /* Previewer標準スタイル */
+    padding: var(--z-spacing);
+    background: #fff;
+    color:      #000;
 }
+/* Previewer内要素：標準スタイル */
+.prettyprintQuickPreviewer *{
+    border:     1px solid #000;
+}
+

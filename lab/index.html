@@ -134,17 +134,7 @@
                 setQuickEditor("quickEditor");
             </script>
 
-            <section style="display:grid;grid-template-columns: 1fr 1fr;">
-                <div>
-                    <textarea style="width:100%;height:300px;"
-                        onkeyup="document.getElementById('quickEdit').innerHTML=this.value;
-                        document.getElementById('quickEditCode').innerText='<!-- ここの内容をHTMLにコピペしましょう -->\n<html>\n<head>\n\t<title>タイトル</title>\n</html>\n<body>\n'+this.value+'\n</body>\n</html>';
-                        document.getElementById('quickEditCode').classList.remove('prettyprinted');PR.prettyPrint()"><p>本文</p></textarea>
-                            <pre style="width:100%;height:300px;" id="quickEditCode" class="prettyprint linenums"></pre>
-                </div>
-                <div id="quickEdit" class="zTbl" style="width:100%;text-align:left;background:#fff;color:#000;"></div>
-                <!--<iframe id="quickEdit"></iframe>-->
-            </section>
+
         </section>
 
 
