@@ -26,11 +26,11 @@
 @import "./css-preset/cssImage.css";
 @import "./css-preset/holo.css";
 
-
-/*  abcjs */
-@import "./extTools/abcjs/abcjs-midi.css";
+/*  Font-Awesome */
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css";
 
+/*  abcjs */
+@import "./extTools/abcjs/abcjs-midi.css";  /* Font-Awesome利用 */
 
 :root{
 

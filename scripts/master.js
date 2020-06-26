@@ -21,15 +21,19 @@ function getParam() {
 
     //受取変数の個別処理
     //lv    数値→フォルダ指定文字列
-    var myLv = "";
-    if (param["lv"] > 0) {
-        for (var i = 0; i < param["lv"]; i++) {
-            myLv = myLv + "../";
-        }
+    if (param["lv"] == undefined) {
+        param["lv"] = "https://zacky0922.github.io/";
     } else {
-        myLv = "./";
+        var myLv = "";
+        if (param["lv"] > 0) {
+            for (var i = 0; i < param["lv"]; i++) {
+                myLv = myLv + "../";
+            }
+        } else {
+            myLv = "./";
+        }
+        param["lv"] = myLv;
     }
-    param["lv"] = myLv;
     return param;
 }
 var getParam = getParam();
@@ -194,18 +198,17 @@ function jsLoader_(mySrc) {
     }
 }
 function jsLoader() {
+    debugMsg(getParam["lv"] + "scripts/" );
     debugMsg("jsLoader", 1);
     for (var i = 0; i < myScripts.length; i++) {
         if (myScripts[i].indexOf("http") > -1) {
+            debugMsg(myScripts[i]);
             jsLoader_(myScripts[i]);
-        } else if (getParam["lv"] == undefined) {
-            jsLoader_("https://zacky0922.github.io/scripts/" + myScripts[i]); //絶対指定
-            loadJScounter_local++;
         } else {
+            debugMsg(getParam["lv"] + "scripts/" + myScripts[i]);
             jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);  //相対指定
             loadJScounter_local++;
         }
-        debugMsg(myScripts[i]);
     }
     debugMsg("", -1);
 }
