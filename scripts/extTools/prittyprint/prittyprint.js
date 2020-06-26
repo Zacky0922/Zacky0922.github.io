@@ -22,6 +22,7 @@ function setQuickEditor(id,tx = "") {
 
 
     var txarea = document.createElement("textarea");
+    txarea.value = tx;
     txarea.onkeydown = function (e) { zEnableTab(e, this); }
 
     txarea.setAttribute("onkeyup",
@@ -33,13 +34,13 @@ function setQuickEditor(id,tx = "") {
     var pre = document.createElement("pre");
     pre.id = "prettyprintQuickPreviewer_" + Math.floor(Math.random() * 1024);
     pre.classList.add("prettyprint","linenums");
-    pre.innerText = defaultSource[0].join("\n") +
+    pre.innerText = defaultSource[0].join("\n") + "\n" +
         txarea.value + "\n" +
         defaultSource[1].join("\n");
 
     var preview = document.createElement("div");
     preview.classList.add("prettyprintQuickPreviewer");
-    //preview.innerHTML = pre.innerText;
+    preview.innerHTML = pre.innerText;
 
     ele.appendChild(txarea);
     ele.appendChild(pre);
