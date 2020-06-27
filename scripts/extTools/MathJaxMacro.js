@@ -1,14 +1,49 @@
 loadJScounter_loaded++;
 
 //MathJax逐次実行
+var MathJaxQueue = 0;   //実行待ち件数
+var MathJaxState = false;   //実行状況（loading時を除く）
+var MathJaxRuntimer = new Array();
+function MathJaxComplete_() {
+    setTimeout(
+        function () { MathJaxState = false; },
+        50);  //連続実行の最小間隔msec
+
+}
+    
+function reMathJax_(id, timerID = null) {
+    if (!MathJaxState) {
+        MathJaxState = true;
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, id], [MathJaxComplete_]);
+        clearInterval(MathJaxRuntimer[timerID]);
+    }
+}
 function reMathJax(id = null) {
     if (id == null) {
-        return;
-        
         //ページ全体の再描画設定は…？
-        
-    } else {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, id]);
+        //あれば、ここに書きたい
+
+        //以下のはダメ…
+        //MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+        //MathJax.Hub.Typeset();
+
+        return;
+    } else if (MathJaxQueue > 0) {
+        //1件以上の処理キャッシュがあれば、
+        //ほっといてもどうせ実行されるので、
+        //再描画しない
+        return;
+    }
+    else {
+        if (!MathJaxState) {
+            MathJaxState = true;
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub, id], [MathJaxComplete_]);
+        }else {
+            var timerID = "timerID_"+(new Date()).getTime();
+            MathJaxRuntimer[timerID] = setInterval(
+                function () { reMathJax_(id, timerID) },
+                50);
+        }
     }
 }
 
@@ -91,6 +126,6 @@ MathJax.Hub.Config({
 });
 //};
 
-//MathJax.Ajax.loadComplete("https://zacky0922.github.io/scripts/extTools/MathJaxMacro.js");
+MathJax.Ajax.loadComplete("https://zacky0922.github.io/scripts/extTools/MathJaxMacro.js");
 
 

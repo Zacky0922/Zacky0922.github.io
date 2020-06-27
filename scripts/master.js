@@ -155,6 +155,7 @@ var myScripts = [
 
     //数学用mathTools
     "mathTools/algebra.js",
+    "mathTools/matrix.js",  //algebra
 
     //zTools
     "zTools/develop.js",

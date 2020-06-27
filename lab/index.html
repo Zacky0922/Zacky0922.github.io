@@ -195,13 +195,60 @@
                             document.getElementById("ans").innerText = "$$" + sol[0] + "\\\\\\text{解なし}$$";
                         } else {
                             document.getElementById("ans").innerText = "$$" + sol[0] +
-                                "\\quad\\Longleftrightarrow\\quad " +
-                                "x=" + sol[1][0] + ",y=" + sol[1][1] + "$$";
+                                "\\quad\\Longrightarrow\\quad " +
+                                "x=" + estimateFrac(sol[1][0]) + ",y=" + estimateFrac(sol[1][1]) + "$$";
                         }
                         reMathJax('ans');
                     }
                 </script>
             </form>
+            <form class="zForm" onkeyup="bunkai()">
+                <fieldset>
+                    <legend>素因数分解</legend>
+                    <input type="text" id="soinsu" size="3">
+                    <div id="soinsu_ans"></div>
+                </fieldset>
+                <script>
+                    function bunkai() {
+                        var formula = primeFactorization(Number(document.getElementById("soinsu").value), true);
+                        if (formula == null) {
+                            document.getElementById("soinsu_ans").innerText = "2以上の整数を入力しましょう";
+                            return;
+                        };
+                        document.getElementById("soinsu_ans").innerText = "$$" +
+                            Number(document.getElementById("soinsu").value) + "=" +
+                            formula + "$$";
+                        reMathJax('soinsu_ans');
+                    }
+                </script>
+            </form>
+            <form class="zForm" onkeyup="tagainiso()">
+                <fieldset>
+                    <legend>互いに素：約分</legend>
+                    <input type="text" id="tagainiso0" size="3">と<input type="text" id="tagainiso1" size="3">
+                    <div id="tagainiso_ans"></div>
+                    ※厳密な互いに素の定義ではない（0と互いに素は±1のみ、の判定が未実装）
+                </fieldset>
+                <script>
+                    function tagainiso() {
+                        var a = Number(document.getElementById("tagainiso0").value);
+                        var b = Number(document.getElementById("tagainiso1").value);
+                        var c = getCommonFactor(a, b);
+                        document.getElementById("tagainiso_ans").innerText = "" +
+                            a + "と" + b + "は" +
+                            "互いに素" + (
+                                isPrime(a, b)? "！" : "でない"
+                            ) + "\n" +
+                            "$$" +
+                            "\\dfrac{" + a + "}{" + b + "}=" +
+                            (b / c == 1 ? a / c : "\\dfrac{" + a / c + "}{" + b / c + "}") +
+
+                            "$$";
+                        reMathJax('tagainiso_ans');
+                    }
+                </script>
+            </form>
+            <input type="button" value="MathJax（ID未指定）：全体再描画テスト" onclick="reMathJax()">
         </section>
         <section>
             <h2 class="zHeadList zHead">chart.js</h2>
