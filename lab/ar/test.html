@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- JS/CSS master -->
+	<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+	<script src="../../scripts/extTools/A-Frame/develop.js"></script>
+	<title>A-Frame</title>
+</head>
+
+<body>
+	<a-scene id="myGallery">
+		<a-assets>
+			<img id="star" src="https://zacky0922.github.io/lab/ar/pict/star.png">
+		</a-assets>
+		<a-sky color="#cce"></a-sky>
+
+		<a-entity id="z-axis" position="0 0 0"></a-entity>
+		<a-plane color="#00ff00" opacity="0.5" position="0 -0.5 0" rotation="-90 0 0" width="5" height="5"></a-plane>
+
+
+		<a-box src="#star" repeat="2 2" position="0 2 -5" rotation="0 45 45" scale="2 2 2">
+			<a-animation attribute="rotation" to="0 360 720" direction="alternate" dur="2000" repeat="indefinite"
+				easing="ease">
+			</a-animation>
+		</a-box>
+
+		<a-image src="#star" position="2 0 0">
+			<a-animation attribute="rotation" to="0 360 0" repeat="indefinite" direction="normal" easing="linear"
+				dur="2000"></a-animation>
+		</a-image>
+		<a-image src="#star" position="2 0 -2">
+			<a-animation attribute="scale" to="3 3 3" repeat="indefinite" direction="alternate" easing="ease"
+				dur="2000">
+			</a-animation>
+			<a-animation attribute="position" to="2 1 -2" repeat="indefinite" direction="alternate" easing="ease"
+				dur="2000">
+			</a-animation>
+		</a-image>
+
+		<a-entity id="z-camera" position="1 1 3">
+			<a-entity id camera look-controls >
+			</a-entity>
+		</a-entity>
+	</a-scene>
+	<script>
+		window.addEventListener('load', (event) => {
+			//デバッグ用：軸表示
+			setAxis("z-axis");
+
+			var camera_theta = 0;
+			let camera_rot = setInterval(function(){
+				const r = 5;
+				let camera = document.getElementById("z-camera");
+				//場所を回す
+				camera.setAttribute("position",
+				r*Math.cos(camera_theta) + " 0.35 "+ r * Math.sin(camera_theta));
+				//中心を向く
+				let angle = "" + "0 " + (( Math.PI/2 - camera_theta )/ Math.PI*180) + " 0";
+				console.log(angle);
+				camera.setAttribute("rotation",angle);
+				//角度更新
+				camera_theta += 2*Math.PI/(1000/150)/5;	//最後の値[sec]で回転するはず
+				if(camera_theta>2* Math.PI){
+					camera_theta = camera_theta % (2 * Math.PI);
+				}
+			},150);
+		});
+	</script>
+</body>
+
+</html>
