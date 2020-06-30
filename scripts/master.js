@@ -138,8 +138,8 @@ var myScripts = [
 
     //prettify
     "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
-    //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
     "extTools/prittyprint/prittyprint.js",
+    //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
 
     //自作js
     "js/customRandom.js",
