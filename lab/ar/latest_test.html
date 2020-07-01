@@ -33,10 +33,8 @@
 			</a-animation>
 		</a-box>
 
-		<a-image src="#star" position="2 0 0">
-			<a-animation attribute="rotation" to="0 360 0" repeat="indefinite" direction="normal" easing="linear"
-				dur="2000"></a-animation>
-		</a-image>
+		<a-image src="pict/sample512.png" position="2 0 0"
+		animation="property: rotation; to: 0 360 0;loop: true; dur: 5000;easing:linear;"></a-image>
 		<a-image src="#star" position="2 0 -2">
 			<a-animation attribute="scale" to="3 3 3" repeat="indefinite" direction="alternate" easing="ease"
 				dur="2000">
@@ -46,8 +44,8 @@
 			</a-animation>
 		</a-image>
 
-		<a-entity id="z-camera" position="1 1 3">
-			<a-entity id camera look-controls>
+		<a-entity id="z-camera-wrap" position="1 0 3">
+			<a-entity id="z-camera" camera look-controls>
 				<a-cursor color="#114" opacity="0.5"></a-cursor>
 			</a-entity>
 		</a-entity>
@@ -57,25 +55,9 @@
 			//デバッグ用：軸表示
 			setAxis("z-axis");
 
-			let camera_theta = 0;
-
-			function render() {
-				const r = 5;
-				let camera = document.getElementById("z-camera");
-				//場所を回す
-				camera.setAttribute("position",
-					r * Math.cos(camera_theta) + " 0.35 " + r * Math.sin(camera_theta));
-				//中心を向く
-				camera.setAttribute("rotation", "" + "0 " + ((Math.PI / 2 - camera_theta) / Math.PI * 180) + " 0");
-				//角度更新
-				camera_theta += 2 * Math.PI / (5 * getFPS());	// n秒で2pi = n * FPS で1週
-				if (camera_theta > 2 * Math.PI) {
-					camera_theta = camera_theta % (2 * Math.PI);
-				}
-				requestAnimationFrame(render);
-			}
-			render();
-			
+			//カメラ再設定
+			//camera_cycleRender();
+			camera_walkingRender();
 		});
 
 	</script>

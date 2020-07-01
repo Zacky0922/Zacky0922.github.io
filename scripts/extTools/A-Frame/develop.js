@@ -1,8 +1,8 @@
 
 //軸表示
 function setAxis(id) {
-    document.getElementById(id).innerHTML = ""+
-    '<!--Point of Origin-->' +
+    document.getElementById(id).innerHTML = "" +
+        '<!--Point of Origin-->' +
         '<a-sphere position="0 0 0" radius="0.1" color="#000" wireframe="true"></a-sphere>' +
         '<!-- X-axis -->' +
         '<a-cylinder color="#f00" radius="0.01" rotation="0 0 90" position="0.5 0 0"></a-cylinder>' +
@@ -26,4 +26,47 @@ function getFPS() {
     z_Aframe_fps_oldtime = fps_newtime;
     // FPS = 1000 / d
     return 1000 / d;
+}
+
+
+//カメラ制御系
+//カメラ位置
+let camera_pos_polar = [5, 0];   //極座標(r,θ)
+let camera_pos_cartesian = [0, 0];  //直交座標
+function camera_cycleRender() {
+    let camera_wrap = document.getElementById("z-camera-wrap");
+    let r = camera_pos_polar[0];
+    //場所を回す
+    camera.setAttribute("position",
+        r * Math.cos(camera_pos_polar[1]) +
+        " 0.35 " +
+        r * Math.sin(camera_pos_polar[1]));
+    //中心を向く
+    camera.setAttribute("rotation", "" + "0 " +
+        ((Math.PI / 2 - camera_pos_polar[1]) / Math.PI * 180) +
+        " 0");
+    //角度更新
+    camera_pos_polar[1] += 2 * Math.PI / (5 * getFPS());	// n秒で2pi = n * FPS で1週
+    if (camera_pos_polar[1] > 2 * Math.PI) {
+        camera_pos_polar[1] -= 2 * Math.PI;
+    }
+    requestAnimationFrame(camera_cycleRender);
+}
+
+function camera_walkingRender() {
+    let camera_wrap = document.getElementById("z-camera-wrap");
+    let camera = document.getElementById("z-camera");
+    let pos = camera_wrap.getAttribute("position");
+    let rot = camera.getAttribute("rotation");
+    let fps = getFPS();
+    //pos.x += 0.01;
+    console.log(rot);
+    //上下：-90≦x≦90
+    if (rot.x < -15) {
+        pos.x -= Math.sin(rot.y / 180 * Math.PI) / (3 * fps);
+        pos.z -= Math.cos(rot.y / 180 * Math.PI) / (3*fps);
+    }
+    //rot.y += 1;
+    camera.setAttribute("position", pos);
+    requestAnimationFrame(camera_walkingRender);
 }
