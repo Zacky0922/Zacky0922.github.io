@@ -11,6 +11,8 @@
 
 	<!-- JS/CSS master -->
 	<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	<script
+		src="https://unpkg.com/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"></script>
 	<script src="../../scripts/extTools/A-Frame/develop.js"></script>
 	<title>A-Frame</title>
 </head>
@@ -19,15 +21,17 @@
 	<a-scene id="myGallery" stats>
 		<a-assets>
 			<img id="star" src="https://zacky0922.github.io/lab/ar/pict/star.png">
+			<a-asset-item id="test-obj" src="obj/test.obj"></a-asset-item>
+			<a-asset-item id="test-mtl" src="obj/test.mtl"></a-asset-item>
 		</a-assets>
 		<a-sky color="#cce" opacity="0.2"></a-sky>
-
+		<a-entity particle-system="preset:star; size:0.5;color: #FF8800,#FFFF00;opacity:0.9;blending:0;"
+			position="0 10 0"></a-entity>
 		<a-entity id="z-axis" position="0 0 0"></a-entity>
 		<a-plane color="#00ff00" opacity="0.5" position="0 -0.5 0" rotation="-90 0 0" width="5" height="5"></a-plane>
-		<a-text position="0 0.5 -0.5"
-		 value="sample" color="#f00"></a-text>
+		<a-text position="0 0.5 -0.5" value="sample" color="#f00"></a-text>
 
-		<a-obj-model src="obj/test.obj" mtl="obj/test.mtl" position="-1 1 -1"></a-obj-model>
+		<a-obj-model src="#test-obj" mtl="#test-mtl" position="-1 1 -1" scale=".5 .5 .5"></a-obj-model>
 
 		<a-box src="#star" repeat="2 2" position="0 2 -5" rotation="0 45 45" scale="2 2 2">
 			<a-animation attribute="rotation" to="0 360 720" direction="alternate" dur="2000" repeat="indefinite"
@@ -36,7 +40,7 @@
 		</a-box>
 		<a-image src="pict/welcome.png" position="2 0 1" width="1.78" rotation="0 -20 0"></a-image>
 		<a-image src="pict/sample512.png" position="-2 0 0"
-		animation="property: rotation; to: 0 360 0;loop: true; dur: 5000;easing:linear;"></a-image>
+			animation="property: rotation; to: 0 360 0;loop: true; dur: 5000;easing:linear;"></a-image>
 		<a-image src="#star" position="2 0 -2">
 			<a-animation attribute="scale" to="3 3 3" repeat="indefinite" direction="alternate" easing="ease"
 				dur="2000">
