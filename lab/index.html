@@ -63,19 +63,6 @@
         </section>
 
         <section>
-            <h2 class="zHeadList zHead">Links</h2>
-            <ul>
-                <li><a target="_target" href="../private/">個人用</a></li>
-                <li><a target="_target" href="../KG/">KG</a></li>
-                <li><a target="_target" href="../KGfes/">五峯祭</a></li>
-                <li><a target="_target" href="../KGfes/gallery/private.html">五峯祭preview</a></li>
-                <li><a target="_target" href="../KGsougaku/">総学</a></li>
-                <li><a target="_target" href="../">がらくたindex</a></li>
-            </ul>
-        </section>
-
-
-        <section>
             <h2 class="zHead zHeadList">A-Frame</h2>
             <ul>
                 <li>マーカーの中心：position="0 0 0"</li>
@@ -88,15 +75,15 @@
                     ⇒　XY平面上にZ正方向を正面（画面下向き）に貼り付け<br />
                     ⇒　画面正面方向への配置 rotation="-90 0 0"（回転方向：右手系）<br />
                     ⇒　回転の処理順 = X→Y→Z（たぶん）</li>
-                    <li>作業順：rotation → position</li>
-                    <li>秒間6～7fr前後？（js.setInterval(,1)でも、秒間実行6～7回のようだ）</li>
-                    <li>HTML記載順：前＝前レイヤー／後＝後レイヤー<br/>
+                <li>作業順：rotation → position</li>
+                <li>秒間6～7fr前後？（js.setInterval(,1)でも、秒間実行6～7回のようだ）</li>
+                <li>HTML記載順：前＝前レイヤー／後＝後レイヤー<br />
                     前レイヤーの透過部分＝背景の画像に対しalpha値を上書きし、background=a-skyを表示</li>
-<li>記述方法に互換性がなくとも、多少頑張って最新版にしないと、色々不都合があるかも。<br/>
-（例）ジャイロ酔い＝ブレブレ改善</li>
+                <li>記述方法に互換性がなくとも、多少頑張って最新版にしないと、色々不都合があるかも。<br />
+                    （例）ジャイロ酔い＝ブレブレ改善</li>
 
             </ul>
-            <a href="ar/test.html">test</a> / 
+            <a href="ar/test.html">test</a> /
             <a href="ar/latest_test.html">latest_test</a>
             <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="html,result"
                 data-user="Zacky0922" data-slug-hash="vYLggdw"
@@ -106,8 +93,8 @@
                         A-Frame</a> by Zacky (<a href="https://codepen.io/Zacky0922">@Zacky0922</a>)
                     on <a href="https://codepen.io">CodePen</a>.</span>
             </p>
-            <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="html,result" data-user="Zacky0922"
-                data-slug-hash="GRombPP"
+            <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="html,result"
+                data-user="Zacky0922" data-slug-hash="GRombPP"
                 style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
                 data-pen-title="VRmaze">
                 <span>See the Pen <a href="https://codepen.io/Zacky0922/pen/GRombPP">
@@ -245,23 +232,41 @@
                     <legend>互いに素：約分</legend>
                     <input type="text" id="tagainiso0" size="3">と<input type="text" id="tagainiso1" size="3">
                     <div id="tagainiso_ans"></div>
-                    ※厳密な互いに素の定義ではない（0と互いに素は±1のみ、の判定が未実装）
                 </fieldset>
                 <script>
                     function tagainiso() {
-                        var a = Number(document.getElementById("tagainiso0").value);
-                        var b = Number(document.getElementById("tagainiso1").value);
-                        var c = getCommonFactor(a, b);
-                        document.getElementById("tagainiso_ans").innerText = "" +
-                            a + "と" + b + "は" +
-                            "互いに素" + (
-                                isPrime(a, b)? "！" : "でない"
-                            ) + "\n" +
-                            "$$" +
-                            "\\dfrac{" + a + "}{" + b + "}=" +
-                            (b / c == 1 ? a / c : "\\dfrac{" + a / c + "}{" + b / c + "}") +
+                        let a = Number(document.getElementById("tagainiso0").value);
+                        let b = Number(document.getElementById("tagainiso1").value);
+                        if(!Number.isInteger(a) || !Number.isInteger(b)){
+                            document.getElementById("tagainiso_ans").innerText ="整数を入力してください";
+                            return;
+                        }
+                        let c = getCommonFactor(a, b);
+                        let tx = a + "と" + b + "は";
+                        if (a * b == 0) {
+                            if (a == 1 || a == -1 || b == 1 || b == -1) {
+                                tx += "互いに素である。";
+                            } else {
+                                tx += "互いに素でない。（0と互いに素になるのは、$\\pm 1$のみ）";
+                            }
+                        } else if (c == 1) {
+                            tx += "互いに素である。";
+                        } else {
+                            tx += "互いに素でない。" +
+                                "（共通因数＝" + c + "）";
+                        }
+                        if (b == 0) {
+                            document.getElementById("tagainiso_ans").innerText = tx + "\n" +
+                                "分母が0のため、分数は表示できません。";
+                        } else {
+                            document.getElementById("tagainiso_ans").innerText = tx + "\n" +
+                                "$$" +
+                                "\\dfrac{" + a + "}{" + b + "}" +
+                                (c == 1 ? "" : "=\\dfrac{" + a / c + "}{" + b / c + "}") +
+                                (b/c == 1 ?"="+ a/c : "=" + a / b) +
+                                "$$";
+                        }
 
-                            "$$";
                         reMathJax('tagainiso_ans');
                     }
                 </script>
