@@ -19,6 +19,8 @@
 	<a-scene id="myGallery" stats>
 		<a-assets>
 			<img id="star" src="https://zacky0922.github.io/lab/ar/pict/star.png">
+			<a-asset-item id="test-obj" src="obj/test.obj"></a-asset-item>
+			<a-asset-item id="test-mtl" src="obj/test.mtl"></a-asset-item>
 		</a-assets>
 		<a-sky color="#cce" opacity="0.2"></a-sky>
 
@@ -27,7 +29,7 @@
 		<a-text position="0 0.5 -0.5"
 		 value="sample" color="#f00"></a-text>
 
-		<a-obj-model src="obj/test.obj" mtl="obj/test.mtl" position="-1 1 -1"></a-obj-model>
+		<a-obj-model src="#test-obj" mtl="#test-mtl" position="-1 1 -1"></a-obj-model>
 
 		<a-box src="#star" repeat="2 2" position="0 2 -5" rotation="0 45 45" scale="2 2 2">
 			<a-animation attribute="rotation" to="0 360 720" direction="alternate" dur="2000" repeat="indefinite"
