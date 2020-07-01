@@ -16,15 +16,16 @@
 </head>
 
 <body>
-	<a-scene id="myGallery">
+	<a-scene id="myGallery" stats>
 		<a-assets>
 			<img id="star" src="https://zacky0922.github.io/lab/ar/pict/star.png">
 		</a-assets>
-		<a-sky color="#cce"></a-sky>
+		<a-sky color="#cce" opacity="0.2"></a-sky>
 
 		<a-entity id="z-axis" position="0 0 0"></a-entity>
 		<a-plane color="#00ff00" opacity="0.5" position="0 -0.5 0" rotation="-90 0 0" width="5" height="5"></a-plane>
-
+		<a-text position="0 0.5 -0.5"
+		 value="sample" color="#f00"></a-text>
 
 		<a-box src="#star" repeat="2 2" position="0 2 -5" rotation="0 45 45" scale="2 2 2">
 			<a-animation attribute="rotation" to="0 360 720" direction="alternate" dur="2000" repeat="indefinite"
@@ -56,24 +57,27 @@
 			//デバッグ用：軸表示
 			setAxis("z-axis");
 
-			var camera_theta = 0;
-			let camera_rot = setInterval(function(){
+			let camera_theta = 0;
+
+			function render() {
 				const r = 5;
 				let camera = document.getElementById("z-camera");
 				//場所を回す
 				camera.setAttribute("position",
-				r*Math.cos(camera_theta) + " 0.35 "+ r * Math.sin(camera_theta));
+					r * Math.cos(camera_theta) + " 0.35 " + r * Math.sin(camera_theta));
 				//中心を向く
-				let angle = "" + "0 " + (( Math.PI/2 - camera_theta )/ Math.PI*180) + " 0";
-				console.log(angle);
-				camera.setAttribute("rotation",angle);
+				camera.setAttribute("rotation", "" + "0 " + ((Math.PI / 2 - camera_theta) / Math.PI * 180) + " 0");
 				//角度更新
-				camera_theta += 2*Math.PI/(1000/150)/5;	//最後の値[sec]で回転するはず
-				if(camera_theta>2* Math.PI){
+				camera_theta += 2 * Math.PI / (5 * getFPS());	// n秒で2pi = n * FPS で1週
+				if (camera_theta > 2 * Math.PI) {
 					camera_theta = camera_theta % (2 * Math.PI);
 				}
-			},150);
+				requestAnimationFrame(render);
+			}
+			render();
+			
 		});
+
 	</script>
 </body>
 

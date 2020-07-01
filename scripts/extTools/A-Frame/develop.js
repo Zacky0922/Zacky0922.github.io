@@ -16,3 +16,14 @@ function setAxis(id) {
         '<!-- unit box -->' +
         '<a-box color="#000" wireframe="true"></a-box>';
 }
+
+// FPS処理
+let z_Aframe_fps_oldtime = new Date();
+function getFPS() {
+    //前回描画時からのmsec差分を取得
+    let fps_newtime = new Date();
+    let d = fps_newtime.getTime() - z_Aframe_fps_oldtime.getTime();
+    z_Aframe_fps_oldtime = fps_newtime;
+    // FPS = 1000 / d
+    return 1000 / d;
+}
