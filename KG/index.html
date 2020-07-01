@@ -202,19 +202,16 @@
 					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
 					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
 					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
+					<a style="display: none;" class="zBtn" target="_blank" href="http://kbs.kgef.ac.jp/seiseki/">個別相談<br/>(新・教員用2020.07～)</a>
 				</div>
-
 			</div>
 			<div>
 				<h3 class="zHead"><label for="intranet" class="zClickable">◆intranet◆</label></h3>
 				<input type="checkbox" class="zHiddenBlock" id="intranet" />
 				<div style="grid-area:links;display:grid;">
 					<a class="zBtn" target="_blank" href="http://192.168.20.41/iraimenu.HTM">支払依頼</a>
-					<a class="zBtn" target="_blank" href="KobetsuSoudanIkkatsu.html">個別相談<br />一括印刷ツール</a>
-					<div style="text-align:center">※個別相談は2021年度分<br />
-						から別システムに移行予定</div>
+					<a class="zBtn" target="_blank" href="KobetsuSoudanIkkatsu.html">個別相談<br/>(2020.04入学分迄)<br />一括印刷ツール</a>
 				</div>
-
 			</div>
 			<div>
 				<h3 class="zHead"><label for="外部サイト" class="zClickable">◆外部サイト◆</label></h3>
@@ -228,19 +225,17 @@
 				</div>
 			</div>
 			<div>
-				<h3 class="zHead"><label for="Teams" class="zClickable">◆Teams◆</label></h3>
+				<h3 class="zHead"><label for="Teams" class="zClickable">◆Microsoft◆</label></h3>
 				<input type="checkbox" class="zHiddenBlock" id="Teams" checked="checked" />
 				<div style="grid-area:links;display:grid;">
 					<script>
-						var ua = navigator.userAgent;
-						if (ua.indexOf('Win') > 0) {
+						if (getOS()=="Windows") {
 							document.write(
-								'<a class="zBtn" target="_blank" href="msteams:/">Winアプリ版</a >' +
-								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">ブラウザ版</a>' +
-								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/%EF%BC%96%E6%9C%88?threadId=19:8f578b7b692545e6be7331cec748b352@thread.tacv2&ctx=channel">日報：6月<br/>ブラウザ版</a>' +
-
-								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/%EF%BC%97%E6%9C%88?threadId=19:e0f13549c0cd404384b050f02e57dcce@thread.tacv2&ctx=channel">日報：7月<br/>ブラウザ版</a>' +
-								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/01.%E9%80%A3%E7%B5%A1%E4%BA%8B%E9%A0%85?threadId=19:f344daa94d6344e4ab821dd8b96d4e70@thread.tacv2&ctx=channel&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252F%25E9%2580%25A3%25E7%25B5%25A1%25E4%25BA%258B%25E9%25A0%2585%252F%25E6%2597%25A5%25E5%25A0%25B1">日報：旧「職員会議」<br/>ブラウザ版</a>'
+								'<a class="zBtn" target="_blank" href="msteams:/">Teams<br/>Winアプリ版</a >' +
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams<br/>ブラウザ版</a>' +
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/%EF%BC%97%E6%9C%88?threadId=19:e0f13549c0cd404384b050f02e57dcce@thread.tacv2&ctx=channel">Teams日報<br/>7月ブラウザ版</a>' +
+								
+								'<a class="zBtn" target="_blank" href="https://outlook.office.com/mail/">Outlook</a>'
 							);
 						}
 						// URIスキーマ調べる？

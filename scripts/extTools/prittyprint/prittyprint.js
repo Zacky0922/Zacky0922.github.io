@@ -2,7 +2,13 @@ loadJScounter_loaded++;
 
 function rePrettyprint(id) {
     document.getElementById(id).classList.remove("prettyprinted");
+    //pre再整形
     PR.prettyPrint();
+
+    //再設定
+    //MathJax
+    //abcjs
+    //A-Frame
 }
 
 function setQuickEditor(id,tx = "") {

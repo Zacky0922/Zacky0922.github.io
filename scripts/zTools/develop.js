@@ -1,19 +1,8 @@
 loadJScounter_loaded++;
 
-
-function getSpec() {
-
-    var tx = "Time：\n　" + (new Date()).toString() + "\n";
-
-    tx += "User Agent：\n　";
-
-    /*  User Agent */
-    var ua = window.navigator.userAgent;
-    tx += ua + "\n";
-    
-    /*  OS判定 */
-    ua = ua.toLowerCase();
-    var osList = [
+function getOS(){
+    let ua = window.navigator.userAgent.toLowerCase();
+    let osList = [
         ["windows", "Windows"],
         ["android", "Android"],
         ["iphone", "iPhone/iOS"],
@@ -22,50 +11,64 @@ function getSpec() {
         ["mac", "Mac"],
         ["linux", "Linux"]
     ];
-    tx += "OS：\n　";
-    for (var i = 0; i < osList.length;i++){
+
+    for (let i = 0; i < osList.length; i++) {
         if (ua.indexOf(osList[i][0]) > -1) {
-            tx += osList[i][1] + "\n";
-            break;
-        } else if (i - 1 == osList.length) {
-            tx += "other\n";
+            return osList[i][1];
         }
     }
+    return "other";
+}
 
-    /*  ブラウザ判定 */
-    var brList = [
+function getBrowser() {
+    let ua = window.navigator.userAgent.toLowerCase();
+    let brList = [
         ["firefox", "Firefox"],
         ["chrome", "Chrome"],
-        ["safari", "safari"],
         ["OPR", "Opera"],
         ["edge", "Edge"],
-        ["ie","Internet Explorer"]
+        ["ie", "Internet Explorer"],
+        ["safari", "safari"]
     ];
-    tx += "Browser：\n　";
-    for (var i = 0; i < brList.length; i++) {
+
+    for (let i = 0; i < brList.length; i++) {
         if (ua.indexOf(brList[i][0]) > -1) {
-            tx += brList[i][1] + "\n";
-            break;
-        } else if (i - 1 == brList.length) {
-            tx += "other\n";
+            return brList[i][1];
         }
     }
+    return "other";
+}
 
-    /*  エンジン */
-    var egList = [
+function getEngine() {
+    let ua = window.navigator.userAgent.toLowerCase();
+    let egList = [
         ["webkit", "Webkit"],
         ["trident", "Trident"],
-        ["gecko","Gecko"]
+        ["gecko", "Gecko"]
     ];
-    tx += "Rendering Engine：\n　";
+
     for (var i = 0; i < egList.length; i++) {
         if (ua.indexOf(egList[i][0]) > -1) {
-            tx += egList[i][1] + "\n";
-            break;
-        } else if (i - 1 == egList.length) {
-            tx += "other\n";
+            return egList[i][1];
         }
     }
+    return "other";
+}
+
+function getSpec() {
+    let tx = "Time：\n　" + (new Date()).toString() + "\n";
+
+    /*  User Agent */
+    tx += "User Agent：\n　" + window.navigator.userAgent + "\n";
+    
+    /*  OS判定 */
+    tx += "OS：\n　" + getOS() + "\n";
+
+    /*  ブラウザ判定 */
+    tx += "Browser：\n　" + getBrowser() + "\n";
+
+    /*  エンジン */
+    tx += "Rendering Engine：\n　" + getEngine() + "\n";
     
     /*  画面サイズ関係
     https://web-designer.cman.jp/javascript_ref/window/size/

@@ -77,6 +77,7 @@
 					※サブメニューリストはonload実行のため、本プレビュワーでは再現不可。</dd>
 				<dt>使用可能リソース</dt>
 				<dd>以下のライブラリは読込済みなので、記述なしで利用可能です。<br/>
+					（プレビュワー対応しているかは別問題ですが…）<br />
 					一部、オリジナルマクロを組んでいるので、標準の挙動をしない場合があります。
 					<div class="zTbl">
 					<table>
@@ -121,7 +122,7 @@
 							</tr>
 							<tr>
 								<th>アニメーション表示</th>
-								<td><a href="https://animate.style/" target=>A-Frame</a></td>
+								<td><a href="https://animate.style/" target=>animation.css</a></td>
 								<td>CDN v4.0.0</td>
 							</tr>
 							<tr>
@@ -164,7 +165,8 @@
 		<section style="grid-area:preview">
 			<h2 class="zHeadList zHead">Previewer</h2>
 			<p>本プレビュワー自体が、サイト内で表示が乱れる場合がありますが、そこは勘弁してください。<br/>
-			いくつかの要素は反映されません。（サブメニューリストなど）・・・反映できるように調整します。</p>
+			いくつかの要素は反映されません。（サブメニューリストなど）・・・反映できるように調整します。<br/>
+		横幅600pxを閾値とし、PC/MOB表示が切り替わります。両方試してください。</p>
 			<div id="quickEditor"></div>
 			<script>
 				setQuickEditor("quickEditor", "<p>ここにソースコードを記述</p>\n" +
