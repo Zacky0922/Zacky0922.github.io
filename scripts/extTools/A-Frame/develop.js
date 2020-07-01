@@ -33,6 +33,7 @@ function getFPS() {
 //カメラ位置
 let camera_pos_polar = [5, 0];   //極座標(r,θ)
 let camera_pos_cartesian = [0, 0];  //直交座標
+const camera_speed = 3;
 function camera_cycleRender() {
     let camera_wrap = document.getElementById("z-camera-wrap");
     let r = camera_pos_polar[0];
@@ -59,14 +60,21 @@ function camera_walkingRender() {
     let pos = camera_wrap.getAttribute("position");
     let rot = camera.getAttribute("rotation");
     let fps = getFPS();
-    //pos.x += 0.01;
     console.log(rot);
-    //上下：-90≦x≦90
+    //左右回転のオーバーフローを避ける
+    if (rot.y >= 360) {
+        rot.y -= 360;
+        camera.setAttribute("rotation", rot);
+    } else if (rot.y <= -360) {
+        rot.y += 360;
+        camera.setAttribute("rotation", rot);
+    }
+    //上下：-90≦rot.x≦90
     if (rot.x < -15) {
-        pos.x -= Math.sin(rot.y / 180 * Math.PI) / (3 * fps);
-        pos.z -= Math.cos(rot.y / 180 * Math.PI) / (3*fps);
+        pos.x -= Math.sin(rot.y / 180 * Math.PI) / (camera_speed * fps);
+        pos.z -= Math.cos(rot.y / 180 * Math.PI) / (camera_speed*fps);
     }
     //rot.y += 1;
-    camera.setAttribute("position", pos);
+    camera_wrap.setAttribute("position", pos);
     requestAnimationFrame(camera_walkingRender);
 }
