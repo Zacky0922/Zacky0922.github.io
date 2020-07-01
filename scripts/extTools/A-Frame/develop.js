@@ -74,6 +74,10 @@ function camera_walkingRender() {
         pos.x -= Math.sin(rot.y / 180 * Math.PI) / (camera_speed * fps);
         pos.z -= Math.cos(rot.y / 180 * Math.PI) / (camera_speed*fps);
     }
+    if (rot.x > 15) {
+        pos.x += Math.sin(rot.y / 180 * Math.PI) / (camera_speed * fps);
+        pos.z += Math.cos(rot.y / 180 * Math.PI) / (camera_speed * fps);
+    }
     //rot.y += 1;
     camera_wrap.setAttribute("position", pos);
     requestAnimationFrame(camera_walkingRender);
