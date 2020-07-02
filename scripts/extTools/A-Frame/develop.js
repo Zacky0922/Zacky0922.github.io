@@ -1,4 +1,4 @@
-
+/*
 //軸表示
 function setAxis(id) {
     document.getElementById(id).innerHTML = "" +
@@ -34,6 +34,9 @@ function getFPS() {
 let camera_pos_polar = [5, 0];   //極座標(r,θ)
 let camera_pos_cartesian = [0, 0];  //直交座標
 const camera_speed = 3;
+
+
+//中央注視回転
 function camera_cycleRender() {
     let camera_wrap = document.getElementById("z-camera-wrap");
     let r = camera_pos_polar[0];
@@ -54,6 +57,15 @@ function camera_cycleRender() {
     requestAnimationFrame(camera_cycleRender);
 }
 
+//引数：ポジション（属性値）,進行方向,speed
+function walkingArrow(pos , roty,sp = 2) {
+    let ele = document.getElementById("z-walkingArrow");
+    ele.innerHTML = "" +
+        '<a-box position="' + pos.x + ' ' + pos.y + ' ' + pos.z + '"></a-box>';
+    
+}
+
+//傾斜歩行
 function camera_walkingRender() {
     let camera_wrap = document.getElementById("z-camera-wrap");
     let camera = document.getElementById("z-camera");
@@ -78,7 +90,9 @@ function camera_walkingRender() {
         pos.x += Math.sin(rot.y / 180 * Math.PI) / (camera_speed * fps);
         pos.z += Math.cos(rot.y / 180 * Math.PI) / (camera_speed * fps);
     }
-    //rot.y += 1;
     camera_wrap.setAttribute("position", pos);
+    camera_walkingArrow(pos,rot.y);
     requestAnimationFrame(camera_walkingRender);
 }
+
+*/
