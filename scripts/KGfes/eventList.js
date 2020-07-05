@@ -2,12 +2,12 @@ loadJScounter_loaded++;
 
 function eventList_init(id) {
     
-    var events = document.getElementById(id).children;
+    let events = document.getElementById(id).children;
     
     //初期整形
-    for (var i = 0; i < events.length; i++){
+    for (let i = 0; i < events.length; i++){
         //初期化（一度、中身を空に）
-        var ele = new Array();
+        let ele = new Array();
         ele["イベント名"] = events[i].children[0].innerHTML;
         ele["団体名"] = events[i].children[1].innerHTML;
         ele["画像"] = events[i].children[2].src;
@@ -16,9 +16,9 @@ function eventList_init(id) {
         events[i].classList.add("eventArticles");
 
         //時間／WEBギャラリー判定・要素追加
-        var time = document.createElement("div");
+        let time = document.createElement("div");
         time.setAttribute("style","grid-area:event-time");
-        for (var c = 0; c < events[i].classList.length; c++){
+        for (let c = 0; c < events[i].classList.length; c++){
             if (events[i].classList[c].indexOf("bc_") > -1) {
                 time.innerText = events[i].classList[c].replace("bc_", "");
                 events[i].appendChild(time);
@@ -30,7 +30,7 @@ function eventList_init(id) {
             }
         }
 
-        var title = document.createElement("div");
+        let title = document.createElement("div");
         title.setAttribute("style", "grid-area:event-title");
         title.appendChild(
             document.createTextNode(ele["イベント名"])
@@ -43,12 +43,12 @@ function eventList_init(id) {
         );
         events[i].appendChild(title);
 
-        var img = document.createElement("img");
+        let img = document.createElement("img");
         img.setAttribute("style", "grid-area:event-img");
         img.src = ele["画像"];
         events[i].appendChild(img);
 
-        var text = document.createElement("div");
+        let text = document.createElement("div");
         text.setAttribute("style", "grid-area:event-text");
         text.innerHTML = ele["紹介文"];
         events[i].appendChild(text);
@@ -58,10 +58,10 @@ function eventList_init(id) {
 
 
     //日付順並べ替え
-    var sort_flag = false;
+    let sort_flag = false;
     while (true) {
         sort_flag = true;
-        for (var i = 0; i < events.length - 1; i++){
+        for (let i = 0; i < events.length - 1; i++){
             //if(events[i])
         }
 

@@ -1,9 +1,9 @@
 loadJScounter_loaded++;
 
 //MathJax逐次実行
-var MathJaxQueue = 0;   //実行待ち件数
-var MathJaxState = false;   //実行状況（loading時を除く）
-var MathJaxRuntimer = new Array();
+let MathJaxQueue = 0;   //実行待ち件数
+let MathJaxState = false;   //実行状況（loading時を除く）
+let MathJaxRuntimer = new Array();
 function MathJaxComplete_() {
     setTimeout(
         function () { MathJaxState = false; },
@@ -39,7 +39,7 @@ function reMathJax(id = null) {
             MathJaxState = true;
             MathJax.Hub.Queue(['Typeset', MathJax.Hub, id], [MathJaxComplete_]);
         }else {
-            var timerID = "timerID_"+(new Date()).getTime();
+            let timerID = "timerID_"+(new Date()).getTime();
             MathJaxRuntimer[timerID] = setInterval(
                 function () { reMathJax_(id, timerID) },
                 50);

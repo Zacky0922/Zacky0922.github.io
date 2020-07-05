@@ -1,7 +1,7 @@
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     debug
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-var g_debugArea = document.createElement("div");
+let g_debugArea = document.createElement("div");
 function debugMsg(msg) {
     g_debugArea.appendChild(
         document.createElement("br")
@@ -9,7 +9,7 @@ function debugMsg(msg) {
     g_debugArea.appendChild(
         document.createTextNode(msg)
     );
-    var myDiv = document.getElementById('debugArea');
+    let myDiv = document.getElementById('debugArea');
     if (myDiv != undefined) {
         myDiv.appendChild(g_debugArea);
     }
@@ -25,27 +25,27 @@ function getOnline() {
     グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //HTML階層指定：読込時、変数受取
-function getParam() {
-    var scripts = document.getElementsByTagName('script');
-    var src = scripts[scripts.length - 1].src;
+function getParam_() {
+    let scripts = document.getElementsByTagName('script');
+    let src = scripts[scripts.length - 1].src;
 
-    var query = src.substring(src.indexOf('?') + 1);
-    var parameters = query.split('&');
+    let query = src.substring(src.indexOf('?') + 1);
+    let parameters = query.split('&');
 
     // URLクエリを分解して取得する
-    var param = new Object();
-    for (var i = 0; i < parameters.length; i++) {
-        var element = parameters[i].split('=');
-        var paramName = decodeURIComponent(element[0]);
-        var paramValue = decodeURIComponent(element[1]);
+    let param = new Object();
+    for (let i = 0; i < parameters.length; i++) {
+        let element = parameters[i].split('=');
+        let paramName = decodeURIComponent(element[0]);
+        let paramValue = decodeURIComponent(element[1]);
         param[paramName] = paramValue;
     }
 
     //受取変数の個別処理
     //lv    数値→フォルダ指定文字列
-    var myLv = "";
+    let myLv = "";
     if (param["lv"] > 0) {
-        for (var i = 0; i < param["lv"]; i++) {
+        for (let i = 0; i < param["lv"]; i++) {
             myLv = myLv + "../";
         }
     } else {
@@ -55,20 +55,20 @@ function getParam() {
     return param;
 }
 
-var getParam = getParam();
+let getParam = getParam_();
 
 
 function setDispToggle(mode0 = "[省略されているコンテンツを開く]", mode1 ="[表示されているコンテンツを閉じる]") {
-    var myDiv = document.createElement("div");
+    let myDiv = document.createElement("div");
     myDiv.setAttribute("onClick", "dispToggle(this)");
     myDiv.classList.add("dispToggleSW");
     myDiv.classList.add("noPrint");
     myDiv.setAttribute("onclick", "dispToggle(this)");
 
-    for (var i = 0; i < 2; i++){
-        var myDiv_ = document.createElement("div");
+    for (let i = 0; i < 2; i++){
+        let myDiv_ = document.createElement("div");
         myDiv_.innerText = (i == 0 ? mode0 : mode1);
-        var iconSpan = document.createElement("span");
+        let iconSpan = document.createElement("span");
         iconSpan.classList.add("material-icons");
         iconSpan.innerText = (i == 0 ? "expand_more" : "expand_less");
         myDiv_.appendChild(iconSpan);
@@ -80,7 +80,7 @@ function setDispToggle(mode0 = "[省略されているコンテンツを開く]"
 
 }
 function dispToggle(myObj) {
-    var myParentClass = myObj.parentElement.classList;
+    let myParentClass = myObj.parentElement.classList;
     myParentClass.toggle("SW_disp");
     myParentClass.toggle("SW_undisp");
 
@@ -93,11 +93,11 @@ function dispToggle(myObj) {
 
 function setFooter() {
 
-    var myFt = document.createElement("footer");
+    let myFt = document.createElement("footer");
     //Popupメニュー
-    var myMenu = document.createElement("div");
+    let myMenu = document.createElement("div");
     myMenu.id = "ftMenuPopup";
-    var myMenuContents = [
+    let myMenuContents = [
         [document.createElement("a"), "TOP", getParam["lv"]],
         [document.createElement("a"), "数学解説", getParam["lv"] + "高校数学"],
         [document.createElement("a"), "dummy", ""],
@@ -109,7 +109,7 @@ function setFooter() {
         [document.createElement("a"), "dummy", ""],
         [document.createElement("a"), "dummy", ""]
     ];
-    for (var i = 0; i < myMenuContents.length; i++) {
+    for (let i = 0; i < myMenuContents.length; i++) {
         myMenuContents[i][0].innerText = myMenuContents[i][1];
         myMenuContents[i][0].classList.add("zBtn");
         myMenuContents[i][0].href = myMenuContents[i][2];
@@ -118,31 +118,31 @@ function setFooter() {
     myFt.appendChild(myMenu);
 
     //debugArea
-    var debugArea = document.createElement("div");
+    let debugArea = document.createElement("div");
     debugArea.id = "debugArea";
     debugArea.innerText = "<<< debug >>>";
     myFt.appendChild(debugArea);
 
     //フッター
-    var myDiv = document.createElement("div");
+    let myDiv = document.createElement("div");
     myDiv.id = "ftMenu";
-    var myFtMenu = [
+    let myFtMenu = [
         ["keyboard_backspace", "Back", "history.back()"],
         ["menu", "メニュー", "document.getElementById('ftMenuPopup').classList.toggle('dispActiveBlock')"],
         ["event_note", "日程", ""],
         ["link", "リンク", ""],
         ["settings", "debug", "document.getElementById('debugArea').classList.toggle('dispActiveBlock')"]
     ];
-    for (var i = 0; i < myFtMenu.length; i++) {
-        var menuEle = document.createElement("div");
+    for (let i = 0; i < myFtMenu.length; i++) {
+        let menuEle = document.createElement("div");
         myDiv.appendChild(menuEle);
         //icon追加
-        var myIcon = document.createElement("span");
+        let myIcon = document.createElement("span");
         myIcon.classList.add("material-icons");
         myIcon.innerText = myFtMenu[i][0];
         menuEle.appendChild(myIcon);
         //見出し追加
-        var myFtMenuName = document.createElement("span");
+        let myFtMenuName = document.createElement("span");
         myFtMenuName.innerText = myFtMenu[i][1];
         menuEle.appendChild(myFtMenuName);
         //機能追加
@@ -172,16 +172,16 @@ function setFooter() {
 */
 function setTab(myId) {
     //引数：ラッパーid
-    var myWrapper = document.getElementById(myId);
+    let myWrapper = document.getElementById(myId);
     myWrapper.classList.add("tabWrapper");
-    var myTabMenu = document.createElement("div");
+    let myTabMenu = document.createElement("div");
     myTabMenu.classList.add("tabMenu");
     myWrapper.insertBefore(myTabMenu, myWrapper.children[0]);
-    for (var i = 1; i < myWrapper.children.length; i++) {
+    for (let i = 1; i < myWrapper.children.length; i++) {
         //コンテンツの設定
         myWrapper.children[i].classList.add("tabContent");
         //タブメニューの設定
-        var mySpan = document.createElement("span");
+        let mySpan = document.createElement("span");
         mySpan.classList.add("tabMenuSpan");
         mySpan.setAttribute("onClick", "dispTab('" + myId + "','" + myWrapper.children[i].id + "')");
         mySpan.innerText = (myWrapper.children[i].id.replace(myId + "_", ""));
@@ -192,8 +192,8 @@ function setTab(myId) {
 }
 function dispTab(wrapperId, tabId) {
     //引数：ラッパーid,アクティブにするタブid
-    var myWrapper = document.getElementById(wrapperId);
-    for (var i = 1; i < myWrapper.children.length; i++) {
+    let myWrapper = document.getElementById(wrapperId);
+    for (let i = 1; i < myWrapper.children.length; i++) {
         if (tabId == myWrapper.children[i].id) {
             myWrapper.children[0].children[i - 1].classList.add("tabActive");
             myWrapper.children[i].classList.add("tabActive");
@@ -230,7 +230,7 @@ function dispTab(wrapperId, tabId) {
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //外部JS読込
 function loadScript(myScripts, myType = "text/javascript") {
-    var script = document.createElement('script');
+    let script = document.createElement('script');
     script.src = myScripts;
     script.type = myType;
     document.head.appendChild(script);
@@ -298,18 +298,18 @@ document.write('<script src="https://code.jquery.com/jquery-3.4.1.min.js" integr
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 function init() {
     document.write('<link rel="stylesheet" href="' + getParam["lv"] + 'script/style.css">');
-    var myScore = document.getElementsByClassName("score");
+    let myScore = document.getElementsByClassName("score");
 
     ABCJS.midi.soundfontUrl = getParam["lv"] + "script/abcjs/";
-    for (var i = 0; i < myScore.length; i++) {
-        var myScript = myScore[i].innerHTML;
+    for (let i = 0; i < myScore.length; i++) {
+        let myScript = myScore[i].innerHTML;
         myScore[i].innerHTML = "";
 
-        var myScr = document.createElement("div");
+        let myScr = document.createElement("div");
         myScr.id = "score_" + i;
         myScore[i].appendChild(myScr);
 
-        var myMid = document.createElement("div");
+        let myMid = document.createElement("div");
         myMid.id = "midi_" + i;
         myScore[i].appendChild(myMid);
 
@@ -321,7 +321,7 @@ function init() {
     debugMsg("Complete - init()");
 
     if (!getOnline()) {
-        for (var i = 0; i < document.getElementsByClassName("debug").length; i++){
+        for (let i = 0; i < document.getElementsByClassName("debug").length; i++){
             document.getElementsByClassName("debug")[i].classList.add("undisp");
         }
     }

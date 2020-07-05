@@ -118,8 +118,8 @@
 			<h2>現在時刻</h2>
 			<div id="nowTime"></div>
 			<script>
-				var nowTime = function () {
-					var now = new Date();
+				let nowTime = function () {
+					let now = new Date();
 					document.getElementById("nowTime").innerText = "" +
 						now.getHours() + "時 " +
 						(now.getMinutes() < 10 ? "0" : "") + now.getMinutes() + "分 " +
@@ -134,7 +134,7 @@
 			<div id="testTime"></div>
 			<script>
 				//配列設定	表示項目、期限年月日時刻（月-1）
-				var setTimer = [
+				let setTimer = [
 					["国語開始まで", new Date(2020, 5, 2, 9, 0)],
 					["国語終了まで", new Date(2020, 5, 2, 9, 50)],
 					["数学開始まで", new Date(2020, 5, 2, 10, 0)],
@@ -142,16 +142,16 @@
 					["英語開始まで", new Date(2020, 5, 2, 11, 0)],
 					["英語終了まで", new Date(2020, 5, 2, 11, 50)]
 				];
-				var testTime = function () {
-					var now = new Date();
-					var diffTime;
-					for (var i = 0; i < setTimer.length; i++) {
+				let testTime = function () {
+					let now = new Date();
+					let diffTime;
+					for (let i = 0; i < setTimer.length; i++) {
 						diffTime = setTimer[i][1].getTime() - now.getTime();
 						//alert(diffTime);
 						if (diffTime > 0) {
 							diffTime = Math.ceil(diffTime / 1000);
 							//表示数値（日・時・分・秒）
-							var dhms = [
+							let dhms = [
 								Math.floor(diffTime / (24 * 60 * 60)),
 								Math.floor(diffTime / (60 * 60)) % 24,
 								Math.floor(diffTime / 60) % 60,

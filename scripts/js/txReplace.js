@@ -3,7 +3,7 @@ loadJScounter_loaded++;
 
 
 //文字列正規化用配列(1→0)
-var zTxReplace = [
+const zTxReplace = [
     [
         //数字(全角→半角)
         '0', '1', '2', '3', '4',
@@ -141,7 +141,7 @@ function zReplace(tx) {
     //引数：被置換文字列
 
     //置換
-    for (var i = 0; i < zTxReplace[0].length; i++) {
+    for (let i = 0; i < zTxReplace[0].length; i++) {
         while (tx != tx.replace(zTxReplace[1][i], zTxReplace[0][i])) {
             tx = tx.replace(zTxReplace[1][i], zTxReplace[0][i]);
         }
@@ -159,13 +159,13 @@ function zReplace(tx) {
 
 
 //厳格版（id設定等）：記号等除去
-var zTxReplaceStrict = [
+const zTxReplaceStrict = [
     " ",
     ".", "#"
 ];
 function zReplaceStrict(tx) {
     zReplace(tx);
-    for (var i = 0; i < zTxReplaceStrict.length; i++) {
+    for (let i = 0; i < zTxReplaceStrict.length; i++) {
         while (tx != tx.replace(zTxReplaceStrict[i], "_")) {
             tx = tx.replace(zTxReplaceStrict[i], "_");
         }

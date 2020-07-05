@@ -12,10 +12,10 @@ function rePrettyprint(id) {
 }
 
 function setQuickEditor(id,tx = "") {
-    var ele = document.getElementById(id);
+    let ele = document.getElementById(id);
     ele.classList.add("prettyprintQuickEditor");
 
-    var defaultSource = [
+    let defaultSource = [
         ['<!-- ここの内容をHTMLにコピペしましょう -->',
             '<html>',
             '<head>',
@@ -27,7 +27,7 @@ function setQuickEditor(id,tx = "") {
     ];
 
 
-    var txarea = document.createElement("textarea");
+    let txarea = document.createElement("textarea");
     txarea.value = tx;
     txarea.onkeydown = function (e) { zEnableTab(e, this); }
 
@@ -37,14 +37,14 @@ function setQuickEditor(id,tx = "") {
         "rePrettyprint(this.parentElement.children[1].id);" +
         "this.parentElement.children[2].innerHTML=this.value");
     
-    var pre = document.createElement("pre");
+    let pre = document.createElement("pre");
     pre.id = "prettyprintQuickPreviewer_" + Math.floor(Math.random() * 1024);
     pre.classList.add("prettyprint","linenums");
     pre.innerText = defaultSource[0].join("\n") + "\n" +
         txarea.value + "\n" +
         defaultSource[1].join("\n");
 
-    var preview = document.createElement("div");
+    let preview = document.createElement("div");
     preview.classList.add("prettyprintQuickPreviewer");
     preview.innerHTML = pre.innerText;
 
@@ -67,9 +67,9 @@ function zEnableTab(e, obj) {
     e.preventDefault();
 
     // 現在のカーソルの位置と、カーソルの左右の文字列を取得しておく
-    var cursorPosition = obj.selectionStart;
-    var cursorLeft = obj.value.substr(0, cursorPosition);
-    var cursorRight = obj.value.substr(cursorPosition, obj.value.length);
+    let cursorPosition = obj.selectionStart;
+    let cursorLeft = obj.value.substr(0, cursorPosition);
+    let cursorRight = obj.value.substr(cursorPosition, obj.value.length);
 
     // テキストエリアの中身を、
     // 「取得しておいたカーソルの左側」+「タブ」+「取得しておいたカーソルの右側」

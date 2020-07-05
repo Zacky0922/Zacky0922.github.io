@@ -13,8 +13,8 @@ function cacheUnregister() {
 
 // キャッシュファイルの指定
 // オフライン利用可（最低1つ無いとアプリ化しない？）
-var CACHE_NAME = cacheVersion();
-var urlsToCache = [
+let CACHE_NAME = cacheVersion();
+let urlsToCache = [
     'index.html'
 ];
 

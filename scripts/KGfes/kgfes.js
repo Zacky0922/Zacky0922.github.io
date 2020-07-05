@@ -6,19 +6,19 @@ loadJScounter_loaded++;
 function KGfes_init(dir) {
     dir = dir + "KGfes/";
 
-    var ele = document.createElement("div");
+    let ele = document.createElement("div");
     ele.classList.add("z工事中", "debug");
     ele.innerHTML = "準備中";
     document.body.prepend(ele);
 
 
-    var myHeader = document.createElement("header");
+    let myHeader = document.createElement("header");
     myHeader.innerHTML = '<span id="KGfesTitle">第23回 五峯祭</span>（サイト下書き）<br />' +
         '<span id="KGfesPeriod">2020.09.12-13(Sat-Sun)</span >';
     document.body.prepend(myHeader);
 
     //burger menu setting
-    var menuUl = createMenuUl([
+    let menuUl = createMenuUl([
         [getGicon("home").outerHTML + " Top", dir+"index.html"],
         [getGicon("tag_faces").outerHTML + " Intro", dir + "intro.html"],
         [getGicon("event_note").outerHTML + " Events", dir + "events.html"],
@@ -32,7 +32,7 @@ function KGfes_init(dir) {
         setBurgerMenu(menuUl)
     );
 
-    var myFooter = document.createElement("footer");
+    let myFooter = document.createElement("footer");
     myFooter.innerHTML = '(C) <a href="https://jsh.kgef.ac.jp/">Kokusai Gakuin Junior & Senior High School</a> 2020';
     document.body.appendChild(myFooter);
 
@@ -40,7 +40,7 @@ function KGfes_init(dir) {
 
 
     //ページトップへ戻るボタン
-    var toGoUp = document.createElement("a");
+    let toGoUp = document.createElement("a");
     toGoUp.innerHTML = getGicon("arrow_circle_up").outerHTML;
     toGoUp.id = "toGoUp";
     toGoUp.classList.add("zUndisp");

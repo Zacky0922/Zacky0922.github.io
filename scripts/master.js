@@ -2,20 +2,20 @@
     グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //HTML階層指定：読込時、変数受取
-function getParam() {
-    var scripts = document.getElementsByTagName('script');
-    var src = scripts[scripts.length - 1].src;
+function getParam_() {
+    let scripts = document.getElementsByTagName('script');
+    let src = scripts[scripts.length - 1].src;
 
-    var query = src.substring(src.indexOf('?') + 1);
-    var parameters = query.split('&');
+    let query = src.substring(src.indexOf('?') + 1);
+    let parameters = query.split('&');
 
 
     // URLクエリを分解して取得する
-    var param = new Object();
-    for (var i = 0; i < parameters.length; i++) {
-        var element = parameters[i].split('=');
-        var paramName = decodeURIComponent(element[0]);
-        var paramValue = decodeURIComponent(element[1]);
+    let param = new Object();
+    for (let i = 0; i < parameters.length; i++) {
+        let element = parameters[i].split('=');
+        let paramName = decodeURIComponent(element[0]);
+        let paramValue = decodeURIComponent(element[1]);
         param[paramName] = paramValue;
     }
 
@@ -24,9 +24,9 @@ function getParam() {
     if (param["lv"] == undefined) {
         param["lv"] = "https://zacky0922.github.io/";
     } else {
-        var myLv = "";
+        let myLv = "";
         if (param["lv"] > 0) {
-            for (var i = 0; i < param["lv"]; i++) {
+            for (let i = 0; i < param["lv"]; i++) {
                 myLv = myLv + "../";
             }
         } else {
@@ -36,7 +36,7 @@ function getParam() {
     }
     return param;
 }
-var getParam = getParam();
+let getParam = getParam_();
 
 
 
@@ -44,11 +44,11 @@ var getParam = getParam();
     デバッグメッセージ処理
     第二引数：階層設定（最後は必ず閉じること）
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-var debugMsgTime = new Date();
-var debugMsgText = "◆debug msg";
-var debugMsgLogLv = 0;
+let debugMsgTime = new Date();
+let debugMsgText = "◆debug msg";
+let debugMsgLogLv = 0;
 function debugMsg(msg, group = 0) {
-    var indent = " > ";
+    let indent = " > ";
     msg = (debugMsgLogLv == 0 ? "" : indent) + msg;
     switch (group) {
         case 1:
@@ -99,7 +99,7 @@ if (getParam["css"] == undefined) {
     getParam["css"] = "master.css";
 }
 
-var myCSS = document.createElement("link");
+let myCSS = document.createElement("link");
 myCSS.rel = "stylesheet";
 myCSS.type = "text/css";
 myCSS.href = getParam["lv"] + "scripts/" + getParam["css"];
@@ -114,7 +114,7 @@ document.head.appendChild(myCSS);
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 
 //読込ファイルリスト（自作分のみ）
-var myScripts = [
+let myScripts = [
 
     //素材script
     "js/txReplace.js",
@@ -185,13 +185,13 @@ switch (getParam["ar"]) {
 }
 
 //読込カウンタ
-var loadJScounter_local = 0;
-var loadJScounter_loaded = 0;
+let loadJScounter_local = 0;
+let loadJScounter_loaded = 0;
 
 //読込
 function jsLoader_(mySrc) {
     if (false) {
-        var myScript = document.createElement("script");
+        let myScript = document.createElement("script");
         myScript.type = "text/javascript";
         myScript.src = mySrc;
         document.head.appendChild(myScript);
@@ -202,7 +202,7 @@ function jsLoader_(mySrc) {
 function jsLoader() {
     debugMsg(getParam["lv"] + "scripts/" );
     debugMsg("jsLoader", 1);
-    for (var i = 0; i < myScripts.length; i++) {
+    for (let i = 0; i < myScripts.length; i++) {
         if (myScripts[i].indexOf("http") > -1) {
             debugMsg(myScripts[i]);
             jsLoader_(myScripts[i]);
@@ -216,7 +216,7 @@ function jsLoader() {
 }
 jsLoader();
 
-var JSloadFunc = setInterval(function () {
+let JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == loadJScounter_local) {
         //全部読込完了
         debugMsg("master.js - JSloadFunc Complete!", 1);

@@ -119,11 +119,11 @@
 			<script>
 				//カウントダウン設定
 				//制限時間以降が未設定……
-				var w_old = 0;
-				var w_diff = 0;
-				var zCountdown_ = setInterval(function () {
-					var myDiff = zCountdown(new Date(), new Date(2020, 9 - 1, 12, 10, 00, 00));
-					var s = "<span style='color:transparent;padding:0;margin:0'>s</span>";
+				let w_old = 0;
+				let w_diff = 0;
+				let zCountdown_ = setInterval(function () {
+					let myDiff = zCountdown(new Date(), new Date(2020, 9 - 1, 12, 10, 00, 00));
+					let s = "<span style='color:transparent;padding:0;margin:0'>s</span>";
 					document.getElementById("KGcountdown").innerHTML = "" +
 						"<tr>" +
 						"<th>" + myDiff[2] + "</th>" +
@@ -139,7 +139,7 @@
 						"<td>" + "minute" + (myDiff[5] % 60 <= 1 ? s : "s") + "</td>" +
 						"<td>" + "second" + (myDiff[6] % 60 <= 1 ? s : "s") + "</td>" +
 						"</tr>";
-					var w_new = (myDiff[6] % 2 == 0 ? myDiff[7] % 1000 : 1000 - (myDiff[7] % 1000));
+					let w_new = (myDiff[6] % 2 == 0 ? myDiff[7] % 1000 : 1000 - (myDiff[7] % 1000));
 					w_diff = w_new - w_old;
 					document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
 					document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";

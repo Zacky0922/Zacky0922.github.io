@@ -189,7 +189,7 @@
                 </fieldset>
                 <script>
                     function solve() {
-                        var sol = simultaneousEQsolver(
+                        let sol = simultaneousEQsolver(
                             Number(document.getElementById("a").value),
                             Number(document.getElementById("b").value),
                             Number(document.getElementById("c").value),
@@ -216,7 +216,7 @@
                 </fieldset>
                 <script>
                     function bunkai() {
-                        var formula = primeFactorization(Number(document.getElementById("soinsu").value), true);
+                        let formula = primeFactorization(Number(document.getElementById("soinsu").value), true);
                         if (formula == null) {
                             document.getElementById("soinsu_ans").innerText = "2以上の整数を入力しましょう";
                             return;

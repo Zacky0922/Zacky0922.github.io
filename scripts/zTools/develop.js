@@ -47,7 +47,7 @@ function getEngine() {
         ["gecko", "Gecko"]
     ];
 
-    for (var i = 0; i < egList.length; i++) {
+    for (let i = 0; i < egList.length; i++) {
         if (ua.indexOf(egList[i][0]) > -1) {
             return egList[i][1];
         }

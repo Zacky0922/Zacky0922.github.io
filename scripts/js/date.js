@@ -1,12 +1,12 @@
 loadJScounter_loaded++;
 
-var zNow = new Date();
+let zNow = new Date();
 
 //引数：年月日、行事の実施日数
 function countDays(y, m, d, Dspan = 1) {
-    var today = new Date();
-    var targetday = new Date(y, m - 1, d);
-    var days = Math.ceil(
+    let today = new Date();
+    let targetday = new Date(y, m - 1, d);
+    let days = Math.ceil(
         (targetday.getTime() - today.getTime()) / (24 * 60 * 60 * 1000)
     );
 
@@ -48,9 +48,9 @@ function countDays(y, m, d, Dspan = 1) {
 
 //一番便利かも？
 function zCountdown(from, to) {
-    var diff = to.getTime() - from.getTime();   //msec
+    let diff = to.getTime() - from.getTime();   //msec
 
-    var myReturn = [
+    let myReturn = [
         //年・月・週・日
         0,  //年：未対応
         0,  //月：未対応
@@ -76,7 +76,7 @@ function zChangeDate(str) {
 
 //クラスに指定された年月日を取得する（クラスに zDate_20200101 等を指定：prefixは指定可）
 function zGetEleDate(ele, prefix = "zDate_") {
-    for (var i = 0; i < ele.classList.length; i++) {
+    for (let i = 0; i < ele.classList.length; i++) {
         if (ele.classList[i].indexOf(prefix) > -1) {
             return zChangeDate(ele.classList[i].replace(prefix, ""));
         }
@@ -89,12 +89,12 @@ function zGetEleDate(ele, prefix = "zDate_") {
 
 //表示期間チェック
 function zSetUndispDate() {
-    var ele = document.getElementsByClassName("zDate");
+    let ele = document.getElementsByClassName("zDate");
     //各要素チェック
-    for (var i = 0; i < ele.length; i++) {
-        var flag = true;
+    for (let i = 0; i < ele.length; i++) {
+        let flag = true;
         //要素のクラス一覧チェック
-        for (var j = 0; j < ele[i].classList.length; j++){
+        for (let j = 0; j < ele[i].classList.length; j++){
             if (ele[i].classList[j].indexOf("zDateUndispTo_") > -1) {
                 if (zGetEleDate(ele[i], "zDateUndispTo_").getTime() > zNow.getTime()) {
                     ele[i].classList.add("zUndisp");

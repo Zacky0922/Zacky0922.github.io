@@ -2,22 +2,22 @@ loadJScounter_loaded++;
 
 function kgfesBG() {
     return;
-    var css = "";
-    var c_ = [
+    let css = "";
+    let c_ = [
         "255,63,63", "63,255,63", "63,63,255",
         "255,191,191", "191,255,191", "191,191,255",
         "255,255,191", "255,191,255", "191,255,255"
     ];
 
-    var i_max = Math.max(window.innerWidth, window.innerHeight);
-    for (var i = Math.floor(Math.min(i_max, 400) / 5); i >= 0; i--) {
+    let i_max = Math.max(window.innerWidth, window.innerHeight);
+    for (let i = Math.floor(Math.min(i_max, 400) / 5); i >= 0; i--) {
         // %
-        //var start = Math.ceil(Math.random() * 100)+1;
-        //var d = Math.ceil(Math.random() * 1) + 1;
+        //let start = Math.ceil(Math.random() * 100)+1;
+        //let d = Math.ceil(Math.random() * 1) + 1;
         // px
-        var start = Math.ceil(Math.random() * i_max) + 1;
-        var d = Math.ceil(Math.random() * 20) + 1;
-        var c = "rgba(" +
+        let start = Math.ceil(Math.random() * i_max) + 1;
+        let d = Math.ceil(Math.random() * 20) + 1;
+        let c = "rgba(" +
             /*
             (Math.ceil(Math.random() * 64) + 191) + "," +
             (Math.ceil(Math.random() * 64) + 191) + "," +

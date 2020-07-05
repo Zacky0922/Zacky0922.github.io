@@ -47,7 +47,7 @@ KG番号：<br/>
 	A年		6～12月	→　(A+1)年相談情報取得		KG:(AA+1)****
 	(A+1)年	1～3月	→　(A+1)年相談情報取得		KG:(AA+1)****
 */
-	var myDate = new Date();
+	let myDate = new Date();
 	if(myDate.getMonth() < 5){
 		document.myForm.myYear.value = myDate.getFullYear();
 
@@ -56,12 +56,12 @@ KG番号：<br/>
 	}
 
 function createSheets(){
-	var KGY = document.myForm.myYear.value;
-	var KGN = document.myForm.KGnumbers.value;
+	let KGY = document.myForm.myYear.value;
+	let KGN = document.myForm.KGnumbers.value;
 		KGN = KGN.split(/\r\n|\n/);		//正規表現：/\r\n|\n/　→　「\r\n、\n」のいずれかでsplit
-	var myURL = "";
+	let myURL = "";
 	
-	for(var i = 0 ; i < KGN.length ; i++){
+	for(let i = 0 ; i < KGN.length ; i++){
 		if(KGN[i] != ""){	//エラーチェック
 			//alert("KG番号 " + KGN[i] + "　を出力します。");
 			

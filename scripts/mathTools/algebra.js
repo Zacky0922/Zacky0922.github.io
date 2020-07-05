@@ -2,7 +2,7 @@ loadJScounter_loaded++;
 
 //丸め誤差fix
 function fixRoundingError(val) {
-    var precision = 5; //小数点以下の有効桁数（ここで微調整して、認識制度を良い感じにする）
+    let precision = 5; //小数点以下の有効桁数（ここで微調整して、認識制度を良い感じにする）
     return Math.round(val * Math.pow(10, precision)) / Math.pow(10, precision);
 }
 
@@ -17,10 +17,10 @@ function getPrime(max = 1023) {
             max = 100000;
         }
     }
-    var p = [2, 3, 5];
-    for (var a = 7; a <= max; a++){
-        var flag = true;
-        for (var i = 0; i < p.length; i++){
+    let p = [2, 3, 5];
+    for (let a = 7; a <= max; a++){
+        let flag = true;
+        for (let i = 0; i < p.length; i++){
             if (a % p[i] == 0) {
                 flag = false;
                 break;
@@ -39,10 +39,10 @@ function primeFactorization(val, mode = true) {
     if ((!Number.isInteger(val)) || (val <= 0)||(val==1)) {
         return null;
     }
-    var p_ = getPrime(val); //素因数分解の分析対象素数の配列
-    var p = new Array();
-    var exp = new Array();
-    for (var i = 0; i < p_.length; i++){
+    let p_ = getPrime(val); //素因数分解の分析対象素数の配列
+    let p = new Array();
+    let exp = new Array();
+    for (let i = 0; i < p_.length; i++){
         p[i] = p_[i];
         exp[i] = 0;
         while (true) {
@@ -56,9 +56,9 @@ function primeFactorization(val, mode = true) {
         }
     }
     if (mode) {
-        var formula = "";
-        var flag = false;
-        for (var i = 0; i < p.length; i++) {
+        let formula = "";
+        let flag = false;
+        for (let i = 0; i < p.length; i++) {
             if (exp[i] != 0) {
                 formula = formula + (flag ? "\\times" : "") + "{" + p[i] + "}^{" + exp[i] + "}";
                 flag = true;
@@ -83,10 +83,10 @@ function getCommonFactor(a, b) {
 
     a = Math.abs(a);
     b = Math.abs(b);
-    var a_ = primeFactorization(a, false);
-    var b_ = primeFactorization(b, false);
-    var cf = 1;
-    for (var i = 0; i < Math.min(a_[0].length, b_[0].length); i++){
+    let a_ = primeFactorization(a, false);
+    let b_ = primeFactorization(b, false);
+    let cf = 1;
+    for (let i = 0; i < Math.min(a_[0].length, b_[0].length); i++){
         if (a_[1][i] > 0 && b_[1][i] > 0) {
             cf *= Math.pow(a_[0][i], Math.min(a_[1][i], b_[1][i]));
         }
@@ -110,14 +110,14 @@ function isPrime(a, b) {
         debugMsg("整数でない or 0・1を含む or 同じ値");
         return false;
     }
-    var a_ = primeFactorization(a,false);
-    var b_ = primeFactorization(b,false);
+    let a_ = primeFactorization(a,false);
+    let b_ = primeFactorization(b,false);
     if (a_ == null || b_ == null) {
         return false;
     }
-    var min = Math.min(a, b);
+    let min = Math.min(a, b);
     debugMsg("互いに素判定："+a + "と" + b,1);
-    for (var i = 0; i < a_[0].length; i++){
+    for (let i = 0; i < a_[0].length; i++){
         debugMsg(a_[0][i] + "^" + a_[1][i] + " と " + b_[0][i] + "^"+b_[1][i]);
         if (a_[1][i] > 0 && b_[1][i] > 0) {
             debugMsg("false", -1);
@@ -144,14 +144,14 @@ function estimateFrac(val) {
     if (Number.isInteger(val)) {
         return val;
     }
-    var sign = "";
+    let sign = "";
     if (val < 0) {
         sign = "-";
         val = -val;
     }
     // 1桁／1桁 のみ判定
-    for (var bunbo = 2; bunbo < 10; bunbo++){
-        for (var bunsi = 1; bunsi < 10; bunsi++){
+    for (let bunbo = 2; bunbo < 10; bunbo++){
+        for (let bunsi = 1; bunsi < 10; bunsi++){
             if (fixRoundingError(val) ==  fixRoundingError(bunsi / bunbo) ) {
                 if (bunsi == 1) {
                     return sign + "\\dfrac{" + bunsi + "}{" + bunbo + "}";
