@@ -163,7 +163,7 @@
             cameraFacing ? document.querySelector('canvas').classList.remove("active") : document.querySelector('canvas').classList.add("active");
 
             // Android Chromeでは、セッションを一時停止しないとエラーが出ることがある
-            stopStreamedVideo(vi);
+            //stopStreamedVideo(vi);
 
             // カメラ切り替え
             navigator.mediaDevices.getUserMedia({ video: { facingMode: mode } })
