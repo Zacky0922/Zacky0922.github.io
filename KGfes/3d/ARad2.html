@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <a-scene id="myGallery" stats arjs="debugUIEnabled:false;">
+    <a-scene id="myGallery" stats embedded arjs="debugUIEnabled:false;">
         <a-assets>
             <a-asset-item id="5mine-obj" src="obj/taitorunomoji.obj"></a-asset-item>
             <a-asset-item id="5mine-mtl" src="obj/taitorunomoji.mtl"></a-asset-item>
@@ -35,11 +35,14 @@
                      velocityValue:0 0 0;velocitySpread:1 2 1;
                      positionSpread:5 0 5;
                      particleCount:100;" position="0 20 0"></a-entity>
-        <a-entity id="z-camera-wrap" position="1 -0.2 4">
+    <!--
+                     <a-entity id="z-camera-wrap" position="1 -0.2 4">
             <a-entity id="z-camera" camera look-controls>
                 <a-cursor color="#114" opacity="0.5"></a-cursor>
             </a-entity>
         </a-entity>
+    -->
+        <a-entity camera></a-entity>
 
     </a-scene>
     <script>
