@@ -19,6 +19,7 @@
 
 <body>
     <a-scene id="myGallery" stats embedded arjs="debugUIEnabled:false;">
+        <a-marker preset="hiro">
         <a-assets>
             <a-asset-item id="5mine-obj" src="obj/taitorunomoji.obj"></a-asset-item>
             <a-asset-item id="5mine-mtl" src="obj/taitorunomoji.mtl"></a-asset-item>
@@ -42,8 +43,8 @@
             </a-entity>
         </a-entity>
     -->
-        <a-entity camera></a-entity>
-
+    </a-marker>
+    <a-entity camera></a-entity>
     </a-scene>
     <script>
         function setImg() {
