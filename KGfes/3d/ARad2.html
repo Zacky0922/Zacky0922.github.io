@@ -10,17 +10,20 @@
     <meta name="robots" content="noindex,nofollow" />
 
     <!-- JS/CSS master -->
+    <script src="ARscripts.js"></script>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!--
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+-->
     <script
         src="https://unpkg.com/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"></script>
     <title>五峯祭へお越しください！</title>
 </head>
 
 <body>
-   <a-scene id="myGallery" stats embedded arjs="debugUIEnabled:false;">
-    <!--   <a-scene id="myGallery" stats>-->
-            
+<a-scene id="myGallery" stats embedded arjs="debugUIEnabled:false;">
+<!--      <a-scene id="myGallery" stats>
+            -->
         <a-assets>
             <!--
             <a-asset-item id="5mine-obj" src="obj/taitorunomoji.obj"></a-asset-item>
@@ -28,8 +31,9 @@
             -->
         </a-assets>
         <!--
-        -->
+            -->
         <a-marker preset="hiro">
+
             <a-sky color="#888" opacity="0.3"></a-sky>
             <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;">
             </a-entity>
@@ -53,14 +57,16 @@
                     <a-cursor color="#114" opacity="0.5"></a-cursor>
                 </a-entity>
             </a-entity>
-
-    -->
+-->
 
     </a-marker>
     <a-entity camera></a-entity>
+
+
     </a-scene>
     <script>
-        function setImg() {
+        //画像セット
+        (function () {
             let imgWrap = document.getElementById("imgWrap");
             let r = 2.5;
             let img = [
@@ -79,6 +85,7 @@
                 "obj/poster2.png",
                 "obj/poster3.png"
             ];
+            let lv = Math.ceil(img.length/6);   //段数取得・・・どうやってconeにする？
             for (var i = 0; i < img.length; i++) {
                 let ele = document.createElement("a-image");
 
@@ -95,55 +102,15 @@
                 ele.setAttribute("side", "double");
                 imgWrap.appendChild(ele);
             }
-        }
-        setImg();
+        }());
+//
 
-        function reRotation() {
-            let fps = getFPS();
-            let wrap = document.getElementById("imgWrap");
-            let rot = wrap.getAttribute("rotation");
 
-            wrap.setAttribute("rotation", "0 " + (10.0 / fps + rot.y) + " 0");
-            if (rot.y >= 360) {
-                rot.y -= 360;
-            }
-            requestAnimationFrame(reRotation);
-        }
-
-        //軸表示
-        function setAxis(id) {
-            document.getElementById(id).innerHTML = "" +
-                '<!--Point of Origin-->' +
-                '<a-sphere position="0 0 0" radius="0.1" color="#000" wireframe="true"></a-sphere>' +
-                '<!-- X-axis -->' +
-                '<a-cylinder color="#f00" radius="0.01" rotation="0 0 90" position="0.5 0 0"></a-cylinder>' +
-                '<a-cone color="#f00" radius-bottom="0.1" height="0.1" rotation="0 0 -90" position="1 0 0"></a-cone>' +
-                '<!-- Y-axis -->' +
-                '<a-cylinder color="#0F0" radius="0.01" rotation="0 0 0" position="0 0.5 0"></a-cylinder>' +
-                '<a-cone color="#0f0" radius-bottom="0.1" height="0.1" rotation="0 0 0" position="0 1 0"></a-cone>' +
-                '<!-- Z-axis -->' +
-                '<a-cylinder color="#00f" radius="0.01" rotation="90 0 0" position="0 0 0.5"></a-cylinder>' +
-                '<a-cone color="#00f" radius-bottom="0.1" height="0.1" rotation="90 0 0" position="0 0 1"></a-cone>' +
-                '<!-- unit box -->' +
-                '<a-box color="#000" wireframe="true"></a-box>';
-        }
-
-        // FPS処理
-        let z_Aframe_fps_oldtime = new Date();
-        function getFPS() {
-            //前回描画時からのmsec差分を取得
-            let fps_newtime = new Date();
-            let d = fps_newtime.getTime() - z_Aframe_fps_oldtime.getTime();
-            z_Aframe_fps_oldtime = fps_newtime;
-            // FPS = 1000 / d
-            return 1000 / d;
-        }
 
         window.addEventListener('load', (event) => {
             //デバッグ用：軸表示
-            setAxis("z-axis");
+            //setAxis("z-axis");
 
-            //reRotation();
         });
 
     </script>
