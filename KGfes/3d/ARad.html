@@ -22,12 +22,14 @@
 <body>
     <a-scene id="myGallery" stats>
         <a-assets>
+            <a-asset-item id="5mine-obj" src="obj/taitorunomoji.obj"></a-asset-item>
+            <a-asset-item id="5mine-mtl" src="obj/taitorunomoji.mtl"></a-asset-item>
         </a-assets>
         <a-sky color="#888" opacity="0.3"></a-sky>
         <a-entity id="imgWrap">
             
-            <a-obj-model src="obj/taitorunomoji.obj" mtl="obj/taitorunomoji.mtl" position="0 0 0" scale=".5 .5 .5"
-                animation="property: rotation; to: 0 360 0;loop: true; dur: 5000;easing:linear;"></a-obj-model>
+            <a-obj-model src="#5mine-obj" mtl="#5mine-mtl" position="0 0 0" scale=".5 .5 .5"
+                animation="property: rotation; to: 0 360 0;loop: true; dur: 10000;easing:linear;"></a-obj-model>
         </a-entity>
             <a-entity particle-system="preset:star;
                      size:0.5;color: #FFFF00,#FF8800;opacity:1;blending:1;
@@ -46,9 +48,18 @@
         function setImg() {
             let imgWrap = document.getElementById("imgWrap");
             let r = 1.2;
-            let img = ["star.png"];
-            for (var i = 0; i < 6; i++) {
-                let ele = document.createElement("a-plane");
+            let img = [
+                "obj/poster0.png",
+                "obj/poster1.png",
+                "obj/poster2.png",
+                "obj/poster3.png",
+                
+                "obj/poster0.png",
+                "obj/poster1.png"
+            ];
+            for (var i = 0; i < img.length; i++) {
+                let ele = document.createElement("a-image");
+                ele.src=img[i];
                 ele.setAttribute("position",
                     r * Math.sin(i / 6 * 2 * Math.PI) + " 0 " +
                     r * Math.cos(i / 6 * 2 * Math.PI)
