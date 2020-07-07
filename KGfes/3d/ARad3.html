@@ -153,7 +153,8 @@
         // clickイベントリスナーで、切り替えボタンがタップされた時に切り替えを行う。
         function changeCamera() {
 
-            var vi = document.querySelector('video');
+            //var vi = document.querySelector('video');
+            var vi = document.querySelector('canvas');
             const mode = cameraFacing ? "environment" : "user";
 
             // フロントカメラをそのまま使うと、左右反転してしまうので、activeクラスとcssでミラー処理
