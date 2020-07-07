@@ -53,16 +53,24 @@
                 "obj/poster1.png",
                 "obj/poster2.png",
                 "obj/poster3.png",
-                
+            
                 "obj/poster0.png",
-                "obj/poster1.png"
+                "obj/poster1.png",
+                "obj/poster2.png",
+                "obj/poster3.png",
+            
+                "obj/poster0.png",
+                "obj/poster1.png",
+                "obj/poster2.png",
+                "obj/poster3.png"
             ];
             for (var i = 0; i < img.length; i++) {
                 let ele = document.createElement("a-image");
 
                 ele.setAttribute("src",img[i]);
                 ele.setAttribute("position",
-                    r * Math.sin(i / 6 * 2 * Math.PI) + " 0 " +
+                    r * Math.sin(i / 6 * 2 * Math.PI) +" "+
+                    Math.floor(i/6)*1.1+" "+
                     r * Math.cos(i / 6 * 2 * Math.PI)
                 );
                 ele.setAttribute("rotation", "0 " + i * 60 + " 0");
