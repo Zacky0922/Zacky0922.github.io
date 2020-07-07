@@ -1,0 +1,147 @@
+<!--
+	こんなところ見たって、なにもありませんよ！
+-->
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-163335381-1');
+	</script>
+
+	<!-- PWA設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link rel="manifest" href="./manifest.json">-->
+	<script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+	</script>
+	<!-- JS/CSS master -->
+	<script type="text/javascript" src="../scripts/master.js?lv=1&mode=kgfesPre&css=kgfesPre.css"></script>
+
+	<style>
+		div#gridWrapper {
+			margin: var(--z-spacing);
+			/*
+			display: grid;
+			grid-gap: 15px;
+			grid-template-columns: minmax(max-content, 3fr) minmax(max-content, 1fr);
+			grid-template-areas:
+				"pickup	menu"
+				"pickup	news"
+				"groups groups"
+				"ft		ft";
+				*/
+		}
+	</style>
+
+	<title>五峯祭2020 - 国際学院中高</title>
+</head>
+
+<body style="min-height:99vh">
+	<div id="gridWrapper" style="">
+		<div style="font-size:xx-large;padding:30px 0;">
+			国際学院中学校高等学校<br />
+			第23回 五峯祭</div>
+			<div style="font-size:large;padding:15px 0;">
+			初のオンライン開催！<br/>
+			今までにない五峯祭をご期待ください！
+		</div>
+		<table id="KGcountdownWrap" style="margin:40px auto;table-layout:fixed !important;">
+			<tfoot>
+				<tr>
+					<td colspan="4">
+						<span id="KGcountdownMs" style="display:inline-block;height:2px;transition:65ms linear"></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						until Saturday,12th September 2020,10:00
+					</td>
+				</tr>
+			</tfoot>
+			<tbody id="KGcountdown"></tbody>
+		</table>
+		<script>
+			//カウントダウン設定
+			//制限時間以降が未設定……
+			let w_old = 0;
+			let zCountdown_ = setInterval(function () {
+				let myDiff = zCountdown(new Date(), new Date(2020, 9 - 1, 12, 10, 00, 00));
+				let s = "<span style='color:transparent;padding:0;margin:0'>s</span>";
+				document.getElementById("KGcountdown").innerHTML = "" +
+					"<tr>" +
+					"<th>" + myDiff[3] + "</th>" +
+					"<th>" + myDiff[4] % 24 + "</th>" +
+					"<th>" + myDiff[5] % 60 + "</th>" +
+					"<th>" + myDiff[6] % 60 + "</th>" +
+					"</tr>" +
+					"<tr>" +
+					"<td>" + "day" + (myDiff[3] <= 1 ? s : "s") + "</td>" +
+					"<td>" + "hour" + (myDiff[4] % 24 <= 1 ? s : "s") + "</td>" +
+					"<td>" + "minute" + (myDiff[5] % 60 <= 1 ? s : "s") + "</td>" +
+					"<td>" + "second" + (myDiff[6] % 60 <= 1 ? s : "s") + "</td>" +
+					"</tr>";
+				let w_new = (myDiff[6] % 2 == 0 ? myDiff[7] % 1000 : 1000 - (myDiff[7] % 1000));
+				let w_diff = w_new - w_old;
+				document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
+				document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
+				document.getElementById("KGcountdownMs").style.background = "hsl(" + ((myDiff[7] % 2000) / 2000 * 360) + ",100%,50%)";
+				w_old = w_new;
+			}, 66);
+		</script>
+		<div>
+			<a class="zBtn">AR五峯祭をのぞいてみよう！<br />（カメラ付き端末専用）</a>
+			<div><a onclick="document.getElementById('HowToAR').classList.toggle('zUndisp')">あそびかた</a>
+				<div id="HowToAR" class="zUndisp">
+上のボタンをタップすると、<br />
+スマートフォン／タブレットの<br />
+カメラが起動します。<br />
+五峯祭のチラシについている<br />
+QRコードを読み込んで、<br />
+AR五峯祭をのぞいてみましょう！<br />
+機種によってはモーションセンサの<br />
+使用許可を求められますので、<br />
+許可してください。
+				</div>
+			</div>
+		</div>
+	</div><!-- /container -->
+	<footer style="position:absolute;bottom:0;width:100%;padding:10px 0;">
+		<div style="text-align:right;padding:5px 5px 10px;">Last Update:2020/07/07</div>
+		(C) <a href="https://jsh.kgef.ac.jp/" target="_self">国際学院中学校高等学校</a> 2020<br />
+		「第23回 五峯祭（2020.09.12-13）」特設サイト
+	</footer>
+</body>
+
+</html>

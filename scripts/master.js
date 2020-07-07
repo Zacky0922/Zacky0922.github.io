@@ -2,7 +2,7 @@
     グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //HTML階層指定：読込時、変数受取
-function getParam_() {
+let getParam = (function () {
     let scripts = document.getElementsByTagName('script');
     let src = scripts[scripts.length - 1].src;
 
@@ -35,8 +35,8 @@ function getParam_() {
         param["lv"] = myLv;
     }
     return param;
-}
-let getParam = getParam_();
+})();
+
 
 
 
@@ -173,6 +173,9 @@ switch (getParam["mode"]) {
             "KGfes/eventList.js",
         );
         break;
+
+    case "kgfesPre":
+        break;
     default:
 }
 switch (getParam["ar"]) {
@@ -271,6 +274,8 @@ window.addEventListener('load', (event) => {
             KGfes_init(getParam["lv"]);
             kgfesBG();
             document.title = document.title + " - 五峯祭2020sample";
+            break;
+        case "kgfesPre":
             break;
     }
 
