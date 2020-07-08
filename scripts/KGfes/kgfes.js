@@ -19,7 +19,7 @@ function KGfes_init(dir) {
 
     //burger menu setting
     let menuUl = createMenuUl([
-        [getGicon("home").outerHTML + " Top", dir+"index.html"],
+        [getGicon("home").outerHTML + " Top", dir+"index2.html"],
         [getGicon("tag_faces").outerHTML + " Intro", dir + "intro.html"],
         [getGicon("event_note").outerHTML + " Events", dir + "events.html"],
         [getGicon("collections_bookmark").outerHTML + " Gallery", dir + "gallery/index.html"],

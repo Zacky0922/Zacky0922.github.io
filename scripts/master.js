@@ -9,7 +9,6 @@ let getParam = (function () {
     let query = src.substring(src.indexOf('?') + 1);
     let parameters = query.split('&');
 
-
     // URLクエリを分解して取得する
     let param = new Object();
     for (let i = 0; i < parameters.length; i++) {
@@ -104,6 +103,7 @@ myCSS.rel = "stylesheet";
 myCSS.type = "text/css";
 myCSS.href = getParam["lv"] + "scripts/" + getParam["css"];
 document.head.appendChild(myCSS);
+debugMsg("--- " +getParam["css"]);
 
 
 
@@ -180,11 +180,11 @@ switch (getParam["mode"]) {
 }
 switch (getParam["ar"]) {
     case "true":
-        myScripts =[
+        myScripts = [
             "https://aframe.io/releases/0.6.1/aframe.min.js",
             "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"
         ];
-        default:
+    default:
 }
 
 //読込カウンタ
@@ -202,22 +202,27 @@ function jsLoader_(mySrc) {
         document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
     }
 }
-function jsLoader() {
-    debugMsg(getParam["lv"] + "scripts/" );
-    debugMsg("jsLoader", 1);
-    for (let i = 0; i < myScripts.length; i++) {
-        if (myScripts[i].indexOf("http") > -1) {
-            debugMsg(myScripts[i]);
-            jsLoader_(myScripts[i]);
-        } else {
-            debugMsg(getParam["lv"] + "scripts/" + myScripts[i]);
-            jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);  //相対指定
-            loadJScounter_local++;
+
+{
+    function () {
+        debugMsg(getParam["lv"] + "scripts/");
+        debugMsg("jsLoader", 1);
+        for (let i = 0; i < myScripts.length; i++) {
+            if (myScripts[i].indexOf("http") > -1) {
+                //外部js
+                debugMsg(myScripts[i]);
+                jsLoader_(myScripts[i]);
+            } else {
+                //手持ちjs
+                debugMsg(getParam["lv"] + "scripts/" + myScripts[i]);
+                jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);  //相対指定
+                loadJScounter_local++;
+            }
         }
+        debugMsg("", -1);
     }
-    debugMsg("", -1);
-}
-jsLoader();
+} ();
+
 
 let JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == loadJScounter_local) {
@@ -265,12 +270,12 @@ window.addEventListener('load', (event) => {
     //モード別処理
     switch (getParam["mode"]) {
         case "lab":
-            getPageMenu("zPageMenu");   setAhrefSmoothLink();
+            getPageMenu("zPageMenu"); setAhrefSmoothLink();
             zSetUndispDate();
             document.getElementById("autoDebugMsg").value = getSpec() + "\n" + debugMsgText;
             break;
         case "kgfes":
-            getPageMenu("PageMenu");    setAhrefSmoothLink();
+            getPageMenu("PageMenu"); setAhrefSmoothLink();
             KGfes_init(getParam["lv"]);
             kgfesBG();
             document.title = document.title + " - 五峯祭2020sample";

@@ -9,6 +9,23 @@
     <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
     <meta name="robots" content="noindex,nofollow" />
 
+    <!-- Global site tag (gtag.js) - Google Analytics by KG-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-116915593-1');
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics byZacky -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-163335381-1');
+    </script>
+
     <!-- JS/CSS master -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
@@ -18,17 +35,13 @@
 </head>
 
 <body>
-    <a-scene id="myGallery" stats embedded arjs="debugUIEnabled:false;">
-        <!--      <a-scene id="myGallery" stats>
-            -->
+    <a-scene id="myGallery" embedded arjs="debugUIEnabled:false;">
         <a-assets>
             <!--
             <a-asset-item id="5mine-obj" src="obj/taitorunomoji.obj"></a-asset-item>
             <a-asset-item id="5mine-mtl" src="obj/taitorunomoji.mtl"></a-asset-item>
             -->
         </a-assets>
-        <!--
-            -->
         <a-marker type='pattern' url='./marker/pattern-QR_fes2020jsh.patt'>
 
             <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;">
@@ -46,14 +59,6 @@
                      positionSpread:5 0 5;
                      particleCount:100;" position="0 20 0"></a-entity>
             <a-entity id="z-axis" position="0 0 0"></a-entity>
-            <!--
-            <a-entity id="z-camera-wrap" position="1 -0.2 4">
-                <a-entity id="z-camera" camera look-controls>
-                    <a-cursor color="#114" opacity="0.5"></a-cursor>
-                </a-entity>
-            </a-entity>
--->
-
         </a-marker>
         <a-entity camera></a-entity>
 
@@ -63,7 +68,7 @@
         //画像セット
         (function () {
             let imgWrap = document.getElementById("imgWrap");
-            let r = 2.5;
+            let r = 1.8;
             let img = [
                 "obj/poster0.png",
                 "obj/poster1.png",
@@ -84,7 +89,7 @@
             for (var i = 0; i < img.length; i++) {
                 let ele = document.createElement("a-image");
 
-                ele.setAttribute("scale", "2 2 2");
+                ele.setAttribute("scale", "1.5 1.5 1.5");
                 ele.setAttribute("src", img[i]);
                 ele.setAttribute("position",
                     r * Math.sin(i / 6 * 2 * Math.PI) + " " +
@@ -93,21 +98,12 @@
                 );
                 ele.setAttribute("rotation", "-30 " + i * 60 + " 0");
                 //ele.setAttribute("color", "#0f0");
-
                 ele.setAttribute("side", "double");
+                ele.setAttribute("opacity", "0.9");
                 imgWrap.appendChild(ele);
             }
         }());
 
-
-
-        /*
-        window.addEventListener('load', (event) => {
-            //デバッグ用：軸表示
-            //setAxis("z-axis");
-
-        });
-        */
 
     </script>
 </body>
