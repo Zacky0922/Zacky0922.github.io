@@ -17,12 +17,15 @@
 </head>
 
 <body>
+    <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+</div>
 <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded
     arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
     <a-nft type="nft"
-        url="https://zacky0922.github.io/lab/ar/pict/poster0" 
+        url="https://arjs-cors-proxy.herokuapp.com/https://zacky0922.github.io/lab/ar/pict/poster0" 
         smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
-        <a-sphere color="#f00" wireframe="true"></a-sphere>
+        <a-sphere color="#f00" wireframe="true" radius="5"></a-sphere>
     </a-nft>
     <a-entity camera></a-entity>
 </a-scene>
