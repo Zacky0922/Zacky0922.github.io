@@ -29,15 +29,16 @@
         </a-assets>
         <!--
             -->
-        <a-marker preset="hiro">
+        <a-marker type='pattern' url='./marker/pattern-QR_fes2020jsh.patt'>
 
-            <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;"></a-entity>
+            <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;">
+            </a-entity>
             <a-entity animation="property:rotation;to:0 360 0;loop:true;dur:12000;easing:linear;">
                 <!--
                     <a-obj-model src="#5mine-obj" mtl="#5mine-mtl" position="0 -0.5 1.5" scale=".3 .3 .3" rotation="-30 0 0"></a-obj-model>
                 -->
-                <a-obj-model src="obj/taitorunomoji.obj" mtl="obj/taitorunomoji.mtl" position="0 0.5 3"
-                    scale=".3 .3 .3" rotation="-30 0 0"></a-obj-model>
+                <a-obj-model src="obj/taitorunomoji.obj" mtl="obj/taitorunomoji.mtl" position="0 0.5 3" scale=".3 .3 .3"
+                    rotation="-30 0 0"></a-obj-model>
             </a-entity>
             <a-entity particle-system="preset:star;
                      size:2;color: #FFFF00,#FF8800;opacity:1;blending:1;
@@ -97,7 +98,7 @@
                 imgWrap.appendChild(ele);
             }
         }());
-        
+
 
 
         /*
