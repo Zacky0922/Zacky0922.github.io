@@ -220,7 +220,7 @@ function jsLoader_(mySrc) {
         }
         debugMsg("", -1);
     }
- ) ();
+ );
 
 
 let JSloadFunc = setInterval(function () {
