@@ -203,8 +203,7 @@ function jsLoader_(mySrc) {
     }
 }
 
-{
-    function () {
+(function () {
         debugMsg(getParam["lv"] + "scripts/");
         debugMsg("jsLoader", 1);
         for (let i = 0; i < myScripts.length; i++) {
@@ -221,7 +220,7 @@ function jsLoader_(mySrc) {
         }
         debugMsg("", -1);
     }
-} ();
+ ) ();
 
 
 let JSloadFunc = setInterval(function () {
