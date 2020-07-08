@@ -103,7 +103,7 @@ myCSS.rel = "stylesheet";
 myCSS.type = "text/css";
 myCSS.href = getParam["lv"] + "scripts/" + getParam["css"];
 document.head.appendChild(myCSS);
-debugMsg("--- " +getParam["css"]);
+debugMsg(getParam["css"]);
 
 
 
@@ -178,6 +178,7 @@ switch (getParam["mode"]) {
         break;
     default:
 }
+/*
 switch (getParam["ar"]) {
     case "true":
         myScripts = [
@@ -186,7 +187,7 @@ switch (getParam["ar"]) {
         ];
     default:
 }
-
+*/
 //読込カウンタ
 let loadJScounter_local = 0;
 let loadJScounter_loaded = 0;
@@ -203,7 +204,7 @@ function jsLoader_(mySrc) {
     }
 }
 
-(function () {
+let soku = (function () {
         debugMsg(getParam["lv"] + "scripts/");
         debugMsg("jsLoader", 1);
         for (let i = 0; i < myScripts.length; i++) {
@@ -220,7 +221,7 @@ function jsLoader_(mySrc) {
         }
         debugMsg("", -1);
     }
- );
+ )();
 
 
 let JSloadFunc = setInterval(function () {

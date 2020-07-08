@@ -60,16 +60,12 @@ function getSpec() {
 
     /*  User Agent */
     tx += "User Agent：\n　" + window.navigator.userAgent + "\n";
-    
     /*  OS判定 */
     tx += "OS：\n　" + getOS() + "\n";
-
     /*  ブラウザ判定 */
     tx += "Browser：\n　" + getBrowser() + "\n";
-
     /*  エンジン */
     tx += "Rendering Engine：\n　" + getEngine() + "\n";
-    
     /*  画面サイズ関係
     https://web-designer.cman.jp/javascript_ref/window/size/
     */
