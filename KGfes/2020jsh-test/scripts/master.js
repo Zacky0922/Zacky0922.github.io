@@ -1,10 +1,9 @@
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-
-//HTML階層指定：読込時のscriptタグを急いで取得
-let getParam = (function (scripts) {
-    //let scripts = document.getElementsByTagName('script');
+//HTML階層指定：読込時、変数受取
+let getParam = (function () {
+    let scripts = document.getElementsByTagName('script');
     let src = scripts[scripts.length - 1].src;
 
     let query = src.substring(src.indexOf('?') + 1);
@@ -22,7 +21,6 @@ let getParam = (function (scripts) {
     //受取変数の個別処理
     //lv    数値→フォルダ指定文字列
     if (param["lv"] == undefined) {
-        //階層無指定の場合、絶対参照
         param["lv"] = "https://zacky0922.github.io/";
     } else {
         let myLv = "";
@@ -36,7 +34,7 @@ let getParam = (function (scripts) {
         param["lv"] = myLv;
     }
     return param;
-})(document.getElementsByTagName('script'));
+})();
 
 
 
@@ -101,6 +99,7 @@ function getOnline() {
 
 //読込ファイルリスト（自作分のみ）
 let myScripts = [
+
     //素材script
     "js/txReplace.js",
 
@@ -149,22 +148,20 @@ let myScripts = [
 //モード別実装
 switch (getParam["mode"]) {
     case "lab":
+
         break;
     case "kgfes":
-        let url = (location.href.indexOf("https://fes.kgef.ac.jp/2020jsh/") > -1 ?
-            "https://fes.kgef.ac.jp/2020jsh/" :
-            "https://fes.kgef.ac.jp/2020jsh-test/");
         myScripts.push(
-            url + "scripts/kgfes.js",
-            //url + "scripts/kgfes-bg.js",
-            url + "scripts/eventList.js"
+            "https://fes.kgef.ac.jp/2020jsh-test/scripts/kgfes.js",
+            "https://fes.kgef.ac.jp/2020jsh-test/scripts/kgfes-bg.js",
+            "https://fes.kgef.ac.jp/2020jsh-test/scripts/eventList.js",
         );
         break;
+
     case "kgfesPre":
         break;
     default:
 }
-
 /*
 switch (getParam["ar"]) {
     case "true":
@@ -175,35 +172,6 @@ switch (getParam["ar"]) {
     default:
 }
 */
-
-/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    CSS loader
-    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-(function () {
-    if (getParam["css"] == undefined) {
-        getParam["css"] = "master.css";
-    }
-
-    let url = getParam["lv"] + "scripts/" + getParam["css"];
-    switch (getParam["mode"]) {
-        case "kgfes":
-            url = "https://fes.kgef.ac.jp/2020jsh-test/scripts/KGfes.css";
-            break;
-    }
-
-
-    let myCSS = document.createElement("link");
-    myCSS.rel = "stylesheet";
-    myCSS.type = "text/css";
-    myCSS.href = url;
-    document.head.appendChild(myCSS);
-    debugMsg("loading master CSS = " + getParam["css"]);
-})();
-
-
-
-
-
 //読込カウンタ
 let loadJScounter_local = 0;
 let loadJScounter_loaded = 0;
@@ -253,9 +221,33 @@ let JSloadFunc = setInterval(function () {
     } else {
         return;
     }
-}, 3);  //読込完了チェック間隔[msec]
+}, 1);
 
 
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    CSS loader
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+(function () {
+    if (getParam["css"] == undefined) {
+        getParam["css"] = "master.css";
+    }
+
+    let url = getParam["lv"] + "scripts/" + getParam["css"];
+    switch (getParam["mode"]) {
+        case "kgfes":
+            url = "https://fes.kgef.ac.jp/2020jsh-test/scripts/KGfes.css";
+            break;
+    }
+
+
+    let myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.type = "text/css";
+    myCSS.href = url;
+    document.head.appendChild(myCSS);
+    debugMsg("loading master CSS = " + getParam["css"]);
+})();
 
 
 
