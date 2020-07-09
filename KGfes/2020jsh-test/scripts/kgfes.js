@@ -29,7 +29,9 @@ function KGfes_init(dir) {
     myHeader.appendChild(
         setBurgerMenu(menuUl)
     );
-
+    myHeader.getElementsByTagName("img")[0].src = (location.href.indexOf("https://fes.kgef.ac.jp/2020jsh/") > -1 ?
+        "https://fes.kgef.ac.jp/2020jsh/" :
+        "https://fes.kgef.ac.jp/2020jsh-test/")+"scripts/pict/logo.png";
     let myFooter = document.createElement("footer");
     myFooter.innerHTML = '(C) <a href="https://jsh.kgef.ac.jp/">Kokusai Gakuin Junior & Senior High School</a> 2020';
     document.body.appendChild(myFooter);
