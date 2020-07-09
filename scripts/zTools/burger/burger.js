@@ -1,5 +1,14 @@
 loadJScounter_loaded++;
 
+/*
+div#zBurgerMenuWrap
+    div
+        label
+            img
+    input[checkbox]#zBurgerMenuCheckbox
+    ul.zBurger.noScrollbar
+*/
+
 //引数：メニューul＝DOM
 function setBurgerMenu(ul) {
     ul.classList.add("zBurger","noScrollbar");
