@@ -1,7 +1,7 @@
 loadJScounter_loaded++;
 
 
-alert();
+
 
 function KGfes_init(dir) {
     let ele = document.createElement("div");
