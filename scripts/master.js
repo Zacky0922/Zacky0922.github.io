@@ -1,7 +1,6 @@
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-
 //HTML階層指定：読込時のscriptタグを急いで取得
 let getParam = (function (scripts) {
     //let scripts = document.getElementsByTagName('script');
@@ -185,9 +184,16 @@ switch (getParam["ar"]) {
     }
 
     let url = getParam["lv"] + "scripts/" + getParam["css"];
+
+    let kg = (location.href.indexOf("https://fes.kgef.ac.jp/2020jsh/") > -1 ?
+        "https://fes.kgef.ac.jp/2020jsh/" :
+        "https://fes.kgef.ac.jp/2020jsh-test/");
     switch (getParam["mode"]) {
         case "kgfes":
-            url = "https://fes.kgef.ac.jp/2020jsh-test/scripts/KGfes.css";
+            url = kg+"scripts/KGfes.css";
+            break;
+        case "kgfesPre":
+            url = kg+"scripts/KGfesPre.css";
             break;
     }
 

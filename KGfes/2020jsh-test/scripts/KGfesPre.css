@@ -1,14 +1,14 @@
 
 /* 汎用部品 */
-@import url("./common.css");
+@import url("https://zacky0922.github.io/scripts/common.css");
 
 /* 五峯祭モジュール */
-@import "./KGfes/gallery.css";
-@import "./KGfes/group.css";
-@import "./KGfes/news.css";
-@import "./KGfes/pickup.css";
-@import "./KGfes/pageMenu.css";
-@import "./KGfes/events.css";
+@import "./gallery.css";
+@import "./group.css";
+@import "./news.css";
+@import "./pickup.css";
+@import "./pageMenu.css";
+@import "./events.css";
 
 /* Google Font */
 @import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&display=swap";
