@@ -1,11 +1,9 @@
 loadJScounter_loaded++;
 
 
-
+alert();
 
 function KGfes_init(dir) {
-    dir = dir + "KGfes/";
-
     let ele = document.createElement("div");
     ele.classList.add("z工事中", "debug");
     ele.innerHTML = "準備中";

@@ -190,10 +190,10 @@ switch (getParam["ar"]) {
         "https://fes.kgef.ac.jp/2020jsh-test/");
     switch (getParam["mode"]) {
         case "kgfes":
-            url = kg+"scripts/KGfes.css";
+            url = kg + "scripts/KGfes.css";
             break;
         case "kgfesPre":
-            url = kg+"scripts/KGfesPre.css";
+            url = kg + "scripts/KGfesPre.css";
             break;
     }
 
@@ -216,9 +216,9 @@ let loadJScounter_loaded = 0;
 
 //読込
 function jsLoader_(mySrc) {
-    if(true) {
+    if (true) {
         document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
-    }else {
+    } else {
         let myScript = document.createElement("script");
         myScript.type = "text/javascript";
         myScript.src = mySrc;
@@ -227,23 +227,23 @@ function jsLoader_(mySrc) {
 }
 
 (function () {
-        debugMsg(getParam["lv"] + "scripts/");
-        debugMsg("jsLoader", 1);
-        for (let i = 0; i < myScripts.length; i++) {
-            if (myScripts[i].indexOf("http") > -1) {
-                //外部js
-                debugMsg(myScripts[i]);
-                jsLoader_(myScripts[i]);
-            } else {
-                //手持ちjs
-                debugMsg(getParam["lv"] + "scripts/" + myScripts[i]);
-                jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);  //相対指定
-                loadJScounter_local++;
-            }
+    debugMsg(getParam["lv"] + "scripts/");
+    debugMsg("jsLoader", 1);
+    for (let i = 0; i < myScripts.length; i++) {
+        if (myScripts[i].indexOf("http") > -1) {
+            //外部js
+            debugMsg(myScripts[i]);
+            jsLoader_(myScripts[i]);
+        } else {
+            //手持ちjs
+            debugMsg(getParam["lv"] + "scripts/" + myScripts[i]);
+            jsLoader_(getParam["lv"] + "scripts/" + myScripts[i]);  //相対指定
+            loadJScounter_local++;
         }
-        debugMsg("", -1);
     }
- )();
+    debugMsg("", -1);
+}
+)();
 
 
 let JSloadFunc = setInterval(function () {
@@ -302,9 +302,14 @@ window.addEventListener('load', (event) => {
             document.getElementById("autoDebugMsg").value = getSpec() + "\n" + debugMsgText;
             break;
         case "kgfes":
-            getPageMenu("PageMenu"); setAhrefSmoothLink();
-            KGfes_init(getParam["lv"]);
-            kgfesBG();
+            getPageMenu("PageMenu");
+            setAhrefSmoothLink();
+            KGfes_init(
+                location.href.indexOf("https://fes.kgef.ac.jp/2020jsh/") > -1 ?
+                    "https://fes.kgef.ac.jp/2020jsh/" :
+                    "https://fes.kgef.ac.jp/2020jsh-test/"
+            );
+            //kgfesBG();
             document.title = document.title + " - 五峯祭2020sample";
             break;
         case "kgfesPre":
