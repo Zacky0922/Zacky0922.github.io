@@ -1,6 +1,6 @@
 
 /* 汎用部品 */
-@import url("https://zacky0922.github.io/script/common.css");
+@import url("https://zacky0922.github.io/scripts/common.css");
 
 /* 五峯祭モジュール */
 @import "./gallery.css";
@@ -170,12 +170,7 @@ table#KGcountdownWrap tfoot span{
 .zSnapX > *{
     max-width:  min(75vw,400px);
 }
-/* スマホのみ横スクロール */
-@media screen and (max-width:599px){
-    .zSnapX-sp{
 
-    }
-}
 
 
 div#zBurgerMenuWrap label img{

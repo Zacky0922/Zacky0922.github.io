@@ -236,7 +236,7 @@ let JSloadFunc = setInterval(function () {
     let url = getParam["lv"] + "scripts/" + getParam["css"];
     switch (getParam["mode"]) {
         case "kgfes":
-            url = "https://fes.kgef.ac.jp/2020jsh-test/scripts/kgfes.css";
+            url = "https://fes.kgef.ac.jp/2020jsh-test/scripts/KGfes.css";
             break;
     }
 
@@ -246,7 +246,7 @@ let JSloadFunc = setInterval(function () {
     myCSS.type = "text/css";
     myCSS.href = url;
     document.head.appendChild(myCSS);
-    debugMsg(getParam["css"]);
+    debugMsg("loading master CSS = " + getParam["css"]);
 })();
 
 
