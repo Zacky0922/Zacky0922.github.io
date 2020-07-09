@@ -152,9 +152,9 @@ switch (getParam["mode"]) {
         break;
     case "kgfes":
         myScripts.push(
-            "https://fes.kgef.ac.jp/2020jsh-test/script/kgfes.js",
-            "https://fes.kgef.ac.jp/2020jsh-test/script/kgfes-bg.js",
-            "https://fes.kgef.ac.jp/2020jsh-test/script/eventList.js",
+            "https://fes.kgef.ac.jp/2020jsh-test/scripts/kgfes.js",
+            "https://fes.kgef.ac.jp/2020jsh-test/scripts/kgfes-bg.js",
+            "https://fes.kgef.ac.jp/2020jsh-test/scripts/eventList.js",
         );
         break;
 
