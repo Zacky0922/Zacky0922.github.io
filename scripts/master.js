@@ -73,11 +73,13 @@ function debugMsg(msg, group = 0) {
 
 
 // 引渡し変数確認
-debugMsg("master.js? 引渡し変数一覧", 1);
-for (i in getParam) {
-    debugMsg('getParam["' + i + '"] = ' + getParam[i]);
-}
-debugMsg("", -1);
+(function () {
+    debugMsg("master.js? 引渡し変数一覧", 1);
+    for (i in getParam) {
+        debugMsg('getParam["' + i + '"] = ' + getParam[i]);
+    }
+    debugMsg("", -1);
+})();
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     オンライン状況取得
@@ -87,24 +89,6 @@ debugMsg("", -1);
 function getOnline() {
     return (location.href.indexOf("http") > -1);
 }
-
-
-/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    CSS loader
-    被読込ファイル冒頭に、必ず以下を記載
-    loadJScounter_loaded++;
-    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-if (getParam["css"] == undefined) {
-    getParam["css"] = "master.css";
-}
-
-let myCSS = document.createElement("link");
-myCSS.rel = "stylesheet";
-myCSS.type = "text/css";
-myCSS.href = getParam["lv"] + "scripts/" + getParam["css"];
-document.head.appendChild(myCSS);
-debugMsg(getParam["css"]);
-
 
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
@@ -168,9 +152,9 @@ switch (getParam["mode"]) {
         break;
     case "kgfes":
         myScripts.push(
-            "KGfes/kgfes.js",
-            "KGfes/kgfes-bg.js",
-            "KGfes/eventList.js",
+            "https://fes.kgef.ac.jp/2020jsh-test/script/kgfes.js",
+            "https://fes.kgef.ac.jp/2020jsh-test/script/kgfes-bg.js",
+            "https://fes.kgef.ac.jp/2020jsh-test/script/eventList.js",
         );
         break;
 
@@ -194,17 +178,17 @@ let loadJScounter_loaded = 0;
 
 //読込
 function jsLoader_(mySrc) {
-    if (false) {
+    if(true) {
+        document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
+    }else {
         let myScript = document.createElement("script");
         myScript.type = "text/javascript";
         myScript.src = mySrc;
         document.head.appendChild(myScript);
-    } else {
-        document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
     }
 }
 
-let soku = (function () {
+(function () {
         debugMsg(getParam["lv"] + "scripts/");
         debugMsg("jsLoader", 1);
         for (let i = 0; i < myScripts.length; i++) {
@@ -238,6 +222,35 @@ let JSloadFunc = setInterval(function () {
         return;
     }
 }, 1);
+
+
+
+/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    CSS loader
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+(function () {
+    if (getParam["css"] == undefined) {
+        getParam["css"] = "master.css";
+    }
+
+    let url = getParam["lv"] + "scripts/" + getParam["css"];
+    switch (getParam["mode"]) {
+        case "kgfes":
+            url = "https://fes.kgef.ac.jp/2020jsh-test/scripts/kgfes.css";
+            break;
+    }
+
+
+    let myCSS = document.createElement("link");
+    myCSS.rel = "stylesheet";
+    myCSS.type = "text/css";
+    myCSS.href = url;
+    document.head.appendChild(myCSS);
+    debugMsg(getParam["css"]);
+})();
+
+
+
 
 
 //js onload：js読込完了＝body未確定
@@ -283,7 +296,6 @@ window.addEventListener('load', (event) => {
         case "kgfesPre":
             break;
     }
-
 
 });
 

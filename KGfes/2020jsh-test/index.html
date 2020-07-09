@@ -151,6 +151,62 @@
 		(C) <a href="https://jsh.kgef.ac.jp/" target="_self">国際学院中学校高等学校</a> 2020<br />
 		「第23回 五峯祭（2020.09.12-13）」特設サイト
 	</footer>
+	<script>
+		(function () {
+			let ul = document.createElement("ul");
+			ul.id="bgWrap";
+			//パーティクル設定（画面幅に比例した数を生成。負荷を考慮し、max30）
+			let count = Math.min(Math.round(window.innerWidth / 80),30);
+
+			for (let i = 0; i < count * 3; i++) {
+				let li = document.createElement("li");
+				li.setAttribute("style",
+					"padding:" + Math.round(Math.random() * 70 + 10) + "px;" +
+					"border-radius: "+Math.round(Math.random()*30+10)+"%;"+
+					"left:" + Math.round(100 / (count+1) * i) + "%;" +
+					"background-color:hsl(" + Math.round(Math.random() * 360) + ",100%,80%);" +
+					"animation:floating "+ Math.round(Math.random() * 15 + 5)+"s linear "+
+					+ Math.round(Math.random() * 10) + "s infinite;"
+				);
+				ul.appendChild(li);
+			}
+			document.body.appendChild(ul);
+		}) ();
+
+	</script>
+	<style>
+		ul#bgWrap {
+			position: fixed;
+			margin: 0;
+			padding: 0 5px;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+			z-index: -100;
+		}
+
+		ul#bgWrap li {
+			position: absolute;
+			display: block;
+			list-style: none;
+			opacity: 0.6;
+			bottom: -200px;
+		}
+
+		@keyframes floating {
+			0% {
+				transform: translateY(0) rotate(0deg);
+				opacity: 0.6;
+			}
+
+			100% {
+				transform: translateY(calc(-110vh - 200px)) rotate(720deg);
+				opacity: 0.1;
+			}
+		}
+	</style>
 </body>
 
 </html>
