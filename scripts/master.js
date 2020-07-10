@@ -38,8 +38,6 @@ let getParam = (function (scripts) {
 })(document.getElementsByTagName('script'));
 
 
-
-
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     デバッグメッセージ処理
     第二引数：階層設定（最後は必ず閉じること）
@@ -92,93 +90,39 @@ function getOnline() {
 }
 
 
+
+
+
+
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    JS loader
+    CSS/JS loader
     被読込ファイル冒頭に、必ず以下を記載
-    loadJScounter_loaded++;
+    loadJScounter_loaded++;     //JSのみ
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 
-//読込ファイルリスト（自作分のみ）
-let myScripts = [
-    //素材script
-    "js/txReplace.js",
-
-    //jQuery
-    "https://code.jquery.com/jquery-3.4.1.min.js",
-    "extTools/jQuerySetting.js",
-
-    //MathJax
-    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
-    //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
-    "extTools/MathJaxMacro.js",
-
-    //A-Frame
-    "https://aframe.io/releases/0.6.1/aframe.min.js",
-    //"https://aframe.io/releases/1.0.4/aframe.min.js",
-
-    //Chart.js
-    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
-    //"extTools/chartjs/chartjs_init.js",
-
-    //prettify
-    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
-    "extTools/prittyprint/prittyprint.js",
-    //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
-
-    //自作js
-    "js/customRandom.js",
-    "js/date.js",
-    "js/setTab.js",
-    "js/pageMenu.js",   //txReplace利用
-
-    //extTools
-    "extTools/abcjs/abcjs_basic_5.9.1-min.js",
-    "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
-    "extTools/abcjs/abcjs_zInit.js",
-    "extTools/googleicon/googleicon.js",
-
-    //数学用mathTools
-    "mathTools/algebra.js",
-    "mathTools/matrix.js",  //algebra
-
-    //zTools
-    "zTools/develop.js",
-    "zTools/burger/burger.js"
-];
-//モード別実装
-switch (getParam["mode"]) {
-    case "lab":
-        break;
-    case "kgfes":
-        let url = (location.href.indexOf("https://fes.kgef.ac.jp/2020jsh/") > -1 ?
-            "https://fes.kgef.ac.jp/2020jsh/" :
-            "https://fes.kgef.ac.jp/2020jsh-test/");
-        myScripts.push(
-            url + "scripts/kgfes.js",
-            //url + "scripts/kgfes-bg.js",
-            url + "scripts/eventList.js"
-        );
-        break;
-    case "kgfesPre":
-        break;
-    default:
+//読込ソース作成
+function jsLoader_(mySrc) {
+    if (true) {
+        document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
+    } else {
+        let myScript = document.createElement("script");
+        myScript.type = "text/javascript";
+        myScript.src = mySrc;
+        document.head.appendChild(myScript);
+    }
 }
 
-/*
-switch (getParam["ar"]) {
-    case "true":
-        myScripts = [
-            "https://aframe.io/releases/0.6.1/aframe.min.js",
-            "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"
-        ];
-    default:
-}
-*/
+//読込カウンタ
+let loadJScounter_local = 0;
+let loadJScounter_loaded = 0;
 
-/*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    CSS loader
-    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+//読込作業
 (function () {
+    /*
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    ■ □ ■ □ ■ □ CSS ■ □ ■ □ ■ □
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    */
     if (getParam["css"] == undefined) {
         getParam["css"] = "master.css";
     }
@@ -197,36 +141,96 @@ switch (getParam["ar"]) {
             break;
     }
 
-
     let myCSS = document.createElement("link");
     myCSS.rel = "stylesheet";
     myCSS.type = "text/css";
     myCSS.href = url;
     document.head.appendChild(myCSS);
     debugMsg("loading master CSS = " + getParam["css"]);
-})();
 
 
+    /*
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    ■ □ ■ □ ■ □ JavaScript ■ □ ■ □ ■ □
+    ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
+    */
+    //読込ファイルリスト（自作分のみ）
+    let myScripts = [
+        //素材script
+        "js/txReplace.js",
 
+        //jQuery
+        "https://code.jquery.com/jquery-3.4.1.min.js",
+        "extTools/jQuerySetting.js",
 
+        //MathJax
+        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
+        //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
+        "extTools/MathJaxMacro.js",
 
-//読込カウンタ
-let loadJScounter_local = 0;
-let loadJScounter_loaded = 0;
+        //A-Frame
+        //"https://aframe.io/releases/0.6.1/aframe.min.js",
+        "https://aframe.io/releases/1.0.4/aframe.min.js",
 
-//読込
-function jsLoader_(mySrc) {
-    if (true) {
-        document.write('<script type="text/javascript" src="' + mySrc + '"></script>');
-    } else {
-        let myScript = document.createElement("script");
-        myScript.type = "text/javascript";
-        myScript.src = mySrc;
-        document.head.appendChild(myScript);
+        //Chart.js
+        "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
+        //"extTools/chartjs/chartjs_init.js",
+
+        //prettify
+        "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
+        "extTools/prittyprint/prittyprint.js",
+        //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
+
+        //自作js
+        "js/customRandom.js",
+        "js/date.js",
+        "js/setTab.js",
+        "js/pageMenu.js",   //txReplace利用
+
+        //extTools
+        "extTools/abcjs/abcjs_basic_5.9.1-min.js",
+        "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
+        "extTools/abcjs/abcjs_zInit.js",
+        "extTools/googleicon/googleicon.js",
+
+        //数学用mathTools
+        "mathTools/algebra.js",
+        "mathTools/matrix.js",  //algebra
+
+        //zTools
+        "zTools/develop.js",
+        "zTools/burger/burger.js"
+    ];
+    //モード別実装
+    switch (getParam["mode"]) {
+        case "lab":
+            break;
+        case "kgfes":
+            let url = (location.href.indexOf("https://fes.kgef.ac.jp/2020jsh/") > -1 ?
+                "https://fes.kgef.ac.jp/2020jsh/" :
+                "https://fes.kgef.ac.jp/2020jsh-test/");
+            myScripts.push(
+                url + "scripts/kgfes.js",
+                //url + "scripts/kgfes-bg.js",
+                url + "scripts/eventList.js"
+            );
+            break;
+        case "kgfesPre":
+            break;
+        default:
     }
-}
 
-(function () {
+    /*
+    switch (getParam["ar"]) {
+        case "true":
+            myScripts = [
+                "https://aframe.io/releases/0.6.1/aframe.min.js",
+                "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"
+            ];
+        default:
+    }
+    */
+
     debugMsg(getParam["lv"] + "scripts/");
     debugMsg("jsLoader", 1);
     for (let i = 0; i < myScripts.length; i++) {
@@ -245,7 +249,7 @@ function jsLoader_(mySrc) {
 }
 )();
 
-
+//読込確認
 let JSloadFunc = setInterval(function () {
     if (loadJScounter_loaded == loadJScounter_local) {
         //全部読込完了
@@ -254,8 +258,7 @@ let JSloadFunc = setInterval(function () {
             " / local:" + loadJScounter_local +
             " + ext:" + (myScripts.length - loadJScounter_local),
             -1);
-        clearInterval(JSloadFunc);
-        jsLoaded();
+        clearInterval(JSloadFunc);  //読込完了：確認ルーチン終了
     } else {
         return;
     }
@@ -263,26 +266,9 @@ let JSloadFunc = setInterval(function () {
 
 
 
-
-
-
-
-//js onload：js読込完了＝body未確定
-function jsLoaded() {
-
-
-}
-
-//標準onload
-function zOnload() {
-
-
-}
-
-
-
 window.addEventListener('load', (event) => {
 
+    //読込完了日時取得
     debugMsg("eventListener:loaded - " + (((new Date()).getTime() - debugMsgTime.getTime()) / 1000) + "sec");
 
     //外部js初期化
@@ -290,8 +276,6 @@ window.addEventListener('load', (event) => {
     absjs_init();   //extTools/abcjs/abcjs_zInit.js
     //chartjs_init(); //extTools/chartjs_init.js
 
-    // init
-    zOnload();
 
 
     //モード別処理
