@@ -110,8 +110,9 @@
                 ele.setAttribute("src", img[i]);
                 ele.setAttribute("side", "double");
                 ele.setAttribute("rotation", "-90 0 0");
-                ele.setAttribute("position", "0 3 0");
-                //imgWrap2.appendChild(ele);
+                ele.setAttribute("position", "0 2 0");
+                ele.setAttribute("animation","property:position;to:0 -2 0;easing:easeInOutSine;dur:15000;delay:"+(15000/img.length*i)+"dir:alternate;loop:true;");
+                imgWrap2.appendChild(ele);
             }
         }());
 
