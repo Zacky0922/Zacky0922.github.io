@@ -50,7 +50,8 @@ function countDays(y, m, d, Dspan = 1) {
 function zCountdown(from, to) {
     let diff = to.getTime() - from.getTime();   //msec
 
-    let myReturn = [
+    //返り値はすべて「from～to」：msec >= 1000 の可能性有
+    return [
         //年・月・週・日
         0,  //年：未対応
         0,  //月：未対応
@@ -63,9 +64,6 @@ function zCountdown(from, to) {
         Math.floor(diff / 1000),                //sec
         diff                                    //msec
     ];
-
-    //返り値はすべて「from～to」：msec >= 1000 の可能性有
-    return myReturn;
 }
 
 

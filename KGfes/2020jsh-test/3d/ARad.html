@@ -44,8 +44,8 @@
         </a-assets>
         <a-marker type='pattern' url='./marker/pattern-QR_fes2020jsh.patt'>
 
-            <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;">
-            </a-entity>
+            <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;"></a-entity>
+            <a-entity id="imgWrap2"></a-entity>
             <a-entity animation="property:rotation;to:0 360 0;loop:true;dur:12000;easing:linear;">
                 <!--
                     <a-obj-model src="#5mine-obj" mtl="#5mine-mtl" position="0 -0.5 1.5" scale=".3 .3 .3" rotation="-30 0 0"></a-obj-model>
@@ -86,11 +86,12 @@
                 "obj/poster3.png"
             ];
             let lv = Math.ceil(img.length / 6);   //段数取得・・・どうやってconeにする？
-            for (var i = 0; i < img.length; i++) {
+            for (let i = 0; i < img.length; i++) {
                 let ele = document.createElement("a-image");
 
                 ele.setAttribute("scale", "1.5 1.5 1.5");
                 ele.setAttribute("src", img[i]);
+                ele.setAttribute("side", "double");
                 ele.setAttribute("position",
                     r * Math.sin(i / 6 * 2 * Math.PI) + " " +
                     Math.floor(i / 6) * 2.3 + " " +
@@ -98,9 +99,19 @@
                 );
                 ele.setAttribute("rotation", "-30 " + i * 60 + " 0");
                 //ele.setAttribute("color", "#0f0");
-                ele.setAttribute("side", "double");
                 ele.setAttribute("opacity", "0.9");
                 imgWrap.appendChild(ele);
+            }
+
+            let imgWrap2 = document.getElementById("imgWrap2");
+            for(let i = 0 ; i < img.length ; i++){
+                let ele = document.createElement("a-image");
+                
+                ele.setAttribute("src", img[i]);
+                ele.setAttribute("side", "double");
+                ele.setAttribute("rotation", "-90 0 0");
+                ele.setAttribute("position", "0 3 0");
+                //imgWrap2.appendChild(ele);
             }
         }());
 
