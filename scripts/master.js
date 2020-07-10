@@ -115,6 +115,53 @@ function jsLoader_(mySrc) {
 //読込カウンタ
 let loadJScounter_local = 0;
 let loadJScounter_loaded = 0;
+//読込ファイルリスト（自作分のみ）
+let myScripts = [
+    //素材script
+    "js/txReplace.js",
+
+    //jQuery
+    "https://code.jquery.com/jquery-3.4.1.min.js",
+    "extTools/jQuerySetting.js",
+
+    //MathJax
+    "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
+    //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
+    "extTools/MathJaxMacro.js",
+
+    //A-Frame
+    //"https://aframe.io/releases/0.6.1/aframe.min.js",
+    "https://aframe.io/releases/1.0.4/aframe.min.js",
+
+    //Chart.js
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
+    //"extTools/chartjs/chartjs_init.js",
+
+    //prettify
+    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
+    "extTools/prittyprint/prittyprint.js",
+    //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
+
+    //自作js
+    "js/customRandom.js",
+    "js/date.js",
+    "js/setTab.js",
+    "js/pageMenu.js",   //txReplace利用
+
+    //extTools
+    "extTools/abcjs/abcjs_basic_5.9.1-min.js",
+    "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
+    "extTools/abcjs/abcjs_zInit.js",
+    "extTools/googleicon/googleicon.js",
+
+    //数学用mathTools
+    "mathTools/algebra.js",
+    "mathTools/matrix.js",  //algebra
+
+    //zTools
+    "zTools/develop.js",
+    "zTools/burger/burger.js"
+];
 
 //読込作業
 (function () {
@@ -154,53 +201,6 @@ let loadJScounter_loaded = 0;
     ■ □ ■ □ ■ □ JavaScript ■ □ ■ □ ■ □
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     */
-    //読込ファイルリスト（自作分のみ）
-    let myScripts = [
-        //素材script
-        "js/txReplace.js",
-
-        //jQuery
-        "https://code.jquery.com/jquery-3.4.1.min.js",
-        "extTools/jQuerySetting.js",
-
-        //MathJax
-        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
-        //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
-        "extTools/MathJaxMacro.js",
-
-        //A-Frame
-        //"https://aframe.io/releases/0.6.1/aframe.min.js",
-        "https://aframe.io/releases/1.0.4/aframe.min.js",
-
-        //Chart.js
-        "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
-        //"extTools/chartjs/chartjs_init.js",
-
-        //prettify
-        "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
-        "extTools/prittyprint/prittyprint.js",
-        //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
-
-        //自作js
-        "js/customRandom.js",
-        "js/date.js",
-        "js/setTab.js",
-        "js/pageMenu.js",   //txReplace利用
-
-        //extTools
-        "extTools/abcjs/abcjs_basic_5.9.1-min.js",
-        "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
-        "extTools/abcjs/abcjs_zInit.js",
-        "extTools/googleicon/googleicon.js",
-
-        //数学用mathTools
-        "mathTools/algebra.js",
-        "mathTools/matrix.js",  //algebra
-
-        //zTools
-        "zTools/develop.js",
-        "zTools/burger/burger.js"
-    ];
     //モード別実装
     switch (getParam["mode"]) {
         case "lab":
