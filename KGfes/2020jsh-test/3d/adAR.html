@@ -17,14 +17,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-116915593-1');
     </script>
-    <!-- Global site tag (gtag.js) - Google Analytics byZacky -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-163335381-1');
-    </script>
+
 
     <!-- JS/CSS master -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
@@ -37,6 +30,13 @@
 <body>
     <a-scene id="myGallery" embedded arjs="debugUIEnabled:false;">
         <a-assets>
+            <!-- 書き方例 
+            <a-asset-item id="myId" src="myId.mtl"></a-asset-item>
+            <a-mixin id="mixin" scale="5 5 5"></a-mixin>
+            <audio id="audio" src="audio.mp3"></audio>
+            <img id="img" src="img.png">
+            <video id="video" src="video.mp4"></video>
+            -->
             <!--
             <a-asset-item id="5mine-obj" src="obj/taitorunomoji.obj"></a-asset-item>
             <a-asset-item id="5mine-mtl" src="obj/taitorunomoji.mtl"></a-asset-item>
@@ -44,8 +44,20 @@
         </a-assets>
         <a-marker type='pattern' url='./marker/pattern-QR_fes2020jsh.patt'>
 
-            <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;"></a-entity>
+            <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;">
+            </a-entity>
             <a-entity id="imgWrap2"></a-entity>
+
+            <a-entity id="imgWrapRotR" animation="property: rotation;
+            to: 0 -360 0;
+            easing:linear;
+            dur:6000;
+            loop:true;"></a-entity>
+            <a-entity id="imgWrapRotL" animation="property: rotation;
+            to: 0 360 0;
+            easing:linear;
+            dur:6000;
+            loop:true;"></a-entity>
             <a-entity animation="property:rotation;to:0 360 0;loop:true;dur:12000;easing:linear;">
                 <!--
                     <a-obj-model src="#5mine-obj" mtl="#5mine-mtl" position="0 -0.5 1.5" scale=".3 .3 .3" rotation="-30 0 0"></a-obj-model>
@@ -104,16 +116,76 @@
             }
 
             let imgWrap2 = document.getElementById("imgWrap2");
-            for(let i = 0 ; i < img.length ; i++){
+            let dur = 2000;
+            for (let i = 0; i < img.length; i++) {
                 let ele = document.createElement("a-image");
-                
+
                 ele.setAttribute("src", img[i]);
                 ele.setAttribute("side", "double");
                 ele.setAttribute("rotation", "-90 0 0");
-                ele.setAttribute("position", "0 2 0");
-                ele.setAttribute("animation","property:position;to:0 -2 0;easing:easeInOutSine;dur:15000;delay:"+(15000/img.length*i)+"dir:alternate;loop:true;");
+                ele.setAttribute("position", "0 0 0");
+                ele.setAttribute("opacity", "0");
+                ele.setAttribute("scale", "0.1 0.1 0.1");
+                //時差
+                ele.setAttribute("animation__starter",
+                    "property:opacity;to:0;" +
+                    "dur:" + (dur * i) + ";")
+                //popup
+                ele.setAttribute("animation__pos0",
+                    "property:position;" +
+                    "from:0 0 0;to:0 2 0;" +
+                    "easing:easeOutElastic;" +
+                    "dur:" + dur + ";" +
+                    "startEvents:animationcomplete__starter,animationcomplete__pos2;");
+                ele.setAttribute("animation__scale0",
+                    "property:scale;" +
+                    "from:0.1 0.1 0.1;to:1.5 1.5 1.5;" +
+                    "easing:easeOutElastic;" +
+                    "dur:" + dur + ";" +
+                    "startEvents:animationcomplete__starter,animationcomplete__pos2;");
+                ele.setAttribute("animation__opacity0",
+                    "property:opacity;" +
+                    "to:1.0;" +
+                    "easing:easeOutElastic;" +
+                    "dur:" + dur + ";" +
+                    "startEvents:animationcomplete__starter,animationcomplete__pos2;");
+                //popdown
+                ele.setAttribute("animation__pos1",
+                    "property:position;" +
+                    "from:0 2 0;to:0 0 0;" +
+                    "easing:easeOutCubic;" +
+                    "dur:" + dur + ";" +
+                    "startEvents:animationcomplete__pos0;");
+                ele.setAttribute("animation__scale1",
+                    "property:scale;" +
+                    "from:2 2 2;to:0.1 0.1 0.1;" +
+                    "easing:easeOutCubic;" +
+                    "dur:" + dur + ";" +
+                    "startEvents:animationcomplete__pos0;");
+                ele.setAttribute("animation__opacity1",
+                    "property:opacity;" +
+                    "to:0.0;" +
+                    "easing:easeOutElastic;" +
+                    "dur:" + dur + ";" +
+                    "startEvents:animationcomplete__pos0;");
+                //wait
+                ele.setAttribute("animation__pos2",
+                    "property:position;" +
+                    "from:0 0 0;to:0 0 0;" +
+                    "dur:" + dur * (img.length - 2) + ";" +
+                    "startEvents:animationcomplete__pos1;");
+
                 imgWrap2.appendChild(ele);
             }
+            let imgWrapL = document.getElementById("imgWrapRotL");
+            let imgWrapR = document.getElementById("imgWrapRotR");
+            let ele = document.createElement("a-entity");
+            ele.setAttribute("line", "start: 1 0 0; end:0 0 1; color: white;");
+            ele.setAttribute("line__1", "start: 0 0 1; end:-1 0 0; color: white;");
+            ele.setAttribute("line__2", "start: -1 0 0; end:0 0 -1; color: white;");
+            ele.setAttribute("line__3", "start: 0 0 -1; end:1 0 0; color: white;");
+            imgWrapL.appendChild(ele);
+            //imgWrapR.appendChild(ele);
         }());
 
 

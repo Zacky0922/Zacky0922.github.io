@@ -19,14 +19,7 @@
 		gtag('js', new Date());
 		gtag('config', 'UA-116915593-1');
 	</script>
-	<!-- Global site tag (gtag.js) - Google Analytics byZacky -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'UA-163335381-1');
-	</script>
+
 
 	<!-- PWA設定 -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -129,8 +122,9 @@
 			}, 66);
 		</script>
 		<div>
-			<a class="zBtn" href="3d/ARad.html">AR五峯祭をのぞいてみよう！<br />（カメラ付き端末専用）</a>
+			<a class="zBtn" href="3d/adAR.html">AR五峯祭をのぞいてみよう！<br />（カメラ付き端末専用）</a>
 			<div style="margin:10px;">※AR起動には、<a href="./3d/marker.html" target="_blank">専用マーカー</a>が必要です。</div>
+			<div><a href="3d/adVR.html">カメラ付き端末がない方はコチラ</a></div>
 			<div><a onclick="document.getElementById('HowToAR').classList.toggle('zUndisp')">あそびかた</a>
 				<div id="HowToAR" class="zUndisp">
 					上のボタンをタップすると、<br />
@@ -162,7 +156,7 @@
 				let li = document.createElement("li");
 				li.setAttribute("style",
 					"padding:" + Math.round(Math.random() * 70 + 10) + "px;" +
-					"border-radius: "+Math.round(Math.random()*30+10)+"%;"+
+					"border-radius: "+Math.round(Math.random()*25+20)+"%;"+
 					"left:" + Math.round(100 / (count+1) * i) + "%;" +
 					"background-color:hsl(" + Math.round(Math.random() * 360) + ",100%,80%);" +
 					"animation:floating "+ Math.round(Math.random() * 15 + 5)+"s linear "+
@@ -200,7 +194,6 @@
 				transform: translateY(0) rotate(0deg);
 				opacity: 0.6;
 			}
-
 			100% {
 				transform: translateY(calc(-110vh - 200px)) rotate(720deg);
 				opacity: 0.1;

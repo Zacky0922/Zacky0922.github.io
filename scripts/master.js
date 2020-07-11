@@ -272,8 +272,6 @@ window.addEventListener('load', (event) => {
     absjs_init();   //extTools/abcjs/abcjs_zInit.js
     //chartjs_init(); //extTools/chartjs_init.js
 
-
-
     //モード別処理
     switch (getParam["mode"]) {
         case "lab":
