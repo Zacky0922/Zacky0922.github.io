@@ -21,7 +21,7 @@
 
     <!-- JS/CSS master -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script
         src="https://unpkg.com/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"></script>
     <title>五峯祭へお越しください！</title>
@@ -42,9 +42,11 @@
             <a-asset-item id="5mine-mtl" src="obj/taitorunomoji.mtl"></a-asset-item>
             -->
         </a-assets>
-        <a-marker type='pattern' url='./marker/pattern-QR_fes2020jsh.patt'>
+        <a-marker type='pattern' url='./marker/pattern-QR_fes2020jsh.patt' registerevents id="IamMarker">
 
-            <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;">
+            <a-entity id="imgWrap" 
+            animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;
+            startEvents:markerfound;pauseEvents:markerlost;">
             </a-entity>
             <a-entity id="imgWrap2"></a-entity>
 
@@ -119,7 +121,6 @@
             let dur = 2000;
             for (let i = 0; i < img.length; i++) {
                 let ele = document.createElement("a-image");
-
                 ele.setAttribute("src", img[i]);
                 ele.setAttribute("side", "double");
                 ele.setAttribute("rotation", "-90 0 0");
@@ -188,7 +189,27 @@
             //imgWrapR.appendChild(ele);
         }());
 
+        AFRAME.registerComponent('registerevents', {
+            init: function () {
+                var marker = this.el;
+                var markerId = marker.id;
 
+                // マーカーを検出したイベントの登録
+                marker.addEventListener('markerFound', function () {
+                    // アニメーションの開始
+                    document.querySelector('#imgWrap').emit('markerfound');
+                    alert();
+                });
+                // マーカーを見失ったイベントの登録
+                /*
+                marker.addEventListener('markerLost', function () {
+                    // アニメーションの停止
+                    document.querySelector('#imgWrap').emit('markerlost');
+                });
+                */
+                //document.querySelector('#アニメーションを登録したobj.id').emit('発火イベント名');
+            }
+        });
     </script>
 </body>
 

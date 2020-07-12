@@ -119,6 +119,8 @@ let myScripts = [
     //jQuery
     "https://code.jquery.com/jquery-3.4.1.min.js",
     "extTools/jQuerySetting.js",
+    // jQuery Plugins
+    "extTools/jQueryPlugin/scrolla.jquery.js",
 
     //MathJax
     "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old

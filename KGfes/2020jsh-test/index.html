@@ -51,33 +51,27 @@
 		src="https://zacky0922.github.io/scripts/master.js?mode=kgfesPre&css=KGfesPre.css"></script>
 
 	<style>
-		div#gridWrapper {
-			margin: var(--z-spacing);
-			/*
-			display: grid;
-			grid-gap: 15px;
-			grid-template-columns: minmax(max-content, 3fr) minmax(max-content, 1fr);
-			grid-template-areas:
-				"pickup	menu"
-				"pickup	news"
-				"groups groups"
-				"ft		ft";
-				*/
+		div#kgfesPreWrap>* {
+			margin: 40px var(--z-spacing);
+
 		}
 	</style>
 
 	<title>五峯祭2020 - 国際学院中高</title>
 </head>
 
-<body style="min-height:99vh">
-	<div id="gridWrapper">
-		<div style="font-size:xx-large;padding:30px 0;">
+<body>
+	<div id="kgfesPreWrap">
+		<div style="font-size:xx-large;">
 			国際学院中学校高等学校<br />
 			第23回 五峯祭</div>
-		<div style="font-size:large;padding:15px 0;">
+		<div style="font-size:x-large;">
+			令和2年9月12日(土) 10時～</div>
+		<div style="font-size:large;">
 			初のオンライン開催！<br />
 			今までにない五峯祭をご期待ください！
 		</div>
+
 		<table id="KGcountdownWrap" style="margin:40px auto;table-layout:fixed !important;">
 			<tfoot>
 				<tr>
@@ -121,22 +115,25 @@
 				w_old = w_new;
 			}, 66);
 		</script>
-		<div>
-			<a class="zBtn" href="3d/adAR.html">AR五峯祭をのぞいてみよう！<br />（カメラ付き端末専用）</a>
-			<div style="margin:10px;">※AR起動には、<a href="./3d/marker.html" target="_blank">専用マーカー</a>が必要です。</div>
-			<div><a href="3d/adVR.html">カメラ付き端末がない方はコチラ</a></div>
-			<div><a onclick="document.getElementById('HowToAR').classList.toggle('zUndisp')">あそびかた</a>
-				<div id="HowToAR" class="zUndisp">
-					上のボタンをタップすると、<br />
-					スマートフォン／タブレットの<br />
-					カメラが起動します。<br />
-					五峯祭のチラシについている<br />
-					QRコードを読み込んで、<br />
-					AR五峯祭をのぞいてみましょう！<br />
-					機種によってはモーションセンサの<br />
-					使用許可を求められますので、<br />
-					許可してください。
-				</div>
+		<div class="scrolla">
+			<a class="zBtn" href="3d/adAR.html">AR五峯祭をのぞいてみよう！<br />（要カメラ＆専用マーカー）</a><br />
+			<a href="3d/adVR.html">（カメラ・マーカー不要版）</a><br><br>
+			※AR起動には、<a href="./3d/marker.html" target="_blank">専用マーカー</a>が必要です。</div>
+
+		<div><a id="HowToARbtn" onclick="document.getElementById('HowToAR').classList.toggle('animate__backInUp');
+			document.getElementById('HowToAR').classList.toggle('animate__bounceOut');
+			this.classList.remove('animate__rubberBand');
+			this.classList.add('animate__rubberBand');" class="animate__animated ">あそびかた</a>
+			<div id="HowToAR" class="animate__animated animate__bounceOut" style="margin:var(--z-spacing)">
+				上のボタンをタップすると、<br />
+				スマートフォン／タブレットの<br />
+				カメラが起動します。<br />
+				五峯祭のチラシについている<br />
+				QRコードを読み込んで、<br />
+				AR五峯祭をのぞいてみましょう！<br />
+				機種によってはモーションセンサの<br />
+				使用許可を求められますので、<br />
+				許可してください。
 			</div>
 		</div>
 	</div><!-- /container -->
@@ -146,26 +143,33 @@
 		「第23回 五峯祭（2020.09.12-13）」特設サイト
 	</footer>
 	<script>
+		// scrolla設定
+		$(function () {
+			$('.scrolla').scrolla();
+		});
+		// background生成
 		(function () {
+
+
 			let ul = document.createElement("ul");
-			ul.id="bgWrap";
+			ul.id = "bgWrap";
 			//パーティクル設定（画面幅に比例した数を生成。負荷を考慮し、max30）
-			let count = Math.min(Math.round(window.innerWidth / 80),30);
+			let count = Math.min(Math.round(window.innerWidth / 80), 30);
 
 			for (let i = 0; i < count * 3; i++) {
 				let li = document.createElement("li");
 				li.setAttribute("style",
 					"padding:" + Math.round(Math.random() * 70 + 10) + "px;" +
-					"border-radius: "+Math.round(Math.random()*25+20)+"%;"+
-					"left:" + Math.round(100 / (count+1) * i) + "%;" +
+					"border-radius: " + Math.round(Math.random() * 25 + 20) + "%;" +
+					"left:" + Math.round(100 / (count + 1) * i) + "%;" +
 					"background-color:hsl(" + Math.round(Math.random() * 360) + ",100%,80%);" +
-					"animation:floating "+ Math.round(Math.random() * 15 + 5)+"s linear "+
+					"animation:floating " + Math.round(Math.random() * 15 + 5) + "s linear " +
 					+ Math.round(Math.random() * 10) + "s infinite;"
 				);
 				ul.appendChild(li);
 			}
 			document.body.appendChild(ul);
-		}) ();
+		})();
 
 	</script>
 	<style>
@@ -194,6 +198,7 @@
 				transform: translateY(0) rotate(0deg);
 				opacity: 0.6;
 			}
+
 			100% {
 				transform: translateY(calc(-110vh - 200px)) rotate(720deg);
 				opacity: 0.1;
