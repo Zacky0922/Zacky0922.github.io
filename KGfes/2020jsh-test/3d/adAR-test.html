@@ -44,6 +44,7 @@
                     // TODO: Add your own code here to react to the marker being found.
                     //指定idのオブジェクトにイベント発火
                     document.querySelector('#markerFounderWrap').emit('markerFound');
+                    document.querySelector('#markerFoundAnimation').emit('markerFound0');
                 });
 
                 marker.addEventListener('markerLost', function () {
@@ -68,29 +69,39 @@
             -->
         </a-assets>
         <a-marker type='pattern' url='./marker/pattern-QR_fes2020jsh.patt' id="IamMarker" registerevents>
-            <a-entity id="markerFounderWrap" scale="0 0 0" 
+
+            <a-entity id="markerFoundAnimation" class="markerFoundAnime"
+            scale="0 0 0"
+            animation__mkfound="property:scale;
+            to:1.0 1.0 1.0;
+            easing:easeOutElastic;dur:1000;
+            startEvents:markerFound0;">
+                <a-entity id="imgWrapRotR" animation="property: rotation;
+                            to: 0 -360 0;
+                            easing:linear;
+                            dur:6000;
+                            loop:true;"></a-entity>
+                <a-entity id="imgWrapRotL" animation="property: rotation;
+                            to: 0 360 0;
+                            easing:linear;
+                            dur:6000;
+                            loop:true;"></a-entity>
+            </a-entity>
+            <a-entity id="markerFounderWrap"  class="markerFoundAnime"
+            scale="0 0 0" 
             animation__mkfound="property:scale;
             to:1.0 1.0 1.0;
             easing:easeInCubic;
-            delay:3000;dur:1500;
+            delay:1000;dur:1500;
             startEvents:markerFound;">
                 <!-- 回転ギャラリー -->
-                <a-entity id="imgWrap" scale="0 0 0"
+                <a-entity id="imgWrap" 
                 animation="property:rotation;
                 to:0 360 0;loop:true;dur:36000;easing:linear;"></a-entity>
                 <!-- Popupギャラリー -->
                 <a-entity id="imgWrap2"></a-entity>
 
-                <a-entity id="imgWrapRotR" animation="property: rotation;
-            to: 0 -360 0;
-            easing:linear;
-            dur:6000;
-            loop:true;"></a-entity>
-                <a-entity id="imgWrapRotL" animation="property: rotation;
-            to: 0 360 0;
-            easing:linear;
-            dur:6000;
-            loop:true;"></a-entity>
+
                 <a-entity animation="property:rotation;to:0 360 0;loop:true;dur:12000;easing:linear;">
                     <!--
                     <a-obj-model src="#5mine-obj" mtl="#5mine-mtl" position="0 -0.5 1.5" scale=".3 .3 .3" rotation="-30 0 0"></a-obj-model>
@@ -104,11 +115,9 @@
                                  velocityValue:0 0 0;velocitySpread:1 2 1;
                                  positionSpread:5 0 5;
                                  particleCount:100;" position="0 20 0"></a-entity>
-            <a-entity id="z-axis" position="0 0 0"></a-entity>
+            <a-entity id="z-axis" position="0 0.5 0"></a-entity>
         </a-marker>
         <a-entity camera></a-entity>
-
-
     </a-scene>
     <script>
         //画像セット
@@ -210,6 +219,7 @@
 
                 imgWrap2.appendChild(ele);
             }
+
             let imgWrapL = document.getElementById("imgWrapRotL");
             let imgWrapR = document.getElementById("imgWrapRotR");
             let ele = document.createElement("a-entity");
@@ -219,6 +229,7 @@
             ele.setAttribute("line__3", "start: 0 0 -1; end:1 0 0; color: white;");
             imgWrapL.appendChild(ele);
             //imgWrapR.appendChild(ele);
+
         }());
 
     </script>

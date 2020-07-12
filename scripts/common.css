@@ -100,3 +100,6 @@ a{
     overflow:   hidden;
     */
 }
+.zInvisible{
+    visibility: hidden;
+}
