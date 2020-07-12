@@ -113,14 +113,12 @@ let loadJScounter_local = 0;
 let loadJScounter_loaded = 0;
 //読込ファイルリスト（自作分のみ）
 let myScripts = [
-    //素材script
-    "js/txReplace.js",
 
     //jQuery
     "https://code.jquery.com/jquery-3.4.1.min.js",
     "extTools/jQuerySetting.js",
+
     // jQuery Plugins
-    "extTools/jQueryPlugin/scrolla.jquery.js",
 
     //MathJax
     "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
@@ -130,6 +128,7 @@ let myScripts = [
     //A-Frame
     //"https://aframe.io/releases/0.6.1/aframe.min.js",
     "https://aframe.io/releases/1.0.4/aframe.min.js",
+    "extTools/A-Frame/develop.js";
 
     //Chart.js
     "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
@@ -140,17 +139,18 @@ let myScripts = [
     "extTools/prittyprint/prittyprint.js",
     //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
 
-    //自作js
-    "js/customRandom.js",
-    "js/date.js",
-    "js/setTab.js",
-    "js/pageMenu.js",   //txReplace利用
-
     //extTools
     "extTools/abcjs/abcjs_basic_5.9.1-min.js",
     "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
     "extTools/abcjs/abcjs_zInit.js",
     "extTools/googleicon/googleicon.js",
+
+    //自作js
+    "js/txReplace.js",
+    "js/customRandom.js",
+    "js/date.js",
+    "js/setTab.js",
+    "js/pageMenu.js",   //txReplace利用
 
     //数学用mathTools
     "mathTools/algebra.js",
@@ -216,18 +216,8 @@ let myScripts = [
         case "kgfesPre":
             break;
         default:
+            break;
     }
-
-    /*
-    switch (getParam["ar"]) {
-        case "true":
-            myScripts = [
-                "https://aframe.io/releases/0.6.1/aframe.min.js",
-                "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"
-            ];
-        default:
-    }
-    */
 
     debugMsg(getParam["lv"] + "scripts/");
     debugMsg("jsLoader", 1);
