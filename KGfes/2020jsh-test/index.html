@@ -159,12 +159,17 @@
 				<a href="3d/adVR.html">（カメラ・マーカー不要版）</a><br><br>
 				※ARの起動には<a href="./3d/marker.html" target="_blank">専用マーカー</a>が必要です。
 			</div>
-			<div>
-				<a id="HowToARbtn" onclick="document.getElementById('HowToAR').classList.remove('zInvisible');
-					document.getElementById('HowToAR').classList.toggle('animate__backInUp');
-					document.getElementById('HowToAR').classList.toggle('animate__bounceOut');
-					this.classList.add('animate__rubberBand');" class="animate__animated ">あそびかた</a>
-				<div id="HowToAR" class="zInvisible animate__animated animate__bounceOut" style="margin:var(--z-spacing)">
+			<div id="HowToAR">
+				<a class="animate__animated animate__infinite animate__pulse"  style="display:inline-block"
+					onclick="(function(){
+						let these = document.getElementById('HowToAR').children;
+						these[1].classList.remove('zInvisible');
+						these[1].classList.toggle('animate__backInUp');
+						these[1].classList.toggle('animate__bounceOut');
+						these[0].classList.toggle('animate__pulse');
+					})()">あそびかた</a>
+				<div class="zInvisible animate__animated animate__bounceOut"
+				style="margin:var(--z-spacing)">
 					<div style="margin:var(--z-spacing);">上のボタンをタップすると、<br />
 						スマートフォン／タブレットの<br />
 						カメラが起動します。<br />
