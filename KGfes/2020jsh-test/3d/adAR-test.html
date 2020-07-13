@@ -73,19 +73,31 @@
             <a-entity id="markerFoundAnimation" class="markerFoundAnime"
             scale="0 0 0"
             animation__mkfound="property:scale;
-            to:1.0 1.0 1.0;
+            to:1 1 1;
             easing:easeOutElastic;dur:1000;
             startEvents:markerFound0;">
                 <a-entity id="imgWrapRotR" animation="property: rotation;
                             to: 0 -360 0;
                             easing:linear;
                             dur:6000;
-                            loop:true;"></a-entity>
+                            loop:true;">
+                            <a-entity animation="property:rotation;to:1980 1800 1800;dur:1000;">
+                                <!--<a-circle color="transparent" radius="1" wireframe="true"></a-circle>-->
+                            </a-entity>
+                    <a-entity
+                    line="start:1 0 0;end:0 0 1;color:white;"
+                    line__1="start:0 0 1;end:-1 0 0;color:white;"
+                    line__2="start:-1 0 0;end:0 0 -1;color:white;"
+                    line__3="start:0 0 -1;end:1 0 0;color:white;"></a-entity>
+                </a-entity>
                 <a-entity id="imgWrapRotL" animation="property: rotation;
                             to: 0 360 0;
                             easing:linear;
                             dur:6000;
-                            loop:true;"></a-entity>
+                            loop:true;">
+                    <a-entity line="start:1 0 0;end:0 0 1;color:white;" line__1="start:0 0 1;end:-1 0 0;color:white;"
+                        line__2="start:-1 0 0;end:0 0 -1;color:white;" line__3="start:0 0 -1;end:1 0 0;color:white;"></a-entity>
+                </a-entity>
             </a-entity>
             <a-entity id="markerFounderWrap"  class="markerFoundAnime"
             scale="0 0 0" 
@@ -170,7 +182,7 @@
                 ele.setAttribute("scale", "0.1 0.1 0.1");
                 //時差
                 ele.setAttribute("animation__starter",
-                    //"property:opacity;to:0;" +
+                    "property:opacity;to:0;" +
                     "dur:" + (dur * i) + ";")
                 //popup
                 ele.setAttribute("animation__pos0",
@@ -219,17 +231,6 @@
 
                 imgWrap2.appendChild(ele);
             }
-
-            let imgWrapL = document.getElementById("imgWrapRotL");
-            let imgWrapR = document.getElementById("imgWrapRotR");
-            let ele = document.createElement("a-entity");
-            ele.setAttribute("line", "start: 1 0 0; end:0 0 1; color: white;");
-            ele.setAttribute("line__1", "start: 0 0 1; end:-1 0 0; color: white;");
-            ele.setAttribute("line__2", "start: -1 0 0; end:0 0 -1; color: white;");
-            ele.setAttribute("line__3", "start: 0 0 -1; end:1 0 0; color: white;");
-            imgWrapL.appendChild(ele);
-            //imgWrapR.appendChild(ele);
-
         }());
 
     </script>

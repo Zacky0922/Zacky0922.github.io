@@ -56,6 +56,16 @@ div#container {
     .zHead      5
     ヘッダー    100
 */
+a{
+    text-decoration: none;
+    border-bottom:  dotted 1px #f00;
+    padding: 0 2px;
+    margin:0 2px;
+}
+a:hover{
+    background: rgba(128,128,255,0.3);
+}
+
 
 div#gridWrapper>section{
 	text-align: left;
