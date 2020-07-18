@@ -2,7 +2,8 @@
     グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //HTML階層指定：読込時のscriptタグを急いで取得
-let getParam = (function (scripts) {
+
+let zParam= (function (scripts) {
     //let scripts = document.getElementsByTagName('script');
     let src = scripts[scripts.length - 1].src;
 
@@ -36,7 +37,7 @@ let getParam = (function (scripts) {
     }
     return param;
 })(document.getElementsByTagName('script'));
-
+let getParam  = zParam;
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     デバッグメッセージ処理
@@ -95,6 +96,84 @@ function getOnline() {
     被読込ファイル冒頭に、必ず以下を記載
     loadJScounter_loaded++;     //JSのみ
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+class zJSloader {
+    //フィールド宣言（#でプライベート：クラス内読書のみ）
+
+    scripts = [
+        //jQuery
+        "https://code.jquery.com/jquery-3.4.1.min.js",
+        "extTools/jQuerySetting.js",
+
+        // jQuery Plugins
+
+        //MathJax
+        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
+        //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
+        "extTools/MathJaxMacro.js",
+
+        //A-Frame
+        //"https://aframe.io/releases/0.6.1/aframe.min.js",
+        "https://aframe.io/releases/1.0.4/aframe.min.js",
+        "extTools/A-Frame/develop.js",
+
+        //Chart.js
+        "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
+        //"extTools/chartjs/chartjs_init.js",
+
+        //prettify
+        "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
+        "extTools/prittyprint/prittyprint.js",
+        //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
+
+        //extTools
+        "extTools/abcjs/abcjs_basic_5.9.1-min.js",
+        "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
+        "extTools/abcjs/abcjs_zInit.js",
+
+        "extTools/googleicon/googleicon.js",
+
+        //自作js
+        "js/txReplace.js",
+        "js/customRandom.js",
+        "js/date.js",
+        "js/setTab.js",
+        "js/pageMenu.js",   //txReplace利用
+
+        //数学用mathTools
+        "mathTools/algebra.js",
+        "mathTools/matrix.js",  //algebra
+
+        //zTools
+        "zTools/develop.js",
+        "zTools/burger/burger.js"
+    ];
+
+    constructor(root) {
+        this.root = root;
+    }
+
+    //個別読込メソッド
+    cssLoad() {
+
+    }
+    jsLoad() {
+        if (true) {
+            document.write('<script type="text/javascript" src="' + root + '"></script>');
+        } else {
+            let myScript = document.createElement("script");
+            myScript.type = "text/javascript";
+            myScript.src = mySrc;
+            document.head.appendChild(myScript);
+        }
+        // memo：DOMよりdocument.writeの方が圧倒的に早い
+    }
+
+    //読込完了チェック
+    checkLoaded() {
+
+    }
+}
+
 
 //読込ソース作成
 function jsLoader_(mySrc) {
