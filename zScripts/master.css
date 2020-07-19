@@ -1,0 +1,42 @@
+
+/* 汎用部品 */
+/*
+@import url("./common.css");
+*/
+/* 機能モジュール */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese');
+
+/*  標準設定 */
+*{
+	font-family: 'Noto Sans JP', sans-serif;
+    box-sizing: border-box;
+}
+
+
+/* 変数設定 */
+:root{
+    /* 部品設定 */
+    --z-ele-margin: 5px;
+    --z-ele-padding: 5px;
+    --z-ele-border: 1px solid #000;
+    --z-ele-bg:     #ccc;
+
+    /* フォント系変数 */
+    --z-font-color: #114;
+    --z-font-size:  16px;
+}
+
+body{
+    padding:0;
+    margin:0;
+
+    font-size:  var(--z-font-size);
+}
+
+/* 基本要素設定 */
+
+a{
+
+}

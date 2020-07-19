@@ -2,51 +2,54 @@
     グローバル利用変数
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 
-
-
-
 //HTML階層指定：読込時のscriptタグを急いで取得
 let zParam = new (class urlQuery {
-    param;
+    #param = new Array();
+    #src;
     constructor(scripts) {
         //let scripts = document.getElementsByTagName('script');
-        let src = scripts[scripts.length - 1].src;
-        let query = src.substring(src.indexOf('?') + 1);
+        this.#src = scripts[scripts.length - 1].src;
+        let query = this.#src.substring(this.#src.indexOf('?') + 1);
         let parameters = query.split('&');
-        let param = new Object();
         // URLクエリを分解して取得する
         for (let i = 0; i < parameters.length; i++) {
             let element = parameters[i].split('=');
             let paramName = decodeURIComponent(element[0]);
             let paramValue = decodeURIComponent(element[1]);
-            param[paramName] = paramValue;
+            this.#param[paramName] = paramValue;
         }
-        this.param = param;
         //受取変数の個別処理
-        if (this.param["lv" == undefined]) {
-            this.param["lv"] = "https://zacky0922.github.io/";
-            this.param["root"] = "https://zacky0922.github.io/";
+        if (this.#param["lv"] == undefined) {
+            this.#param["lv"] = "https://zacky0922.github.io/";
+            this.#param["root"] = "https://zacky0922.github.io/";
         } else {
+            this.#param["root"] = "https://zacky0922.github.io/";
             this.init_lv();
         }
     }
 
 
+    getAll() {
+        return this.#param;
+    }
     get(paramName) {
-        return this.param[paramName];
+        return this.#param[paramName];
+    }
+    set(paramName, param) {
+        
     }
 
     //受取変数の個別処理
     init_lv() {
         let myLv = "";
-        if (this.param["lv"] > 0) {
-            for (let i = 0; i < this.param["lv"]; i++) {
+        if (this.#param["lv"] > 0) {
+            for (let i = 0; i < this.#param["lv"]; i++) {
                 myLv = myLv + "../";
             }
         } else {
             myLv = "./";
         }
-        this.param["lv"] = myLv;
+        this.#param["lv"] = myLv;
     }
 })(document.getElementsByTagName('script'));
 
@@ -54,60 +57,54 @@ let zParam = new (class urlQuery {
     デバッグメッセージ処理
     第二引数：階層設定（最後は必ず閉じること）
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-let zLog = class debugMsg {
+let zLog = new (class debugMsg {
+    #loadTime;
+    #lv = 0;
+    #msg = "◆debugMsg";
     constructor() {
-        loadTime = new Date();
-        lv = 0;
-        msg = "◆debugMsg";
+        this.#loadTime = new Date();
     }
-
-
 
     add(tx, group = 0) {
         if (tx != "") {
             //インデント付与
-            tx = (lv == 0 ? "" : " > ") + tx;
+            //tx = (this.lv == 0 ? "" : " > ") + tx;
         }
 
         switch (group) {
             case 1:
                 //グループ見出し
                 console.groupCollapsed(tx);
-                this.msg += "\n" + tx;
-                lv++;
+                this.#msg += "\n" + tx;
+                this.#lv++;
                 break;
             case 0:
                 //通常ログ
                 console.log(tx);
-                this.msg += "\n" + tx;
+                this.#msg += "\n" + tx;
                 break;
             case -1:
                 //グループ最終要素
                 if (tx != "") {
                     console.log(tx);
-                    this.msg += "\n" + tx;
+                    this.#msg += "\n" + tx;
                 }
                 console.groupEnd();
-                lv--;
+                this.#lv--;
                 break;
         }
     }
 
     get getMsg() {
-        return this.msg;
+        return this.#msg;
     }
 
-
-    initCheck() {
-        // 引渡し変数確認
-        debugMsg("master.js? 引渡し変数一覧", 1);
-        for (i in getParam) {
-            debugMsg('getParam["' + i + '"] = ' + getParam[i]);
-        }
-        debugMsg("", -1);
+    //ファイルのロードから本メソッド呼出までの時間を取得
+    getLoadingTime() {
+        this.add("eventListener:loaded - " + (((new Date()).getTime() - this.#loadTime.getTime()) / 1000) + "sec");
     }
 
-}
+})();
 
 
 
@@ -115,106 +112,110 @@ let zLog = class debugMsg {
     システムパッケージクラス
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 
-let zSys = class zSystem{
+let zSys = new (class zSystem {
 
-
-
-    /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-        オンライン状況取得
-        online  = true
-        offline = false
-        ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
+    //  オンライン状況取得
+    //  online  = true　／　offline = false
     getOnline() {
         return (location.href.indexOf("http") > -1);
     }
-}
+})();
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     CSS/JS loader
     被読込ファイル冒頭に、必ず以下を記載
     loadJScounter_loaded++;     //JSのみ
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
-class zPreloader {
-    dir;
-    css = [];
-    js = [
+//旧バージョンデバッグ
+let loadJScounter_loaded = 0;
+
+let zPreload = new (class zPreloader {
+    #dir;
+    #css = [
+
+    ];
+    #js = [
         //jQuery
         "https://code.jquery.com/jquery-3.4.1.min.js",
-        "extTools/jQuerySetting.js",
 
-        // jQuery Plugins
+        //tools
+        "tools/audio.js"
 
-        //MathJax
-        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
-        //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
-        "extTools/MathJaxMacro.js",
+        /*
+        "tools/menu/list.js",
+        //SOUNDJS
+        "https://code.createjs.com/1.0.0/soundjs.min.js",
+        "ex/SOUNDJS/macro.js",
 
-        //A-Frame
-        "https://aframe.io/releases/1.0.4/aframe.min.js",
-        "extTools/A-Frame/develop.js",
-
-        //Chart.js
-        "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
-        //"extTools/chartjs/chartjs_init.js",
-
-        //prettify
-        "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
-        "extTools/prittyprint/prittyprint.js",
-        //"extTools/ExCodePrettify/jquery.ex-code-prettify.js",   //Prettify,jQuery利用
-
-        //extTools
-        "extTools/abcjs/abcjs_basic_5.9.1-min.js",
-        "extTools/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
-        "extTools/abcjs/abcjs_zInit.js",
-
-        "extTools/googleicon/googleicon.js",
-
-        //自作js
-        "js/txReplace.js",
-        "js/customRandom.js",
-        "js/date.js",
-        "js/setTab.js",
-        "js/pageMenu.js",   //txReplace利用
-
-        //数学用mathTools
-        "mathTools/algebra.js",
-        "mathTools/matrix.js",  //with algebra
-
-        //zTools
-        "zTools/develop.js",
-        "zTools/burger/burger.js"
+        */
     ];
 
-    constructor(root) {
-        this.dir = root;
+
+    constructor(root,mode = null) {
+        //  初期フォルダ設定
+        this.#dir = root;
+        //モード処理
+
+        //  読込：クラス定義時に読込まで行う？
+        this.jsload();
     }
 
-    //個別読込メソッド
+
+    //読込メソッド
     cssLoad() {
 
     }
-    jsLoad() {
-        if (true) {
-            document.write('<script type="text/javascript" src="' + root + '"></script>');
-        } else {
-            let myScript = document.createElement("script");
-            myScript.type = "text/javascript";
-            myScript.src = mySrc;
-            document.head.appendChild(myScript);
+    cssLoad_(src) {
+        document.write('<link rel="stylesheet" type="text/css" href="' + src + '" />');
+        return;
+
+        let myCSS = document.createElement("link");
+        myCSS.rel = "stylesheet";
+        myCSS.type = "text/css";
+        myCSS.href = src;
+        document.head.appendChild(myCSS);
+    }
+    jsload() {
+        for (let i = 0; i < this.#js.length; i++) {
+            if (this.#js[i].indexOf("http") > -1) {
+                //外部js
+                this.jsLoad_(this.#js[i]);
+            } else {
+                //手持ちjs
+                this.jsLoad_(this.#dir + "zScripts/" + this.#js[i]);  //相対指定
+            }
         }
+    }
+
+    jsLoad_(src) {
+        document.write('<script type="text/javascript" src="' + src + '"></script>');
+        return;
+
         // memo：DOMよりdocument.writeの方が圧倒的に早い
+        let myScript = document.createElement("script");
+        myScript.type = "text/javascript";
+        myScript.src = src;
+        document.head.appendChild(myScript);
     }
 
     //読込完了チェック
     checkLoaded() {
 
     }
-}
-
+})("../",zParam.get("mode"));
 
 
 window.addEventListener('load', (event) => {
 
+    //読込確認
+    zLog.getLoadingTime();
+
+    // 引渡し変数確認
+    zLog.add("URL query 変数一覧", 1);
+    for (i in zParam.getAll()) {
+        zLog.add(i +" - " + zParam.get(i));
+    }
+    zLog.add("", -1);
 
 
 });

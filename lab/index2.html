@@ -8,11 +8,16 @@
     <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
     <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
     <meta name="robots" content="noindex,nofollow" />
-
-
-
-    <!-- JS/CSS master -->
-    <script type="text/javascript" src="../scripts/master2.js"></script>
+    <!-- master -->
+    <script type="text/javascript" src="../zScripts/master.js?mode=test"></script>
+    <style>
+        #zContainer{
+            display:grid;
+        }
+        #zContainer > section{
+            border:1px #000 solid;
+        }
+    </style>
     <title>Laboratory</title>
 </head>
 
@@ -22,9 +27,39 @@
         
 
     </script>
-    <div id="gridWrapper">
+    <section id="zContainer">
+        <section>
+            <h2 class="zHeadList">jQuery</h2>
+            <div id="jQueryCheck">jQuery is NOT ready.</div>
+            <script>
+                $(function () {
+                    // if document is ready
+                    $("#jQueryCheck").empty();
+                    $("#jQueryCheck").append("jQuery is ready.(OK)");
+                });
+            </script>
+        </section>
+        <section>
+            <h2 class="zHeadList">WEB Audio API</h2>
 
-    </div><!-- /container -->
+    <input id="audioFile" type="file"><br />
+    <canvas id="visualizer" height="255"></canvas>
+
+
+            <input type="button" value="play" id="play" />
+            <input type="button" value="pause" id="pause" />
+            <input type="button" value="stop" id="stop" />
+            <div id="visualiserSample">
+                <div style="background:red;width:0;">　</div>
+                <div style="background:green;width:0;">　</div>
+                <div style="background:blue;width:0;">　</div>
+            </div>
+        </section>
+        <section>
+            <h2 class="zHeadList">Sound.js</h2>
+            <audio src="./sound/blender.mp3"></audio>
+        </section>
+    </section><!-- /container -->
 </body>
 
 </html>

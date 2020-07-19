@@ -1,0 +1,15 @@
+
+
+
+.zUndisp{
+    display:    none !important;
+    /* chart.jsとの相性悪い？　・・・　読込時、H=W=0 になる（画面サイズ変更で規定サイズに）
+    height: 0;
+    width:  0;
+    overflow:   hidden;
+    */
+}
+.zInvisible{
+    visibility: hidden !important;
+    /* display:none;と異なり、空間はキープされる */
+}
