@@ -3,6 +3,7 @@ function audioVisualizer() {
     var source, animationId;
     var audioContext = new AudioContext;
     var fileReader = new FileReader;
+    var barWidth = 5;
 
     var analyser = audioContext.createAnalyser();
     analyser.fftSize = 128;
@@ -10,7 +11,7 @@ function audioVisualizer() {
 
     var canvas = document.getElementById('visualizer');
     var canvasContext = canvas.getContext('2d');
-    canvas.setAttribute('width', analyser.frequencyBinCount * 10);
+    canvas.setAttribute('width', analyser.frequencyBinCount * barWidth);
 
     fileReader.onload = function () {
         audioContext.decodeAudioData(fileReader.result, function (buffer) {
@@ -39,7 +40,7 @@ function audioVisualizer() {
 
         canvasContext.clearRect(0, 0, canvas.width, canvas.height);
         for (var i = 0, len = spectrums.length; i < len; i++) {
-            canvasContext.fillRect(i * 10, 0, 5, spectrums[i]);
+            canvasContext.fillRect(i * barWidth, 0, 5, (spectrums[i]));
         }
 
         animationId = requestAnimationFrame(render);

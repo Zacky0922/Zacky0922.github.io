@@ -109,17 +109,29 @@ let zLog = new (class debugMsg {
 
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
-    システムパッケージクラス
+    システムパッケージ
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 
-let zSys = new (class zSystem {
+class zSystem {
 
     //  オンライン状況取得
     //  online  = true　／　offline = false
-    getOnline() {
+    static getOnline() {
         return (location.href.indexOf("http") > -1);
     }
-})();
+
+    // icon取得
+    static getGicon(icon,obj=false) {
+        let ele = document.createElement("span");
+        ele.classList.add("material-icons");
+        ele.innerText = icon;
+        if (obj) {
+            return ele;
+        } else {
+            return ele.outerHTML;
+        }
+    }
+};
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     CSS/JS loader
@@ -138,14 +150,20 @@ let zPreload = new (class zPreloader {
         //jQuery
         "https://code.jquery.com/jquery-3.4.1.min.js",
 
+        // MathJax
+        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
+        //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
+        "ex/math/MathJaxMacro.js",
+        "ex/math/math.js",
+    
         //tools
-        "tools/audio.js"
+        "tools/button/button.js",
+        "tools/date.js",
+        "tools/menu/list.js",
+        "tools/menu/burger.js",     // list.js依存
+        "tools/audio/audio.js"
 
         /*
-        "tools/menu/list.js",
-        //SOUNDJS
-        "https://code.createjs.com/1.0.0/soundjs.min.js",
-        "ex/SOUNDJS/macro.js",
 
         */
     ];
@@ -156,14 +174,15 @@ let zPreload = new (class zPreloader {
         this.#dir = root;
         //モード処理
 
-        //  読込：クラス定義時に読込まで行う？
+        //  読込：クラス定義時に読込まで行う
+        this.cssLoad();
         this.jsload();
     }
 
 
     //読込メソッド
     cssLoad() {
-
+        this.cssLoad_(this.#dir + "zScripts/master.css");
     }
     cssLoad_(src) {
         document.write('<link rel="stylesheet" type="text/css" href="' + src + '" />');
@@ -209,13 +228,19 @@ window.addEventListener('load', (event) => {
 
     //読込確認
     zLog.getLoadingTime();
+    zLog.add("Loading Log on master.js", 1);
 
+    // location
+    zLog.add("location : " + location.href);
+    
     // 引渡し変数確認
     zLog.add("URL query 変数一覧", 1);
     for (i in zParam.getAll()) {
         zLog.add(i +" - " + zParam.get(i));
     }
     zLog.add("", -1);
+
+    zLog.add("", -1);   //Loading Logここまで
 
 
 });

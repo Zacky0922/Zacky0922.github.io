@@ -11,11 +11,16 @@
     <!-- master -->
     <script type="text/javascript" src="../zScripts/master.js?mode=test"></script>
     <style>
-        #zContainer{
-            display:grid;
+        #zContainer {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 1fr 1fr;
         }
-        #zContainer > section{
-            border:1px #000 solid;
+        
+        @media screen and (max-width: 599px) {
+            #zContainer {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
     <title>Laboratory</title>
@@ -24,42 +29,212 @@
 <body>
     <h1>Laboratory</h1>
     <script>
-        
-
     </script>
     <section id="zContainer">
+
+        <section>
+            <h2 class="zHeadList">JS</h2>
+            <script>
+                document.write(new Date() + "<br/>");
+                document.write(zDate.duration(new Date(2020, 7 - 1, 19), new Date(2020, 7 - 1, 20))[3] + "日")
+            </script>
+        </section>
+
+        <section>
+            <h2 class="zHeadList">CSS</h2>
+            <div style="text-align: center;">
+                <span>あ</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+                <div class="zBtn">あ</div>
+                <a class="zBtn">あ</a>
+                <a class="zBtn">あ<br>あ</a>
+            </div>
+            <a class="zBtn">あ<br>あ</a>
+            <a class="zBtn">あ</a>
+            <style>
+
+            </style>
+        </section>
+
+        <section>
+            <h2 class="zHeadList">Menu</h2>
+            <nav id="zMenu"></nav>
+            <script>
+                (function() {
+                    let burgerUl = new zLinkList();
+                    with(burgerUl) {
+                        addLink(zSystem.getGicon("home", false) + "HOME");
+                        addLink("い");
+                    }
+                    let burger = new burgerMenu();
+                    let icon = document.createElement("span");
+                    icon.innerHTML = "Z";
+                    with(burger) {
+                        setIcon(icon);
+                        set("zMenu", burgerUl.get());
+                    }
+                })();
+            </script>
+        </section>
+
         <section>
             <h2 class="zHeadList">jQuery</h2>
             <div id="jQueryCheck">jQuery is NOT ready.</div>
             <script>
-                $(function () {
+                $(function() {
                     // if document is ready
                     $("#jQueryCheck").empty();
                     $("#jQueryCheck").append("jQuery is ready.(OK)");
                 });
             </script>
         </section>
+
         <section>
             <h2 class="zHeadList">WEB Audio API</h2>
 
-    <input id="audioFile" type="file"><br />
-    <canvas id="visualizer" height="255"></canvas>
+            <input id="audioFile" type="file"><br />
+            <canvas id="visualizer" height="255" style="border:1px #000 solid;"></canvas>
 
 
             <input type="button" value="play" id="play" />
             <input type="button" value="pause" id="pause" />
             <input type="button" value="stop" id="stop" />
             <div id="visualiserSample">
-                <div style="background:red;width:0;">　</div>
-                <div style="background:green;width:0;">　</div>
-                <div style="background:blue;width:0;">　</div>
+                <div style="background:red;width:5%;">R</div>
+                <div style="background:green;width:5%;">G</div>
+                <div style="background:blue;width:5%;">B</div>
             </div>
         </section>
+
         <section>
-            <h2 class="zHeadList">Sound.js</h2>
-            <audio src="./sound/blender.mp3"></audio>
+            <h2 class="zHeadList">MathJax</h2>
+            displaystyle：$$\dfrac{1}{2}$$
+            <div>inlinestyle：\(\dfrac{1}{2}\)とか、$\dfrac{3}{4}$とか</div>
+            <form class="zForm">
+                <fieldset>
+                    <legend>MathJax Quick Previewer</legend>
+                    <div>(auto typeset onkeyup)</div>
+                    <textarea id="realtimePreviewInput" rows="5" style="width:100%;" onkeyup="document.getElementById('realtimePreview').innerText=this.value;
+                                                                    zMathJax.reMathJax('realtimePreview')">$$e^{i\theta}=\cos\theta+i\sin\theta$$</textarea>
+                    <div>
+                        <input type="button" value="改行" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\\\\\n';
+                zMathJax.reMathJax('realtimePreview');">
+                        <input type="button" value="分数" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\n\\dfrac{}{}';
+                zMathJax.reMathJax('realtimePreview');">
+                        <input type="button" value="位置揃え" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\n\\begin{align}\n\n\\end{align}';
+                zMathJax.reMathJax('realtimePreview');">
+                        <input type="button" value="場合分け" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\n\\begin{cases}\n\n\\end{cases}';
+                                zMathJax.reMathJax('realtimePreview');">
+                        <input type="button" value="init" onclick="if(window.confirm('フォームが初期化されますが、よろしいですか？')){
+                                    					          document.getElementById('realtimePreview').innerText=
+                                    					          document.getElementById('realtimePreviewInput').value='$$'+zMathJax.templete('オイラーの公式')+'$$';
+                    zMathJax.reMathJax('realtimePreview')}">
+                    </div>
+                    <div id="realtimePreview" style="border:#888 1px solid">
+                        $$e^{i\theta}=\cos\theta+i\sin\theta$$
+                    </div>
+                </fieldset>
+            </form>
+            <form class="zForm" onkeyup="solve()">
+                <fieldset>
+                    <legend>連立方程式solver</legend>
+                    <input type="text" id="a" size="3" tabindex="1">$x+$<input type="text" id="b" size="3" tabindex="2">$y=$<input type="text" id="p" size="3" tabindex="3"><br />
+                    <input type="text" id="c" size="3" tabindex="4">$x+$<input type="text" id="d" size="3" tabindex="5">$y=$<input type="text" id="q" size="3" tabindex="6"><br />
+                    <div id="ans"></div>
+                </fieldset>
+                <script>
+                    function solve() {
+                        let sol = zMath.simultaneousEQsolver(
+                            Number(document.getElementById("a").value),
+                            Number(document.getElementById("b").value),
+                            Number(document.getElementById("c").value),
+                            Number(document.getElementById("d").value),
+                            Number(document.getElementById("p").value),
+                            Number(document.getElementById("q").value),
+                            "ans");
+                        if (sol[1][0] == null) {
+                            document.getElementById("ans").innerText = "$$" + sol[0] + "\\\\\\text{解なし}$$";
+                        } else {
+                            document.getElementById("ans").innerText = "$$" + sol[0] +
+                                "\\\\\\Longrightarrow\\quad " +
+                                "x=" + zMath.estimateFrac(sol[1][0]) + ",y=" + zMath.estimateFrac(sol[1][1]) + "$$";
+                        }
+                        zMathJax.reMathJax('ans');
+                    }
+                </script>
+            </form>
+            <form class="zForm" onkeyup="bunkai()">
+                <fieldset>
+                    <legend>素因数分解</legend>
+                    <input type="text" id="soinsu" size="3">
+                    <div id="soinsu_ans"></div>
+                </fieldset>
+                <script>
+                    function bunkai() {
+                        let formula = zMath.primeFactorization(Number(document.getElementById("soinsu").value), true);
+                        if (formula == null) {
+                            document.getElementById("soinsu_ans").innerText = "2以上の整数を入力しましょう";
+                            return;
+                        };
+                        document.getElementById("soinsu_ans").innerText = "$$" +
+                            Number(document.getElementById("soinsu").value) + "=" +
+                            formula + "$$";
+                        zMathJax.reMathJax('soinsu_ans');
+                    }
+                </script>
+            </form>
+            <form class="zForm" onkeyup="tagainiso()">
+                <fieldset>
+                    <legend>互いに素：約分</legend>
+                    <input type="text" id="tagainiso0" size="3">と<input type="text" id="tagainiso1" size="3">
+                    <div id="tagainiso_ans"></div>
+                </fieldset>
+                <script>
+                    function tagainiso() {
+                        let a = Number(document.getElementById("tagainiso0").value);
+                        let b = Number(document.getElementById("tagainiso1").value);
+                        if (!Number.isInteger(a) || !Number.isInteger(b)) {
+                            document.getElementById("tagainiso_ans").innerText = "整数を入力してください";
+                            return;
+                        }
+                        let c = zMath.getCommonFactor(a, b);
+                        let tx = a + "と" + b + "は";
+                        if (c == null) {
+                            tx += "（素因数分解できません）";
+                        } else if (a * b == 0) {
+                            if (a == 1 || a == -1 || b == 1 || b == -1) {
+                                tx += "互いに素である。";
+                            } else {
+                                tx += "互いに素でない。（0と互いに素になるのは、$\\pm 1$のみ）";
+                            }
+                        } else if (c == 1) {
+                            tx += "互いに素である。";
+                        } else {
+                            tx += "互いに素でない。" +
+                                "（共通因数＝" + c + "）";
+                        }
+
+                        if (b == 0) {
+                            document.getElementById("tagainiso_ans").innerText = tx + "\n" +
+                                "分母が0のため、分数は表示できません。";
+                        } else {
+                            document.getElementById("tagainiso_ans").innerText = tx + "\n" +
+                                "$$" +
+                                "\\dfrac{" + a + "}{" + b + "}" +
+                                (c == 1 ? "" : "=\\dfrac{" + a / c + "}{" + b / c + "}") +
+                                (b / c == 1 ? "=" + a / c : "=" + a / b) +
+                                "$$";
+                        }
+
+                        zMathJax.reMathJax('tagainiso_ans');
+                    }
+                </script>
+            </form>
+            <input type="button" value="MathJax（ID未指定）：全体再描画テスト" onclick="zMath.reMathJax()">
         </section>
-    </section><!-- /container -->
+    </section>
+    <!-- /container -->
 </body>
 
 </html>

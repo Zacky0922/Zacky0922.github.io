@@ -1,45 +1,50 @@
 
-
-
-class setUl{
+class zList{
     #ul = document.createElement("ul");
 
     constructor() {
 
     }
+    // リスト基本設定
     setID(id) {
         this.#ul.id = id;
     }
     setClass(cl) {
         this.#ul.classList.add(cl);
     }
-    add(inner) {
+    // 内容追加
+    add(tx) {
         let li = document.createElement("li");
-        li.appendChild(inner);
+        li.appendChild(
+            document.createTextNode(tx)
+        );
         this.#ul.appendChild(li);
     }
-    add_innerHTML(inner) {
-        let li = document.createElement("li");
-        li.innerHTML = inner;
+    addLi(li) {
         this.#ul.appendChild(li);
     }
+    // リスト取得
     get() {
         return this.#ul;
     }
 }
 
-class setLinkList extends setUl {
+class zLinkList extends zList {
 
-    addLink(tx, href, target = "_self", description = null) {
+    addLink(tx, href =null, target = "_self", description = null) {
+        let li = document.createElement("li");
         let a = document.createElement("a");
-        a.href = href;
-        a.target = target;
+        a.innerHTML = tx;
+        if (href != null) {
+            a.href = href;
+            a.target = target;
+        }
         li.appendChild(a);
         if (description != null) {
             li.appendChild(document.createElement(br));
             li.appendChild(document.createTextNode(description));
         }
-        //this.super(#ul).appendChild(li);
+        super.addLi(li);
     }
 }
 

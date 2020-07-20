@@ -1,0 +1,21 @@
+#zBurgerWrap > input{
+    display: none;
+}
+
+/* PC mode */
+@media screen and (min-width:600px){
+    #zBurgerWrap > label{
+        display:none;
+    }
+}
+/* スマホ mode */
+@media screen and (max-width:599px){
+    /* スマホのときのみ、非表示モード搭載 */
+    #zBurgerWrap > input + div#zBurgerMenuWrap{
+        display: none;
+    }
+}
+
+#zBurgerWrap > input:checked + div#zBurgerMenuWrap{
+    display:block;
+}

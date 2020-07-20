@@ -1,15 +1,21 @@
+@import "ex/MaterialIcons/googleicon.css";
+@import "tools/menu/burger.css";
+@import "tools/button/button.css";
+.zXscrollable {
+    text-align: center;
+    overflow-x: auto;
+}
 
-
-
-.zUndisp{
-    display:    none !important;
+.zUndisp {
+    display: none !important;
     /* chart.jsとの相性悪い？　・・・　読込時、H=W=0 になる（画面サイズ変更で規定サイズに）
     height: 0;
     width:  0;
     overflow:   hidden;
     */
 }
-.zInvisible{
+
+.zInvisible {
     visibility: hidden !important;
     /* display:none;と異なり、空間はキープされる */
 }
