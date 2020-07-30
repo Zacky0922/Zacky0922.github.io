@@ -1,7 +1,7 @@
 
-class burgerMenu{
+class burgerMenu {
     /*
-    #wrap       parent
+    #wrap       parent              // 引数でobj引渡し
     #divWrap        div#zBurgerWrap
     #iconWrap           label
     setIcon                 *
@@ -15,10 +15,11 @@ class burgerMenu{
     #input = document.createElement("input");
     #ulWrap = document.createElement("div");
 
-    constructor() {
+    constructor(wrap) {
+        this.#wrap = wrap;
         this.#divWrap.id = "zBurgerWrap";
         this.#divWrap.appendChild(this.#iconWrap);
-        this.#iconWrap.setAttribute("for","zBurgerChkbx")
+        this.#iconWrap.setAttribute("for", "zBurgerChkbx")
         this.#divWrap.appendChild(this.#input);
         this.#input.type = "checkbox";
         this.#input.id = "zBurgerChkbx";
@@ -36,7 +37,7 @@ class burgerMenu{
         //オブジェクトを代入
         this.#iconWrap.appendChild(icon);
     };
-    set(id,ul) {
+    set(id, ul) {
         this.#ulWrap.appendChild(ul);
         this.#wrap = document.getElementById(id);
         this.#wrap.appendChild(this.#divWrap);
