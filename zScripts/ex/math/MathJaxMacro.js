@@ -6,8 +6,15 @@ MathJax.Hub.Config({
         //	'AMScd.js'		//	\(\require{AMScd}\)  		//可換図式	
     ],
     tex2jax: {
-        inlineMath: [['$', '$'], ["\\(", "\\)"]],
-        displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+        inlineMath: [
+            ['$', '$'],
+            ["\\(", "\\)"],
+            ["`", "`"]      //draw.ioプレビュー用
+        ],
+        displayMath: [
+            ['$$', '$$'],
+            ["\\[", "\\]"]
+        ],
         processEscapes: true    //欄外で$を使用可にする
     },
     TeX: {
