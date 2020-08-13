@@ -101,7 +101,7 @@ let zLog = new (class debugMsg {
 
     //ファイルのロードから本メソッド呼出までの時間を取得
     getLoadingTime() {
-        this.add("eventListener:loaded - " + (((new Date()).getTime() - this.#loadTime.getTime()) / 1000) + "sec");
+        this.add("Loading Time = " + (((new Date()).getTime() - this.#loadTime.getTime()) / 1000) + "sec");
     }
 
 })();
@@ -135,8 +135,6 @@ class zSystem {
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     CSS/JS loader
-    被読込ファイル冒頭に、必ず以下を記載
-    loadJScounter_loaded++;     //JSのみ
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 //旧バージョンデバッグ
 let loadJScounter_loaded = 0;
@@ -147,21 +145,39 @@ let zPreload = new (class zPreloader {
 
     ];
     #js = [
-        //jQuery
+        // jQuery (UI)
         "https://code.jquery.com/jquery-3.4.1.min.js",
+        "https://code.jquery.com/ui/1.9.2/jquery-ui.js",
 
         // MathJax
         "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
         //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
         "ex/math/MathJaxMacro.js",
-        "ex/math/math.js",
+        "ex/math/zMath.js",
     
+        // abc.js
+        "ex/abcjs/abcjs_basic_5.9.1-min.js",
+        "ex/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
+        "ex/abcjs/abcjs_zInit.js",
+        
+        // prittyprint
+        "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
+        "ex/prittyprint/prittyprint.js",
+
+        //Chart.js
+        "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js",
+        //"extTools/chartjs/chartjs_init.js",
+
+
         //tools
+        "tools/list.js",
+
+        "tools/audio/audio.js",
         "tools/button/button.js",
-        "tools/date.js",
-        "tools/menu/list.js",
         "tools/menu/burger.js",     // list.js依存
-        "tools/audio/audio.js"
+        "tools/tab/tab.js",          // list.js,jQueryUI依存
+        "tools/date.js",
+        "tools/develop.js",
 
         /*
 
@@ -195,6 +211,7 @@ let zPreload = new (class zPreloader {
         document.head.appendChild(myCSS);
     }
     jsload() {
+        zLog.add("JS loading：",1);
         for (let i = 0; i < this.#js.length; i++) {
             if (this.#js[i].indexOf("http") > -1) {
                 //外部js
@@ -203,7 +220,9 @@ let zPreload = new (class zPreloader {
                 //手持ちjs
                 this.jsLoad_(this.#dir + "zScripts/" + this.#js[i]);  //相対指定
             }
+            zLog.add(this.#js[i]);
         }
+        zLog.add("",-1);
     }
 
     jsLoad_(src) {
@@ -243,6 +262,9 @@ window.addEventListener('load', (event) => {
     zLog.add("", -1);   //Loading Logここまで
 
 
+    // 各種init処理
+    // abcjs：soundFontDirを指定（ファイルではなくフォルダ）
+    absjs_init(zParam.get("lv") + "scripts/extTools/abcjs/");
 });
 
 

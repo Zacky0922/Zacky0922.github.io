@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-163335381-1');
+    </script>
+
+    <!-- PWA設定 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="manifest" href="./manifest.json">-->
+    <script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+    </script>
+
+    <!-- JS/CSS master -->
+    <script type="text/javascript" src="../scripts/master.js?lv=1&mode=lab&css=lab.css"></script>
+    <title>Laboratory</title>
+</head>
+
+<body>
+    <h1>Laboratory</h1>
+    <div id="gridWrapper">
+        <section id="zPageMenu">
+            <style>
+                #zPageMenu li {
+                    display: inline-block;
+                    margin: 5px 20px;
+                }
+            </style>
+            <h2 class="zHead">INDEX</h2>
+        </section>
+
+        <section>
+            <h2 class="zHead zHeadList">A-Frame</h2>
+            <ul>
+                <li>マーカーの中心：position="0 0 0"</li>
+                <li>マーカーの1辺：scale="1 1 1"（長方形マーカーの場合は？）</li>
+                <li>座標系：右手系<br />
+                    A-Frame：X = 右 / Y = 上 / Z = 手前<br />
+                    AR.js：X = 右 / Y = 手前 / Z = 下</li>
+                <li>オブジェクト座標指定：オブジェクトの中心（内部）</li>
+                <li>画像：rotation="0 0 0"<br />
+                    ⇒　XY平面上にZ正方向を正面（画面下向き）に貼り付け<br />
+                    ⇒　画面正面方向への配置 rotation="-90 0 0"（回転方向：右手系）<br />
+                    ⇒　回転の処理順 = X→Y→Z（たぶん）</li>
+                <li>作業順：rotation → position</li>
+                <li>秒間6～7fr前後？（js.setInterval(,1)でも、秒間実行6～7回のようだ）</li>
+                <li>HTML記載順：前＝前レイヤー／後＝後レイヤー<br />
+                    前レイヤーの透過部分＝背景の画像に対しalpha値を上書きし、background=a-skyを表示</li>
+                <li>記述方法に互換性がなくとも、多少頑張って最新版にしないと、色々不都合があるかも。<br />
+                    （例）ジャイロ酔い＝ブレブレ改善</li>
+                    <li>センサ類の使用には、HTTPS接続が必要。</li>
+
+            </ul>
+            <a href="ar/test.html">test</a> /
+            <a href="ar/latest_test.html">latest_test</a>
+            <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="html,result"
+                data-user="Zacky0922" data-slug-hash="vYLggdw"
+                style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+                data-pen-title="A-Frame">
+                <span>See the Pen <a href="https://codepen.io/Zacky0922/pen/vYLggdw">
+                        A-Frame</a> by Zacky (<a href="https://codepen.io/Zacky0922">@Zacky0922</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="html,result"
+                data-user="Zacky0922" data-slug-hash="GRombPP"
+                style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+                data-pen-title="VRmaze">
+                <span>See the Pen <a href="https://codepen.io/Zacky0922/pen/GRombPP">
+                        VRmaze</a> by Zacky (<a href="https://codepen.io/Zacky0922">@Zacky0922</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+
+        </section>
+
+        <section>
+            <h2 class="zHead zHeadList">AR.js</h2>
+            AR.js sample：
+            <a href="ar/marker.html">marker[HIRO]</a> /
+            <a href="ar/markerKG.html">marker[KG]：調整中</a> /
+            <a href="ar/markerless.html">marker less</a>/
+            <a href="ar/gps.html">GPS</a>/
+            <a href="ar/nft.html">nft</a>
+            <div class="zCentering">
+                <img src="ar/hiro.jpg" />
+                <img src="ar/pattern-KGARmarker.png" />
+            </div>
+        </section>
+
+        <section>
+            <h2 class="zHeadList zHead">jQuery</h2>
+            <div id="jQueryCheck">jQuery is NOT ready.</div>
+            <script>
+                $(function () {
+                    // if document is ready
+                    $("#jQueryCheck").empty();
+                    $("#jQueryCheck").append("jQuery is ready.(OK)");
+                });
+            </script>
+        </section>
+
+        <section>
+            <h2 class="zHeadList zHead">Prettify</h2>
+
+            <h3 class="zHead">簡易エディタ</h3>
+            <section id="quickEditor"></section>
+            <script>
+                setQuickEditor("quickEditor");
+            </script>
+
+
+        </section>
+
+
+        <section>
+            <h2 class="zHeadList zHead">abc.js</h2>
+            <div class="score abcPlay">
+                L:1/4
+                CDEFGABc
+            </div>
+            <div class="score">
+                M:4/4
+                L:1/8
+                K:C
+                V:1
+                "C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
+                V:2 bass
+                C,G,F,G, F,A,c,F, | G,B,d,G, C,E,G,c,||
+            </div>
+        </section>
+        <section>
+            <h2 class="zHeadList zHead">MathJax</h2>
+            displaystyle：
+            <div>
+                $$\dfrac{1}{2}$$
+            </div>
+            <div>inlinestyle：\(\dfrac{1}{2}\)とか、$\dfrac{3}{4}$とか</div>
+            <textarea id="realtimePreviewInput" rows="5" onkeyup="document.getElementById('realtimePreview').innerText=this.value;
+            					            reMathJax('realtimePreview')">$$e^{i\theta}=\cos\theta+i\sin\theta$$</textarea>
+            <input type="button" value="init" onclick="document.getElementById('realtimePreviewInput').value=
+            					          '$$e^{i\\theta}=\\cos\\theta+i\\sin\\theta$$';
+            					          document.getElementById('realtimePreview').innerText=
+            					          document.getElementById('realtimePreviewInput').value;
+            							  reMathJax('realtimePreview')">
+            <div id="realtimePreview" style="border:#888 1px solid">
+                $$e^{i\theta}=\cos\theta+i\sin\theta$$
+            </div>
+            <hr />
+            <form class="zForm" onkeyup="solve()">
+                <fieldset>
+                    <legend>連立方程式solver</legend>
+                    <input type="text" id="a" size="3" tabindex="1">$x+$<input type="text" id="b" size="3"
+                        tabindex="2">$y=$<input type="text" id="p" size="3" tabindex="3"><br />
+                    <input type="text" id="c" size="3" tabindex="4">$x+$<input type="text" id="d" size="3"
+                        tabindex="5">$y=$<input type="text" id="q" size="3" tabindex="6"><br />
+                    <div id="ans"></div>
+                </fieldset>
+                <script>
+                    function solve() {
+                        let sol = simultaneousEQsolver(
+                            Number(document.getElementById("a").value),
+                            Number(document.getElementById("b").value),
+                            Number(document.getElementById("c").value),
+                            Number(document.getElementById("d").value),
+                            Number(document.getElementById("p").value),
+                            Number(document.getElementById("q").value),
+                            "ans");
+                        if (sol[1][0] == null) {
+                            document.getElementById("ans").innerText = "$$" + sol[0] + "\\\\\\text{解なし}$$";
+                        } else {
+                            document.getElementById("ans").innerText = "$$" + sol[0] +
+                                "\\quad\\Longrightarrow\\quad " +
+                                "x=" + estimateFrac(sol[1][0]) + ",y=" + estimateFrac(sol[1][1]) + "$$";
+                        }
+                        reMathJax('ans');
+                    }
+                </script>
+            </form>
+            <form class="zForm" onkeyup="bunkai()">
+                <fieldset>
+                    <legend>素因数分解</legend>
+                    <input type="text" id="soinsu" size="3">
+                    <div id="soinsu_ans"></div>
+                </fieldset>
+                <script>
+                    function bunkai() {
+                        let formula = primeFactorization(Number(document.getElementById("soinsu").value), true);
+                        if (formula == null) {
+                            document.getElementById("soinsu_ans").innerText = "2以上の整数を入力しましょう";
+                            return;
+                        };
+                        document.getElementById("soinsu_ans").innerText = "$$" +
+                            Number(document.getElementById("soinsu").value) + "=" +
+                            formula + "$$";
+                        reMathJax('soinsu_ans');
+                    }
+                </script>
+            </form>
+            <form class="zForm" onkeyup="tagainiso()">
+                <fieldset>
+                    <legend>互いに素：約分</legend>
+                    <input type="text" id="tagainiso0" size="3">と<input type="text" id="tagainiso1" size="3">
+                    <div id="tagainiso_ans"></div>
+                </fieldset>
+                <script>
+                    function tagainiso() {
+                        let a = Number(document.getElementById("tagainiso0").value);
+                        let b = Number(document.getElementById("tagainiso1").value);
+                        if(!Number.isInteger(a) || !Number.isInteger(b)){
+                            document.getElementById("tagainiso_ans").innerText ="整数を入力してください";
+                            return;
+                        }
+                        let c = getCommonFactor(a, b);
+                        let tx = a + "と" + b + "は";
+                        if (a * b == 0) {
+                            if (a == 1 || a == -1 || b == 1 || b == -1) {
+                                tx += "互いに素である。";
+                            } else {
+                                tx += "互いに素でない。（0と互いに素になるのは、$\\pm 1$のみ）";
+                            }
+                        } else if (c == 1) {
+                            tx += "互いに素である。";
+                        } else {
+                            tx += "互いに素でない。" +
+                                "（共通因数＝" + c + "）";
+                        }
+                        if (b == 0) {
+                            document.getElementById("tagainiso_ans").innerText = tx + "\n" +
+                                "分母が0のため、分数は表示できません。";
+                        } else {
+                            document.getElementById("tagainiso_ans").innerText = tx + "\n" +
+                                "$$" +
+                                "\\dfrac{" + a + "}{" + b + "}" +
+                                (c == 1 ? "" : "=\\dfrac{" + a / c + "}{" + b / c + "}") +
+                                (b/c == 1 ?"="+ a/c : "=" + a / b) +
+                                "$$";
+                        }
+
+                        reMathJax('tagainiso_ans');
+                    }
+                </script>
+            </form>
+            <input type="button" value="MathJax（ID未指定）：全体再描画テスト" onclick="reMathJax()">
+        </section>
+        <section>
+            <h2 class="zHeadList zHead">chart.js</h2>
+            <canvas id="chart1" class="chartjs"></canvas>
+            <script>
+                new Chart(document.getElementById("chart1"), {
+                    type: 'pie',
+                    data: {
+                        labels: ["A型", "O型", "B型", "AB型"],
+                        datasets: [{
+                            backgroundColor: [
+                                "#BB5179",
+                                "#FAFF67",
+                                "#58A27C",
+                                "#3C00FF"
+                            ],
+                            data: [38, 31, 21, 10]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: '血液型 割合'
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            </script>
+        </section>
+        <section>
+            <h2 class="zHeadList zHead">rssread</h2>
+            <div class="rssread" data-src="https://jsh.kgef.ac.jp/feed/" data-count="3"></div>
+        </section>
+
+        <section>
+            <h2 class="zHeadList zHead">Debug</h2>
+            <textarea id="autoDebugMsg" style="width:100%;height:15em;color:#000;"></textarea>
+            <input type="button"
+                onclick="document.getElementById('autoDebugMsg').value = getSpec() + '\n' + debugMsgText;"
+                value="get debug data" \>
+            <hr />
+            <span class="zDate zDateUndispTo_20200530">zDateUndispTo_20200530</span>
+            <span class="zDate zDateUndispFrom_20200530">zDateUndispFrom_20200530</span>
+            <span class="zDate zDateUndispTo_20200630">zDateUndispTo_20200630</span>
+            <span class="zDate zDateUndispFrom_202006530">zDateUndispFrom_20200630</span>
+        </section>
+
+
+    </div><!-- /container -->
+</body>
+
+</html>

@@ -1,5 +1,9 @@
-class zDebug {
-    ua = window.navigator.userAgent.toLowerCase();
+let zDebug = new (class zDebug {
+    ua;
+
+    constructor() {
+        this.ua = window.navigator.userAgent.toLowerCase();
+    }
 
     getOS() {
         let osList = [
@@ -42,7 +46,6 @@ class zDebug {
             ["trident", "Trident"],
             ["gecko", "Gecko"]
         ];
-
         for (let i = 0; i < egList.length; i++) {
             if (this.ua.indexOf(egList[i][0]) > -1) {
                 return egList[i][1];
@@ -57,14 +60,16 @@ class zDebug {
         /*  User Agent */
         tx += "User Agent：\n　" + window.navigator.userAgent + "\n";
         /*  OS判定 */
-        tx += "OS：\n　" + getOS() + "\n";
+        tx += "OS：\n　" + this.getOS() + "\n";
         /*  ブラウザ判定 */
-        tx += "Browser：\n　" + getBrowser() + "\n";
+        tx += "Browser：\n　" + this.getBrowser() + "\n";
         /*  エンジン */
-        tx += "Rendering Engine：\n　" + getEngine() + "\n";
+        tx += "Rendering Engine：\n　" + this.getEngine() + "\n";
+        
         /*  画面サイズ関係
         https://web-designer.cman.jp/javascript_ref/window/size/
         */
+        
         tx += "Device Screen XY：\n　" +
             window.parent.screen.width + " x " +
             window.parent.screen.height + "\n";
@@ -74,4 +79,5 @@ class zDebug {
 
         return tx;
     }
-}
+
+})();

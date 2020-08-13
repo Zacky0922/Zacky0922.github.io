@@ -43,6 +43,7 @@ class zLinkList extends zList {
         if (description != null) {
             li.appendChild(document.createElement(br));
             li.appendChild(document.createTextNode(description));
+            //テキストではなく、HTML要素として追加したいかも？
         }
         super.addLi(li);
     }
