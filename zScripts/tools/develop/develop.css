@@ -1,0 +1,11 @@
+div#debugArea{
+    display:inline-block;
+    position: fixed;
+    left:5px;
+    bottom:5px;
+    background:#888;
+    font-size:small;
+    color:#000;
+    z-index:1000;
+
+}

@@ -1,0 +1,7 @@
+section#footer{
+    background: #114;
+    color:#fff;
+    text-align: center;
+    margin:var(--z-spacing) 0 0;
+    padding:var(--z-spacing) 0;
+}

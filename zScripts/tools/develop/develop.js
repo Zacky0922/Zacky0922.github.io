@@ -65,19 +65,40 @@ let zDebug = new (class zDebug {
         tx += "Browser：\n　" + this.getBrowser() + "\n";
         /*  エンジン */
         tx += "Rendering Engine：\n　" + this.getEngine() + "\n";
-        
+
         /*  画面サイズ関係
         https://web-designer.cman.jp/javascript_ref/window/size/
         */
-        
+
         tx += "Device Screen XY：\n　" +
             window.parent.screen.width + " x " +
             window.parent.screen.height + "\n";
         tx += "Displayable Area XY：\n　" +
             window.innerWidth + " x " +
             window.innerHeight + "\n";
+        tx += "Divice Pixel Raito：\n　" +
+            window.devicePixelRatio + "\n";
 
         return tx;
+    }
+
+    //  オンライン状況取得
+    //  online  = true　／　offline = false
+    /*  原則「http」があればオンライン
+        例外）URLクエリに適当に「?debug」とかつければ、常にオフラインモード
+        例外）ローカルサーバー（192.168. or raspberrypi）はオフラインモード
+    */
+    getOnline() {
+        if (location.href.indexOf("debug") > -1) {
+            return false;
+        } else if (location.href.indexOf("http://192.168.") > -1) {
+            return false;
+        } else if (location.href.indexOf("http://raspberrypi/") > -1) {
+            return false;
+        } else if (location.href.indexOf("http") > -1) {
+            return true;
+        }
+        return false;
     }
 
 })();

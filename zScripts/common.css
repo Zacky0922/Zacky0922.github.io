@@ -1,12 +1,16 @@
 @import "css/table.css";
+@import "css/jQueryUI/accordion.css";
 @import "ex/MaterialIcons/googleicon.css";
 @import "tools/menu/burger.css";
 @import "tools/button/button.css";
 @import "tools/tab/tab.css";
-
+@import "tools/develop/develop.css";
 
 /*  Font-Awesome */
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css";
+
+/* animate.css */
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
 
 /* abcjs */
 @import "ex/abcjs/abcjs-midi.css";  /* Font Awesome依存？ */
@@ -15,9 +19,22 @@
 /* prittyprint */
 @import "ex/prittyprint/prettyprint.css";
 
+*{
+        vertical-align: middle;
+}
+
+html *{
+    position: relative;
+}
+html,body{
+    padding:0;
+    margin:0;
+}
+
 .zXscrollable {
     text-align: center;
     overflow-x: auto;
+    max-width:100%;
 }
 
 .zUndisp {

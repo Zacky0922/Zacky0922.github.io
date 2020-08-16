@@ -1,29 +1,39 @@
 class zDate {
     #now = new Date();
     #target;
-    constructor(y = null, m = null, d = null) {
-        if (y == null) {
-            target = new Date();
+    constructor(date = null) {
+        if (date == null) {
+            this.#target = new Date();
         } else {
-            target = new Date(y, m - 1, d)
+            this.#target = date;
         }
     }
 
     static duration(to, from = new Date()) {
-        
+
         //toに時分秒があるかないかで、やや処理が変わる
 
         let d = new Array();
-        d[7] = to.getTime() - from.getTime();   //msec
-        d[6] = d[7] / 1000; //sec
-        d[5] = d[6] / 60;   //min
-        d[4] = d[5] / 60;   //h
-        d[3] = d[4] / 24;   //day
-        d[2] = d[3] / 7;    //week
-        d[0] = d[1] = 0;    //年・月：未対応
+        d["msec"] = to.getTime() - from.getTime();   //msec
+        d["sec"] = d["msec"] / 1000; //sec
+        d["min"] = d["sec"] / 60;   //min
+        d["hour"] = d["min"] / 60;   //hour
+        d["day"] = d["hour"] / 24;   //day
+        d["week"] = d["day"] / 7;    //week
+        
+        d["year"] = d["month"] = 0;    //年・月：未対応
+
+        // 小数点以下切り捨て
+        for (let i in d) {
+            d[i] = Math.floor(d[i]);
+        }
 
         //返り値はすべて「from～to」：msec >= 1000 or 負値の可能性有
         return d;
+    }
+
+    static countdownDays(to,from = new Date(),days = 1) {
+        
     }
 
     //8桁の年月日文字列をDateオブジェクトに変換する

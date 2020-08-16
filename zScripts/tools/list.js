@@ -12,7 +12,7 @@ class zList{
     setClass(cl) {
         this.#ul.classList.add(cl);
     }
-    // 内容追加
+    // 内容追加（liの中身テキストのみ定義）
     add(tx) {
         let li = document.createElement("li");
         li.appendChild(
@@ -20,6 +20,7 @@ class zList{
         );
         this.#ul.appendChild(li);
     }
+    //内容追加（li丸ごと定義）
     addLi(li) {
         this.#ul.appendChild(li);
     }
@@ -31,6 +32,9 @@ class zList{
 
 class zLinkList extends zList {
 
+    constructor() {
+        super();    //子クラスでは最初にやっとく必要がある（らしい）
+    }
     addLink(tx, href =null, target = "_self", description = null) {
         let li = document.createElement("li");
         let a = document.createElement("a");
@@ -46,6 +50,15 @@ class zLinkList extends zList {
             //テキストではなく、HTML要素として追加したいかも？
         }
         super.addLi(li);
+    }
+
+    //指定クラスをもつ要素を見出しとして一括登録
+    getClassList(cl) {
+        let clList = document.getElementsByClassName(cl);
+        for (let i = 0; i < clList.length; i++) {
+            clList[i].id = clList[i].innerText + "_id";
+            this.addLink(clList[i].innerText,"#"+clList[i].id);
+        }
     }
 }
 

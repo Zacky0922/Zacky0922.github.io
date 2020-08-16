@@ -1,0 +1,17 @@
+section#header{
+    background: url("../pict/header.png");
+    background-size:    cover;
+    z-index:    100;
+    padding:    10px;
+    text-align: left;
+}
+
+section#header div.headTitle{
+    color:  #fff;
+    font-size:  2em;
+    text-shadow:    2px 2px 2px rgba(0, 0, 255, 0.8);
+}
+section#header  div.headTitle #KGfesPeriod{
+    font-size:smaller;
+}
+

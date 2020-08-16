@@ -2,10 +2,12 @@
 
     outline: 1px solid red;
     padding: 5px;
-    display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    min-height: 60px;
+    min-height: 3em;
     min-width:  150px;
+}
+.zBtn > *{
+    text-decoration: none;
 }

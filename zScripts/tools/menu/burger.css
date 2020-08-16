@@ -1,21 +1,42 @@
-#zBurgerWrap > input{
-    display: none;
+/*
+    div#zBurgerWrap
+        label
+        input#zBurgerChkbx
+        div#zBurgerUlWrap
+            ul
+*/
+
+#zBurgerWrap{
+    z-index:    999;
+}
+#zBurgerWrap > input#zBurgerChkbx{
+    display: none !important;
 }
 
-/* PC mode */
+/* 大画面表示の場合 */
 @media screen and (min-width:600px){
     #zBurgerWrap > label{
         display:none;
     }
 }
-/* スマホ mode */
+/* 小画面表示の場合 */
 @media screen and (max-width:599px){
-    /* スマホのときのみ、非表示モード搭載 */
-    #zBurgerWrap > input + div#zBurgerMenuWrap{
+    #zBurgerWrap > label{
+        display:block;
+    }
+    #zBurgerWrap > div#zBurgerUlWrap{
         display: none;
+    }
+    #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap{
+        display:block;
     }
 }
 
-#zBurgerWrap > input:checked + div#zBurgerMenuWrap{
-    display:block;
+/* 個別サイト用テンプレ */
+/* 小画面表示の場合 */
+@media screen and (max-width:599px){
+    /* メニューの表示設定 */
+    #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap{
+    }
 }
+

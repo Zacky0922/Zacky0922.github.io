@@ -18,16 +18,24 @@ let zParam = new (class urlQuery {
             let paramValue = decodeURIComponent(element[1]);
             this.#param[paramName] = paramValue;
         }
-        //受取変数の個別処理
+
+        //受取変数の個別処理　－　Debugはここでルート指定
         if (this.#param["lv"] == undefined) {
-            this.#param["lv"] = "https://zacky0922.github.io/";
-            this.#param["root"] = "https://zacky0922.github.io/";
+            this.#param["lv"] = this.#param["root"] = "http://192.168.1.171/test/";
+            //"https://zacky0922.github.io/";
         } else {
             this.#param["root"] = "https://zacky0922.github.io/";
             this.init_lv();
         }
-    }
 
+        /*
+        if (typeof manualQuery !== undefined) {
+            for (let i in manualQuery) {
+                this.#param[i] = manualQuery[i];
+            }
+        }
+        */
+    }
 
     getAll() {
         return this.#param;
@@ -36,7 +44,7 @@ let zParam = new (class urlQuery {
         return this.#param[paramName];
     }
     set(paramName, param) {
-        
+
     }
 
     //受取変数の個別処理
@@ -52,6 +60,8 @@ let zParam = new (class urlQuery {
         this.#param["lv"] = myLv;
     }
 })(document.getElementsByTagName('script'));
+
+
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     デバッグメッセージ処理
@@ -101,12 +111,18 @@ let zLog = new (class debugMsg {
 
     //ファイルのロードから本メソッド呼出までの時間を取得
     getLoadingTime() {
-        this.add("Loading Time = " + (((new Date()).getTime() - this.#loadTime.getTime()) / 1000) + "sec");
+        return (new Date()).getTime() - this.#loadTime.getTime();
     }
 
 })();
 
-
+/*  for debug
+<div>
+<textarea id="debugMsgTxarea" style="width:100%;height:15em;color:#000;"></textarea>
+<input type="button" onclick="document.getElementById('debugMsgTxarea').value = zDebug.getSpec()"
+value="get debug data" \>
+</div>
+*/
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     システムパッケージ
@@ -114,14 +130,8 @@ let zLog = new (class debugMsg {
 
 class zSystem {
 
-    //  オンライン状況取得
-    //  online  = true　／　offline = false
-    static getOnline() {
-        return (location.href.indexOf("http") > -1);
-    }
-
     // icon取得
-    static getGicon(icon,obj=false) {
+    static getGicon(icon, obj = false) {
         let ele = document.createElement("span");
         ele.classList.add("material-icons");
         ele.innerText = icon;
@@ -142,10 +152,10 @@ let loadJScounter_loaded = 0;
 let zPreload = new (class zPreloader {
     #dir;
     #css = [
-
+        zParam.get("root") + "zScripts/master.css"
     ];
     #js = [
-        // jQuery (UI)
+        // jQuery + UI
         "https://code.jquery.com/jquery-3.4.1.min.js",
         "https://code.jquery.com/ui/1.9.2/jquery-ui.js",
 
@@ -154,12 +164,14 @@ let zPreload = new (class zPreloader {
         //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
         "ex/math/MathJaxMacro.js",
         "ex/math/zMath.js",
-    
+
         // abc.js
         "ex/abcjs/abcjs_basic_5.9.1-min.js",
         "ex/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
         "ex/abcjs/abcjs_zInit.js",
-        
+
+        // google icon
+        "ex/MaterialIcons/googleicon.js",
         // prittyprint
         "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
         "ex/prittyprint/prittyprint.js",
@@ -177,18 +189,28 @@ let zPreload = new (class zPreloader {
         "tools/menu/burger.js",     // list.js依存
         "tools/tab/tab.js",          // list.js,jQueryUI依存
         "tools/date.js",
-        "tools/develop.js",
+        "tools/develop/develop.js",
 
         /*
 
         */
     ];
 
-
-    constructor(root,mode = null) {
+    constructor(root, mode = null) {
         //  初期フォルダ設定
         this.#dir = root;
+
         //モード処理
+        switch (zParam.get("mode")) {
+            case "kgfes":
+                let kg = "http://192.168.1.171/test/KGfes/2020jsh-test2/"
+                this.#js.push(kg + "script/kgfes.js",
+                    kg + "script/header.js",
+                    kg + "script/footer.js"
+                );
+                this.#css = [kg + "script/kgfes.css"];
+                break;
+        }
 
         //  読込：クラス定義時に読込まで行う
         this.cssLoad();
@@ -198,7 +220,8 @@ let zPreload = new (class zPreloader {
 
     //読込メソッド
     cssLoad() {
-        this.cssLoad_(this.#dir + "zScripts/master.css");
+        this.cssLoad_(this.#css);
+
     }
     cssLoad_(src) {
         document.write('<link rel="stylesheet" type="text/css" href="' + src + '" />');
@@ -211,18 +234,17 @@ let zPreload = new (class zPreloader {
         document.head.appendChild(myCSS);
     }
     jsload() {
-        zLog.add("JS loading：",1);
+        zLog.add("JS loading：", 1);
+        zLog.add("> 指定URL\n> 読込URL（httpが無い場合、自動でroot dirを付加する）");
         for (let i = 0; i < this.#js.length; i++) {
-            if (this.#js[i].indexOf("http") > -1) {
-                //外部js
-                this.jsLoad_(this.#js[i]);
-            } else {
-                //手持ちjs
-                this.jsLoad_(this.#dir + "zScripts/" + this.#js[i]);  //相対指定
-            }
-            zLog.add(this.#js[i]);
+            let url = (this.#js[i].indexOf("http") > -1 ?
+                this.#js[i] :
+                this.#dir + "zScripts/" + this.#js[i]
+            );
+            this.jsLoad_(url);
+            zLog.add(this.#js[i] + "\n" + url);
         }
-        zLog.add("",-1);
+        zLog.add("", -1);
     }
 
     jsLoad_(src) {
@@ -240,31 +262,65 @@ let zPreload = new (class zPreloader {
     checkLoaded() {
 
     }
-})("../",zParam.get("mode"));
+})(zParam.get("root"), zParam.get("mode"));
 
 
 window.addEventListener('load', (event) => {
 
     //読込確認
-    zLog.getLoadingTime();
-    zLog.add("Loading Log on master.js", 1);
 
+    zLog.add("Loading Log on master.js", 1);
+    zLog.add("Loading Time = " + (zLog.getLoadingTime() / 1000) + "sec [load - onload event]");
     // location
-    zLog.add("location : " + location.href);
-    
+    zLog.add("location = " + location.href);
+
     // 引渡し変数確認
     zLog.add("URL query 変数一覧", 1);
     for (i in zParam.getAll()) {
-        zLog.add(i +" - " + zParam.get(i));
+        zLog.add(i + " - " + zParam.get(i));
     }
+    zLog.add("", -1);
+
+    zLog.add("Browsing Machine Spec：", 1);
+    zLog.add(zDebug.getSpec());
     zLog.add("", -1);
 
     zLog.add("", -1);   //Loading Logここまで
 
 
+
+
     // 各種init処理
     // abcjs：soundFontDirを指定（ファイルではなくフォルダ）
-    absjs_init(zParam.get("lv") + "scripts/extTools/abcjs/");
+    absjs_init(zParam.get("lv") + "zScripts/ex/abcjs/");
+
+
+
+
+    // モード別処理
+    switch (zParam.get("mode")) {
+        case "kgfes":
+            document.title += " ☆五峯祭2020☆"
+            break;
+    }
+
+    // オフライン時、デバッグモード起動
+    if (!zDebug.getOnline()) {
+        let debugArea = document.createElement("div");
+        debugArea.id = "debugArea";
+        document.body.appendChild(debugArea);
+        let debugMode = setInterval(function () {
+            debugArea.innerText = "◆ Debug Mode ◆\n" +
+                "Device Screen XY：\n　" +
+                window.parent.screen.width + " x " +
+                window.parent.screen.height + "\n" +
+                "Displayable Area XY：\n　" +
+                window.innerWidth + " x " +
+                window.innerHeight + "\n" +
+                "Divice Pixel Raito：\n　" +
+                window.devicePixelRatio + "\n";
+        },66);
+    }
 });
 
 

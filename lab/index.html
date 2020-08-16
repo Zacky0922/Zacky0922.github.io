@@ -30,26 +30,28 @@
     <h1>Laboratory</h1>
 
     <section id="zContainer">
-
         <section>
             <h2 class="zHeadList">Menu</h2>
             <nav id="zMenu"></nav>
             <script>
-                (function () {
-                    let burgerUl = new zLinkList();
-                    with (burgerUl) {
-                        addLink(zSystem.getGicon("home", false) + "HOME");
-                        addLink("い");
-                    }
-                    let burger = new burgerMenu();
-                    let icon = document.createElement("span");
-                    icon.innerHTML = "Z";
-                    with (burger) {
-                        setIcon(icon);
-                        set("zMenu", burgerUl.get());
-                    }
-                })();
+                window.addEventListener('load', (event) => {
+                    //メニュー
+                    let label_ = document.createElement("span");
+                    label_.innerHTML = "Z";
+                    let burger = new burgerMenu(label_);
+                    burger.getClassList("zHeadList");
+
+                    document.getElementById("zMenu").appendChild(burger.get());
+                })
+
+
+
+
+
+
+
             </script>
+
         </section>
 
         <section>
@@ -648,7 +650,7 @@
                             white-space: nowrap;
                         }
                     </style>
-                    <div class="xScroll centering">
+                    <div class="zXscrollable">
                         <table class="入試tbl">
                             <thead>
                                 <tr>
@@ -976,38 +978,66 @@
             </script>
         </section>
 
+
         <section>
-            <h2 class="zHeadList">JS</h2>
+            <h2 class="zHeadList">実験用</h2>
+            <div id="experience">
+                <h3>ボタン機能</h3>
+                <div>
+                    <div stlye="display:grid;align-items: center;">
+                        <a href="" class="zBtn">あ</a>
+                        <a href="" class="zBtn">い</a>
+                        <a href="" class="zBtn">あ<br />あ</a>
+                        <a href="" class="zBtn">あ<br />あ</a>
+                    </div>
+
+
+                </div>
+            </div>
             <script>
-                document.write(new Date());
+                $("#experience").accordion({
+                    heightStyle: "content"
+                });
             </script>
         </section>
 
         <section>
-            <h2 class="zHeadList">CSS</h2>
-            <div style="text-align: center;">
-                <span>あ</span>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;">
-                <div class="zBtn">あ</div>
-                <a class="zBtn">あ</a>
-                <a class="zBtn">あ<br>あ</a>
-            </div>
-            <a class="zBtn">あ<br>あ</a>
-            <a class="zBtn">あ</a>
-            <style>
+            <h2 class="zHeadList">基本機能</h2>
+            <div id="basicFunc">
+                <h2>JS</h2>
+                <div>
+                    <script>
+                        document.write(new Date());
+                    </script>
+                </div>
+                <h2>CSS</h2>
+                <div>
+                    <div style="text-align: center;">
+                        <span>あ</span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+                        <div class="zBtn">あ</div>
+                        <a class="zBtn">あ</a>
+                        <a class="zBtn">あ<br>あ</a>
+                    </div>
+                    <a class="zBtn">あ<br>あ</a>
+                    <a class="zBtn">あ</a>
+                </div>
+                <h2>jQuery</h2>
+                <div id="jQueryCheck">jQuery is NOT ready.</div>
+                <script>
+                    $(function () {
+                        // if document is ready
+                        $("#jQueryCheck").empty();
+                        $("#jQueryCheck").append("jQuery is ready.(OK)");
+                    });
+                </script>
 
-            </style>
-        </section>
+            </div>
 
-        <section>
-            <h2 class="zHeadList">jQuery</h2>
-            <div id="jQueryCheck">jQuery is NOT ready.</div>
             <script>
-                $(function () {
-                    // if document is ready
-                    $("#jQueryCheck").empty();
-                    $("#jQueryCheck").append("jQuery is ready.(OK)");
+                $("#basicFunc").accordion({
+                    heightStyle: "content"
                 });
             </script>
         </section>
@@ -1278,7 +1308,7 @@
         </section>
 
         <section>
-            <h2 class="zHeadList">manager for local</h2>
+            <h2 class="zHeadList">Local Manager</h2>
             <script type="text/javascript">
                 function setIP(myIP) {
                     document.getElementById("myIP").value = myIP;
@@ -1319,6 +1349,10 @@
                 <tr>
                     <td>GitHub labテスト用</td>
                     <td><a onclick="getLink(this.innerText)">/test/lab/</a></td>
+                </tr>
+                <tr>
+                    <td>GitHub KGfesテスト</td>
+                    <td><a onclick="getLink(this.innerText)">/test/KGfes/2020jsh-test2/</a></td>
                 </tr>
                 <tr>
                     <td>test.php</td>

@@ -1,0 +1,65 @@
+/* common.css読込 */
+@import url("http://192.168.1.171/test/zScripts/common.css");
+/* Google Font */
+@import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&display=swap";
+
+@import "./countdown.css";
+@import "./header.css";
+@import "./footer.css";
+@import "./menu.css";
+
+
+/*  z-index
+    debugArea 1000
+    menu    999
+    header  100
+    本文    default
+*/
+
+/* debug */
+*{
+    /*
+    outline: #f88 solid ;
+    */
+    vertical-align: middle;
+}
+
+:root{
+    --z-spacing:    10px;
+    --z-padding:    5px;
+    --z-border-color:   #339;
+}
+body{
+    font-family: 'Kosugi Maru', sans-serif;
+    line-height: 1.25;
+    width:100%;
+}
+#gridWrapper > *{
+    margin:0;
+    padding:0;
+}
+
+
+
+/* スクロールバー設定 */
+
+body *::-webkit-scrollbar{
+	width:	10px;
+	height:	10px
+}
+
+body *::-webkit-scrollbar-track{
+	background:		#eee;
+	border-radius:	10px;
+	box-shadow: inset 0 0 3px #666; 
+}
+body *::-webkit-scrollbar-thumb{
+	background: #bbb;
+	border:			1px solid #333;
+	border-radius: 10px;
+	box-shadow: none;
+}
+
+.noScrollbar::-webkit-scrollbar{
+	display:	none;
+}

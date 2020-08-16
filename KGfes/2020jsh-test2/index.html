@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics by KG-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-116915593-1');
+	</script>
+
+	<!-- 画面設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- JS/CSS master -->
+	<script>
+		/*
+		var manualQuery = new Array();
+		manualQuery["mode"] = "kgfes";
+		*/
+	</script>
+	<script type="text/javascript" src="http://192.168.1.171/test/zScripts/master.js?mode=kgfes"></script>
+	<style>
+		div#gridWrapper {
+			display: grid;
+			grid-gap: 15px;
+			grid-template-columns: minmax(max-content, 3fr) minmax(max-content, 1fr);
+			grid-template-areas:
+				"pickup	news"
+				"footer footer";
+		}
+
+		@media screen and (max-width:599px) {
+			div#gridWrapper {
+				grid-template-columns: 1fr;
+				grid-template-areas:
+					"news"
+					"pickup"
+					"footer";
+			}
+		}
+	</style>
+
+	<title>Top</title>
+</head>
+
+<body>
+	<section id="header" style="grid-area:header;">
+	</section>
+	<div id="gridWrapper">
+
+
+
+		<section style="grid-area:news">
+			<h2 class="zHeadList zHead">NEWS</h2>
+			<ul class="news">
+				<li>
+					<span>08.XX</span>
+					<span>運営</span><br />
+					<span>本番サイト公開</span>
+				</li>
+				<li>
+					<span>07.19</span>
+					<span>運営</span><br />
+					<span>ティザーサイト公開</span>
+				</li>
+			</ul>
+		</section>
+
+		<section style="grid-area:pickup">
+			<div class="zCentering">
+				<script>
+					(function () {
+						let d = zDate.duration(new Date(2020, 9 - 1, 12))["day"];
+						if (d > 0) {
+							document.write("五峯祭（2020.9.12）まで、あと" + d + "日です。");
+						} else if (d == 0) {
+							document.write("五峯祭（2020.9.12）当日です！");
+						} else {
+							document.write("五峯祭（2020.9.12）は、" + (-d) + "日前に終了しました。");
+						}
+
+					})();
+				</script>
+			</div>
+
+			<table id="KGcountdownWrap">
+				<tfoot>
+					<tr>
+						<td colspan="5">
+							<span id="KGcountdownMs"
+								style="display:inline-block;height:2px;transition:65ms linear"></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							until Saturday,12th September 2020,10:00
+						</td>
+					</tr>
+				</tfoot>
+				<tbody id="KGcountdown"></tbody>
+			</table>
+			<script>
+				//カウントダウン設定
+				//制限時間以降が未設定……
+				let w_old = 0;
+				let w_diff = 0;
+				window.addEventListener('load', (event) => {
+
+					let zCountdown_ = setInterval(function () {
+						let d = zDate.duration(new Date(2020, 9 - 1, 12, 10, 00, 00));
+						let s = "<span style='color:transparent;padding:0;margin:0'>s</span>";
+						document.getElementById("KGcountdown").innerHTML = "" +
+							"<tr>" +
+							"<th>" + d["week"] + "</th>" +
+							"<th>" + d["day"] % 7 + "</th>" +
+							"<th>" + d["hour"] % 24 + "</th>" +
+							"<th>" + d["min"] % 60 + "</th>" +
+							"<th>" + d["sec"] % 60 + "</th>" +
+							"</tr>" +
+							"<tr>" +
+							"<td>" + "week" + (d["week"] <= 1 ? s : "s") + "</td>" +
+							"<td>" + "day" + (d["day"] % 7 <= 1 ? s : "s") + "</td>" +
+							"<td>" + "hour" + (d["hour"] % 24 <= 1 ? s : "s") + "</td>" +
+							"<td>" + "minute" + (d["min"] % 60 <= 1 ? s : "s") + "</td>" +
+							"<td>" + "second" + (d["sec"] % 60 <= 1 ? s : "s") + "</td>" +
+							"</tr>";
+						let w_new = (d["sec"] % 2 == 0 ? d["msec"] % 1000 : 1000 - (d["msec"] % 1000));
+						w_diff = w_new - w_old;
+						document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
+						document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
+						document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d["msec"] % 2000) / 2000 * 360) + ",100%,50%)";
+						w_old = w_new;
+					}, 66);
+				});
+			</script>
+		</section>
+
+	</div><!-- /container -->
+</body>
+
+</html>

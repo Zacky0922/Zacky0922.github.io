@@ -1,45 +1,39 @@
-
-class burgerMenu {
+class burgerMenu extends zLinkList{
     /*
-    #wrap       parent              // 引数でobj引渡し
-    #divWrap        div#zBurgerWrap
-    #iconWrap           label
-    setIcon                 *
-    #input              input[checkbox]#zBurgerChkbx
-    #ulWrap             div#zBurgerMenuWrap
-    setUl                   ul.zBurgerMenu
+    #wrap        div#zBurgerWrap
+    #label          label
+                        引数icon
+    #input          input[checkbox]#zBurgerChkbx
+    #ulWrap         div#zBurgerUlWrap
+    super.get()         ul
     */
-    #wrap;
-    #divWrap = document.createElement("div");
-    #iconWrap = document.createElement("label");
+    #wrap = document.createElement("div");
+    #label = document.createElement("label");
     #input = document.createElement("input");
     #ulWrap = document.createElement("div");
 
-    constructor(wrap) {
-        this.#wrap = wrap;
-        this.#divWrap.id = "zBurgerWrap";
-        this.#divWrap.appendChild(this.#iconWrap);
-        this.#iconWrap.setAttribute("for", "zBurgerChkbx")
-        this.#divWrap.appendChild(this.#input);
+    constructor(icon) {
+        super();    //子クラスでは最初にやっとく必要がある（らしい）
+        this.#wrap.id = "zBurgerWrap";
+        this.#label.setAttribute("for", "zBurgerChkbx");
+        this.#label.appendChild(icon);
         this.#input.type = "checkbox";
         this.#input.id = "zBurgerChkbx";
         this.#input.checked = false;
-        this.#divWrap.appendChild(this.#ulWrap);
-        this.#ulWrap.id = "zBurgerMenuWrap";
+        this.#ulWrap.id = "zBurgerUlWrap";
+        
+        this.#wrap.appendChild(this.#label);
+        this.#wrap.appendChild(this.#input);
+        this.#ulWrap.appendChild(super.get());
+        this.#wrap.appendChild(this.#ulWrap);
     };
     setWrapId(id) {
-        this.#divWrap.id = id;
+        this.#wrap.id = id;
     };
     setWrapClass(cl) {
-        this.#divWrap.classList.add(cl);
+        this.#wrap.classList.add(cl);
     };
-    setIcon(icon) {
-        //オブジェクトを代入
-        this.#iconWrap.appendChild(icon);
-    };
-    set(id, ul) {
-        this.#ulWrap.appendChild(ul);
-        this.#wrap = document.getElementById(id);
-        this.#wrap.appendChild(this.#divWrap);
-    };
+    get() {
+        return this.#wrap;
+    }
 };
