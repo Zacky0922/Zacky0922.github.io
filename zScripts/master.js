@@ -21,7 +21,7 @@ let zParam = new (class urlQuery {
 
         //受取変数の個別処理　－　Debugはここでルート指定
         if (this.#param["lv"] == undefined) {
-            this.#param["lv"] = this.#param["root"] = "http://192.168.1.171/test/";
+            this.#param["lv"] = this.#param["root"] = "https://zacky0922.github.io/";
             //"https://zacky0922.github.io/";
         } else {
             this.#param["root"] = "https://zacky0922.github.io/";
@@ -203,7 +203,7 @@ let zPreload = new (class zPreloader {
         //モード処理
         switch (zParam.get("mode")) {
             case "kgfes":
-                let kg = "http://192.168.1.171/test/KGfes/2020jsh-test2/"
+                let kg = "https://zacky0922.github.io/KGfes/2020jsh-test2/"
                 this.#js.push(kg + "script/kgfes.js",
                     kg + "script/header.js",
                     kg + "script/footer.js"
