@@ -56,12 +56,12 @@ window.addEventListener('load', (event) => {
 
 
 class zAudio{
-    #audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    #loader;
-    #url;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    loader;
+    url;
     constructor(url) {
         //音声ファイルロード
-        this.#url = url;
+        this.url = url;
 
     }
 

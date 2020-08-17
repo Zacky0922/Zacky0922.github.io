@@ -15,6 +15,12 @@ div#zBurgerWrap > div#zBurgerUlWrap > ul > li{
     text-align:center;
     white-space: nowrap;
 }
+#zBurgerWrap > div#zBurgerUlWrap > ul > li > a{
+    display:block;
+}
+#zBurgerWrap > div#zBurgerUlWrap > ul > li *{
+    text-decoration: none;
+}
 div#zBurgerWrap > div#zBurgerUlWrap > ul > li:hover{
     background:rgba(255,192,192,0.8);
 }
@@ -30,6 +36,14 @@ div#zBurgerWrap > div#zBurgerUlWrap > ul > li:hover{
             ul
 */
 
+div#zBurgerWrap{
+    --kg-label-size:    40px;
+    --kg-menu-marginTop: calc(var(--kg-label-size) + 
+                            2 *var(--z-spacing)+
+                            2 *var(--z-padding)
+                        );
+}
+
 div#zBurgerWrap > label{
     position:    fixed;
     right:  0;
@@ -42,8 +56,8 @@ div#zBurgerWrap > label{
     animation: kgiconRotate 3s linear infinite;
 }
 div#zBurgerWrap > label img{
-    width:40px;
-    height:40px;
+    width:var(--kg-label-size);
+    height:var(--kg-label-size);
 }
 @keyframes kgiconRotate{
     0%  {transform: rotate(0deg);}
@@ -55,15 +69,14 @@ div#zBurgerWrap > label img{
 @media screen and (max-width:599px){
 
     /* メニューの表示設定 */
-    #zBurgerWrap{
-    }
     #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap{
         position: fixed;
-        top: 50%;
+        top: var(--kg-menu-marginTop);
         left: 50%;
         margin-right: -50%;
-        transform: translate(-50%, -50%);
-        max-height: 90vh;
+        transform: translateX(-50%);
+        height: calc(90vh - var(--kg-menu-marginTop));
+        max-height: calc(90vh - var(--kg-menu-marginTop)) !important;
         overflow:auto;
     }
     #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap > ul{
@@ -76,6 +89,7 @@ div#zBurgerWrap > label img{
         padding:    var(--z-spacing) calc(2 * var(--z-spacing));
         text-align:left;
     }
+
 }
 
 

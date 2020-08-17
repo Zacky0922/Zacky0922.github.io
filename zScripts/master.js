@@ -4,44 +4,52 @@
 
 //HTML階層指定：読込時のscriptタグを急いで取得
 let zParam = new (class urlQuery {
-    #param = new Array();
-    #src;
+    param = new Array();
+    src;
     constructor(scripts) {
-        //let scripts = document.getElementsByTagName('script');
-        this.#src = scripts[scripts.length - 1].src;
-        let query = this.#src.substring(this.#src.indexOf('?') + 1);
-        let parameters = query.split('&');
-        // URLクエリを分解して取得する
-        for (let i = 0; i < parameters.length; i++) {
-            let element = parameters[i].split('=');
-            let paramName = decodeURIComponent(element[0]);
-            let paramValue = decodeURIComponent(element[1]);
-            this.#param[paramName] = paramValue;
-        }
-
-        //受取変数の個別処理　－　Debugはここでルート指定
-        if (this.#param["lv"] == undefined) {
-            this.#param["lv"] = this.#param["root"] = "https://zacky0922.github.io/";
-            //"https://zacky0922.github.io/";
-        } else {
-            this.#param["root"] = "https://zacky0922.github.io/";
-            this.init_lv();
-        }
-
-        /*
-        if (typeof manualQuery !== undefined) {
-            for (let i in manualQuery) {
-                this.#param[i] = manualQuery[i];
+        if (typeof manualQuery === "undefined") {
+            this.src = scripts[scripts.length - 1].src;
+            let query = this.src.substring(this.src.indexOf('?') + 1);
+            let parameters = query.split('&');
+            // URLクエリを分解して取得する
+            for (let i = 0; i < parameters.length; i++) {
+                let element = parameters[i].split('=');
+                let paramName = decodeURIComponent(element[0]);
+                let paramValue = decodeURIComponent(element[1]);
+                this.param[paramName] = paramValue;
             }
+        } else {
+            this.param = manualQuery;
         }
-        */
+        //受取変数の個別処理
+        //  https://zacky0922.github.io/
+        //  https://fes.kgef.ac.jp/2020jsh-test2/
+
+        // root         サイトを構成するroot dirを指定
+        // zScriptsDir  zScriptライブラリフォルダを指定
+        switch (this.param["mode"]) {
+            case 0:
+                break;
+            case "raspi":
+            case "kgfes":
+            case "kgfes_debug":
+                // local
+                this.param["root"] = "http://192.168.1.171/test/KGfes/2020jsh-test2/";
+                this.param["zScriptsDir"] = "http://192.168.1.171/test/zScripts/";
+                break;
+            default:
+                // 仮本番
+                this.param["root"] = "https://fes.kgef.ac.jp/2020jsh-test2/";
+                this.param["zScriptsDir"] = "https://fes.kgef.ac.jp/2020jsh-test2/zScripts/";
+                break;
+        }
     }
 
     getAll() {
-        return this.#param;
+        return this.param;
     }
     get(paramName) {
-        return this.#param[paramName];
+        return this.param[paramName];
     }
     set(paramName, param) {
 
@@ -49,15 +57,16 @@ let zParam = new (class urlQuery {
 
     //受取変数の個別処理
     init_lv() {
+        alert("使用しない！");
         let myLv = "";
-        if (this.#param["lv"] > 0) {
-            for (let i = 0; i < this.#param["lv"]; i++) {
+        if (this.param["lv"] > 0) {
+            for (let i = 0; i < this.param["lv"]; i++) {
                 myLv = myLv + "../";
             }
         } else {
             myLv = "./";
         }
-        this.#param["lv"] = myLv;
+        this.param["lv"] = myLv;
     }
 })(document.getElementsByTagName('script'));
 
@@ -68,11 +77,11 @@ let zParam = new (class urlQuery {
     第二引数：階層設定（最後は必ず閉じること）
     ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ */
 let zLog = new (class debugMsg {
-    #loadTime;
-    #lv = 0;
-    #msg = "◆debugMsg";
+    loadTime;
+    lv = 0;
+    msg = "◆debugMsg";
     constructor() {
-        this.#loadTime = new Date();
+        this.loadTime = new Date();
     }
 
     add(tx, group = 0) {
@@ -85,33 +94,33 @@ let zLog = new (class debugMsg {
             case 1:
                 //グループ見出し
                 console.groupCollapsed(tx);
-                this.#msg += "\n" + tx;
-                this.#lv++;
+                this.msg += "\n" + tx;
+                this.lv++;
                 break;
             case 0:
                 //通常ログ
                 console.log(tx);
-                this.#msg += "\n" + tx;
+                this.msg += "\n" + tx;
                 break;
             case -1:
                 //グループ最終要素
                 if (tx != "") {
                     console.log(tx);
-                    this.#msg += "\n" + tx;
+                    this.msg += "\n" + tx;
                 }
                 console.groupEnd();
-                this.#lv--;
+                this.lv--;
                 break;
         }
     }
 
-    get getMsg() {
-        return this.#msg;
+    getMsg() {
+        return this.msg;
     }
 
     //ファイルのロードから本メソッド呼出までの時間を取得
     getLoadingTime() {
-        return (new Date()).getTime() - this.#loadTime.getTime();
+        return (new Date()).getTime() - this.loadTime.getTime();
     }
 
 })();
@@ -150,11 +159,10 @@ class zSystem {
 let loadJScounter_loaded = 0;
 
 let zPreload = new (class zPreloader {
-    #dir;
-    #css = [
-        zParam.get("root") + "zScripts/master.css"
+    css = [
+        zParam.get("zScriptsDir") + "master.css"
     ];
-    #js = [
+    js = [
         // jQuery + UI
         "https://code.jquery.com/jquery-3.4.1.min.js",
         "https://code.jquery.com/ui/1.9.2/jquery-ui.js",
@@ -196,19 +204,18 @@ let zPreload = new (class zPreloader {
         */
     ];
 
-    constructor(root, mode = null) {
-        //  初期フォルダ設定
-        this.#dir = root;
+    constructor() {
 
         //モード処理
         switch (zParam.get("mode")) {
             case "kgfes":
-                let kg = "https://zacky0922.github.io/KGfes/2020jsh-test2/"
-                this.#js.push(kg + "script/kgfes.js",
+            case "kgfes_debug":
+                let kg = zParam.get("root");
+                this.js.push(kg + "script/kgfes.js",
                     kg + "script/header.js",
                     kg + "script/footer.js"
                 );
-                this.#css = [kg + "script/kgfes.css"];
+                this.css = [kg + "script/kgfes.css"];
                 break;
         }
 
@@ -217,10 +224,9 @@ let zPreload = new (class zPreloader {
         this.jsload();
     }
 
-
     //読込メソッド
     cssLoad() {
-        this.cssLoad_(this.#css);
+        this.cssLoad_(this.css);
 
     }
     cssLoad_(src) {
@@ -235,14 +241,14 @@ let zPreload = new (class zPreloader {
     }
     jsload() {
         zLog.add("JS loading：", 1);
-        zLog.add("> 指定URL\n> 読込URL（httpが無い場合、自動でroot dirを付加する）");
-        for (let i = 0; i < this.#js.length; i++) {
-            let url = (this.#js[i].indexOf("http") > -1 ?
-                this.#js[i] :
-                this.#dir + "zScripts/" + this.#js[i]
+        zLog.add("> 指定URL ／ 読込URL（httpが無い場合、自動でroot dirを付加する）");
+        for (let i = 0; i < this.js.length; i++) {
+            let url = (this.js[i].indexOf("http") > -1 ?
+                this.js[i] :
+                zParam.get("zScriptsDir") + this.js[i]
             );
             this.jsLoad_(url);
-            zLog.add(this.#js[i] + "\n" + url);
+            zLog.add(this.js[i] + "\n(" + url + ")");
         }
         zLog.add("", -1);
     }
@@ -259,17 +265,15 @@ let zPreload = new (class zPreloader {
     }
 
     //読込完了チェック
-    checkLoaded() {
-
-    }
-})(zParam.get("root"), zParam.get("mode"));
+    checkLoaded() { }
+})();
 
 
 window.addEventListener('load', (event) => {
 
     //読込確認
-
     zLog.add("Loading Log on master.js", 1);
+
     zLog.add("Loading Time = " + (zLog.getLoadingTime() / 1000) + "sec [load - onload event]");
     // location
     zLog.add("location = " + location.href);
@@ -281,25 +285,23 @@ window.addEventListener('load', (event) => {
     }
     zLog.add("", -1);
 
-    zLog.add("Browsing Machine Spec：", 1);
+    zLog.add("Browsing Device Spec：", 1);
     zLog.add(zDebug.getSpec());
     zLog.add("", -1);
 
     zLog.add("", -1);   //Loading Logここまで
 
-
-
-
     // 各種init処理
     // abcjs：soundFontDirを指定（ファイルではなくフォルダ）
-    absjs_init(zParam.get("lv") + "zScripts/ex/abcjs/");
-
-
-
+    absjs_init(zParam.get("zScriptsDir") + "ex/abcjs/");
 
     // モード別処理
     switch (zParam.get("mode")) {
         case "kgfes":
+        case "kgfes_debug":
+            let favicon = document.createElement("link");
+            favicon.href = zParam.get("root") + "pict/logo.png";
+            document.head.appendChild(favicon);
             document.title += " ☆五峯祭2020☆"
             break;
     }
@@ -308,9 +310,17 @@ window.addEventListener('load', (event) => {
     if (!zDebug.getOnline()) {
         let debugArea = document.createElement("div");
         debugArea.id = "debugArea";
+        let info = document.createElement("div");
+        info.id = "debugAreaInfo";
+        debugArea.appendChild(info);
+        debugArea.innerHTML += "<div id='debugAreaMsg'>" +
+            "<textarea id='debugLog'></textarea><br/>" +
+            "<input type='button' value='get log' onclick='document.getElementById(" + '"debugLog"' + ").value=zLog.getMsg()'>" +
+            "</div>";
         document.body.appendChild(debugArea);
+
         let debugMode = setInterval(function () {
-            debugArea.innerText = "◆ Debug Mode ◆\n" +
+            document.getElementById("debugAreaInfo").innerText = "◆ Debug Mode ◆\n" +
                 "Device Screen XY：\n　" +
                 window.parent.screen.width + " x " +
                 window.parent.screen.height + "\n" +
@@ -319,10 +329,10 @@ window.addEventListener('load', (event) => {
                 window.innerHeight + "\n" +
                 "Divice Pixel Raito：\n　" +
                 window.devicePixelRatio + "\n";
-        },66);
+        }, 66);
     }
-});
 
+});
 
 // □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■
 // □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■

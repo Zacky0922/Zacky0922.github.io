@@ -24,24 +24,18 @@ function setHeader() {
     img.src = "pict/logo.png";
     let burger = new burgerMenu(img);
     with (burger) {
-        addLink(getGicon("home").outerHTML + " Top");
-        addLink(getGicon("tag_faces").outerHTML + " Intro");
+        addLink(getGicon("home").outerHTML + " Top",zParam.get("root")+"index.html");
+        addLink(getGicon("tag_faces").outerHTML + " Intro", zParam.get("root") + "intro.html");
         addLink(getGicon("event_note").outerHTML + " Events");
         addLink(getGicon("collections_bookmark").outerHTML + " Gallery");
         addLink(getGicon("fact_check").outerHTML + " Contest");
         addLink(getGicon("cast").outerHTML + " Live!");
         addLink(getGicon("star_border").outerHTML + " Special");
-        
-        addLink("test");
-        addLink("test");
-        addLink("test");
-        addLink("test");
-        addLink("test");
-        addLink("test");
-        addLink("test");
-        addLink("test");
-        addLink("test");
-        addLink("test");
+    }
+    if (!zDebug.getOnline()) {
+        for (let i = 0; i < 50; i++){
+            burger.addLink("test");
+        }
     }
     head.appendChild(burger.get());
 }

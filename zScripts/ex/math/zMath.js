@@ -1,8 +1,8 @@
 let zMath = new (class zMath {
 
     //素数列
-    #primes = [2, 3, 5];
-    #primeMax = 5;  //素数チェックした最大値（最大の素数ではない）
+    primes = [2, 3, 5];
+    primeMax = 5;  //素数チェックした最大値（最大の素数ではない）
 
     constructor() {
         
@@ -20,33 +20,33 @@ let zMath = new (class zMath {
     //素数列（解析範囲2～max）
     getPrime(max = 1023) {
         //十分に求めてあれば、計算しない
-        if (this.#primeMax >= max) {
-            return this.#primes;
+        if (this.primeMax >= max) {
+            return this.primes;
         }
         //巨大数チェック
         if (max >= 65536) {
             if (!window.confirm("大きな値は、処理に時間がかかります。\n" +
                 "フリーズするかも知れませんが、本当に実行しますか？\n\n" +
                 "OK = そのままの値で実行する\n" +
-                "キャンセル = 素数判定を" + Math.max(this.#primeMax, 65536) + "以下のみで行なう（値が不正確／バグる場合があります）")) {
-                max = Math.max(this.#primeMax, 65536);
+                "キャンセル = 素数判定を" + Math.max(this.primeMax, 65536) + "以下のみで行なう（値が不正確／バグる場合があります）")) {
+                max = Math.max(this.primeMax, 65536);
             }
         }
-        this.#primeMax = max;
-        for (let a = this.#primes[this.#primes.length - 1]; a <= this.#primeMax; a +=2 ) {
+        this.primeMax = max;
+        for (let a = this.primes[this.primes.length - 1]; a <= this.primeMax; a +=2 ) {
             let flag = true;
-            for (let i = 0; i < this.#primes.length; i++) {
-                if (a % this.#primes[i] == 0) {
+            for (let i = 0; i < this.primes.length; i++) {
+                if (a % this.primes[i] == 0) {
                     flag = false;
                     break;
                 }
             }
             if (flag) {
-                this.#primes.push(a);
+                this.primes.push(a);
             }
         }
-        zLog.add("math.js - 素数更新 max prime = " + this.#primes[this.#primes.length - 1] + " (length = " + this.#primes.length + ")");
-        return this.#primes;
+        zLog.add("math.js - 素数更新 max prime = " + this.primes[this.primes.length - 1] + " (length = " + this.primes.length + ")");
+        return this.primes;
     }
 
 
@@ -58,8 +58,8 @@ let zMath = new (class zMath {
         this.getPrime(Math.abs(val));          //素数範囲確認
         let p = new Array();    //出力用素数列
         let exp = new Array();  //出力用指数列
-        for (let i = 0; i < this.#primes.length; i++) {
-            p[i] = this.#primes[i];
+        for (let i = 0; i < this.primes.length; i++) {
+            p[i] = this.primes[i];
             exp[i] = 0;
             while (true) {
                 //debugMsg(val + "%" + p[i] + "=" + val % p[i]);

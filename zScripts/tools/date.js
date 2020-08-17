@@ -1,11 +1,11 @@
 class zDate {
-    #now = new Date();
-    #target;
+    now = new Date();
+    target;
     constructor(date = null) {
         if (date == null) {
-            this.#target = new Date();
+            this.target = new Date();
         } else {
-            this.#target = date;
+            this.target = date;
         }
     }
 

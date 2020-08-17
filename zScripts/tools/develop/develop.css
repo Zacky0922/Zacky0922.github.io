@@ -7,5 +7,5 @@ div#debugArea{
     font-size:small;
     color:#000;
     z-index:1000;
-
+    height:50vh;
 }

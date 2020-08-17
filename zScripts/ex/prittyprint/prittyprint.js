@@ -2,10 +2,10 @@
 
 class zPR {
 
-    #wrapId;
-    #wrap;
+    wrapId;
+    wrap;
     area;
-    #defaultSource = [
+    defaultSource = [
         ['<!-- ここの内容をHTMLにコピペしましょう -->',
             '<html>',
             '<head>',
@@ -17,9 +17,9 @@ class zPR {
     ];
 
     constructor(id, tx = "") {
-        this.#wrapId = id;
-        this.#wrap = document.getElementById(id);
-        this.#wrap.classList.add("prettyprintQuickEditor");
+        this.wrapId = id;
+        this.wrap = document.getElementById(id);
+        this.wrap.classList.add("prettyprintQuickEditor");
 
         // 入力エリア生成
         this.area = new Array(3);
@@ -49,20 +49,20 @@ class zPR {
         }
         this.area[0].setAttribute("onkeyup",
             "this.parentElement.children[1].innerText='" +
-            this.#defaultSource[0].join("\\n") +
+            this.defaultSource[0].join("\\n") +
             "\\n'+this.value+'\\n" +
-            this.#defaultSource[1].join("\\n") + "';" +
-            "zPR.rePrettyprint('" + this.#wrapId + "');" +
+            this.defaultSource[1].join("\\n") + "';" +
+            "zPR.rePrettyprint('" + this.wrapId + "');" +
             "this.parentElement.children[2].innerHTML=this.value");
 
         // コードハイライト部生成
         this.area[1] = document.createElement("pre");
         this.area[1].id = "prettyprintQuickPreviewer_" + Math.floor(Math.random() * 1024);
         this.area[1].classList.add("prettyprint", "linenums");
-        this.area[1].innerText = this.#defaultSource[0].join("\n") +
+        this.area[1].innerText = this.defaultSource[0].join("\n") +
             "\n" +
             this.area[0].value + "\n" +
-            this.#defaultSource[1].join("\n");
+            this.defaultSource[1].join("\n");
 
         // プレビュワー生成
         this.area[2] = document.createElement("div");
@@ -70,9 +70,9 @@ class zPR {
         this.area[2].innerHTML = this.area[1].innerText;
 
         // 要素追加
-        this.#wrap.appendChild(this.area[0]);
-        this.#wrap.appendChild(this.area[1]);
-        this.#wrap.appendChild(this.area[2]);
+        this.wrap.appendChild(this.area[0]);
+        this.wrap.appendChild(this.area[1]);
+        this.wrap.appendChild(this.area[2]);
 
         // 描画
         PR.prettyPrint();
@@ -81,7 +81,7 @@ class zPR {
 
     static rePrettyprint(id = null) {
         if (id == null) {
-            this.#wrap.children[1].classList.remove("prettyprinted");
+            this.wrap.children[1].classList.remove("prettyprinted");
         } else {
             document.getElementById(id).children[1].classList.remove("prettyprinted");
         }

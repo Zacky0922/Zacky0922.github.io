@@ -24,12 +24,21 @@
 
 	<!-- JS/CSS master -->
 	<script>
-		/*
-		var manualQuery = new Array();
-		manualQuery["mode"] = "kgfes";
-		*/
+		(function(){
+			var manualQuery = new Array();
+			manualQuery["mode"] = "kgfes_debug";
+
+			let script = document.createElement("script");
+			script.type="text/javascript";
+			if (location.href.indexOf("fes.kgef.ac.jp") > -1) {
+				script.src="https://fes.kgef.ac.jp/2020jsh-test2/zScripts/master.js?mode=kgfes";
+			} else {
+				script.src="http://192.168.1.171/test/zScripts/master.js?mode=kgfes";
+			}
+			document.write(script.outerHTML);
+		})();
 	</script>
-	<script type="text/javascript" src="https://zacky0922.github.io/zScripts/master.js?mode=kgfes"></script>
+
 	<style>
 		div#gridWrapper {
 			display: grid;
@@ -119,7 +128,7 @@
 
 					let zCountdown_ = setInterval(function () {
 						let d = zDate.duration(new Date(2020, 9 - 1, 12, 10, 00, 00));
-						let s = "<span style='color:transparent;padding:0;margin:0'>s</span>";
+						let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
 						document.getElementById("KGcountdown").innerHTML = "" +
 							"<tr>" +
 							"<th>" + d["week"] + "</th>" +

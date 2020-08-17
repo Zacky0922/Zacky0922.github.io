@@ -1,16 +1,16 @@
 
 class zList{
-    #ul = document.createElement("ul");
+    ul = document.createElement("ul");
 
     constructor() {
 
     }
     // リスト基本設定
     setID(id) {
-        this.#ul.id = id;
+        this.ul.id = id;
     }
     setClass(cl) {
-        this.#ul.classList.add(cl);
+        this.ul.classList.add(cl);
     }
     // 内容追加（liの中身テキストのみ定義）
     add(tx) {
@@ -18,15 +18,15 @@ class zList{
         li.appendChild(
             document.createTextNode(tx)
         );
-        this.#ul.appendChild(li);
+        this.ul.appendChild(li);
     }
     //内容追加（li丸ごと定義）
     addLi(li) {
-        this.#ul.appendChild(li);
+        this.ul.appendChild(li);
     }
     // リスト取得
     get() {
-        return this.#ul;
+        return this.ul;
     }
 }
 

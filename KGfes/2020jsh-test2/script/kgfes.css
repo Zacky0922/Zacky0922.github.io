@@ -1,5 +1,9 @@
 /* common.css読込 */
+/*
+@import url("https://fes.kgef.ac.jp/2020jsh-test2/zScripts/common.css");
+*/
 @import url("http://192.168.1.171/test/zScripts/common.css");
+
 /* Google Font */
 @import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&display=swap";
 
@@ -28,6 +32,7 @@
     --z-spacing:    10px;
     --z-padding:    5px;
     --z-border-color:   #339;
+    --z-letterspacing: 0.2em;
 }
 body{
     font-family: 'Kosugi Maru', sans-serif;
@@ -37,6 +42,31 @@ body{
 #gridWrapper > *{
     margin:0;
     padding:0;
+}
+
+h2{
+    text-align:center;
+    padding:var(--z-padding);
+}
+h2::before,
+h2::after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 60%;
+    min-width: 140px;
+    max-width: 300px;
+    height: var(--z-padding);
+    background: -webkit-repeating-linear-gradient( -45deg, rgba(0,0,0,0), rgba(0,0,0,0) 4px, var(--z-border-color) 2px, var(--z-border-color) 6px);
+    background: repeating-linear-gradient( -45deg, rgba(0,0,0,0), rgba(0,0,0,0) 4px, var(--z-border-color) 2px, var(--z-border-color) 6px);
+}
+
+h2::before{	top:		0;	}
+h2::after{	    bottom:		0;	}
+h3{
+
 }
 
 

@@ -1,4 +1,6 @@
 @import "css/table.css";
+@import "css/text.css";
+
 @import "css/jQueryUI/accordion.css";
 @import "ex/MaterialIcons/googleicon.css";
 @import "tools/menu/burger.css";
@@ -9,12 +11,15 @@
 /*  Font-Awesome */
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css";
 
-/* animate.css */
-@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
-
 /* abcjs */
 @import "ex/abcjs/abcjs-midi.css";  /* Font Awesome依存？ */
 @import "ex/abcjs/abcjs_zCSS.css";
+
+/* animate.css */
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
+
+/* chartjs */
+@import "ex/chartjs/chartjs.css";
 
 /* prittyprint */
 @import "ex/prittyprint/prettyprint.css";

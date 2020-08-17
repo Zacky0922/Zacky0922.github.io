@@ -89,7 +89,12 @@ let zDebug = new (class zDebug {
         例外）ローカルサーバー（192.168. or raspberrypi）はオフラインモード
     */
     getOnline() {
-        if (location.href.indexOf("debug") > -1) {
+
+        //  return true;    //疑似オンライン
+        //  return false;   //疑似オフライン（デバッグモード）
+        if (location.href.indexOf("nondebug") > -1) {
+            return true;
+        } else if (location.href.indexOf("debug") > -1) {
             return false;
         } else if (location.href.indexOf("http://192.168.") > -1) {
             return false;
