@@ -22,25 +22,38 @@ let zParam = new (class urlQuery {
             this.param = manualQuery;
         }
         //受取変数の個別処理
-        //  https://zacky0922.github.io/
-        //  https://fes.kgef.ac.jp/2020jsh-test2/
-
         // root         サイトを構成するroot dirを指定
         // zScriptsDir  zScriptライブラリフォルダを指定
-        switch (this.param["mode"]) {
+        // https://zacky0922.github.io/
+        // https://fes.kgef.ac.jp/2020jsh-test2/
+        // http://192.168.1.171/test/
+        // 本当はこれで分岐？　this.param["mode"]
+        switch ((function () {
+            let url = location.href;
+            if (url.indexOf("192.168.") > -1) return 0;
+            else if (url.indexOf("zacky0922") > -1) return 1;
+            else if (url.indexOf("fes.kgef") > -1) return 2;
+            
+            else return -1;
+        })()) {
             case 0:
-                break;
-            case "raspi":
-            case "kgfes":
-            case "kgfes_debug":
+
                 // local
                 this.param["root"] = "http://192.168.1.171/test/KGfes/2020jsh-test2/";
                 this.param["zScriptsDir"] = "http://192.168.1.171/test/zScripts/";
                 break;
-            default:
-                // 仮本番
+            case 2:
+            case "raspi":
+            case "kgfes":
+            case "kgfes_debug":
                 this.param["root"] = "https://fes.kgef.ac.jp/2020jsh-test2/";
                 this.param["zScriptsDir"] = "https://fes.kgef.ac.jp/2020jsh-test2/zScripts/";
+                break;
+            case 1:
+            default:
+                // 仮本番
+                this.param["root"] = "https://zacky0922.github.io/KGfes/2020jsh-test2/";
+                this.param["zScriptsDir"] = "https://zacky0922.github.io/zScripts/";
                 break;
         }
     }
