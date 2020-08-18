@@ -6,7 +6,7 @@ function setFooter() {
     ft.id = "footer";
     ft.setAttribute("style", "grid-area:footer");
     ft.innerHTML = "(C) <a href='https://jsh.kgef.ac.jp/' target='_blank'>Kokusai Gakuin Junior & Senior High School</a> 2020";
-    document.getElementById("gridWrapper").appendChild(ft);
+    document.body.appendChild(ft);
 }
 
 

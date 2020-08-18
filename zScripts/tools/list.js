@@ -56,7 +56,9 @@ class zLinkList extends zList {
     getClassList(cl) {
         let clList = document.getElementsByClassName(cl);
         for (let i = 0; i < clList.length; i++) {
-            clList[i].id = clList[i].innerText + "_id";
+            if (clList[i].id == "") {
+                clList[i].id = clList[i].innerText + "_id";
+            }
             this.addLink(clList[i].innerText,"#"+clList[i].id);
         }
     }

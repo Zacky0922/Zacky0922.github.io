@@ -1,5 +1,6 @@
 div#debugArea{
     display:inline-block;
+    opacity:0.75;
     position: fixed;
     left:5px;
     bottom:5px;
@@ -7,5 +8,8 @@ div#debugArea{
     font-size:small;
     color:#000;
     z-index:1000;
-    height:50vh;
+}
+
+div#debugArea:hover{
+    opacity: 1;
 }

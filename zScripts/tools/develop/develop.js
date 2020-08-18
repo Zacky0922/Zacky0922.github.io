@@ -107,3 +107,41 @@ let zDebug = new (class zDebug {
     }
 
 })();
+
+
+window.addEventListener('load', (event) => {
+
+    // オフライン時、デバッグモード起動
+    if (!zDebug.getOnline()) {
+        let debugArea = document.createElement("div");
+        debugArea.id = "debugArea";
+        let info = document.createElement("div");
+        info.id = "debugAreaInfo";
+        debugArea.appendChild(info);
+        debugArea.innerHTML += "<div id='debugAreaMsg'>" +
+            "<textarea id='debugLog'></textarea>" +
+            "<br/>" +
+            "<input type='button' value='get log' onclick='document.getElementById(" + '"debugLog"' + ").value=zLog.getMsg()'>" +
+            "<br/>" +
+            "<input type='button' value='nondebug mode' onclick='location.href+=" + '"?nondebug"' + "'>" +
+            "<br/>" +
+            "<input type='button' value='Super Reload?' onclick='window.location.reload(true);'>" +
+            "</div>";
+        document.body.appendChild(debugArea);
+
+        let debugMode = setInterval(function () {
+            document.getElementById("debugAreaInfo").innerText = "◆ Debug Mode ◆\n" +
+                "Device Screen XY：\n　" +
+                window.parent.screen.width + " x " +
+                window.parent.screen.height + "\n" +
+                "Displayable Area XY：\n　" +
+                window.innerWidth + " x " +
+                window.innerHeight + "\n" +
+                "Divice Pixel Raito：\n　" +
+                window.devicePixelRatio + "\n" +
+                "page[XY]Offset：\n　" +
+                "x = " + window.pageXOffset + ", y = " + window.pageYOffset+
+                "";
+        }, 66);
+    }
+});

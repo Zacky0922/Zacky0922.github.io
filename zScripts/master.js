@@ -31,13 +31,13 @@ let zParam = new (class urlQuery {
         switch ((function () {
             let url = location.href;
             if (url.indexOf("192.168.") > -1) return 0;
+            else if (url.indexOf("raspberry") > -1) return 0;
             else if (url.indexOf("zacky0922") > -1) return 1;
             else if (url.indexOf("fes.kgef") > -1) return 2;
             
             else return -1;
         })()) {
             case 0:
-
                 // local
                 this.param["root"] = "http://192.168.1.171/test/KGfes/2020jsh-test2/";
                 this.param["zScriptsDir"] = "http://192.168.1.171/test/zScripts/";
@@ -190,9 +190,13 @@ let zPreload = new (class zPreloader {
         "ex/abcjs/abcjs_basic_5.9.1-min.js",
         "ex/abcjs/abcjs_basic_midi-min.js",     //v3.2.1
         "ex/abcjs/abcjs_zInit.js",
+        
+        // animate.css
+        "ex/animate.css/zFunc.js",
 
         // google icon
         "ex/MaterialIcons/googleicon.js",
+
         // prittyprint
         "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js",
         "ex/prittyprint/prittyprint.js",
@@ -310,40 +314,10 @@ window.addEventListener('load', (event) => {
 
     // モード別処理
     switch (zParam.get("mode")) {
-        case "kgfes":
-        case "kgfes_debug":
-            let favicon = document.createElement("link");
-            favicon.href = zParam.get("root") + "pict/logo.png";
-            document.head.appendChild(favicon);
-            document.title += " ☆五峯祭2020☆"
-            break;
+
     }
 
-    // オフライン時、デバッグモード起動
-    if (!zDebug.getOnline()) {
-        let debugArea = document.createElement("div");
-        debugArea.id = "debugArea";
-        let info = document.createElement("div");
-        info.id = "debugAreaInfo";
-        debugArea.appendChild(info);
-        debugArea.innerHTML += "<div id='debugAreaMsg'>" +
-            "<textarea id='debugLog'></textarea><br/>" +
-            "<input type='button' value='get log' onclick='document.getElementById(" + '"debugLog"' + ").value=zLog.getMsg()'>" +
-            "</div>";
-        document.body.appendChild(debugArea);
 
-        let debugMode = setInterval(function () {
-            document.getElementById("debugAreaInfo").innerText = "◆ Debug Mode ◆\n" +
-                "Device Screen XY：\n　" +
-                window.parent.screen.width + " x " +
-                window.parent.screen.height + "\n" +
-                "Displayable Area XY：\n　" +
-                window.innerWidth + " x " +
-                window.innerHeight + "\n" +
-                "Divice Pixel Raito：\n　" +
-                window.devicePixelRatio + "\n";
-        }, 66);
-    }
 
 });
 

@@ -9,7 +9,6 @@ div#zBurgerWrap > div#zBurgerUlWrap > ul{
 
 div#zBurgerWrap > div#zBurgerUlWrap > ul > li{
     display:    inline-block;
-    padding:    var(--z-padding);
     color:  #114;
     background:rgba(255,255,255,0.8);
     text-align:center;
@@ -17,6 +16,7 @@ div#zBurgerWrap > div#zBurgerUlWrap > ul > li{
 }
 #zBurgerWrap > div#zBurgerUlWrap > ul > li > a{
     display:block;
+    padding:    var(--z-padding);
 }
 #zBurgerWrap > div#zBurgerUlWrap > ul > li *{
     text-decoration: none;
@@ -39,8 +39,8 @@ div#zBurgerWrap > div#zBurgerUlWrap > ul > li:hover{
 div#zBurgerWrap{
     --kg-label-size:    40px;
     --kg-menu-marginTop: calc(var(--kg-label-size) + 
-                            2 *var(--z-spacing)+
-                            2 *var(--z-padding)
+                            2 * var(--z-spacing) +
+                            2 * var(--z-padding)
                         );
 }
 
@@ -72,11 +72,8 @@ div#zBurgerWrap > label img{
     #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap{
         position: fixed;
         top: var(--kg-menu-marginTop);
-        left: 50%;
-        margin-right: -50%;
-        transform: translateX(-50%);
-        height: calc(90vh - var(--kg-menu-marginTop));
-        max-height: calc(90vh - var(--kg-menu-marginTop)) !important;
+        right: 0;
+        height: calc(90vh - var(--kg-menu-marginTop) );
         overflow:auto;
     }
     #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap > ul{

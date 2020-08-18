@@ -26,10 +26,10 @@ function setHeader() {
     with (burger) {
         addLink(getGicon("home").outerHTML + " Top",zParam.get("root")+"index.html");
         addLink(getGicon("tag_faces").outerHTML + " Intro", zParam.get("root") + "intro.html");
-        addLink(getGicon("event_note").outerHTML + " Events");
+        addLink(getGicon("event_note").outerHTML + " Events", zParam.get("root") + "events.html");
         addLink(getGicon("collections_bookmark").outerHTML + " Gallery");
-        addLink(getGicon("fact_check").outerHTML + " Contest");
-        addLink(getGicon("cast").outerHTML + " Live!");
+        addLink(getGicon("fact_check").outerHTML + " Contest", zParam.get("root") + "contest.html");
+        addLink(getGicon("cast").outerHTML + " Live!", zParam.get("root") + "live.html");
         addLink(getGicon("star_border").outerHTML + " Special");
     }
     if (!zDebug.getOnline()) {
@@ -38,6 +38,9 @@ function setHeader() {
         }
     }
     head.appendChild(burger.get());
+
+    //メニューにanimate.css適用させる？：させるなら、ここに追記
+
 }
 
 

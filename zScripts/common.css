@@ -1,6 +1,9 @@
 @import "css/table.css";
 @import "css/text.css";
 
+@import "css/preset/cssImage.css";
+@import "css/preset/holo.css";
+
 @import "css/jQueryUI/accordion.css";
 @import "ex/MaterialIcons/googleicon.css";
 @import "tools/menu/burger.css";
@@ -34,6 +37,10 @@ html *{
 html,body{
     padding:0;
     margin:0;
+}
+
+.zCentering{
+    text-align:center;
 }
 
 .zXscrollable {

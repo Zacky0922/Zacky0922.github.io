@@ -43,13 +43,6 @@
 
                     document.getElementById("zMenu").appendChild(burger.get());
                 })
-
-
-
-
-
-
-
             </script>
 
         </section>
@@ -982,6 +975,31 @@
         <section>
             <h2 class="zHeadList">実験用</h2>
             <div id="experience">
+                <h3>animate.css</h3>
+                <div>
+                    <div id="HowToAR">
+                        <a class="animate__animated animate__infinite animate__pulse" style="display:inline-block"
+                            onclick="(function(){
+            						let these = document.getElementById('HowToAR').children;
+            						these[1].classList.remove('zInvisible');
+            						these[1].classList.toggle('animate__backInUp');
+            						these[1].classList.toggle('animate__bounceOut');
+            						these[0].classList.toggle('animate__pulse');
+            					})()">みだし</a>
+                        <div class="zInvisible animate__animated animate__bounceOut" style="margin:var(--z-spacing)">
+                            text
+                        </div>
+                    </div>
+                    <div id="myObj" class="animate__animated animate__infinite animate__pulse">myObj</div>
+                    <div id="targetObj">targetObj</div>
+                    <script>
+                        new animateCSS(
+                            document.getElementById("myObj"),
+                            document.getElementById("targetObj"),
+                            'animate__bounceOut','animate__backInUp');
+                        //new animateCSS("targetObj");
+                    </script>
+                </div>
                 <h3>ボタン機能</h3>
                 <div>
                     <div stlye="display:grid;align-items: center;">

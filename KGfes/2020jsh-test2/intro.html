@@ -42,20 +42,18 @@
 	<style>
 		div#gridWrapper {
 			display: grid;
-				grid-template-columns: 1fr;
-				grid-template-areas:
-					"menu"
-					"main"
-					"footer";
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				"menu"
+				"main";
 		}
 
 		@media screen and (max-width:599px) {
-			div#gridWrapper {
-			}
+			div#gridWrapper {}
 		}
 	</style>
 
-	<title>Top</title>
+	<title>Introduction</title>
 </head>
 
 <body>
@@ -64,10 +62,18 @@
 	<div id="gridWrapper">
 
 		<section style="grid-area:menu">
+			<nav id="zMenu"></nav>
+			<script>
+				window.addEventListener('load', (event) => {
+					let menu = new zLinkList();
+					menu.getClassList("zHeadList");
+					document.getElementById("zMenu").appendChild(menu.get());
+				})
+			</script>
 		</section>
 
 		<section style="grid-area:main">
-			<h2 class="zHeadList" id="intro">Introduction</h2>
+			<h2 class="zHeadList">Introduction</h2>
 			<style>
 				.introName {
 					text-align: right;
