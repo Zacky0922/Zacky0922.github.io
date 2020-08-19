@@ -109,10 +109,27 @@ let zDebug = new (class zDebug {
 })();
 
 
+if (document.referrer.indexOf("?debug") > -1) {
+    location.href = location.href + "?debug";
+}
+
 window.addEventListener('load', (event) => {
 
-    // オフライン時、デバッグモード起動
-    if (!zDebug.getOnline()) {
+
+    if (zDebug.getOnline()) {
+        // オンライン時
+
+    } else {
+        // オフライン時
+
+        // デバッグ要素表示
+        let obj = document.getElementsByClassName("debug");
+        for (let i = 0; i < obj.length; i++) {
+            obj[i].classList.add("debug_");
+            obj[i].classList.remove("debug");
+        }
+
+        // デバッグモード起動
         let debugArea = document.createElement("div");
         debugArea.id = "debugArea";
         let info = document.createElement("div");
@@ -140,7 +157,7 @@ window.addEventListener('load', (event) => {
                 "Divice Pixel Raito：\n　" +
                 window.devicePixelRatio + "\n" +
                 "page[XY]Offset：\n　" +
-                "x = " + window.pageXOffset + ", y = " + window.pageYOffset+
+                "x = " + window.pageXOffset + ", y = " + window.pageYOffset +
                 "";
         }, 66);
     }

@@ -13,3 +13,12 @@ div#debugArea{
 div#debugArea:hover{
     opacity: 1;
 }
+
+
+.debug{
+    display: none;
+}
+.debug_{
+    background:#ff0;
+    border:2px red solid;
+}

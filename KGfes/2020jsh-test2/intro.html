@@ -23,21 +23,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- JS/CSS master -->
-	<script>
-		(function () {
-			var manualQuery = new Array();
-			manualQuery["mode"] = "kgfes_debug";
-
-			let script = document.createElement("script");
-			script.type = "text/javascript";
-			if (location.href.indexOf("fes.kgef.ac.jp") > -1) {
-				script.src = "https://fes.kgef.ac.jp/2020jsh-test2/zScripts/master.js?mode=kgfes";
-			} else {
-				script.src = "http://192.168.1.171/test/zScripts/master.js?mode=kgfes";
-			}
-			document.write(script.outerHTML);
-		})();
-	</script>
+	<script src="loader.js"></script>
 
 	<style>
 		div#gridWrapper {

@@ -18,44 +18,42 @@ let zParam = new (class urlQuery {
                 let paramValue = decodeURIComponent(element[1]);
                 this.param[paramName] = paramValue;
             }
+
+            // 受取変数の個別処理
+            // root         サイトを構成するroot dirを指定
+            // zScriptsDir  zScriptライブラリフォルダを指定
+            // https://zacky0922.github.io/
+            // https://fes.kgef.ac.jp/2020jsh-test2/
+            // http://192.168.1.171/test/
+            // 本当はこれで分岐したい…　this.param["mode"]
+            let basicUrl;
+            if (location.href.indexOf("fes.kgef.ac.jp/2020jsh/") > -1) {
+                basicUrl = "https://fes.kgef.ac.jp/2020jsh/";
+                this.param["root"] = basicUrl + "";
+                this.param["zScriptsDir"] = basicUrl + "zScripts/";
+            } else if (location.href.indexOf("fes.kgef.ac.jp/2020jsh-test2/") > -1) {
+                basicUrl = "https://fes.kgef.ac.jp/2020jsh-test2/";
+                this.param["root"] = basicUrl + "";
+                this.param["zScriptsDir"] = basicUrl + "zScripts/";
+            } else if (location.href.indexOf("192.168.1.171") > -1) {
+                basicUrl = "http://192.168.1.171/test/";
+                this.param["root"] = basicUrl + "KGfes/2020jsh-test2/";
+                this.param["zScriptsDir"] = basicUrl + "zScripts/";
+            } else if (location.href.indexOf("192.168.1.171") > -1) {
+                basicUrl = "http://192.168.1.171/test/";
+                this.param["root"] = basicUrl + "KGfes/2020jsh-test2/";
+                this.param["zScriptsDir"] = basicUrl + "zScripts/";
+            } else {
+                // localのとき
+                basicUrl = "../../";
+                this.param["root"] = basicUrl + "KGfes/2020jsh-test2/";
+                this.param["zScriptsDir"] = basicUrl + "zScripts/";
+            }
+
         } else {
             this.param = manualQuery;
         }
-        //受取変数の個別処理
-        // root         サイトを構成するroot dirを指定
-        // zScriptsDir  zScriptライブラリフォルダを指定
-        // https://zacky0922.github.io/
-        // https://fes.kgef.ac.jp/2020jsh-test2/
-        // http://192.168.1.171/test/
-        // 本当はこれで分岐？　this.param["mode"]
-        switch ((function () {
-            let url = location.href;
-            if (url.indexOf("192.168.") > -1) return 0;
-            else if (url.indexOf("raspberry") > -1) return 0;
-            else if (url.indexOf("zacky0922") > -1) return 1;
-            else if (url.indexOf("fes.kgef") > -1) return 2;
-            
-            else return -1;
-        })()) {
-            case 0:
-                // local
-                this.param["root"] = "http://192.168.1.171/test/KGfes/2020jsh-test2/";
-                this.param["zScriptsDir"] = "http://192.168.1.171/test/zScripts/";
-                break;
-            case 2:
-            case "raspi":
-            case "kgfes":
-            case "kgfes_debug":
-                this.param["root"] = "https://fes.kgef.ac.jp/2020jsh-test2/";
-                this.param["zScriptsDir"] = "https://fes.kgef.ac.jp/2020jsh-test2/zScripts/";
-                break;
-            case 1:
-            default:
-                // 仮本番
-                this.param["root"] = "https://zacky0922.github.io/KGfes/2020jsh-test2/";
-                this.param["zScriptsDir"] = "https://zacky0922.github.io/zScripts/";
-                break;
-        }
+
     }
 
     getAll() {
@@ -138,13 +136,6 @@ let zLog = new (class debugMsg {
 
 })();
 
-/*  for debug
-<div>
-<textarea id="debugMsgTxarea" style="width:100%;height:15em;color:#000;"></textarea>
-<input type="button" onclick="document.getElementById('debugMsgTxarea').value = zDebug.getSpec()"
-value="get debug data" \>
-</div>
-*/
 
 /*  ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
     システムパッケージ
@@ -173,7 +164,7 @@ let loadJScounter_loaded = 0;
 
 let zPreload = new (class zPreloader {
     css = [
-        zParam.get("zScriptsDir") + "master.css"
+        zParam.get("zScriptsDir") + "common.css"
     ];
     js = [
         // jQuery + UI
@@ -227,40 +218,26 @@ let zPreload = new (class zPreloader {
         switch (zParam.get("mode")) {
             case "kgfes":
             case "kgfes_debug":
-                let kg = zParam.get("root");
-                this.js.push(kg + "script/kgfes.js",
-                    kg + "script/header.js",
-                    kg + "script/footer.js"
+                this.js.push(zParam.get("root") + "script/kgfes.js",
+                    zParam.get("root") + "script/header.js",
+                    zParam.get("root") + "script/footer.js"
                 );
-                this.css = [kg + "script/kgfes.css"];
+                this.css.push(zParam.get("root") + "script/kgfes.css");
                 break;
         }
 
         //  読込：クラス定義時に読込まで行う
-        this.cssLoad();
         this.jsload();
+        this.cssLoad();
     }
 
     //読込メソッド
-    cssLoad() {
-        this.cssLoad_(this.css);
-
-    }
-    cssLoad_(src) {
-        document.write('<link rel="stylesheet" type="text/css" href="' + src + '" />');
-        return;
-
-        let myCSS = document.createElement("link");
-        myCSS.rel = "stylesheet";
-        myCSS.type = "text/css";
-        myCSS.href = src;
-        document.head.appendChild(myCSS);
-    }
     jsload() {
         zLog.add("JS loading：", 1);
         zLog.add("> 指定URL ／ 読込URL（httpが無い場合、自動でroot dirを付加する）");
         for (let i = 0; i < this.js.length; i++) {
-            let url = (this.js[i].indexOf("http") > -1 ?
+            let url = (
+                (this.js[i].indexOf("http") > -1) || (this.js[i].indexOf("../") > -1) ?
                 this.js[i] :
                 zParam.get("zScriptsDir") + this.js[i]
             );
@@ -279,6 +256,28 @@ let zPreload = new (class zPreloader {
         myScript.type = "text/javascript";
         myScript.src = src;
         document.head.appendChild(myScript);
+    }
+    cssLoad() {
+        zLog.add("CSS loading：", 1);
+        for (let i = 0; i < this.css.length; i++) {
+            let url = (this.css[i].indexOf("http") > -1 ?
+                this.css[i] :
+                zParam.get("zScriptsDir") + this.css[i]
+            );
+            this.cssLoad_(this.css[i]);
+            zLog.add(this.css[i] );
+        }
+        zLog.add("", -1);
+    }
+    cssLoad_(src) {
+        document.write('<link rel="stylesheet" type="text/css" href="' + src + '" />');
+        return;
+
+        let myCSS = document.createElement("link");
+        myCSS.rel = "stylesheet";
+        myCSS.type = "text/css";
+        myCSS.href = src;
+        document.head.appendChild(myCSS);
     }
 
     //読込完了チェック

@@ -33,7 +33,7 @@ function setHeader() {
         addLink(getGicon("star_border").outerHTML + " Special");
     }
     if (!zDebug.getOnline()) {
-        for (let i = 0; i < 50; i++){
+        for (let i = 0; i < 20; i++){
             burger.addLink("test");
         }
     }

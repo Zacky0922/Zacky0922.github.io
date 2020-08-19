@@ -24,6 +24,9 @@
 /* chartjs */
 @import "ex/chartjs/chartjs.css";
 
+/* driveway */
+@import "ex/driveway/driveway.min.css";
+
 /* prittyprint */
 @import "ex/prittyprint/prettyprint.css";
 

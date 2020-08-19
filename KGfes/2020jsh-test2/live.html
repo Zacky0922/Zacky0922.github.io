@@ -23,21 +23,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- JS/CSS master -->
-	<script>
-		(function () {
-			var manualQuery = new Array();
-			manualQuery["mode"] = "kgfes_debug";
-
-			let script = document.createElement("script");
-			script.type = "text/javascript";
-			if (location.href.indexOf("fes.kgef.ac.jp") > -1) {
-				script.src = "https://fes.kgef.ac.jp/2020jsh-test2/zScripts/master.js?mode=kgfes";
-			} else {
-				script.src = "http://192.168.1.171/test/zScripts/master.js?mode=kgfes";
-			}
-			document.write(script.outerHTML);
-		})();
-	</script>
+	<script src="loader.js"></script>
 
 	<style>
 		div#gridWrapper {
@@ -76,17 +62,18 @@
 		<section style="grid-area:main">
 			<h2 class="zHeadList">Live!!</h2>
 			<div class="zCentering">
-			<div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:1em;">
-				<iframe style="width:500px;height:315px;max-width:95%;" src="https://www.youtube.com/embed/IFPyjCgvYhA"
-					frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-					allowfullscreen></iframe>
-			</div>
+				<div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:1em;">
+					<iframe style="width:500px;height:315px;max-width:95%;"
+						src="https://www.youtube.com/embed/IFPyjCgvYhA" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+				</div>
 			</div>
 		</section>
-<section style="grid-area:schedule">
-	<h2 class="zHeadList">Schedule</h2>
-	<p>（調整中）</p>
-</section>
+		<section style="grid-area:schedule">
+			<h2 class="zHeadList">Schedule</h2>
+			<p>（調整中）</p>
+		</section>
 	</div><!-- /container -->
 </body>
 
