@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics by KG-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-116915593-1');
+    </script>
+
+
+    <!-- JS/CSS master -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <script
+        src="https://unpkg.com/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"></script>
+    <title>五峯祭へお越しください！</title>
+</head>
+
+<body>
+    <a-scene id="myGallery">
+        <a-marker type='pattern' url='./marker/pattern-QR_fes2020jsh.patt' id="IamMarker" registerevents>
+            <a-entity id="posterWrap"></a-entity>
+            <a-entity gltf-model="obj/kokkusai itioukannsei ver.2.glb" position="-3 0 -3" scale="1 1 1"></a-entity>
+            <a-entity gltf-model="obj/PosterContest_title.glb" position="0 1 1.5" rotation="-60 0 0" scale="3 3 3"></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+    <script>
+        //画像セット
+        (function () {
+            let imgWrap = document.getElementById("posterWrap");
+            let h = 2;
+            let r_min = 0.5;
+            let r_max = 2;
+            //画像読込
+            let img = new Array();
+            for (let i = 0; i < 19; i++) {
+                img[i] = "pict/poster" + i + ".png";
+            }
+
+            for (let i = 0; i < img.length; i++) {
+                let d = i * 3500;                   // 固有delay設定（starter dur + alpha）
+                let return_t = 3500 * (img.length - 1) - (1000 + 24000);  // starter dur（＝初期delay） - 他のdur合計
+                imgWrap.innerHTML += "" +
+                    '<a-entity animation__starter="property:position;to:0 0 0;dur:' + d + ';" ' +
+                    'animation__wait0="property:position;to:0 0 0;dur:3000;startEvents:animationcomplete__starter,animationcomplete__return;" ' +
+                    'animation__wait1="property:position;to:0 0 0;dur:1000;startEvents:animationcomplete__wait0;" ' +
+                    'animation__rot2="property:rotation;to:0 1080 0;dur:24000;easing:linear;startEvents:animationcomplete__wait1;" ' +
+                    'animation__return="property:rotation;to:0 0 0;dur:' + return_t + ';startEvents:animationcomplete__rot2;"' +
+                    '>' +
+                    '<a-image src="' + img[i] + '" rotation="-90 0 0" scale="0 0 0" ' +
+                    'animation__starter="property:position;to:0 0 0;dur:' + d + ';" ' +
+                    'animation__pos0="property:position;to:0 ' + h + ' 0;dur:3000;easing:easeInOutCubic;startEvents:animationcomplete__starter,animationcomplete__return;" ' +
+                    'animation__scale0="property:scale;to:1 1 1;dur:3000;easing:easeInOutCubic;startEvents:animationcomplete__starter,animationcomplete__return;" ' +
+                    'animation__rot1="property:rotation;to:0 0 0;dur:1000;easing:linear;startEvents:animationcomplete__pos0" ' +
+                    'animation__pos1="property:position;to:0 ' + h + ' ' + r_min + ';dur:1000;easing:linear;startEvents:animationcomplete__pos0;" ' +
+                    'animation__pos2="property:position;to:0 0 ' + r_max + ';dur:24000;easing:linear;startEvents:animationcomplete__rot1;" ' +
+                    'animation__scale2="property:scale;to:0 0 0;dur:24000;easing:linear;startEvents:animationcomplete__rot1;" ' +
+                    'animation__return="property:position;to:0 0 0;dur:' + return_t + ';startEvents:animationcomplete__pos2;"' +
+                    'animation__return1="property:rotation;to:-90 0 0;dur:' + return_t + ';startEvents:animationcomplete__pos2;"' +
+                    '> ' +
+                    '</a-image>' +
+                    '</a-entity>';
+            }
+
+            /* テンプレ
+            <a-entity animation__starter="property:position;to:0 0 0;dur:3000;delay:0;"
+                animation__wait0="property:position;to:0 0 0;dur:1000;startEvents:animationcomplete__starter;"
+                animation__rot1="property:rotation;to:0 1080 0;dur:5000;easing:linear;startEvents:animationcomplete__wait0;">
+                <a-image src="pict/poster0.png" rotation="-90 0 0" scale="0 0 0"
+                    animation__starter="property:position;to:0 2 0;dur:3000;easing:easeInOutCubic;delay:0;"
+                    animation__starterScale="property:scale;to:1 1 1;dur:2000;easing:easeInOutCubic;delay:0;"
+                    animation__rot0="property:rotation;to:0 0 0;dur:1000;easing:linear;startEvents:animationcomplete__starter;"
+                    animation__pos0="property:position;to:0 2 0.5;dur:1000;easing:linear;startEvents:animationcomplete__starter;"
+                    animation__pos1="property:position;to:0 0 1.5;dur:5000;easing:linear;startEvents:animationcomplete__rot0;"
+                    animation__scale1="property:scale;to:0 0 0;dur:5000;easing:linear;startEvents:animationcomplete__rot0;">
+                </a-image>
+            </a-entity>
+            */
+
+        }());
+
+
+    </script>
+</body>
+
+</html>

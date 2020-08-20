@@ -40,7 +40,7 @@
 
 		/*
 			div.gpList.dw
-				div.gpWrap.dw-panel
+				div.gpWrap.dw-panel	//これがいっぱい
 					div.gpContent.dw-panel__content
 						img
 						div.gpName
@@ -54,6 +54,7 @@
 		div.gpContent {
 			border-radius: var(--z-spacing);
 			border: #888 3px solid;
+			background:#fff;
 
 			/* 画像幅（＝高さ）だけ定義・・・余りは自動割り振り＝1fr */
 			--kg-gpImg-width: 180px;
@@ -109,9 +110,10 @@
 
 		<section style="grid-area:main">
 			<h2 class="zHeadList">Events</h2>
-			<div class="debug">並び順は未確定</div>
+			<div class="debug">並び順は未調整。何順がいいでしょうか…？<br/>
+			ただし、「縦並び」が原則なので、改段での調整を考えると、あまり意味を持たせた整列は、逆に見づらいかも知れません。</div>
 			<div class="gpList dw">
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/2g.png">
 						<div class="gpName"></div>
@@ -119,7 +121,7 @@
 						<div class="gpText"></div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/domino.jpg">
 						<div class="gpName">生徒会</div>
@@ -133,7 +135,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/food.png">
 						<div class="gpName">（高3）食物調理コース</div>
@@ -141,12 +143,12 @@
 						<div class="gpText"></div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/JRC.png">
 						<div class="gpName">JRC部</div>
 						<div class="gpTitle">
-							レッドクロス赤ずきん！～命を守ろう！救おう！～
+							レッドクロス赤ずきん！<br/>～命を守ろう！救おう！～
 						</div>
 						<div class="gpText">
 							内容紹介<br />
@@ -162,7 +164,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/kwms.png">
 						<div class="gpName">かわまし</div>
@@ -170,7 +172,7 @@
 						<div class="gpText"></div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/literary.png">
 						<div class="gpName">文芸同好会</div>
@@ -186,7 +188,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/mathlab.png">
 						<div class="gpName">数学研究室</div>
@@ -200,7 +202,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/opmovie.png">
 						<div class="gpName">***</div>
@@ -212,7 +214,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/popmusic.png">
 						<div class="gpName">軽音楽部</div>
@@ -224,19 +226,27 @@
 						</div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/windmusic.jpg">
-						<div class="gpName"></div>
-						<div class="gpTitle"></div>
-						<div class="gpText"></div>
+						<div class="gpName">吹奏楽部</div>
+						<div class="gpTitle">いわたとゆかいな仲間たち</div>
+						<div class="gpText">
+							【団体紹介文】<br />
+							皆さんこんにちは 国際学院吹奏楽部です！<br />
+							私たちは中学生3人、高校生5人で活動しています！<br />
+							このご時世、なかなか練習時間が取れませんでしたが短い時間で効率よく練習しました！<br />
+							【出展内容紹介】<br />
+							誰もが知っているあの有名なポップス曲をメドレー形式で演奏します。<br />
+							イヤホン推奨！MVにも注目！
+						</div>
 					</div>
 				</div>
-				<div class="gpWrap dw-panel">
+				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/gpDummy.png">
 						<div class="gpName">1年H・K組</div>
-						<div class="gpTitle">「終わらないSHR」（リアル脱出ゲーム風ドラマ）</div>
+						<div class="gpTitle">「終わらないSHR」<br />（リアル脱出ゲーム風ドラマ）</div>
 						<div class="gpText">
 							目が覚めると体が拘束され、教室に閉じ込められていた。<br />
 							まわりを見ると、同じくらいの年の子たちが、私を合わせて4人いた。<br />
@@ -255,6 +265,7 @@
 						</div>
 					</div>
 				</div>
+				<div class="dw__focus-curtain"></div>
 			</div>
 		</section>
 

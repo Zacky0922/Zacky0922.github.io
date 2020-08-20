@@ -5,7 +5,6 @@
 @import "css/preset/holo.css";
 
 @import "css/jQueryUI/accordion.css";
-@import "ex/MaterialIcons/googleicon.css";
 @import "tools/menu/burger.css";
 @import "tools/button/button.css";
 @import "tools/tab/tab.css";
@@ -26,6 +25,10 @@
 
 /* driveway */
 @import "ex/driveway/driveway.min.css";
+@import "ex/driveway/driveway_custom.css";
+
+
+@import "ex/MaterialIcons/googleicon.css";
 
 /* prittyprint */
 @import "ex/prittyprint/prettyprint.css";
@@ -48,8 +51,12 @@ html,body{
 
 .zXscrollable {
     text-align: center;
+    place-items: center;
     overflow-x: auto;
-    max-width:100%;
+    max-width:95vw;
+}
+.zXscrollable > *{
+    margin: 0 auto;
 }
 
 .zUndisp {

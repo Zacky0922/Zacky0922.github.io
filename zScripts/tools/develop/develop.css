@@ -1,5 +1,6 @@
 div#debugArea{
     display:inline-block;
+    text-align:left;
     opacity:0.75;
     position: fixed;
     left:5px;

@@ -10,9 +10,11 @@
 
 
 /*  z-index
-    debugArea 1000
-    menu    999
-    header  100
+    1000    debugArea
+    999     menu
+    500     .dw-panel--focus:hover  driveway
+    499     .dw__focus-curtain      driveway暗幕
+    100     header 
     本文    default
 */
 
@@ -36,9 +38,12 @@ body{
     width:100%;
 }
 
+#gridWrapper{
+    width:100% !important;  /* ? */
+}
 #gridWrapper > *{
     margin:0;
-    padding:0;
+    padding:20px;
 }
 
 

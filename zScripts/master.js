@@ -45,7 +45,15 @@ let zParam = new (class urlQuery {
                 this.param["zScriptsDir"] = basicUrl + "zScripts/";
             } else {
                 // localのとき
-                basicUrl = "../../";
+                switch (this.param["mode"]) {
+                    case "lab":
+                        basicUrl = "../";
+                        break;
+                    case "kgfes":
+                    case "kgfes-debug":
+                        basicUrl = "../../";
+                        break;
+                }
                 this.param["root"] = basicUrl + "KGfes/2020jsh-test2/";
                 this.param["zScriptsDir"] = basicUrl + "zScripts/";
             }
@@ -216,6 +224,9 @@ let zPreload = new (class zPreloader {
 
         //モード処理
         switch (zParam.get("mode")) {
+            case "lab":
+                this.css.push(zParam.get("zScriptsDir") + "master.css")
+                break;
             case "kgfes":
             case "kgfes_debug":
                 this.js.push(zParam.get("root") + "script/kgfes.js",

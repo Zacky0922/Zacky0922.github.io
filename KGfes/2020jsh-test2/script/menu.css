@@ -1,6 +1,6 @@
 div#zBurgerWrap > div#zBurgerUlWrap > ul{
     list-style: none;
-    margin:0;
+    margin:var(--z-spacing) 0 0;
     padding:0;
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -16,7 +16,7 @@ div#zBurgerWrap > div#zBurgerUlWrap > ul > li{
 }
 #zBurgerWrap > div#zBurgerUlWrap > ul > li > a{
     display:block;
-    padding:    var(--z-padding);
+    padding:    var(--z-spacing);
 }
 #zBurgerWrap > div#zBurgerUlWrap > ul > li *{
     text-decoration: none;
@@ -72,18 +72,17 @@ div#zBurgerWrap > label img{
     #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap{
         position: fixed;
         top: var(--kg-menu-marginTop);
-        right: 0;
+        right: var(--z-spacing);
         height: calc(90vh - var(--kg-menu-marginTop) );
         overflow:auto;
     }
     #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap > ul{
         display:grid;
         grid-template-columns: 1fr;
-        padding:calc(4 * var(--z-spacing));
+        padding:calc(3 * var(--z-spacing));
         background: rgba(15,15,47,0.8);
     }
     #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap > ul > li{
-        padding:    var(--z-spacing) calc(2 * var(--z-spacing));
         text-align:left;
     }
 

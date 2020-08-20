@@ -1,0 +1,44 @@
+
+/* .dw領域外もfocus-curtainを有効にする */
+.dw-panel--focus:hover{
+  z-index:500;
+}
+.dw__focus-curtain{
+  z-index:499;
+  /* もし、カーテンの色味を変えるなら…
+  （下記は標準設定）
+  display:none;   // .dw-panel--focus:hover  ~ .dw__focus-curtainでblock
+  background: #000;
+  opacity: .75;
+  */
+  background: #113;
+}
+.dw-panel--focus:hover  ~ .dw__focus-curtain{
+
+}
+
+/* 画面サイズ設定（コメントアウトは標準値） */
+/* default = 2 */
+@media (min-width:768px){
+  .dw{
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+/* default = 3 */
+@media (min-width:992px){
+  .dw{
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+/* default = 4 */
+@media (min-width:1500px){
+  .dw{
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}

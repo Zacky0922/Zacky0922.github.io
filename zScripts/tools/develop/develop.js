@@ -110,7 +110,9 @@ let zDebug = new (class zDebug {
 
 
 if (document.referrer.indexOf("?debug") > -1) {
-    location.href = location.href + "?debug";
+    if (location.href.indexOf("?debug") == -1) {
+        location.href = location.href + "?debug";    
+    }
 }
 
 window.addEventListener('load', (event) => {
