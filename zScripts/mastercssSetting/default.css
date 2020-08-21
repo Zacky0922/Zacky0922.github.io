@@ -8,6 +8,9 @@ body,body *{
     color:var(--z-font-color);
     font-size:  var(--z-font-size);
 }
+input,textarea{
+    color:#000;
+}
 
 a{
     text-decoration: none;
