@@ -1,10 +1,13 @@
 @import "css/table.css";
 @import "css/text.css";
+@import "css/list.css";
 
 @import "css/preset/cssImage.css";
 @import "css/preset/holo.css";
 
 @import "css/jQueryUI/accordion.css";
+@import "ex/tablesorter/tablesorter.css";
+
 @import "tools/menu/burger.css";
 @import "tools/button/button.css";
 @import "tools/tab/tab.css";
@@ -48,7 +51,9 @@ html,body{
 .zCentering{
     text-align:center;
 }
-
+.zCentering > *{
+    display:inline-block;
+}
 .zXscrollable {
     text-align: center;
     place-items: center;

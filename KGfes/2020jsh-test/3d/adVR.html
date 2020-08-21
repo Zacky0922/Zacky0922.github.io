@@ -28,169 +28,70 @@
 
 <body>
     <a-scene id="myGallery">
-        <a-assets>
-            <!-- 書き方例 
-            <a-asset-item id="myId" src="myId.mtl"></a-asset-item>
-            <a-mixin id="mixin" scale="5 5 5"></a-mixin>
-            <audio id="audio" src="audio.mp3"></audio>
-            <img id="img" src="img.png">
-            <video id="video" src="video.mp4"></video>
-            -->
-            <!--
-            <a-asset-item id="5mine-obj" src="obj/taitorunomoji.obj"></a-asset-item>
-            <a-asset-item id="5mine-mtl" src="obj/taitorunomoji.mtl"></a-asset-item>
-            -->
-        </a-assets>
-        <!--<a-marker type='pattern' url='./marker/pattern-QR_fes2020jsh.patt'>-->
-
-            <a-entity id="imgWrap" animation="property:rotation;to:0 360 0;loop:true;dur:36000;easing:linear;">
+        <a-entity id="posterWrap"></a-entity>
+        <a-entity gltf-model="obj/kokkusai itioukannsei ver.2.glb" position="-3 0 -3" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="obj/PosterContest_title.glb" position="0 1 1.5" rotation="-60 0 0" scale="3 3 3">
+        </a-entity>
+        <a-entity id="z-camera-wrap" position="0 3 5" rotation="-20 0 0">
+            <a-entity id="z-camera" camera look-controls>
+                <!--<a-cursor color="#114" opacity="0.5"></a-cursor>-->
             </a-entity>
-            <a-entity id="imgWrap2"></a-entity>
-
-            <a-entity id="imgWrapRotR" animation="property: rotation;
-            to: 0 -360 0;
-            easing:linear;
-            dur:6000;
-            loop:true;"></a-entity>
-            <a-entity id="imgWrapRotL" animation="property: rotation;
-            to: 0 360 0;
-            easing:linear;
-            dur:6000;
-            loop:true;"></a-entity>
-            <a-entity animation="property:rotation;to:0 360 0;loop:true;dur:12000;easing:linear;">
-                <!--
-                    <a-obj-model src="#5mine-obj" mtl="#5mine-mtl" position="0 -0.5 1.5" scale=".3 .3 .3" rotation="-30 0 0"></a-obj-model>
-                -->
-                <a-obj-model src="obj/taitorunomoji.obj" mtl="obj/taitorunomoji.mtl" position="0 0.5 3" scale=".3 .3 .3"
-                    rotation="-30 0 0"></a-obj-model>
-            </a-entity>
-            <a-entity particle-system="preset:star;
-                     size:2;color: #FFFF00,#FF8800;opacity:1;blending:1;
-                     velocityValue:0 0 0;velocitySpread:1 2 1;
-                     positionSpread:5 0 5;
-                     particleCount:100;" position="0 20 0"></a-entity>
-            <a-entity id="z-axis" position="0 0 0"></a-entity>
-        <!--
-            </a-marker>
-        <a-entity camera></a-entity>
-    -->
-            <a-entity id="z-camera-wrap" position="0 3 5" rotation="-20 0 0">
-                <a-entity id="z-camera" camera look-controls>
-                    <!--<a-cursor color="#114" opacity="0.5"></a-cursor>-->
-                </a-entity>
-            </a-entity>
+        </a-entity>
 
     </a-scene>
     <script>
         //画像セット
         (function () {
-            let imgWrap = document.getElementById("imgWrap");
-            let r = 1.8;
-            let img = [
-                "obj/poster0.png",
-                "obj/poster1.png",
-                "obj/poster2.png",
-                "obj/poster3.png",
-
-                "obj/poster0.png",
-                "obj/poster1.png",
-                "obj/poster2.png",
-                "obj/poster3.png",
-
-                "obj/poster0.png",
-                "obj/poster1.png",
-                "obj/poster2.png",
-                "obj/poster3.png"
-            ];
-            let lv = Math.ceil(img.length / 6);   //段数取得・・・どうやってconeにする？
-            for (let i = 0; i < img.length; i++) {
-                let ele = document.createElement("a-image");
-
-                ele.setAttribute("scale", "1.5 1.5 1.5");
-                ele.setAttribute("src", img[i]);
-                ele.setAttribute("side", "double");
-                ele.setAttribute("position",
-                    r * Math.sin(i / 6 * 2 * Math.PI) + " " +
-                    Math.floor(i / 6) * 2.3 + " " +
-                    r * Math.cos(i / 6 * 2 * Math.PI)
-                );
-                ele.setAttribute("rotation", "-30 " + i * 60 + " 0");
-                //ele.setAttribute("color", "#0f0");
-                ele.setAttribute("opacity", "0.9");
-                imgWrap.appendChild(ele);
+            let imgWrap = document.getElementById("posterWrap");
+            let h = 2;
+            let r_min = 0.5;
+            let r_max = 2;
+            //画像読込
+            let img = new Array();
+            for (let i = 0; i < 19; i++) {
+                img[i] = "pict/poster" + i + ".png";
             }
 
-            let imgWrap2 = document.getElementById("imgWrap2");
-            let dur = 2000;
             for (let i = 0; i < img.length; i++) {
-                let ele = document.createElement("a-image");
-
-                ele.setAttribute("src", img[i]);
-                ele.setAttribute("side", "double");
-                ele.setAttribute("rotation", "-90 0 0");
-                ele.setAttribute("position", "0 0 0");
-                ele.setAttribute("opacity", "0");
-                ele.setAttribute("scale", "0.1 0.1 0.1");
-                //時差
-                ele.setAttribute("animation__starter",
-                    "property:opacity;to:0;" +
-                    "dur:" + (dur * i) + ";")
-                //popup
-                ele.setAttribute("animation__pos0",
-                    "property:position;" +
-                    "from:0 0 0;to:0 2 0;" +
-                    "easing:easeOutElastic;" +
-                    "dur:" + dur + ";" +
-                    "startEvents:animationcomplete__starter,animationcomplete__pos2;");
-                ele.setAttribute("animation__scale0",
-                    "property:scale;" +
-                    "from:0.1 0.1 0.1;to:1.5 1.5 1.5;" +
-                    "easing:easeOutElastic;" +
-                    "dur:" + dur + ";" +
-                    "startEvents:animationcomplete__starter,animationcomplete__pos2;");
-                ele.setAttribute("animation__opacity0",
-                    "property:opacity;" +
-                    "to:1.0;" +
-                    "easing:easeOutElastic;" +
-                    "dur:" + dur + ";" +
-                    "startEvents:animationcomplete__starter,animationcomplete__pos2;");
-                //popdown
-                ele.setAttribute("animation__pos1",
-                    "property:position;" +
-                    "from:0 2 0;to:0 0 0;" +
-                    "easing:easeOutCubic;" +
-                    "dur:" + dur + ";" +
-                    "startEvents:animationcomplete__pos0;");
-                ele.setAttribute("animation__scale1",
-                    "property:scale;" +
-                    "from:2 2 2;to:0.1 0.1 0.1;" +
-                    "easing:easeOutCubic;" +
-                    "dur:" + dur + ";" +
-                    "startEvents:animationcomplete__pos0;");
-                ele.setAttribute("animation__opacity1",
-                    "property:opacity;" +
-                    "to:0.0;" +
-                    "easing:easeOutElastic;" +
-                    "dur:" + dur + ";" +
-                    "startEvents:animationcomplete__pos0;");
-                //wait
-                ele.setAttribute("animation__pos2",
-                    "property:position;" +
-                    "from:0 0 0;to:0 0 0;" +
-                    "dur:" + dur * (img.length - 2) + ";" +
-                    "startEvents:animationcomplete__pos1;");
-
-                imgWrap2.appendChild(ele);
+                let d = i * 3500;                   // 固有delay設定（starter dur + alpha）
+                let return_t = 3500 * (img.length - 1) - (1000 + 24000);  // starter dur（＝初期delay） - 他のdur合計
+                imgWrap.innerHTML += "" +
+                    '<a-entity animation__starter="property:position;to:0 0 0;dur:' + d + ';" ' +
+                    'animation__wait0="property:position;to:0 0 0;dur:3000;startEvents:animationcomplete__starter,animationcomplete__return;" ' +
+                    'animation__wait1="property:position;to:0 0 0;dur:1000;startEvents:animationcomplete__wait0;" ' +
+                    'animation__rot2="property:rotation;to:0 1080 0;dur:24000;easing:linear;startEvents:animationcomplete__wait1;" ' +
+                    'animation__return="property:rotation;to:0 0 0;dur:' + return_t + ';startEvents:animationcomplete__rot2;"' +
+                    '>' +
+                    '<a-image src="' + img[i] + '" rotation="-90 0 0" scale="0 0 0" ' +
+                    'animation__starter="property:position;to:0 0 0;dur:' + d + ';" ' +
+                    'animation__pos0="property:position;to:0 ' + h + ' 0;dur:3000;easing:easeInOutCubic;startEvents:animationcomplete__starter,animationcomplete__return;" ' +
+                    'animation__scale0="property:scale;to:1 1 1;dur:3000;easing:easeInOutCubic;startEvents:animationcomplete__starter,animationcomplete__return;" ' +
+                    'animation__rot1="property:rotation;to:0 0 0;dur:1000;easing:linear;startEvents:animationcomplete__pos0" ' +
+                    'animation__pos1="property:position;to:0 ' + h + ' ' + r_min + ';dur:1000;easing:linear;startEvents:animationcomplete__pos0;" ' +
+                    'animation__pos2="property:position;to:0 0 ' + r_max + ';dur:24000;easing:linear;startEvents:animationcomplete__rot1;" ' +
+                    'animation__scale2="property:scale;to:0 0 0;dur:24000;easing:linear;startEvents:animationcomplete__rot1;" ' +
+                    'animation__return="property:position;to:0 0 0;dur:' + return_t + ';startEvents:animationcomplete__pos2;"' +
+                    'animation__return1="property:rotation;to:-90 0 0;dur:' + return_t + ';startEvents:animationcomplete__pos2;"' +
+                    '> ' +
+                    '</a-image>' +
+                    '</a-entity>';
             }
-            let imgWrapL = document.getElementById("imgWrapRotL");
-            let imgWrapR = document.getElementById("imgWrapRotR");
-            let ele = document.createElement("a-entity");
-            ele.setAttribute("line", "start: 1 0 0; end:0 0 1; color: white;");
-            ele.setAttribute("line__1", "start: 0 0 1; end:-1 0 0; color: white;");
-            ele.setAttribute("line__2", "start: -1 0 0; end:0 0 -1; color: white;");
-            ele.setAttribute("line__3", "start: 0 0 -1; end:1 0 0; color: white;");
-            imgWrapL.appendChild(ele);
-            //imgWrapR.appendChild(ele);
+
+            /* テンプレ
+            <a-entity animation__starter="property:position;to:0 0 0;dur:3000;delay:0;"
+                animation__wait0="property:position;to:0 0 0;dur:1000;startEvents:animationcomplete__starter;"
+                animation__rot1="property:rotation;to:0 1080 0;dur:5000;easing:linear;startEvents:animationcomplete__wait0;">
+                <a-image src="pict/poster0.png" rotation="-90 0 0" scale="0 0 0"
+                    animation__starter="property:position;to:0 2 0;dur:3000;easing:easeInOutCubic;delay:0;"
+                    animation__starterScale="property:scale;to:1 1 1;dur:2000;easing:easeInOutCubic;delay:0;"
+                    animation__rot0="property:rotation;to:0 0 0;dur:1000;easing:linear;startEvents:animationcomplete__starter;"
+                    animation__pos0="property:position;to:0 2 0.5;dur:1000;easing:linear;startEvents:animationcomplete__starter;"
+                    animation__pos1="property:position;to:0 0 1.5;dur:5000;easing:linear;startEvents:animationcomplete__rot0;"
+                    animation__scale1="property:scale;to:0 0 0;dur:5000;easing:linear;startEvents:animationcomplete__rot0;">
+                </a-image>
+            </a-entity>
+            */
+
         }());
 
 

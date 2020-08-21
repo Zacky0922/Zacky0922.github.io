@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics by KG-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-116915593-1');
+	</script>
+
+	<!-- 画面設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- JS/CSS master -->
+	<script src="loader.js"></script>
+
+	<style>
+		div#gridWrapper {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				"menu"
+				"main";
+		}
+
+		@media screen and (max-width:599px) {
+			div#gridWrapper {}
+		}
+	</style>
+
+	<title>Contest</title>
+</head>
+
+<body>
+	<section id="header" style="grid-area:header;">
+	</section>
+	<div id="gridWrapper">
+
+		<section style="grid-area:menu">
+			<nav id="zMenu"></nav>
+			<script>
+				window.addEventListener('load', (event) => {
+					let menu = new zLinkList();
+					menu.getClassList("zHeadList");
+					document.getElementById("zMenu").appendChild(menu.get());
+				})
+			</script>
+		</section>
+
+		<section style="grid-area:main">
+			<h2 class="zHeadList">閲覧について</h2>
+			本サイトには、各種ライブラリを使用しています。最新のブラウザでご覧ください。
+			<div class="zXscrollable">
+				<table>
+					<caption>推奨ブラウザ</caption>
+					<tbody>
+						<tr>
+							<th>PC</th>
+							<td>Google Chrome,Microsoft Edge(Chronium版)</td>
+						</tr>
+						<tr>
+							<th>Android</th>
+							<td>Google Chrome</td>
+						</tr>
+						<tr>
+							<th>iOS</th>
+							<td>Safari</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			対応ブラウザ<br />
+			Cookie（Google Analytics）<br />
+			JavaScript<br />
+
+			<h3>PDF（Acrobat Reader）</h3>
+			本サイトのコンテンツには、PDF形式のファイルが含まれます。必要に応じて、下記ソフトウェア／アプリのインストールをお願いします。
+
+			<h2 class="zHeadList">サイトポリシー</h2>
+			本校ウェブサイトの各種ポリシーに準拠します。
+			<div class="zCentering">
+				<ul>
+					<li>
+						<a href="https://jsh.kgef.ac.jp/sitepolicy/" target="_blank">サイトポリシー</a>
+					</li>
+					<li>
+						<a href="https://jsh.kgef.ac.jp/privacypolicy/" target="_blank">個人情報保護</a>
+					</li>
+				</ul>
+			</div>
+			<h2 class="zHeadList">お問い合わせ</h2>
+			<div class="zXscrollable">
+				<table>
+					<tbody>
+						<tr>
+							<th>電話・FAX</th>
+							<td>Tel　048-721-5931<br />
+								Fax　048-721-5903
+							</td>
+						</tr>
+						<tr>
+							<th>メール</th>
+							<td><a href="https://jsh.kgef.ac.jp/inquiry/" target="_blank">こちらのフォーム</a>よりご連絡ください</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+	</div><!-- /container -->
+</body>
+
+</html>

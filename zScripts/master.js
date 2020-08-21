@@ -178,6 +178,9 @@ let zPreload = new (class zPreloader {
         // jQuery + UI
         "https://code.jquery.com/jquery-3.4.1.min.js",
         "https://code.jquery.com/ui/1.9.2/jquery-ui.js",
+        // jQuery Plugin：tablesoter + 漢字対応
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js",
 
         // MathJax
         "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
@@ -326,8 +329,6 @@ window.addEventListener('load', (event) => {
     switch (zParam.get("mode")) {
 
     }
-
-
 
 });
 

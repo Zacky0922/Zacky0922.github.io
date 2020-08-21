@@ -20,41 +20,19 @@
 		gtag('config', 'UA-116915593-1');
 	</script>
 
-
-	<!-- PWA設定 -->
+	<!-- 画面設定 -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--<link rel="manifest" href="./manifest.json">-->
-	<script>
-		/*
-		//service workerの登録関係
-		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker
-				.register('./serviceWorker.js')
-				.then(registration => {
-					// 登録成功
-					console.log('ServiceWorker registration successful with scope: ', registration.scope);
-					registration.onupdatefound = function () {
-						console.log('アップデートがあります！');
-						registration.update();
-					}
-				})
-				.catch(err => {
-					// 登録失敗
-					console.log('ServiceWorker registration failed: ', err);
-				});
-		}
-		*/
-	</script>
-	<!-- JS/CSS master -->
-	<script type="text/javascript"
-		src="https://zacky0922.github.io/scripts/master.js?mode=kgfesPre&css=KGfesPre.css"></script>
 
+	<!-- JS/CSS master -->
+	<script src="loader.js"></script>
+	<link rel="stylesheet" href="./script/KGfesPre.css">
 	<style>
-		div#kgfesPreWrap > section {
+		div#kgfesPreWrap>section {
 			margin: 60px var(--z-spacing);
 		}
-		div#kgfesPreWrap > section > div {
+
+		div#kgfesPreWrap>section>div {
 			margin: 30px var(--z-spacing);
 		}
 
@@ -110,51 +88,71 @@
 				（本ページは随時更新します）
 			</div>
 		</section>
-		<section>
-			<table id="KGcountdownWrap" style="margin:40px auto;table-layout:fixed !important;">
-				<tfoot>
-					<tr>
-						<td colspan="4">
-							<span id="KGcountdownMs"
-								style="display:inline-block;height:2px;transition:65ms linear"></span>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="4">
-							until Saturday,12th September 2020,10:00
-						</td>
-					</tr>
-				</tfoot>
-				<tbody id="KGcountdown"></tbody>
-			</table>
+		<section><div class="zCentering">
 			<script>
-				//カウントダウン設定
-				//制限時間以降が未設定……
-				let w_old = 0;
+				(function () {
+					let d = zDate.duration(new Date(2020, 9 - 1, 12))["day"];
+					if (d > 0) {
+						document.write("五峯祭（2020.9.12）まで、あと" + d + "日です。");
+					} else if (d == 0) {
+						document.write("五峯祭（2020.9.12）当日です！");
+					} else {
+						document.write("五峯祭（2020.9.12）は、" + (-d) + "日前に終了しました。");
+					}
+
+				})();
+			</script>
+		</div>
+		
+		<table id="KGcountdownWrap">
+			<tfoot>
+				<tr>
+					<td colspan="5">
+						<span id="KGcountdownMs" style="display:inline-block;height:2px;transition:65ms linear"></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="5">
+						until Saturday,12th September 2020,10:00
+					</td>
+				</tr>
+			</tfoot>
+			<tbody id="KGcountdown"></tbody>
+		</table>
+		<script>
+			//カウントダウン設定
+			//制限時間以降が未設定……
+			let w_old = 0;
+			let w_diff = 0;
+			window.addEventListener('load', (event) => {
+
 				let zCountdown_ = setInterval(function () {
-					let myDiff = zCountdown(new Date(), new Date(2020, 9 - 1, 12, 10, 00, 00));
-					let s = "<span style='color:transparent;padding:0;margin:0'>s</span>";
+					let d = zDate.duration(new Date(2020, 9 - 1, 12, 10, 00, 00));
+					let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
 					document.getElementById("KGcountdown").innerHTML = "" +
 						"<tr>" +
-						"<th>" + myDiff[3] + "</th>" +
-						"<th>" + myDiff[4] % 24 + "</th>" +
-						"<th>" + myDiff[5] % 60 + "</th>" +
-						"<th>" + myDiff[6] % 60 + "</th>" +
+						"<th>" + d["week"] + "</th>" +
+						"<th>" + d["day"] % 7 + "</th>" +
+						"<th>" + d["hour"] % 24 + "</th>" +
+						"<th>" + d["min"] % 60 + "</th>" +
+						"<th>" + d["sec"] % 60 + "</th>" +
 						"</tr>" +
 						"<tr>" +
-						"<td>" + "day" + (myDiff[3] <= 1 ? s : "s") + "</td>" +
-						"<td>" + "hour" + (myDiff[4] % 24 <= 1 ? s : "s") + "</td>" +
-						"<td>" + "minute" + (myDiff[5] % 60 <= 1 ? s : "s") + "</td>" +
-						"<td>" + "second" + (myDiff[6] % 60 <= 1 ? s : "s") + "</td>" +
+						"<td>" + "week" + (d["week"] <= 1 ? s : "s") + "</td>" +
+						"<td>" + "day" + (d["day"] % 7 <= 1 ? s : "s") + "</td>" +
+						"<td>" + "hour" + (d["hour"] % 24 <= 1 ? s : "s") + "</td>" +
+						"<td>" + "minute" + (d["min"] % 60 <= 1 ? s : "s") + "</td>" +
+						"<td>" + "second" + (d["sec"] % 60 <= 1 ? s : "s") + "</td>" +
 						"</tr>";
-					let w_new = (myDiff[6] % 2 == 0 ? myDiff[7] % 1000 : 1000 - (myDiff[7] % 1000));
-					let w_diff = w_new - w_old;
+					let w_new = (d["sec"] % 2 == 0 ? d["msec"] % 1000 : 1000 - (d["msec"] % 1000));
+					w_diff = w_new - w_old;
 					document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
 					document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
-					document.getElementById("KGcountdownMs").style.background = "hsl(" + ((myDiff[7] % 2000) / 2000 * 360) + ",100%,50%)";
+					document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d["msec"] % 2000) / 2000 * 360) + ",100%,50%)";
 					w_old = w_new;
 				}, 66);
-			</script>
+			});
+		</script>
 		</section>
 		<section class="zScrollIn">
 			<div>
@@ -163,16 +161,14 @@
 				※ARの起動には<a href="./3d/marker.html" target="_blank">専用マーカー</a>が必要です。
 			</div>
 			<div id="HowToAR">
-				<a class="animate__animated animate__infinite animate__pulse"  style="display:inline-block"
-					onclick="(function(){
+				<a class="animate__animated animate__infinite animate__pulse" style="display:inline-block" onclick="(function(){
 						let these = document.getElementById('HowToAR').children;
 						these[1].classList.remove('zInvisible');
 						these[1].classList.toggle('animate__backInUp');
 						these[1].classList.toggle('animate__bounceOut');
 						these[0].classList.toggle('animate__pulse');
 					})()">あそびかた</a>
-				<div class="zInvisible animate__animated animate__bounceOut"
-				style="margin:var(--z-spacing)">
+				<div class="zInvisible animate__animated animate__bounceOut" style="margin:var(--z-spacing)">
 					<div style="margin:var(--z-spacing);">上のボタンをタップすると、<br />
 						スマートフォン／タブレットの<br />
 						カメラが起動します。<br />
@@ -188,7 +184,7 @@
 	<footer style="padding:10px 0;">
 		<div style="text-align:right;padding:5px 5px 10px;">Last Update:2020/07/13</div>
 		「第23回 五峯祭」特設サイト<br />
-		(C) <a href="https://jsh.kgef.ac.jp/" target="_self">国際学院中学校高等学校</a> 2020
+		<a href="https://jsh.kgef.ac.jp/" target="_self">国際学院中学校高等学校</a> 2020
 	</footer>
 	<script>
 
@@ -215,6 +211,11 @@
 		})();
 
 	</script>
+	<style>
+		section#footer{
+			display:none;
+		}
+	</style>
 </body>
 
 </html>

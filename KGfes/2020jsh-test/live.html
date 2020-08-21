@@ -18,58 +18,49 @@
 		gtag('config', 'UA-116915593-1');
 	</script>
 
-
-	<!-- PWA設定 -->
+	<!-- 画面設定 -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--<link rel="manifest" href="./manifest.json">-->
-	<script>
-		/*
-		//service workerの登録関係
-		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker
-				.register('./serviceWorker.js')
-				.then(registration => {
-					// 登録成功
-					console.log('ServiceWorker registration successful with scope: ', registration.scope);
-					registration.onupdatefound = function () {
-						console.log('アップデートがあります！');
-						registration.update();
-					}
-				})
-				.catch(err => {
-					// 登録失敗
-					console.log('ServiceWorker registration failed: ', err);
-				});
-		}
-		*/
-	</script>
 
 	<!-- JS/CSS master -->
-	<script type="text/javascript" src="https://zacky0922.github.io/scripts/master.js?mode=kgfes&css=KGfes.css"></script>
+	<script src="loader.js"></script>
 
 	<style>
 		div#gridWrapper {
-			margin: var(--z-spacing);
 			display: grid;
-			grid-gap: 15px;
-			grid-template-columns: minmax(max-content,3fr) minmax(max-content,1fr);
+			grid-template-columns: 1fr;
 			grid-template-areas:
-				"main	menu"
-				"main	timetable";
+				"menu"
+				"main"
+				"schedule";
 		}
 
+		@media screen and (max-width:599px) {
+			div#gridWrapper {}
+		}
 	</style>
 
 	<title>Live!!</title>
 </head>
 
 <body>
+	<section id="header" style="grid-area:header;">
+	</section>
 	<div id="gridWrapper">
-		<section id="PageMenu" style="grid-area:menu;background:rgba(255,255,255,0.85);padding:20px"></section>
+
+		<section style="grid-area:menu">
+			<nav id="zMenu"></nav>
+			<script>
+				window.addEventListener('load', (event) => {
+					let menu = new zLinkList();
+					menu.getClassList("zHeadList");
+					document.getElementById("zMenu").appendChild(menu.get());
+				})
+			</script>
+		</section>
 
 		<section style="grid-area:main">
-			<h2 class="zHeadList zHead" id="Live!!">Live!!</h2>
+			<h2 class="zHeadList">Live!!</h2>
 			<div class="zCentering">
 				<div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:1em;">
 					<iframe style="width:500px;height:315px;max-width:95%;"
@@ -78,10 +69,18 @@
 						allowfullscreen></iframe>
 				</div>
 			</div>
+			<h2 class="zHeadList">Play List</h2>
+			<div class="zCentering">
+					<a href="" class="zBtn">クラス動画コンテスト</a>
+					<a href="" class="zBtn">食物調理コース</a>
+					<a href="" class="zBtn">音楽系</a>
+					<a href="" class="zBtn">ドラマ（劇）系</a>
+					<a href="" class="zBtn">その他</a>
+			</div>
 		</section>
-		<section style="grid-area:timetable">
-			<h2 class="zHeadList zHead" id="Time Table">Time Table</h2>
-			
+		<section style="grid-area:schedule">
+			<h2 class="zHeadList">Schedule</h2>
+			<p>（調整中）</p>
 		</section>
 	</div><!-- /container -->
 </body>

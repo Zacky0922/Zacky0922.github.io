@@ -23,3 +23,8 @@ div#debugArea:hover{
     background:#ff0;
     border:2px red solid;
 }
+.debug_::before{
+    content:"◆Debug Message◆";
+    display:block;
+    margin-bottom:10px;
+}

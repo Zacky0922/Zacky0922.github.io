@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics by KG-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-116915593-1');
+	</script>
+
+	<!-- 画面設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- JS/CSS master -->
+	<script src="loader.js"></script>
+
+	<style>
+		div#gridWrapper {
+			display: grid;
+			grid-template-columns: 1fr;
+		}
+
+		@media screen and (max-width:599px) {
+			div#gridWrapper {}
+		}
+	</style>
+
+	<title>Gallery</title>
+</head>
+
+<body>
+	<section id="header" style="grid-area:header;">
+	</section>
+	<div id="gridWrapper">
+
+		<section>
+			<nav id="zMenu"></nav>
+			<script>
+				window.addEventListener('load', (event) => {
+					let menu = new zLinkList();
+					menu.getClassList("zHeadList");
+					document.getElementById("zMenu").appendChild(menu.get());
+				})
+			</script>
+		</section>
+		<section>
+			<h2 class="zHeadList">（高3）食物調理コース</h2>
+			<div class="zCentering">
+				レシピ集ダウンロード
+			</div>
+		
+		</section>
+		<section>
+			<h2 class="zHeadList">文芸同好会</h2>
+			<div class="zCentering">
+				<ul>
+					<li>
+						<a href="./gallery/literature.pdf" target="_blank">小説「私の世界」</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div><!-- /container -->
+</body>
+
+</html>

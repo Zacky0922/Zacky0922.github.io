@@ -111,7 +111,7 @@ let zDebug = new (class zDebug {
 
 if (document.referrer.indexOf("?debug") > -1) {
     if (location.href.indexOf("?debug") == -1) {
-        location.href = location.href + "?debug";    
+        location.href = location.href + "?debug";
     }
 }
 
@@ -126,9 +126,13 @@ window.addEventListener('load', (event) => {
 
         // デバッグ要素表示
         let obj = document.getElementsByClassName("debug");
-        for (let i = 0; i < obj.length; i++) {
-            obj[i].classList.add("debug_");
-            obj[i].classList.remove("debug");
+        while (true) {
+            if (obj.length == 0) {
+                break;
+            }
+            obj[0].classList.add("debug_");
+            obj[0].classList.remove("debug");
+
         }
 
         // デバッグモード起動
