@@ -1,13 +1,18 @@
 .zBtn {
-
     outline: 1px solid red;
-    padding: 5px;
+    padding: calc(2 * var(--z-spacing)) var(--z-spacing);
+    text-decoration: none;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    min-height: 3em;
-    min-width:  150px;
+    cursor: pointer;
 }
-.zBtn > *{
-    text-decoration: none;
+.zBtn:hover{
+    background:#ffc;
+}
+.zBtn > div{
+    padding:0;
+    margin:0;
+    display:inline-block;
+    text-align:center;
 }

@@ -1,12 +1,10 @@
 
-/* 機能モジュール */
-
 /* Google Font */
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese');
 
 
-/* test  本当はcommon以下に書きたい*/
 
+@import "./mastercssSetting/default.css";
 
 
 /*  標準設定 */
@@ -21,40 +19,40 @@
 :root{
     /* 部品設定 */
     --z-ele-margin: 5px;
-    --z-ele-padding: 5px;
+    --z-ele-padding: 10px;
     --z-spacing:    5px;
     --z-ele-border: 1px solid #000;
     --z-ele-bg:     #ccc;
 
+    /* 背景 */
+    --z-bg:#114;
+    --z-ele-bgcolor:    #339;
+    --z-ele-bgcolor-alt:    #aaf;
+
     /* フォント系変数 */
-    --z-font-color: #114;
+    --z-font-color: #fff;
+    --z-font-color-alt: #113;
     --z-font-size:  16px;
     --z-caption-letterspacing:  2px;
+
+    /* 罫線 */
+    --z-border-color:   #fff;
 }
 
-body{
-    padding:0;
-    margin:0;
-    font-size:  var(--z-font-size);
-}
 
 /* 基本要素設定 */
 #zContainer > section {
-    border: 1px #000 solid;
+    border:var(--z-border-color) 1px solid;
     padding:var(--z-spacing);
 }
 
-a{
-    text-decoration: none;
-    margin:0 1px;
-    padding:0 1px;
-    border-bottom:1px #f00 dashed;
+.zBtn{
+    background: var(--z-ele-bgcolor);
+    border: 1px solid var(--z-border-color);
+    outline:none;
 }
-a:hover{
-    background: rgba(255,128,128,0.5);
-}
-
-
-input[type="checkbox"].zDispset{
-    display: none;
+.zBtn:hover{
+    
+    background: var(--z-ele-bgcolor-alt);
+    color:var(--z-font-color-alt);
 }

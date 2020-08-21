@@ -7,15 +7,14 @@ div#debugArea{
     bottom:5px;
     background:#888;
     font-size:small;
-    color:#000;
     z-index:1000;
 }
-
 div#debugArea:hover{
     opacity: 1;
 }
-
-
+div#debugArea:hover *{
+    color:#000 !important;
+}
 .debug{
     display: none;
 }
@@ -24,7 +23,5 @@ div#debugArea:hover{
     border:2px red solid;
 }
 .debug_::before{
-    content:"◆Debug Message◆";
-    display:block;
-    margin-bottom:10px;
+    content:"◆ ";
 }

@@ -1,0 +1,21 @@
+body{
+    padding:0;
+    margin:0;
+    background:var(--z-bg);
+    color:var(--z-font-color);
+}
+body,body *{
+    color:var(--z-font-color);
+    font-size:  var(--z-font-size);
+}
+
+a{
+    text-decoration: none;
+    margin:0 1px;
+    padding:0 1px;
+    border-bottom:1px #f00 dashed;
+}
+a:hover{
+    background: rgba(255,128,128,0.5);
+}
+

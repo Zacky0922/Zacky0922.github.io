@@ -1,0 +1,26 @@
+.zTabWrap > *{
+    border:1px #000 solid;
+    padding:var(--z-spacing);
+}
+.zTabWrap > *:first-child{
+    border:none;
+    padding:0;
+}
+.zTabWrap > .zTabMenu{
+    margin:0;
+    padding:0;
+}
+.zTabWrap > .zTabMenu > *{
+    display:inline-block;
+    margin:0 var(--z-spacing);
+    border:1px #000 solid;
+    border-bottom:none;
+}
+.zTabWrap .ui-tabs-active{
+    background:#888;
+}
+.zTabWrap > ul > li > a{
+
+    border:none;
+}
+

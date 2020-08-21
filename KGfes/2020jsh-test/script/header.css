@@ -8,10 +8,12 @@ section#header{
 
 section#header div.headTitle{
     color:  #fff;
-    font-size:  2em;
     text-shadow:    2px 2px 3px rgba(0, 0, 192, 0.9);
 }
-section#header  div.headTitle #KGfesPeriod{
-    font-size:smaller;
+section#header div#KGfesTitle{
+    font-size:  xx-large;
+}
+section#header  div#KGfesPeriod{
+    font-size:  larger;
 }
 

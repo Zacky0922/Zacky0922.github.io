@@ -31,31 +31,34 @@ let zParam = new (class urlQuery {
                 basicUrl = "https://fes.kgef.ac.jp/2020jsh/";
                 this.param["root"] = basicUrl + "";
                 this.param["zScriptsDir"] = basicUrl + "zScripts/";
-            } else if (location.href.indexOf("fes.kgef.ac.jp/2020jsh-test2/") > -1) {
-                basicUrl = "https://fes.kgef.ac.jp/2020jsh-test2/";
+            } else if (location.href.indexOf("fes.kgef.ac.jp/2020jsh-test/") > -1) {
+                basicUrl = "https://fes.kgef.ac.jp/2020jsh-test/";
                 this.param["root"] = basicUrl + "";
                 this.param["zScriptsDir"] = basicUrl + "zScripts/";
             } else if (location.href.indexOf("192.168.1.171") > -1) {
                 basicUrl = "http://192.168.1.171/test/";
-                this.param["root"] = basicUrl + "KGfes/2020jsh-test2/";
-                this.param["zScriptsDir"] = basicUrl + "zScripts/";
-            } else if (location.href.indexOf("192.168.1.171") > -1) {
-                basicUrl = "http://192.168.1.171/test/";
-                this.param["root"] = basicUrl + "KGfes/2020jsh-test2/";
+                this.param["root"] = basicUrl + "KGfes/2020jsh-test/";
                 this.param["zScriptsDir"] = basicUrl + "zScripts/";
             } else {
                 // localのとき
                 switch (this.param["mode"]) {
+                    case "KG":
+                        basicUrl = "../";
+                        this.param["root"] = basicUrl + "KG/";
+                        this.param["zScriptsDir"] = basicUrl + "zScripts/";
+                        break;
                     case "lab":
                         basicUrl = "../";
+                        this.param["root"] = basicUrl + "lab/";
+                        this.param["zScriptsDir"] = basicUrl + "zScripts/";
                         break;
                     case "kgfes":
                     case "kgfes-debug":
                         basicUrl = "../../";
+                        this.param["root"] = basicUrl + "KGfes/2020jsh-test/";
+                        this.param["zScriptsDir"] = basicUrl + "zScripts/";
                         break;
                 }
-                this.param["root"] = basicUrl + "KGfes/2020jsh-test2/";
-                this.param["zScriptsDir"] = basicUrl + "zScripts/";
             }
 
         } else {
@@ -181,7 +184,8 @@ let zPreload = new (class zPreloader {
         // jQuery Plugin：tablesoter + 漢字対応
         "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js",
-
+        "ex/jQueryUI/tab.js",          // list.js,jQueryUI依存
+        
         // MathJax
         "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old
         //"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",                        //new
@@ -214,7 +218,7 @@ let zPreload = new (class zPreloader {
         "tools/audio/audio.js",
         "tools/button/button.js",
         "tools/menu/burger.js",     // list.js依存
-        "tools/tab/tab.js",          // list.js,jQueryUI依存
+       
         "tools/date.js",
         "tools/develop/develop.js",
 
@@ -227,8 +231,10 @@ let zPreload = new (class zPreloader {
 
         //モード処理
         switch (zParam.get("mode")) {
+
             case "lab":
-                this.css.push(zParam.get("zScriptsDir") + "master.css")
+            case "KG":
+                this.css.push(zParam.get("zScriptsDir") + "master.css");
                 break;
             case "kgfes":
             case "kgfes_debug":
