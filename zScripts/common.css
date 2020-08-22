@@ -63,7 +63,7 @@ html,body{
 
 .zGrid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */
     gap: var(--z-spacing);
 }
 

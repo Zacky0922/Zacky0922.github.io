@@ -20,7 +20,8 @@
     background:#888;
 }
 .zTabWrap > ul > li > a{
-
+    display: block;
+    padding:var(--z-spacing);
     border:none;
 }
 
