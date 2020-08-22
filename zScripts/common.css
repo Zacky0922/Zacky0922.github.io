@@ -41,7 +41,9 @@
 }
 
 html *{
+    /*
     position: relative;
+    */
 }
 html,body{
     padding:0;
@@ -60,7 +62,9 @@ html,body{
     display:none;
 }
 
-
+.zSpacer{
+    height:30px !important;
+}
 .zGrid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */

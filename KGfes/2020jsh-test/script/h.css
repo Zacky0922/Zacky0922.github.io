@@ -2,6 +2,7 @@ h2,h3{
     text-align:center;
     letter-spacing: var(--z-letterspacing);
     padding:var(--z-spacing);
+    position: relative;
 }
 h2{
     margin: calc(2 * var(--z-spacing));
