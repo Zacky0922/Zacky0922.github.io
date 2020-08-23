@@ -21,11 +21,13 @@
     --z-ele-margin: 5px;
     --z-ele-padding: 10px;
     --z-spacing:    5px;
-    --z-ele-border: 1px solid #000;
+    --z-ele-border: 1px solid #fff;
     --z-ele-bg:     #ccc;
 
     /* 背景 */
     --z-bg:#114;
+
+    /* パーツ設定 */
     --z-ele-bgcolor:    #339;
     --z-ele-bgcolor-alt:    #aaf;
 

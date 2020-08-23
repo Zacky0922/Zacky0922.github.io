@@ -1,5 +1,5 @@
 .zTabWrap > *{
-    border:1px #000 solid;
+    border: var(--z-ele-border);
     padding:var(--z-spacing);
 }
 .zTabWrap > *:first-child{
@@ -13,7 +13,7 @@
 .zTabWrap > .zTabMenu > *{
     display:inline-block;
     margin:0 var(--z-spacing);
-    border:1px #000 solid;
+    border: var(--z-ele-border);
     border-bottom:none;
 }
 .zTabWrap .ui-tabs-active{
