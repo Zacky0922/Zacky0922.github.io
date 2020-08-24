@@ -12,8 +12,10 @@ function setFooter() {
         "<img src='" + zParam.get("root") + "pict/ft/classmovie.png" + "'>" +
         "</a>" +
         // ARコンテンツバナー
-        //"<img src='" + zParam.get("root") + "pict/ft/ar_banner.png" + "'>" +
-        "ARコンテンツ<br/>（準備中）"+
+        "<a href='" + zParam.get("root") + "gallery.html#ar_gallery' target='_self'>" +
+        "<img src='" + zParam.get("root") + "pict/ft/ar_banner.png" + "'>" +
+        "</a>" +
+        //"ARコンテンツ<br/>（準備中）"+
         // 0912個別相談
         "<a href='https://jsh.kgef.ac.jp/news/14865/' target='_blank'>" +
         "<img src='" + zParam.get("root") + "pict/ft/0912soudan.png" + "'>" +
@@ -25,7 +27,6 @@ function setFooter() {
         "<a href='https://jsh.kgef.ac.jp/' target='_blank'>Kokusai Gakuin Junior & Senior High School</a>" +
         "</div>";
     document.body.appendChild(ft);
-
 
     // 先頭に戻る際の
     var gototop = $('#ft_gototop');

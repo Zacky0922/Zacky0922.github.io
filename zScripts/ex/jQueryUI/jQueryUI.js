@@ -1,3 +1,4 @@
+// タブ生成
 class zTab {
     id;
     parent;
@@ -32,3 +33,12 @@ class zTab {
     }
 
 }
+
+// ツールチップ：error unworking
+window.addEventListener('load', (event) => {
+    $(function () {
+        $(".jQueryUItooltip").tooltip({
+            track: true
+        });
+    });
+})

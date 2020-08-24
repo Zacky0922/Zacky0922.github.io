@@ -58,11 +58,11 @@
 			background: #fff;
 
 			/* 画像幅（＝高さ）だけ定義・・・余りは自動割り振り＝1fr */
-			--kg-gpImg-width: 180px;
+			--kg-gpImg-width: 160px;
 
 			display: grid;
 			grid-template-columns: var(--kg-gpImg-width) 1fr;
-			gap: var(--z-spacing);
+			gap: 0 var(--z-spacing);
 			grid-template-areas:
 				"gpImg gpName"
 				"gpImg gpTitle"
@@ -78,16 +78,34 @@
 
 		div.gpContent>div.gpName {
 			grid-area: gpName;
+			font-size: 85%;
+			margin: 0;
+			padding: 0;
 		}
 
 		div.gpContent>div.gpTitle {
 			grid-area: gpTitle;
-			border: 1px #f00 solid;
+			border-bottom: red double 3px;
+			font-size: 115%;
 		}
 
-		div.gp>div.gpText {
+		div.gpContent>div.gpText {
 			grid-area: gpText;
+			padding-top: var(--z-spacing);
+		}
 
+		div.gpContent>div.gpText>h5:first-child {
+			margin-top: 0;
+		}
+		div.gpContent>div.gpText>div.gpFt{
+			text-align:left;
+			margin-top:var(--z-spacing);
+			padding:var(--z-padding);
+			background:rgba(250,245,200);
+			border-radius: var(--z-spacing);
+		}
+		div.gpContent>div.gpText>div.gpFt > *{
+			display: block;
 		}
 	</style>
 	<title>Events</title>
@@ -118,9 +136,9 @@
 				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/2g.png">
-						<div class="gpName"></div>
-						<div class="gpTitle"></div>
-						<div class="gpText"></div>
+						<div class="gpName">2年G組</div>
+						<div class="gpTitle">KGピタゴラス</div>
+						<div class="gpText">？？</div>
 					</div>
 				</div>
 				<div class="gpWrap dw-panel dw-panel--focus">
@@ -141,8 +159,14 @@
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/food.png">
 						<div class="gpName">（高3）食物調理コース</div>
-						<div class="gpTitle">コックサイと作る世界の絶品料理</div>
-						<div class="gpText"></div>
+						<div class="gpTitle">食物調理コースが異文化料理を作ってみた！！</div>
+						<div class="gpText">？？
+							<div class="gpFt">
+								<a href="./gallery.html" target="_self">
+									<span class="material-icons">library_books</span> レシピPDF
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="gpWrap dw-panel dw-panel--focus">
@@ -153,16 +177,15 @@
 							レッドクロス赤ずきん！<br />～命を守ろう！救おう！～
 						</div>
 						<div class="gpText">
-							内容紹介<br />
-							動画①：チーム紹介<br />
-							私たちの紹介です。<br />
-							動画②：レッドクロス赤ずきん！〜命を守ろう！救おう！〜<br />
-							救急法の一つである「心肺蘇生法とAED」について、童話「赤ずきんちゃん」とコラボした演劇動画です。楽しみながらご覧下さい。<br />
-							団体紹介<br />
+							<h5>団体紹介</h5>
 							みなさんこんにちは！<br />
 							私たちは、国際学院JRC（青少年赤十字）部です。<br />
 							普段は校外を含めたボランティア活動が多い部活ですが、今回は一味違った「楽しく見て学べる」をテーマにした動画を作成しました！<br />
 							是非、楽しみながらご覧ください！
+							<h5>動画①：チーム紹介</h5>
+							私たちの紹介です。
+							<h5>動画②：レッドクロス赤ずきん！〜命を守ろう！救おう！〜</h5>
+							救急法の一つである「心肺蘇生法とAED」について、童話「赤ずきんちゃん」とコラボした演劇動画です。楽しみながらご覧下さい。
 						</div>
 					</div>
 				</div>
@@ -170,8 +193,8 @@
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/kwms.png">
 						<div class="gpName">かわまし</div>
-						<div class="gpTitle"></div>
-						<div class="gpText"></div>
+						<div class="gpTitle">？？</div>
+						<div class="gpText">？？</div>
 					</div>
 				</div>
 				<div class="gpWrap dw-panel dw-panel--focus">
@@ -182,11 +205,16 @@
 							イラスト＆創作短編
 						</div>
 						<div class="gpText">
-							内容紹介<br />
-							• 例年通り五峯祭で発行している文芸部文集を作成しました。<br />
-							団体紹介<br />
+							<h5>団体紹介</h5>
 							みなさん こんちには！<br />
 							私たちは、本やイラストが好きな仲間たちが集まった文芸同好会です。
+							<h5>出展概要</h5>
+							例年通り五峯祭で発行している文芸部文集を作成しました。
+							<div class="gpFt">
+								<a href="./gallery.html" target="_self">
+									<span class="material-icons">library_books</span> 作品ギャラリー
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -196,18 +224,18 @@
 						<div class="gpName">数学研究室</div>
 						<div class="gpTitle">数学研究室</div>
 						<div class="gpText">
-							内容紹介<br />
-							小中学生も楽しく学べる数学の動画や、プログラミングを作成しました。<br />
-							団体紹介<br />
+							<h5>団体紹介</h5>
 							みなさんこんにちは！<br />
 							私たち数学研究室は、問題やゲーム、プログラミング等、色々な角度から、数学を「研究」しています。
+							<h5>出展概要</h5>
+							小中学生も楽しく学べる数学の動画や、プログラミングを作成しました。
 						</div>
 					</div>
 				</div>
 				<div class="gpWrap dw-panel dw-panel--focus">
 					<div class="gpContent dw-panel__content">
 						<img src="./pict/gp/opmovie.png">
-						<div class="gpName">***</div>
+						<div class="gpName">？？</div>
 						<div class="gpTitle">五峯祭オープニングムービー</div>
 						<div class="gpText">
 							みなさん、こんにちは。<br />
@@ -234,11 +262,11 @@
 						<div class="gpName">吹奏楽部</div>
 						<div class="gpTitle">いわたとゆかいな仲間たち</div>
 						<div class="gpText">
-							【団体紹介文】<br />
+							<h5>団体紹介</h5>
 							皆さんこんにちは 国際学院吹奏楽部です！<br />
 							私たちは中学生3人、高校生5人で活動しています！<br />
-							このご時世、なかなか練習時間が取れませんでしたが短い時間で効率よく練習しました！<br />
-							【出展内容紹介】<br />
+							このご時世、なかなか練習時間が取れませんでしたが短い時間で効率よく練習しました！
+							<h5>出展概要</h5>
 							誰もが知っているあの有名なポップス曲をメドレー形式で演奏します。<br />
 							イヤホン推奨！MVにも注目！
 						</div>
@@ -250,24 +278,52 @@
 						<div class="gpName">1年H・K組</div>
 						<div class="gpTitle">「終わらないSHR」<br />（リアル脱出ゲーム風ドラマ）</div>
 						<div class="gpText">
+							<h5>団体紹介</h5>
+							私たちは、1年H組と1年K組が合体した合同チームです。<br />
+							五峯祭のために謎を考えたり、小道具の準備をしたりなど様々なことを頑張りました。<br />
+							どうぞお楽しみください。
+							<h5>出展概要</h5>
 							目が覚めると体が拘束され、教室に閉じ込められていた。<br />
 							まわりを見ると、同じくらいの年の子たちが、私を合わせて4人いた。<br />
 							<div
-								style="border-radius: var(--z-spacing);background:#dde;margin:var(--z-spacing);padding:var(--z-spacing) calc(3 * var(--z-spacing));">
+								style="border-radius: var(--z-spacing);background:#dde;margin:var(--z-spacing);padding:var(--z-spacing);">
 								あぁそうか。だからあの時“あの子“はそう言ったのか。<br />
 								でも、確かに。君の言う通りだ。だから…<br />
 								――次こそ私は“活躍”する<br />
 								――次こそ私は“脱出“する。『終わらないSHR』を。<br />
 								――“あの時の私”を犠牲にして。
 							</div>
-							・団体紹介文<br />
-							私たちは、1年H組と1年K組が合体した合同チームです。<br />
-							五峯祭のために謎を考えたり、小道具の準備をしたりなど様々なことを頑張りました。<br />
-							どうぞお楽しみください。
+						</div>
+					</div>
+				</div>
+				<div class="gpWrap dw-panel dw-panel--focus">
+					<div class="gpContent dw-panel__content">
+						<img src="./pict/gp/gpDummy.png">
+						<div class="gpName">保護者会</div>
+						<div class="gpTitle">活動紹介</div>
+						<div class="gpText">
+							例年、五峯祭で保護者会が行っている活動について紹介します。
+							<div class="gpFt">
+								<a href="https://www.youtube.com/watch?v=6BOoCyMqFw0" target="_blank">
+									<span class="material-icons" class="jQueryUItooltip" title="YouTube">videocam</span> 高等部
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="dw__focus-curtain"></div>
+			</div>
+			<div class="zCentering">
+				<div>
+					<div class="zGridFill">
+						<a href="./live.html" target="_self" class="zBtn">
+							<span class="material-icons">videocam</span> 動画コンテンツ
+						</a>
+						<a href="./gallery.html" target="_self" class="zBtn">
+							<span class="material-icons">library_books</span> その他の展示
+						</a>
+					</div>
+				</div>
 			</div>
 		</section>
 

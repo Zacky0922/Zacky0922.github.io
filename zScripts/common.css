@@ -50,8 +50,17 @@ html,body{
     margin:0;
 }
 
+
+/*  見出しルール
+    h1      ページ大見出し
+    h2～h4  記事：見出し：lv1～3
+    h5～h6  項目内：小見出し
+*/
+
+
 .zCentering{
     text-align:center;
+    margin:var(--z-spacing);
 }
 .zCentering > *{
     display:inline-block;
@@ -70,6 +79,17 @@ html,body{
     grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */
     gap: var(--z-spacing);
 }
+.zGridFill{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */
+    gap: var(--z-spacing);
+}
+.zGridFit{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */
+    gap: var(--z-spacing);
+}
+
 
 .zXscrollable {
     text-align: center;

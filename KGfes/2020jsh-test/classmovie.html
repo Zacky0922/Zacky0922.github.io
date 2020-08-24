@@ -61,13 +61,49 @@
 
 		<section style="grid-area:main">
 			<h2 class="zHeadList">クラス動画コンテスト</h2>
-			<h3>SDGs動画</h3>
+			<h3>「SDGs動画」部門</h3>
+			<div class="zCentering">
+				<img src="./pict/SDGs/logo.png" style="width:min(80vw,500px)">
+			</div>
+			<div id="SDGsIcons"></div>
+
+
+			<style>
+				#SDGsIcons {
+					display: grid;
+					gap: var(--z-spacing);
+					grid-template-columns: repeat(auto-fill, 150px);
+					justify-content: center;
+				}
+				#SDGsIcons>img {
+					width: 150px;
+				}
+			</style>
+			<script>
+					(function () {
+						let wrap = document.getElementById("SDGsIcons");
+						for (let i = 1; i <= 17; i++) {
+							let img = document.createElement("img");
+							img.src = "./pict/SDGs/" + (i < 10 ? "0" : "") + i + ".png";
+							wrap.appendChild(img);
+						}
+						let img = document.createElement("img");
+						img.src = "./pict/SDGs/wheel.png";
+						wrap.appendChild(img);
+					})();
+			</script>
+
+			<div style="margin:var(--z-spacing) 0;border:#000 dashed 1px;text-align:right;">
+				SDGsロゴは、<a
+					href="https://www.unic.or.jp/activities/economic_social_development/sustainable_development/2030agenda/sdgs_logo/" target="_blank">SDGsのポスター・ロゴ・アイコンおよびガイドライン
+					- 国連広報センター</a>に基づき表示しています。
+			</div>
 			<div class="debug">何か説明を…<br />
-				特に、17それぞれの中身が分かるように。（動画一覧に番号を表示するため）</div>
-			<h3>学校紹介動画</h3>
+				特に、17それぞれの中身が分かるように。（動画一覧に番号を表示するため）
+			</div>
+			<h3>「学校紹介動画」部門</h3>
 			<div class="debug">何か説明を…</div>
 			<h3>出品動画</h3>
-			<div class="debug">動画タイトルによるソートは調整中</div>
 			<div class="zXscrollable">
 				<table id="tablesorter0" class="tablesoter">
 					<thead>
@@ -78,7 +114,7 @@
 							<th>
 								動画カテゴリ
 							</th>
-							<th class="{sorter: 'metadata'}">
+							<th>
 								動画タイトル
 							</th>
 							<th>
@@ -88,9 +124,17 @@
 					</thead>
 					<tbody>
 						<tr>
+							<td>1G</td>
+							<td>学校紹介:敦照殿</td>
+							<td>
+								<a href="https://www.youtube.com/watch?v=zIaMV1BuSm4">（無題）</a>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
 							<td>2A</td>
 							<td>SDGs:2</td>
-							<td class="{sortValue: 1}">
+							<td>
 								<a href="https://www.youtube.com/watch?v=zIaMV1BuSm4">（無題）</a>
 							</td>
 							<td></td>
@@ -98,7 +142,7 @@
 						<tr>
 							<td>2E</td>
 							<td>SDGs:17</td>
-							<td class="{sortValue: 2}">
+							<td>
 								<a href="https://www.youtube.com/watch?v=soXJRbJ307c">（無題）</a>
 							</td>
 							<td></td>

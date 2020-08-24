@@ -184,7 +184,7 @@ let zPreload = new (class zPreloader {
         // jQuery Plugin：tablesoter + 漢字対応
         "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js",
-        "ex/jQueryUI/tab.js",          // list.js,jQueryUI依存
+        "ex/jQueryUI/jQueryUI.js",          // list.js,jQueryUI依存
         
         // MathJax
         "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML", //old

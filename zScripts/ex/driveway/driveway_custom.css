@@ -11,10 +11,10 @@
   background: #000;
   opacity: .75;
   */
+  opacity: .60;
   background: #113;
 }
 .dw-panel--focus:hover  ~ .dw__focus-curtain{
-
 }
 
 /* 画面サイズ設定（コメントアウトは標準値） */
