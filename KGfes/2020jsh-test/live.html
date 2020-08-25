@@ -52,7 +52,7 @@
 			<nav id="zMenu"></nav>
 			<script>
 				window.addEventListener('load', (event) => {
-					let menu = new zLinkList();
+					let menu = new zList();
 					menu.getClassList("zHeadList");
 					document.getElementById("zMenu").appendChild(menu.get());
 				})
@@ -70,19 +70,16 @@
 				</div>
 			</div>
 			<h2 class="zHeadList">Play List (YouTube)</h2>
-			<div class="zCentering">
-				<div>
-					<div class="zGridFill">
-						<a href="" class="zBtn">クラス動画コンテスト</a>
-						<a href="" class="zBtn">食物調理コース</a>
-						<a href="" class="zBtn">音楽系</a>
-						<a href="" class="zBtn">ドラマ（劇）系</a>
-						<a href="" class="zBtn">その他</a>
-					</div>
-				</div>
+
+			<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, 150px);">
+				<a href="" class="zBtn">クラス動画<br/>コンテスト</a>
+				<a href="" class="zBtn">食物調理コース</a>
+				<a href="" class="zBtn">音楽系</a>
+				<a href="" class="zBtn">ドラマ（劇）系</a>
+				<a href="" class="zBtn">その他</a>
 			</div>
 			<div class="debug">
-				リンク先未設定
+				リンク先＝YouTubeプレイリスト：リンク未設定
 			</div>
 		</section>
 		<section style="grid-area:schedule">

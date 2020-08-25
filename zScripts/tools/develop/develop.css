@@ -26,7 +26,7 @@ div#debugArea:hover *{
 }
 .debug_{
     background:#ff0;
-    border:2px red solid;
+    border:5px red solid;
 }
 .debug_::before{
     content:"◆ ";

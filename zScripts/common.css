@@ -74,20 +74,16 @@ html,body{
 .zSpacer{
     height:30px !important;
 }
-.zGrid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */
-    gap: var(--z-spacing);
-}
 .zGridFill{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */
+    grid-template-columns:repeat(auto-fill, minmax(100px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */
     gap: var(--z-spacing);
 }
 .zGridFit{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */
+    grid-template-columns:repeat(auto-fit, minmax(100px, 1fr)); /* min・・・必ず内包要素より大きくすること！ */
     gap: var(--z-spacing);
+    justify-content: center;
 }
 
 

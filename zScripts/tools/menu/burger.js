@@ -1,5 +1,7 @@
-class burgerMenu extends zLinkList{
+class burgerMenu extends zList{
+
     /*
+    バーガーコンテンツ
     wrap        div#zBurgerWrap
     label          label
                         引数icon
@@ -21,10 +23,8 @@ class burgerMenu extends zLinkList{
         this.input.id = "zBurgerChkbx";
         this.input.checked = false;
         this.ulWrap.id = "zBurgerUlWrap";
-        
         this.wrap.appendChild(this.label);
         this.wrap.appendChild(this.input);
-        this.ulWrap.appendChild(super.get());
         this.wrap.appendChild(this.ulWrap);
     };
     setWrapId(id) {
@@ -33,7 +33,18 @@ class burgerMenu extends zLinkList{
     setWrapClass(cl) {
         this.wrap.classList.add(cl);
     };
+    // ULのみ取得
     get() {
-        return this.wrap;
+        return super.get();
+    }
+    // wrapを取得
+    setBurger() {
+        //最新のulを親クラスから取得
+        while (this.ulWrap.children.length > 0) {
+            this.ulWrap.children[0].remove();
+        }
+        this.ulWrap.appendChild(super.get());
+        document.body.appendChild(this.wrap);
+
     }
 };

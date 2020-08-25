@@ -240,7 +240,8 @@ let zPreload = new (class zPreloader {
             case "kgfes_debug":
                 this.js.push(zParam.get("root") + "script/kgfes.js",
                     zParam.get("root") + "script/header.js",
-                    zParam.get("root") + "script/footer.js"
+                    zParam.get("root") + "script/footer.js",
+                    zParam.get("root") + "script/menu.js"  //必ず最後に！
                 );
                 this.css.push(zParam.get("root") + "script/kgfes.css");
                 break;
@@ -300,8 +301,6 @@ let zPreload = new (class zPreloader {
         document.head.appendChild(myCSS);
     }
 
-    //読込完了チェック
-    checkLoaded() { }
 })();
 
 

@@ -52,7 +52,7 @@
 			<nav id="zMenu"></nav>
 			<script>
 				window.addEventListener('load', (event) => {
-					let menu = new zLinkList();
+					let menu = new zList();
 					menu.getClassList("zHeadList");
 					document.getElementById("zMenu").appendChild(menu.get());
 				})
@@ -65,14 +65,13 @@
 			<div class="zCentering">
 				<img src="./pict/SDGs/logo.png" style="width:min(80vw,500px)">
 			</div>
-			<div id="SDGsIcons"></div>
-
+			<div id="SDGsIcons" class="zGridFill"></div>
 
 			<style>
 				#SDGsIcons {
 					display: grid;
 					gap: var(--z-spacing);
-					grid-template-columns: repeat(auto-fill, 150px);
+					grid-template-columns: repeat(auto-fill, 150px);	/* img widthと合わせる */
 					justify-content: center;
 				}
 				#SDGsIcons>img {
@@ -94,9 +93,12 @@
 			</script>
 
 			<div style="margin:var(--z-spacing) 0;border:#000 dashed 1px;text-align:right;">
-				SDGsロゴは、<a
-					href="https://www.unic.or.jp/activities/economic_social_development/sustainable_development/2030agenda/sdgs_logo/" target="_blank">SDGsのポスター・ロゴ・アイコンおよびガイドライン
-					- 国連広報センター</a>に基づき表示しています。
+				SDGsロゴは、
+				<a href="https://www.unic.or.jp/activities/economic_social_development/sustainable_development/2030agenda/sdgs_logo/"
+					target="_blank">
+					SDGsのポスター・ロゴ・アイコンおよびガイドライン - 国連広報センター
+				</a>
+				に基づき表示しています。
 			</div>
 			<div class="debug">何か説明を…<br />
 				特に、17それぞれの中身が分かるように。（動画一覧に番号を表示するため）
@@ -127,7 +129,7 @@
 							<td>1G</td>
 							<td>学校紹介:敦照殿</td>
 							<td>
-								<a href="https://www.youtube.com/watch?v=zIaMV1BuSm4">（無題）</a>
+								<a target="_blank" href="https://www.youtube.com/watch?v=zIaMV1BuSm4">（無題）</a>
 							</td>
 							<td></td>
 						</tr>
@@ -135,7 +137,15 @@
 							<td>2A</td>
 							<td>SDGs:2</td>
 							<td>
-								<a href="https://www.youtube.com/watch?v=zIaMV1BuSm4">（無題）</a>
+								<a target="_blank" href="https://www.youtube.com/watch?v=zIaMV1BuSm4">（無題）</a>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>2B</td>
+							<td>学校紹介</td>
+							<td>
+								<a target="_blank" href="https://www.youtube.com/watch?v=tKx0lBshA4Y">（無題）</a>
 							</td>
 							<td></td>
 						</tr>
@@ -143,7 +153,7 @@
 							<td>2E</td>
 							<td>SDGs:17</td>
 							<td>
-								<a href="https://www.youtube.com/watch?v=soXJRbJ307c">（無題）</a>
+								<a target="_blank" href="https://www.youtube.com/watch?v=soXJRbJ307c">（無題）</a>
 							</td>
 							<td></td>
 						</tr>
@@ -151,14 +161,13 @@
 				</table>
 				<script>
 					$(document).ready(function () {
-						$("#tablesorter0").tablesorter();
-					});
-					$("#tablesorter0").tablesorter({
-						sortList: [[0, 0]]
+						$("#tablesorter0").tablesorter({
+							sortList: [[0, 0]]
+						});
 					});
 				</script>
 			</div>
-			<a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIcAkYM4LognE5Mmd9uPzMe6" target="_blank">再生リスト</a>
+			<a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIcAkYM4LognE5Mmd9uPzMe6" target="_blank">再生リスト(YouTube)</a>
 		</section>
 	</div><!-- /container -->
 </body>

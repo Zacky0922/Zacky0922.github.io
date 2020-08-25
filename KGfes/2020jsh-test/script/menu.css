@@ -1,6 +1,42 @@
-div#zBurgerWrap > div#zBurgerUlWrap > ul{
+div#KGfesMenuWrap > ul{
     list-style: none;
     margin:var(--z-spacing) 0 0;
+    padding:0;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap:var(--z-spacing);
+}
+
+div#KGfesMenuWrap > ul > li{
+    display:    inline-block;
+    color:  #114;
+    background:rgba(255,255,255,0.8);
+    text-align:center;
+    white-space: nowrap;
+}
+
+div#KGfesMenuWrap > ul > li > a{
+    display:block;
+    padding:    var(--z-spacing);
+}
+div#KGfesMenuWrap > ul *{
+    text-decoration: none;
+}
+div#KGfesMenuWrap > ul > li:hover{
+    background:rgba(255,192,192,0.8);
+}
+
+@media screen and (max-width:599px){
+    div#KGfesMenuWrap{
+        display:none;
+    }
+}
+
+
+/* menu script変更後、未整理のまま…（表示は乱れないけど） */
+div#zBurgerWrap > div#zBurgerUlWrap > ul{
+    list-style: none;
+    margin:0;
     padding:0;
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -65,9 +101,15 @@ div#zBurgerWrap > label img{
 }
 
 /* 個別サイト用テンプレ */
+#zBurgerWrap{
+    display:none;
+}
 /* 小画面表示の場合 */
 @media screen and (max-width:599px){
 
+    #zBurgerWrap{
+        display:block;
+    }
     /* メニューの表示設定 */
     #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap{
         position: fixed;
