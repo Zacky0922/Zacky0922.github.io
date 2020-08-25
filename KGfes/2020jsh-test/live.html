@@ -31,8 +31,7 @@
 			grid-template-columns: 1fr;
 			grid-template-areas:
 				"menu"
-				"main"
-				"schedule";
+				"main";
 		}
 
 		@media screen and (max-width:599px) {
@@ -69,10 +68,190 @@
 						allowfullscreen></iframe>
 				</div>
 			</div>
-			<h2 class="zHeadList">Play List (YouTube)</h2>
+
+			<h2 class="zHeadList">Schedule</h2>
+			
+			<div class="zCentering">（調整中）</div>
+			<style>
+				table#timetable tbody tr:hover {
+					background: rgba(255, 192, 192, 0.5);
+				}
+
+				table#timetable tr td:nth-child(4) {
+					text-align: center;
+				}
+
+				table#timetable tr td:nth-child(4)>a {
+					display: block;
+				}
+
+				table#timetable tr td:nth-child(4) img {
+					width: 100px;
+				}
+			</style>
+			<div class="zXscrollable">
+				<table id="timetable" class="tablesoter">
+					<thead>
+						<tr>
+							<th>予定時刻</th>
+							<th>団体名</th>
+							<th>内容</th>
+							<th>生放送以外の<br />公開コンテンツ</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>10:00</td>
+							<td></td>
+							<td>オープニング</td>
+							<td>
+								<img src="./pict/schedule/常設動画.png">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>保護者会</td>
+							<td>活動紹介<br />（高等部・一貫部）</td>
+							<td>
+								<img src="./pict/schedule/常設動画.png">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>生徒会</td>
+							<td>ドミノ企画</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2年G組</td>
+							<td>KGピタゴラス</td>
+							<td>
+								<img src="./pict/schedule/常設動画.png">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>3年G組</td>
+							<td>食物調理コースが<br />異文化料理を作ってみた！！</td>
+							<td>
+								<img src="./pict/schedule/常設動画.png">
+								<a href="./gallery.html" target="_self">
+									<img src="./pict/schedule/展示.png">
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>JRC部</td>
+							<td>レッドクロス赤ずきん！<br />
+								～命を守ろう！救おう！～</td>
+							<td>
+								<img src="./pict/schedule/常設動画.png">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>かわまし</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>文芸同好会</td>
+							<td>イラスト＆創作短編</td>
+							<td>
+								<a href="./gallery.html" target="_self">
+									<img src="./pict/schedule/展示.png">
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>数学研究室</td>
+							<td>数学研究室</td>
+							<td>
+								<img src="./pict/schedule/常設動画.png">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>軽音楽部</td>
+							<td>軽音楽WEB録画演奏</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>吹奏楽部</td>
+							<td>いわたとゆかいな仲間たち</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1年H・K組</td>
+							<td>「終わらないSHR」<br />
+								（リアル脱出ゲーム風ドラマ）</td>
+							<td>
+								<img src="./pict/schedule/常設動画.png">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>中学校</td>
+							<td>合唱</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>中学校</td>
+							<td>劇</td>
+							<td>
+								<img src="./pict/schedule/常設動画.png">
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>生徒会</td>
+							<td>クラス動画コンテスト</td>
+							<td>
+								<a href="./classmovie.html" target="_self">
+									<img src="./pict/schedule/特設ページ.png">
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>チェリー</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2年K組</td>
+							<td>桃太郎</td>
+							<td>
+								<img src="./pict/schedule/常設動画.png">
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+			<script>
+				$(document).ready(function () {
+					$("#timetable").tablesorter({
+						sortList: [[0, 0]],
+						headers: {
+							3: { sorter: false }
+						}
+					});
+				});
+			</script>
+
+			<h2 class="zHeadList">常設動画プレイリスト(YouTube)</h2>
 
 			<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, 150px);">
-				<a href="" class="zBtn">クラス動画<br/>コンテスト</a>
+				<a href="" class="zBtn">クラス動画<br />コンテスト</a>
 				<a href="" class="zBtn">食物調理コース</a>
 				<a href="" class="zBtn">音楽系</a>
 				<a href="" class="zBtn">ドラマ（劇）系</a>
@@ -81,10 +260,7 @@
 			<div class="debug">
 				リンク先＝YouTubeプレイリスト：リンク未設定
 			</div>
-		</section>
-		<section style="grid-area:schedule">
-			<h2 class="zHeadList">Schedule</h2>
-			<p>（調整中）</p>
+
 		</section>
 	</div><!-- /container -->
 </body>
