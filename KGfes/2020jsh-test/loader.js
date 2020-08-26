@@ -15,10 +15,20 @@
 	}
 	script.src = basicUrl + "zScripts/master.js?mode=kgfes";
 	document.write(script.outerHTML);
-	
+
 
 	var manualQuery = new Array();
 	manualQuery["mode"] = "kgfes_debug";
 	manualQuery["root"] = basicUrl;
 	manualQuery["zScriptsDir"] = basicUrl + "zScripts/";
 })();
+
+
+let ua = window.navigator.userAgent.toLowerCase();
+
+if (ua.indexOf("edg") > -1) {
+	if (ua.indexOf("edge") > -1) {
+		alert("お使いのブラウザは「古い」Edgeです。");
+		location.href = "./br_error.html";
+	}
+}
