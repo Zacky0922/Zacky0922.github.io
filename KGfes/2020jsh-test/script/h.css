@@ -15,10 +15,6 @@ h2{
 h2:first-child{
     margin: calc(2 * var(--z-spacing)) 0;
 }
-h3{
-    margin: var(--z-spacing);
-    font-size:120%;
-}
 
 h2::before,
 h2::after{
@@ -37,6 +33,14 @@ h2::after{
 }
 h2::before{	top:		0;	}
 h2::after{	bottom:		0;	}
+
+h3{
+    margin: calc(4 * var(--z-spacing)) var(--z-spacing) var(--z-spacing);
+    font-size:120%;
+}
+h3:first-child{
+    margin: var(--z-spacing);
+}
 
 h5{
     margin:var(--z-spacing) 0 calc(var(--z-spacing) / 2);

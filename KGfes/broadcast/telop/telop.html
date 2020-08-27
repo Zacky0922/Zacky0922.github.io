@@ -25,6 +25,12 @@
             --z-shadow-position: 6px 6px;
         }
 
+        /* 
+        * {
+            outline: solid blue;
+        }
+        /* */
+
         body {
             background: #888;
             position: relative;
@@ -34,21 +40,15 @@
             width: 1920px;
             height: 1080px;
 
-            font-size: 0;   /* 謎margin対応 */
+            /* 謎margin対応 */
+            font-size: 0;
             /* 標準設定 */
             font-weight: 700;
             color: #fff;
-            text-shadow: var(--z-shadow-position) 0 rgba(0, 0, 0, 0.4);
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: black;
+            text-shadow: var(--z-shadow-position) 2px rgba(128, 128, 128, 0.4);
         }
-
-        /* 
-        * {
-            outline: solid blue;
-        }
-
-        /* */
-
-
 
         /* 位置決めクラス */
         div#wrap {
@@ -109,28 +109,65 @@
             bottom: 0;
         }
 
+        div#wrap .middle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 1080px;
+        }
+
+        /* 中段の左右に割り当てるクラス：未設定 */
+
         div#wrap>*>* {
             display: inline-block;
             /* 全般設定 */
             font-size: 50px;
         }
 
+        /* text設定 */
+        .tx_l {
+            text-align: left;
+        }
+
+        .tx_c {
+            text-align: center;
+        }
+
+        .tx_r {
+            text-align: right;
+        }
+
         /* スタイルクラス */
         .live {
             font-weight: 900;
             color: red;
-            text-shadow: var(--z--shadow-position) 0 #fff;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: #fff;
         }
-        .sticky{
-            background:#ffa;
-            color:black;
-            padding:0 var(--z-padding);
-            box-shadow: var(--z-shadow-position) 0 rgba(0,0,0,.6);
+
+        .sticky {
+            background: #ffa;
+            color: black;
+            padding: 0 var(--z-padding);
+            box-shadow: var(--z-shadow-position) 0 rgba(0, 0, 0, .6);
         }
+
         .box {
             background: rgba(32, 32, 192, 0.6);
             border-radius: var(--z-spacing);
-            padding:var(--z-padding);
+            padding: var(--z-padding);
+        }
+
+        .frame_h {
+            border-top: 5px #f00 solid;
+            border-bottom: 5px #f00 solid;
+            padding: 0 var(--z-spacing);
+        }
+
+        .frame_v {
+            border-left: 5px #00f solid;
+            border-right: 5px #00f solid;
+            padding: 0 var(--z-spacing);
         }
     </style>
 </head>
@@ -139,20 +176,26 @@
     <div id="wrap">
         <!-- 左上 -->
         <div class="left top">
-
-            <span id="time" style="color:#ddf"></span>
+            <span id="nowTime" style=""></span>
         </div>
 
         <!-- 右上 -->
-        <div class="right top live">
-            <div style="text-align:center;">
+        <div class="right top">
+            <div class="live animate__animated animate__infinite animate__pulse" style="text-align:center;">
                 五峯祭プレ放送!!
+            </div>
+        </div>
+
+        <!-- 上中央 -->
+        <div class="top center">
+            <div>
+                【速報】岩田先生 当選確実
             </div>
         </div>
 
         <!-- 左下 -->
         <div class="left0 bottom">
-            <div class="sticky  animate__animated animate__fadeInLeft animate__repeat-1">
+            <div class="frame_h tx_c animate__animated animate__fadeInLeft animate__repeat-1">
                 初のオンライン五峯祭<br />
                 いよいよ来週開催！
             </div>
@@ -165,26 +208,47 @@
 
         <!-- 下中央 -->
         <div class="bottom center">
-            <div class="box">
+            <div class="frame_v">
                 オンライン五峯祭を見るときは<br />
                 部屋を明るくして<br />
                 画面から離れて見てくだサイ！<br />
                 コックサイとの約束だぞ！
             </div>
+        </div>
 
+        <!-- 中央 -->
+        <div class="middle">
+            <div>
+                <span id="countdown" style="font-size: 130px"></span>
+            </div>
         </div>
     </div>
 </body>
 <script>
-    // 本番は、リロードはコメントアウト
+    // 本番：リロード＝コメントアウト
     setTimeout(function () {
-        location.reload();
+        //location.reload();
     }, 10 * 1000);
-    function nowTime() {
-        let t = new Date();
-        document.getElementById("time").innerText = t.toLocaleTimeString();
-    }
-    setInterval("nowTime()", 66);
+
+    // カウントダウン
+
+    setInterval(function () {
+        let d = new Array();
+        d["sec"] = Math.floor(((new Date(2020, 9 - 1, 12, 10, 00, 00)).getTime() - (new Date()).getTime()) / 1000);
+        d["min"] = Math.floor(d["sec"] / 60);
+        d["hour"] = Math.floor(d["min"] / 60);
+        document.getElementById("countdown").innerHTML = (
+            "五峯祭まで<br/>あと " +
+            d["hour"] + "時間" +
+            (" " + d["min"] % 60).slice(-2) + "分" +
+            (" " + d["sec"] % 60).slice(-2) + "秒"
+        );
+    }, 66);
+
+    // 時刻表示
+    setInterval(function () {
+        document.getElementById("nowTime").innerText = (new Date()).toLocaleTimeString();
+    }, 66);
 </script>
 
 </html>

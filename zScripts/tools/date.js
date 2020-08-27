@@ -20,7 +20,6 @@ class zDate {
         d["hour"] = d["min"] / 60;   //hour
         d["day"] = d["hour"] / 24;   //day
         d["week"] = d["day"] / 7;    //week
-        
         d["year"] = d["month"] = 0;    //年・月：未対応
 
         // 小数点以下切り捨て
