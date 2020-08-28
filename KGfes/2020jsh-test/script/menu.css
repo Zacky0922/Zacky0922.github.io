@@ -15,6 +15,13 @@ div#KGfesMenuWrap > ul > li{
     white-space: nowrap;
 }
 
+div#KGfesMenuWrap > ul > li.inactive_menu{
+    background:#666;
+}
+div#KGfesMenuWrap > ul > li.inactive_menu::after{
+    content:"\A(当日のお楽しみ)"
+}
+
 div#KGfesMenuWrap > ul > li > a{
     display:block;
     padding:    var(--z-spacing);
@@ -126,6 +133,12 @@ div#zBurgerWrap > label img{
     }
     #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap > ul > li{
         text-align:left;
+    }
+    #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap > ul > li.inactive_menu{
+        background:#666;
+    }
+    #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap > ul > li.inactive_menu::after{
+        content:"\A(当日のお楽しみ)"
     }
 
 }

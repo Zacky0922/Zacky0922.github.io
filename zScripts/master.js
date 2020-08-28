@@ -220,7 +220,6 @@ let zPreload = new (class zPreloader {
         "tools/menu/burger.js",     // list.js依存
        
         "tools/date.js",
-        "tools/develop/develop.js",
 
         /*
 
@@ -247,6 +246,9 @@ let zPreload = new (class zPreloader {
                 break;
         }
 
+        // デバッグ処理は必ず最後に追加
+        this.js.push("tools/develop/develop.js");
+        
         //  読込：クラス定義時に読込まで行う
         this.jsload();
         this.cssLoad();
@@ -340,3 +342,4 @@ window.addEventListener('load', (event) => {
 // □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■
 // □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■
 // □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■
+

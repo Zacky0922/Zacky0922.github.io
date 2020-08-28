@@ -22,7 +22,7 @@ div#debugArea:hover *{
 
 
 .debug{
-    display: none;
+    display: none !important;
 }
 .debug_{
     background:#ff0;

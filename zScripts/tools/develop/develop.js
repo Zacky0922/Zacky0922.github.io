@@ -108,7 +108,7 @@ let zDebug = new (class zDebug {
 
 })();
 
-
+// デバッグモードからの遷移は、再度デバッグモードへ自動遷移
 if (document.referrer.indexOf("?debug") > -1) {
     if (location.href.indexOf("?debug") == -1) {
         location.href = location.href + "?debug";
@@ -116,7 +116,6 @@ if (document.referrer.indexOf("?debug") > -1) {
 }
 
 window.addEventListener('load', (event) => {
-
 
     if (zDebug.getOnline()) {
         // オンライン時
@@ -132,7 +131,6 @@ window.addEventListener('load', (event) => {
             }
             obj[0].classList.add("debug_");
             obj[0].classList.remove("debug");
-
         }
 
         // デバッグモード起動

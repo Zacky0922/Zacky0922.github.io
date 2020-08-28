@@ -22,12 +22,18 @@ class zList{
         );
         this.ul.appendChild(li);
     }
+
     // 内容追加：li要素自体を代入
-    addLi(li) {
+    addLi(li, cl = null) {
+        if (cl != null) {
+            li.classList.add(cl);
+            alert(cl);
+        }
         this.ul.appendChild(li);
     }
+
     // 内容追加：リンク付加（リンク以下に説明文を付加も可能）
-    addLink(tx, href = null, target = "_self", description = null) {
+    addLink(tx, href = null, target = "_self", description = null,cl=null) {
         let li = document.createElement("li");
         let a = document.createElement("a");
         a.innerHTML = tx;
@@ -37,12 +43,16 @@ class zList{
         }
         li.appendChild(a);
         if (description != null) {
-            li.appendChild(document.createElement(br));
+            li.appendChild(document.createElement("br"));
             li.appendChild(document.createTextNode(description));
             //テキストではなく、HTML要素として追加したいかも？
         }
+        if (cl != null) {
+            li.classList.add(cl);
+        }
         this.addLi(li);
     }
+    
 
     // 内容追加：指定クラスをもつ要素を見出しとして一括登録
     getClassList(cl) {
