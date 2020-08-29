@@ -1,0 +1,41 @@
+/* サイト依存の要素設定 */
+@import "./css/default.css";
+@import "./common.css";
+
+/* Google Font：NotoSans JP*/
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese');
+
+/* 変数設定 */
+:root{
+    /* 部品設定 */
+    --z-ele-margin: 5px;
+    --z-ele-padding: 10px;
+    --z-spacing:    5px;
+    --z-ele-border: 1px solid #fff;
+    --z-ele-bg:     #ccc;
+
+    /* 背景 */
+    --z-bg:#114;
+
+    /* パーツ設定 */
+    --z-ele-bgcolor:    #339;
+    --z-ele-bgcolor-alt:    #aaf;
+
+    /* フォント系変数 */
+    --z-font-color: #fff;
+    --z-font-color-alt: #113;
+    --z-font-size:  16px;
+    --z-caption-letterspacing:  2px;
+
+    /* 罫線 */
+    --z-border-color:   #fff;
+}
+
+/* 以下の指定は、importを上書きする可能性がある */
+
+/*  標準設定 */
+*{
+	font-family: 'Noto Sans JP', sans-serif;
+    box-sizing: border-box;
+    text-underline-position: under;
+}
