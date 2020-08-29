@@ -1,4 +1,4 @@
-export class zDate {
+class zDate {
     now = new Date();
     target;
     constructor(date = null) {
@@ -62,7 +62,7 @@ export class zDate {
 // 実用関数
 
 //表示期間チェック
-export function zSetUndispDate() {
+function zSetUndispDate() {
     let ele = document.getElementsByClassName("zDate");
     //各要素チェック
     for (let i = 0; i < ele.length; i++) {

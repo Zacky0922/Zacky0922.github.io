@@ -1,4 +1,8 @@
-export let zDebug = new (class zDebug {
+function debugTest() {
+    alert("You loaded debug.js");
+}
+
+let zDebug = new (class zDebug {
     ua;
 
     constructor() {
