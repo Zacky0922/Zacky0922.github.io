@@ -1,15 +1,14 @@
-function debugTest() {
-    alert("You loaded debug.js");
-}
-
-let zDebug = new (class zDebug {
+export let zDebug = new (class zDebug {
     ua;
 
     constructor() {
-        this.ua = window.navigator.userAgent.toLowerCase();
-        if (!this.getOnline()) {
 
+        this.ua = window.navigator.userAgent.toLowerCase();
+
+        // オフライン時処理
+        if (!this.getOnline()) {
             window.addEventListener('load', (event) => {
+                // デバッガセット
                 this.setDebuger();
             });
         }
@@ -37,8 +36,9 @@ let zDebug = new (class zDebug {
         let brList = [
             ["firefox", "Firefox"],
             ["chrome", "Chrome"],
-            ["OPR", "Opera"],
-            ["edge", "Edge"],
+            ["opr", "Opera"],
+            ["edge", "Edge(old)"],
+            ["edg", "Edge(Chronium)"],
             ["ie", "Internet Explorer"],
             ["safari", "safari"]
         ];
@@ -138,7 +138,10 @@ let zDebug = new (class zDebug {
         debugArea.innerHTML += "<div id='debugAreaMsg'>" +
             "<textarea id='debugLog'></textarea>" +
             "<br/>" +
-            "<input type='button' value='get log' onclick='document.getElementById(" + '"debugLog"' + ").value=zLog.getMsg()'>" +
+            "<input type='button' value='get log(not working)' onclick='" +
+            //"import * as z"+
+            "document.getElementById(" + '"debugLog"' + ").value=zLog.getMsg();" +
+            "'>" +
             "<br/>" +
             "<input type='button' value='nondebug mode' onclick='location.href+=" + '"?nondebug"' + "'>" +
             "<br/>" +
@@ -161,6 +164,5 @@ let zDebug = new (class zDebug {
                 "";
         }, 66);
     }
-})();
-
+});
 

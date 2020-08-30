@@ -1,4 +1,4 @@
-class zDate {
+export class zDate {
     now = new Date();
     target;
     constructor(date = null) {

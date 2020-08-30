@@ -1,0 +1,42 @@
+/*
+    div#zBurgerWrap
+        label
+        input#zBurgerChkbx
+        div#zBurgerUlWrap
+            ul
+*/
+
+#zBurgerWrap{
+    z-index:    999;
+}
+#zBurgerWrap > input#zBurgerChkbx{
+    display: none !important;
+}
+
+/* 大画面表示の場合 */
+@media screen and (min-width:600px){
+    #zBurgerWrap > label{
+        display:none;
+    }
+}
+/* 小画面表示の場合 */
+@media screen and (max-width:599px){
+    #zBurgerWrap > label{
+        display:block;
+    }
+    #zBurgerWrap > div#zBurgerUlWrap{
+        display: none;
+    }
+    #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap{
+        display:block;
+    }
+}
+
+/* 個別サイト用テンプレ */
+/* 小画面表示の場合 */
+@media screen and (max-width:599px){
+    /* メニューの表示設定 */
+    #zBurgerWrap > input#zBurgerChkbx:checked + div#zBurgerUlWrap{
+    }
+}
+

@@ -1,5 +1,5 @@
-
-class zList{
+export class zList {
+    // リスト
     ul = document.createElement("ul");
 
     constructor() {
@@ -33,7 +33,7 @@ class zList{
     }
 
     // 内容追加：リンク付加（リンク以下に説明文を付加も可能）
-    addLink(tx, href = null, target = "_self", description = null,cl=null) {
+    addLink(tx, href = null, target = "_self", description = null, cl = null) {
         let li = document.createElement("li");
         let a = document.createElement("a");
         a.innerHTML = tx;
@@ -52,7 +52,7 @@ class zList{
         }
         this.addLi(li);
     }
-    
+
 
     // 内容追加：指定クラスをもつ要素を見出しとして一括登録
     getClassList(cl) {
@@ -69,6 +69,7 @@ class zList{
     get() {
         return this.ul.cloneNode(true);
     }
+
 }
 
 
