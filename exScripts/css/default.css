@@ -1,8 +1,19 @@
-*{
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     width:100%;
     margin:0;
     padding:0;
 }
+
+.zCentering {
+    text-align:center;
+}
+
+.xScrollable {
+    overflow-x:auto;
+}
+
+

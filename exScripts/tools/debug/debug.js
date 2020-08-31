@@ -1,19 +1,67 @@
+if (document.referrer.indexOf("?debug") > -1) {
+    if (location.href.indexOf("?debug") == -1) {
+        location.href = location.href + "?debug";
+    }
+}
+
 export let zDebug = new (class zDebug {
     ua;
+    logMsg = "◆debugMsg";
+    logLv = 0;
+    loadTime;
+    debugger = false;   // 設置済みか？（重複設置を避ける）
 
     constructor() {
 
         this.ua = window.navigator.userAgent.toLowerCase();
+        this.loadTime = new Date(); // モジュール読込時間を取得
 
         // オフライン時処理
-        if (!this.getOnline()) {
+        if (!this.getOnline() && !this.debugger) {
             window.addEventListener('load', (event) => {
                 // デバッガセット
-                this.setDebuger();
+                this.setDebugger();
             });
+            this.debugger = true;
         }
     }
 
+    // ログの保存
+    addLog(tx, group = 0) {
+        switch (group) {
+            case 1:
+                //グループ見出し
+                console.groupCollapsed(tx);
+                this.logMsg += "\n" + tx;
+                this.logLv++;
+                break;
+            case 0:
+                //通常ログ
+                console.log(tx);
+                this.logMsg += "\n" + tx;
+                break;
+            case -1:
+                //グループ最終要素
+                if (tx != "") {
+                    console.log(tx);
+                    this.logMsg += "\n" + tx;
+                }
+                console.groupEnd();
+                this.logLv--;
+                break;
+        }
+    }
+    // ログの取得
+    getLog() {
+        return this.logMsg;
+    }
+    // ロード時間の取得[msec]：モジュール読込～メソッド実行
+    getLoadingTime() {
+        return ((new Date()).getTime() - this.loadTime.getTime());
+    }
+
+
+    // ユーザー情報取得
     getOS() {
         let osList = [
             ["windows", "Windows"],
@@ -116,9 +164,7 @@ export let zDebug = new (class zDebug {
         return false;
     }
 
-    setDebuger() {
-        // オフライン時
-
+    setDebugger() {
         // デバッグ要素表示
         let obj = document.getElementsByClassName("debug");
         while (true) {
