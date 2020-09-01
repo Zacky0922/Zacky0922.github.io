@@ -1,9 +1,7 @@
-export class zList {
-    // リスト
-    ul = document.createElement("ul");
+class zList {
 
     constructor() {
-
+        this.ul = document.createElement("ul");
     }
 
     // UL基本設定
@@ -24,8 +22,8 @@ export class zList {
     }
 
     // 内容追加：li要素自体を代入
-    addLi(li, cl = null) {
-        if (cl != null) {
+    addLi(li, cl) {
+        if (cl != undefined) {
             li.classList.add(cl);
             alert(cl);
         }
@@ -33,26 +31,27 @@ export class zList {
     }
 
     // 内容追加：リンク付加（リンク以下に説明文を付加も可能）
-    addLink(tx, href = null, target = "_self", description = null, cl = null) {
+    addLink(tx, href , target, description, cl) {
         let li = document.createElement("li");
         let a = document.createElement("a");
         a.innerHTML = tx;
-        if (href != null) {
+        if (href != undefined) {
             a.href = href;
-            a.target = target;
+            if (target != undefined) {
+                a.target = target;
+            }
         }
         li.appendChild(a);
-        if (description != null) {
+        if (description != undefined) {
             li.appendChild(document.createElement("br"));
             li.appendChild(document.createTextNode(description));
             //テキストではなく、HTML要素として追加したいかも？
         }
-        if (cl != null) {
+        if (cl != undefined) {
             li.classList.add(cl);
         }
         this.addLi(li);
     }
-
 
     // 内容追加：指定クラスをもつ要素を見出しとして一括登録
     getClassList(cl) {
@@ -69,13 +68,10 @@ export class zList {
     get() {
         return this.ul.cloneNode(true);
     }
-
 }
 
 
-
-
-export class burgerMenu extends zList {
+class burgerMenu extends zList {
 
     /*
     バーガーコンテンツ
@@ -86,19 +82,19 @@ export class burgerMenu extends zList {
     ulWrap         div#zBurgerUlWrap
     super.get()         ul
     */
-    wrap = document.createElement("div");
-    label = document.createElement("label");
-    input = document.createElement("input");
-    ulWrap = document.createElement("div");
 
     constructor(icon) {
         super();    //子クラスでは最初にやっとく必要がある（らしい）
+        this.wrap = document.createElement("div");
         this.wrap.id = "zBurgerWrap";
+        this.label = document.createElement("label");
         this.label.setAttribute("for", "zBurgerChkbx");
         this.label.appendChild(icon);
+        this.input = document.createElement("input");
         this.input.type = "checkbox";
         this.input.id = "zBurgerChkbx";
         this.input.checked = false;
+        this.ulWrap = document.createElement("div");
         this.ulWrap.id = "zBurgerUlWrap";
         this.wrap.appendChild(this.label);
         this.wrap.appendChild(this.input);
@@ -122,9 +118,7 @@ export class burgerMenu extends zList {
         }
         this.ulWrap.appendChild(super.get());
         document.body.appendChild(this.wrap);
-
     }
 };
 
-
-
+export { zList ,burgerMenu};

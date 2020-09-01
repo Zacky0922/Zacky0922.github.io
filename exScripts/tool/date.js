@@ -1,17 +1,25 @@
-export class zDate {
-    now = new Date();
-    target;
-    constructor(date = null) {
-        if (date == null) {
+
+class zDate {
+    
+    constructor(date) {
+        // 定義時間を取得
+        this.now = new Date();
+
+        // 何かターゲット時間があれば
+        if (date == undefined) {
             this.target = new Date();
         } else {
             this.target = date;
         }
     }
 
-    static duration(to, from = new Date()) {
-
-        //toに時分秒があるかないかで、やや処理が変わる
+    duration(from, to) {
+        if (from == undefined) {
+            from = new Date();
+        }
+        if (to == undefined) {
+            to = this.target;
+        }
 
         let d = new Array();
         d["msec"] = to.getTime() - from.getTime();   //msec
@@ -21,6 +29,7 @@ export class zDate {
         d["day"] = d["hour"] / 24;   //day
         d["week"] = d["day"] / 7;    //week
         d["year"] = d["month"] = 0;    //年・月：未対応
+        //toに時分秒があるかないかで、やや処理が変わる
 
         // 小数点以下切り捨て
         for (let i in d) {
@@ -31,8 +40,8 @@ export class zDate {
         return d;
     }
 
-    static countdownDays(to,from = new Date(),days = 1) {
-        
+    static countdownDays(to, from = new Date(), days = 1) {
+
     }
 
     //8桁の年月日文字列をDateオブジェクトに変換する
@@ -46,7 +55,10 @@ export class zDate {
 
 
     //クラスに指定された年月日を取得する（クラスに zDate_20200101 等を指定：prefixは指定可）
-    static getEleDate(ele, prefix = "zDate_") {
+    static getEleDate(ele, prefix) {
+        if (prefix = undefined) {
+            prefix = "zDate_";
+        }
         for (let i = 0; i < ele.classList.length; i++) {
             if (ele.classList[i].indexOf(prefix) > -1) {
                 return this.tx2date(ele.classList[i].replace(prefix, ""));
@@ -87,3 +99,5 @@ function zSetUndispDate() {
         }
     }
 }
+
+export { zDate };

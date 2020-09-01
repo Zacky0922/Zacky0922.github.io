@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <title>test</title>
+    <script>
+
+    setTimeout(function () {
+        location.reload(true);
+    }, 3000);
+    </script>
+    <script type="module">
+        // Module Aggregater
+        document.body.style.backgroundColor = "#fcc";
+
+        // ex
+        //import 'https://code.jquery.com/jquery-3.3.1.min.js'; //これでデータはとれるが…
+        import { getGicon } from "./ex/MaterialIcons/googleicon.js";    // func
+
+        // tools
+        import { zDate } from "./tool/date.js";    // class
+        import { zList , burgerMenu} from "./tool/list.js";    // class
+
+        // 処理の都合上、最後がいいかも？
+        //import { zExportTest } from "./tool/test.js";    // let
+        //zExportTest();
+        //import { a } from "./test.js";    // let
+        //zExportTest0();
+        //let aa = new a();
+
+        //だめ
+        import { zDebug } from "./tool/debug/debug.js";    // let
+
+
+        //export { getGicon, zExportTest };
+
+
+        alert("I AM AGGRETAER! - 48");
+    </script>
+</head>
+
+<body>
+</body>
+aggregater test
+
+</html>

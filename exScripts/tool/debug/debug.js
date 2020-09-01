@@ -3,17 +3,12 @@ if (document.referrer.indexOf("?debug") > -1) {
         location.href = location.href + "?debug";
     }
 }
-
-export let zDebug = new (class zDebug {
-    ua;
-    logMsg = "◆debugMsg";
-    logLv = 0;
-    loadTime;
-    debugger = false;   // 設置済みか？（重複設置を避ける）
+class zDebug_ {
 
     constructor() {
-
         this.ua = window.navigator.userAgent.toLowerCase();
+        this.logMsg = "◆debugMsg";
+        this.logLv = 0;
         this.loadTime = new Date(); // モジュール読込時間を取得
 
         // オフライン時処理
@@ -22,7 +17,7 @@ export let zDebug = new (class zDebug {
                 // デバッガセット
                 this.setDebugger();
             });
-            this.debugger = true;
+
         }
     }
 
@@ -59,7 +54,6 @@ export let zDebug = new (class zDebug {
     getLoadingTime() {
         return ((new Date()).getTime() - this.loadTime.getTime());
     }
-
 
     // ユーザー情報取得
     getOS() {
@@ -140,13 +134,14 @@ export let zDebug = new (class zDebug {
         return tx;
     }
 
-    //  オンライン状況取得
-    //  online  = true　／　offline = false
-    /*  原則「http」があればオンライン
-        例外）URLクエリに適当に「?debug」とかつければ、常にオフラインモード
-        例外）ローカルサーバー（192.168. or raspberrypi）はオフラインモード
-    */
+
     getOnline() {
+        //  オンライン状況取得
+        //  online  = true　／　offline = false
+        /*  原則「http」があればオンライン
+            例外）URLクエリに適当に「?debug」とかつければ、常にオフラインモード
+            例外）ローカルサーバー（192.168. or raspberrypi）はオフラインモード
+        */
 
         //  return true;    //疑似オンライン
         //  return false;   //疑似オフライン（デバッグモード）
@@ -210,5 +205,7 @@ export let zDebug = new (class zDebug {
                 "";
         }, 66);
     }
-});
+}
+let zDebug = new zDebug_();
 
+export { zDebug };

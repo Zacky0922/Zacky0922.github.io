@@ -11,9 +11,19 @@ body {
 .zCentering {
     text-align:center;
 }
+.zCentering > ul{
+    display:inline-block;
+}
+.zCentering >ul > li{
+    text-align:left;
+}
 
 .xScrollable {
     overflow-x:auto;
+    margin:var(--z-spacing,10px);
+}
+.xScrollable > table{
+    margin: 0 auto;
 }
 
 
