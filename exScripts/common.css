@@ -32,6 +32,6 @@
 
 
 /* ◆dir = tools */
-@import "./tools/debug/debug.css";
-@import "./tools/menu/burger.css";
+@import "./tool/debug/debug.css";
+@import "./tool/menu/burger.css";
 
