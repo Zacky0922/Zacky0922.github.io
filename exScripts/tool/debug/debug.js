@@ -3,11 +3,12 @@ if (document.referrer.indexOf("?debug") > -1) {
         location.href = location.href + "?debug";
     }
 }
+
 class zDebug_ {
 
     constructor() {
         this.ua = window.navigator.userAgent.toLowerCase();
-        this.logMsg = "◆debugMsg";
+        this.logMsg = "◆ debugMsg ◆";
         this.logLv = 0;
         this.loadTime = new Date(); // モジュール読込時間を取得
 
@@ -17,8 +18,15 @@ class zDebug_ {
                 // デバッガセット
                 this.setDebugger();
             });
-
+            this.setDebugEle();
         }
+        // 基本情報取得
+        this.addLog("◆ Basic Informaiton", 1);
+        this.addLog("UA：" + window.navigator.userAgent);
+        this.addLog("OS："+this.getOS());
+        this.addLog("Browser："+this.getBrowser());
+        this.addLog("Rendering Engine："+this.getEngine());
+        this.addLog("",-1);
     }
 
     // ログの保存
@@ -145,6 +153,8 @@ class zDebug_ {
 
         //  return true;    //疑似オンライン
         //  return false;   //疑似オフライン（デバッグモード）
+        // 強制クエリ ?nondebug ?debug
+        // ローカルURL 192.168 raspberrypi
         if (location.href.indexOf("nondebug") > -1) {
             return true;
         } else if (location.href.indexOf("debug") > -1) {
@@ -159,8 +169,8 @@ class zDebug_ {
         return false;
     }
 
-    setDebugger() {
-        // デバッグ要素表示
+    setDebugEle() {
+        // デバッグ要素表示切替
         let obj = document.getElementsByClassName("debug");
         while (true) {
             if (obj.length == 0) {
@@ -169,6 +179,10 @@ class zDebug_ {
             obj[0].classList.add("debug_");
             obj[0].classList.remove("debug");
         }
+    }
+
+    setDebugger() {
+
 
         // デバッグモード起動
         let debugArea = document.createElement("div");
@@ -179,17 +193,19 @@ class zDebug_ {
         debugArea.innerHTML += "<div id='debugAreaMsg'>" +
             "<textarea id='debugLog'></textarea>" +
             "<br/>" +
-            "<input type='button' value='get log(not working)' onclick='" +
-            //"import * as z"+
-            "document.getElementById(" + '"debugLog"' + ").value=zLog.getMsg();" +
-            "'>" +
+            "<input type='button' value='get log' id='getDebugLog'" +
+            ">" +
             "<br/>" +
             "<input type='button' value='nondebug mode' onclick='location.href+=" + '"?nondebug"' + "'>" +
             "<br/>" +
             "<input type='button' value='Super Reload?' onclick='window.location.reload(true);'>" +
             "</div>";
-        document.body.appendChild(debugArea);
 
+        document.body.appendChild(debugArea);
+        document.getElementById("getDebugLog").addEventListener("click", function () {
+            document.getElementById("debugLog").value = zDebug.getLog();
+        });
+        // 画面サイズ取得・更新ルーチン
         let debugMode = setInterval(function () {
             document.getElementById("debugAreaInfo").innerText = "◆ Debug Mode ◆\n" +
                 "Device Screen XY：\n　" +
@@ -203,7 +219,7 @@ class zDebug_ {
                 "page[XY]Offset：\n　" +
                 "x = " + window.pageXOffset + ", y = " + window.pageYOffset +
                 "";
-        }, 66);
+        }, 1000);
     }
 }
 let zDebug = new zDebug_();
