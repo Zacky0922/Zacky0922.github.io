@@ -1123,141 +1123,144 @@
                         <div style="background:green;width:5%;">G</div>
                         <div style="background:blue;width:5%;">B</div>
                     </div>
+                </div>
+
             </section>
 
             <section class="col-lg-6">
-                <h2 class="zHeadList">MathJax</h2>
-                displaystyle：$$\dfrac{1}{2}$$
-                <div>inlinestyle：\(\dfrac{1}{2}\)とか、$\dfrac{3}{4}$とか</div>
-                <form class="zForm">
-                    <fieldset>
-                        <legend>MathJax Quick Previewer</legend>
-                        <div>(auto typeset onkeyup)</div>
-                        <textarea id="realtimePreviewInput" rows="5" style="width:100%;" onkeyup="document.getElementById('realtimePreview').innerText=this.value;
+                <div class="box">
+                    <h2 class="zHeadList">MathJax</h2>
+                    displaystyle：$$\dfrac{1}{2}$$
+                    <div>inlinestyle：\(\dfrac{1}{2}\)とか、$\dfrac{3}{4}$とか</div>
+                    <form class="zForm">
+                        <fieldset>
+                            <legend>MathJax Quick Previewer</legend>
+                            <div>(auto typeset onkeyup)</div>
+                            <textarea id="realtimePreviewInput" rows="5" style="width:100%;" onkeyup="document.getElementById('realtimePreview').innerText=this.value;
                                                                     zMathJax.reMathJax('realtimePreview')">$$
 e^{i\theta}=\cos\theta+i\sin\theta
 $$</textarea>
-                        <div>
-                            <input type="button" value="改行" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\\\\\n';
+                            <div>
+                                <input type="button" value="改行" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\\\\\n';
                 zMathJax.reMathJax('realtimePreview');" disabled>
-                            <input type="button" value="分数" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\n\\dfrac{}{}';
+                                <input type="button" value="分数" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\n\\dfrac{}{}';
                 zMathJax.reMathJax('realtimePreview');" disabled>
-                            <input type="button" value="位置揃え" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\n\\begin{align}\n\n\\end{align}';
+                                <input type="button" value="位置揃え" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\n\\begin{align}\n\n\\end{align}';
                 zMathJax.reMathJax('realtimePreview');" disabled>
-                            <input type="button" value="場合分け" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\n\\begin{cases}\n\n\\end{cases}';
+                                <input type="button" value="場合分け" onclick="document.getElementById('realtimePreview').innerText=document.getElementById('realtimePreviewInput').value+='\n\\begin{cases}\n\n\\end{cases}';
                                 zMathJax.reMathJax('realtimePreview');" disabled>
-                            <input type="button" value="init" onclick="if(window.confirm('フォームが初期化されますが、よろしいですか？')){
+                                <input type="button" value="init" onclick="if(window.confirm('フォームが初期化されますが、よろしいですか？')){
                                     					          document.getElementById('realtimePreview').innerText=
                                     					          document.getElementById('realtimePreviewInput').value='$$'+zMathJax.templete('オイラーの公式')+'$$';
                     zMathJax.reMathJax('realtimePreview')}" disabled>
-                        </div>
-                        <div id="realtimePreview" style="border:#888 1px solid">
-                            $$e^{i\theta}=\cos\theta+i\sin\theta$$
-                        </div>
-                    </fieldset>
-                </form>
-                <form class="zForm" id="eqsolver">
-                    <fieldset>
-                        <legend>連立方程式solver</legend>
-                        <input type="text" id="a" size="3" tabindex="1">$x+$<input type="text" id="b" size="3"
-                            tabindex="2">$y=$<input type="text" id="p" size="3" tabindex="3"><br />
-                        <input type="text" id="c" size="3" tabindex="4">$x+$<input type="text" id="d" size="3"
-                            tabindex="5">$y=$<input type="text" id="q" size="3" tabindex="6"><br />
-                        <div id="ans"></div>
-                    </fieldset>
-                    <script type="module">
-                        import { zMathJax, zMath } from "../exScripts/aggregater.js";
-                        document.getElementById("eqsolver").addEventListener("keyup", function () {
-                            let sol = zMath.simultaneousEQsolver(
-                                Number(document.getElementById("a").value),
-                                Number(document.getElementById("b").value),
-                                Number(document.getElementById("c").value),
-                                Number(document.getElementById("d").value),
-                                Number(document.getElementById("p").value),
-                                Number(document.getElementById("q").value),
-                                "ans");
-                            if (sol[1][0] == null) {
-                                document.getElementById("ans").innerText = "$$" + sol[0] + "\\\\\\text{解なし}$$";
-                            } else {
-                                document.getElementById("ans").innerText = "$$" + sol[0] +
-                                    "\\\\\\Longrightarrow\\quad " +
-                                    "x=" + zMath.estimateFrac(sol[1][0]) + ",y=" + zMath.estimateFrac(sol[1][1]) + "$$";
-                            }
-                            zMathJax.reMathJax('ans');
-                        });
-                    </script>
-                </form>
-                <form class="zForm" id="bunkai">
-                    <fieldset>
-                        <legend>素因数分解</legend>
-                        <input type="text" id="soinsu" size="3">
-                        <div id="soinsu_ans"></div>
-                    </fieldset>
-                    <script type="module">
-                        import { zMathJax, zMath } from "../exScripts/aggregater.js";
-                        document.getElementById("bunkai").addEventListener("keyup", function () {
-                            let formula = zMath.primeFactorization(Number(document.getElementById("soinsu").value), true);
-                            if (formula == null) {
-                                document.getElementById("soinsu_ans").innerText = "2以上の整数を入力しましょう";
-                                return;
-                            };
-                            document.getElementById("soinsu_ans").innerText = "$$" +
-                                Number(document.getElementById("soinsu").value) + "=" +
-                                formula + "$$";
-                            zMathJax.reMathJax('soinsu_ans');
-                        });
-                    </script>
-                </form>
-                <form class="zForm" id="tagainiso">
-                    <fieldset>
-                        <legend>互いに素：約分</legend>
-                        <input type="text" id="tagainiso0" size="3">と<input type="text" id="tagainiso1" size="3">
-                        <div id="tagainiso_ans"></div>
-                    </fieldset>
-                    <script type="module">
-                        import { zMathJax, zMath } from "../exScripts/aggregater.js";
-                        document.getElementById("tagainiso").addEventListener("keyup", function () {
+                            </div>
+                            <div id="realtimePreview" style="border:#888 1px solid">
+                                $$e^{i\theta}=\cos\theta+i\sin\theta$$
+                            </div>
+                        </fieldset>
+                    </form>
+                    <form class="zForm" id="eqsolver">
+                        <fieldset>
+                            <legend>連立方程式solver</legend>
+                            <input type="text" id="a" size="3" tabindex="1">$x+$<input type="text" id="b" size="3"
+                                tabindex="2">$y=$<input type="text" id="p" size="3" tabindex="3"><br />
+                            <input type="text" id="c" size="3" tabindex="4">$x+$<input type="text" id="d" size="3"
+                                tabindex="5">$y=$<input type="text" id="q" size="3" tabindex="6"><br />
+                            <div id="ans"></div>
+                        </fieldset>
+                        <script type="module">
+                            import { zMathJax, zMath } from "../exScripts/aggregater.js";
+                            document.getElementById("eqsolver").addEventListener("keyup", function () {
+                                let sol = zMath.simultaneousEQsolver(
+                                    Number(document.getElementById("a").value),
+                                    Number(document.getElementById("b").value),
+                                    Number(document.getElementById("c").value),
+                                    Number(document.getElementById("d").value),
+                                    Number(document.getElementById("p").value),
+                                    Number(document.getElementById("q").value),
+                                    "ans");
+                                if (sol[1][0] == null) {
+                                    document.getElementById("ans").innerText = "$$" + sol[0] + "\\\\\\text{解なし}$$";
+                                } else {
+                                    document.getElementById("ans").innerText = "$$" + sol[0] +
+                                        "\\\\\\Longrightarrow\\quad " +
+                                        "x=" + zMath.estimateFrac(sol[1][0]) + ",y=" + zMath.estimateFrac(sol[1][1]) + "$$";
+                                }
+                                zMathJax.reMathJax('ans');
+                            });
+                        </script>
+                    </form>
+                    <form class="zForm" id="bunkai">
+                        <fieldset>
+                            <legend>素因数分解</legend>
+                            <input type="text" id="soinsu" size="3">
+                            <div id="soinsu_ans"></div>
+                        </fieldset>
+                        <script type="module">
+                            import { zMathJax, zMath } from "../exScripts/aggregater.js";
+                            document.getElementById("bunkai").addEventListener("keyup", function () {
+                                let formula = zMath.primeFactorization(Number(document.getElementById("soinsu").value), true);
+                                if (formula == null) {
+                                    document.getElementById("soinsu_ans").innerText = "2以上の整数を入力しましょう";
+                                    return;
+                                };
+                                document.getElementById("soinsu_ans").innerText = "$$" +
+                                    Number(document.getElementById("soinsu").value) + "=" +
+                                    formula + "$$";
+                                zMathJax.reMathJax('soinsu_ans');
+                            });
+                        </script>
+                    </form>
+                    <form class="zForm" id="tagainiso">
+                        <fieldset>
+                            <legend>互いに素：約分</legend>
+                            <input type="text" id="tagainiso0" size="3">と<input type="text" id="tagainiso1" size="3">
+                            <div id="tagainiso_ans"></div>
+                        </fieldset>
+                        <script type="module">
+                            import { zMathJax, zMath } from "../exScripts/aggregater.js";
+                            document.getElementById("tagainiso").addEventListener("keyup", function () {
 
-                            let a = Number(document.getElementById("tagainiso0").value);
-                            let b = Number(document.getElementById("tagainiso1").value);
-                            if (!Number.isInteger(a) || !Number.isInteger(b)) {
-                                document.getElementById("tagainiso_ans").innerText = "整数を入力してください";
-                                return;
-                            }
-                            let c = zMath.getCommonFactor(a, b);
-                            let tx = a + "と" + b + "は";
-                            if (c == null) {
-                                tx += "（素因数分解できません）";
-                            } else if (a * b == 0) {
-                                if (a == 1 || a == -1 || b == 1 || b == -1) {
+                                let a = Number(document.getElementById("tagainiso0").value);
+                                let b = Number(document.getElementById("tagainiso1").value);
+                                if (!Number.isInteger(a) || !Number.isInteger(b)) {
+                                    document.getElementById("tagainiso_ans").innerText = "整数を入力してください";
+                                    return;
+                                }
+                                let c = zMath.getCommonFactor(a, b);
+                                let tx = a + "と" + b + "は";
+                                if (c == null) {
+                                    tx += "（素因数分解できません）";
+                                } else if (a * b == 0) {
+                                    if (a == 1 || a == -1 || b == 1 || b == -1) {
+                                        tx += "互いに素である。";
+                                    } else {
+                                        tx += "互いに素でない。（0と互いに素になるのは、$\\pm 1$のみ）";
+                                    }
+                                } else if (c == 1) {
                                     tx += "互いに素である。";
                                 } else {
-                                    tx += "互いに素でない。（0と互いに素になるのは、$\\pm 1$のみ）";
+                                    tx += "互いに素でない。" +
+                                        "（共通因数＝" + c + "）";
                                 }
-                            } else if (c == 1) {
-                                tx += "互いに素である。";
-                            } else {
-                                tx += "互いに素でない。" +
-                                    "（共通因数＝" + c + "）";
-                            }
 
-                            if (b == 0) {
-                                document.getElementById("tagainiso_ans").innerText = tx + "\n" +
-                                    "分母が0のため、分数は表示できません。";
-                            } else {
-                                document.getElementById("tagainiso_ans").innerText = tx + "\n" +
-                                    "$$" +
-                                    "\\dfrac{" + a + "}{" + b + "}" +
-                                    (c == 1 ? "" : "=\\dfrac{" + a / c + "}{" + b / c + "}") +
-                                    (b / c == 1 ? "=" + a / c : "=" + a / b) +
-                                    "$$";
-                            }
+                                if (b == 0) {
+                                    document.getElementById("tagainiso_ans").innerText = tx + "\n" +
+                                        "分母が0のため、分数は表示できません。";
+                                } else {
+                                    document.getElementById("tagainiso_ans").innerText = tx + "\n" +
+                                        "$$" +
+                                        "\\dfrac{" + a + "}{" + b + "}" +
+                                        (c == 1 ? "" : "=\\dfrac{" + a / c + "}{" + b / c + "}") +
+                                        (b / c == 1 ? "=" + a / c : "=" + a / b) +
+                                        "$$";
+                                }
 
-                            zMathJax.reMathJax('tagainiso_ans');
-                        });
-                    </script>
-                </form>
-                <input type="button" value="MathJax（ID未指定）：全体再描画テスト" onclick="zMath.reMathJax()" disabled>
+                                zMathJax.reMathJax('tagainiso_ans');
+                            });
+                        </script>
+                    </form>
+                    <input type="button" value="MathJax（ID未指定）：全体再描画テスト" onclick="zMath.reMathJax()" disabled>
                 </div>
             </section>
         </section>
@@ -1305,20 +1308,21 @@ $$</textarea>
                             on <a href="https://codepen.io">CodePen</a>.</span>
                     </p>
                     <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
+                </div>
             </section>
             <section class="col-lg-6">
-                <h2 class="zHeadList">AR.js</h2>
-                AR.js sample：
-                <a href="ar/marker.html">marker[HIRO]</a> /
-                <a href="ar/markerKG.html">marker[KG]：調整中</a> /
-                <a href="ar/markerless.html">marker less</a>/
-                <a href="ar/gps.html">GPS</a>/
-                <a href="ar/nft.html">nft</a>
-                <div class="zCentering">
-                    <img src="ar/hiro.jpg" />
-                    <img src="ar/pattern-KGARmarker.png" />
-                </div>
+                <div class="box">
+                    <h2 class="zHeadList">AR.js</h2>
+                    AR.js sample：
+                    <a href="ar/marker.html">marker[HIRO]</a> /
+                    <a href="ar/markerKG.html">marker[KG]：調整中</a> /
+                    <a href="ar/markerless.html">marker less</a>/
+                    <a href="ar/gps.html">GPS</a>/
+                    <a href="ar/nft.html">nft</a>
+                    <div class="zCentering">
+                        <img src="ar/hiro.jpg" />
+                        <img src="ar/pattern-KGARmarker.png" />
+                    </div>
                 </div>
             </section>
         </section>
@@ -1333,35 +1337,37 @@ $$</textarea>
                     <script>
                         new zPR("quickEditor");
                     </script>
+                </div>
             </section>
             <section class="col-lg-6">
-                <h2 class="zHeadList">chart.js</h2>
-                <canvas id="chart1" class="chartjs"></canvas>
-                <script>
-                    new Chart(document.getElementById("chart1"), {
-                        type: 'pie',
-                        data: {
-                            labels: ["A型", "O型", "B型", "AB型"],
-                            datasets: [{
-                                backgroundColor: [
-                                    "#BB5179",
-                                    "#FAFF67",
-                                    "#58A27C",
-                                    "#3C00FF"
-                                ],
-                                data: [38, 31, 21, 10]
-                            }]
-                        },
-                        options: {
-                            title: {
-                                display: true,
-                                text: '血液型 割合'
+                <div class="box">
+                    <h2 class="zHeadList">chart.js</h2>
+                    <canvas id="chart1" class="chartjs"></canvas>
+                    <script>
+                        new Chart(document.getElementById("chart1"), {
+                            type: 'pie',
+                            data: {
+                                labels: ["A型", "O型", "B型", "AB型"],
+                                datasets: [{
+                                    backgroundColor: [
+                                        "#BB5179",
+                                        "#FAFF67",
+                                        "#58A27C",
+                                        "#3C00FF"
+                                    ],
+                                    data: [38, 31, 21, 10]
+                                }]
                             },
-                            responsive: true,
-                            maintainAspectRatio: false
-                        }
-                    });
-                </script>
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: '血液型 割合'
+                                },
+                                responsive: true,
+                                maintainAspectRatio: false
+                            }
+                        });
+                    </script>
                 </div>
             </section>
         </section>
@@ -1460,12 +1466,14 @@ $$</textarea>
                         <li><a href="http://192.168.1.2">AirStation Settings(自宅) - http://192.168.1.2</a></li>
                         <li><a href="http://192.168.13.1">AirStation Settings(portable) - http://192.168.13.1</a></li>
                     </ul>
+                </div>
             </section>
             <section class="col-lg-6">
-                <h2 class="zHeadList">Debug</h2>
-                <textarea id="debugMsgTxarea" style="width:100%;height:15em;color:#000;"></textarea>
-                <input type="button" onclick="document.getElementById('debugMsgTxarea').value = zDebug.getSpec()"
-                    value="get debug data" \>
+                <div class="box">
+                    <h2 class="zHeadList">Debug</h2>
+                    <textarea id="debugMsgTxarea" style="width:100%;height:15em;color:#000;"></textarea>
+                    <input type="button" onclick="document.getElementById('debugMsgTxarea').value = zDebug.getSpec()"
+                        value="get debug data" \>
                 </div>
             </section>
         </section>

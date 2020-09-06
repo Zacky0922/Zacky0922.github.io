@@ -16,20 +16,17 @@
     --z-font-color: #fff;
     --z-font-color-alt: #113;
     --z-font-size:  16px;
-    --z-caption-letterspacing:  2px;
+    --z-letterspacing:  0.1rem;
 
     /* 部品設定 */
+    --z-spacing: 5px;
     --z-margin: 5px;
     --z-padding: 10px;
-    --z-spacing:    5px;
     --z-ele-border: 1px solid #fff;
-    --z-ele-bg:     #ccc;
-
 
     /* パーツ設定 */
     --z-ele-bgcolor:    #339;
     --z-ele-bgcolor-alt:    #aaf;
-
 
     /* 罫線 */
     --z-border-color:   #fff;
@@ -38,7 +35,7 @@
 /* 以下の指定は、importを上書きする可能性がある */
 
 /*  標準設定 */
-*{
+* *{
 	font-family: 'Noto Sans JP', sans-serif;
     text-underline-position: under;
 }
@@ -50,11 +47,11 @@ body{
 
 /*  bootstrap
     col自体にmargin設定不可なので、中身にboxを配置
-    container > row > col > box
+    container(-fluid) > row > col > box
 */
 .box{
     border:3px solid rgba(255,255,255,0.5);
     border-radius:var(--z-margin);
     padding:var(--z-padding);
-    margin:5px;     /* 2倍で表れるので注意 */
+    margin: var(--z-margin) 0;  /* 左右は親のcol要素padding=15px,上下のみ自分で */
 }
