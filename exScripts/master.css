@@ -48,7 +48,13 @@ body{
     color:var(--z-font-color);
 }
 
-.row > section{
+/*  bootstrap
+    col自体にmargin設定不可なので、中身にboxを配置
+    container > row > col > box
+*/
+.box{
     border:3px solid rgba(255,255,255,0.5);
+    border-radius:var(--z-margin);
     padding:var(--z-padding);
+    margin:5px;     /* 2倍で表れるので注意 */
 }
