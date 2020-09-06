@@ -1,0 +1,21 @@
+.zBtn {
+    padding: calc(2 * var(--z-spacing)) var(--z-spacing);
+    text-decoration: none;
+    display: flex;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background:var(--z-ele-bgcolor);
+    color:var(--z-font-color);
+    border:var(--z-ele-border);
+}
+.zBtn:hover{
+    background:var(--z-ele-bgcolor-alt);
+}
+.zBtn > div{
+    padding:0;
+    margin:0;
+    display:inline-block;
+    text-align:center;
+}

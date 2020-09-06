@@ -1,0 +1,32 @@
+.zTabWrap > *{
+    border: var(--z-ele-border);
+    padding:var(--z-spacing);
+}
+.zTabWrap > *:first-child{
+    border:none;
+    padding:0;
+}
+.zTabWrap > .zTabMenu{
+    margin:0;
+    padding:0;
+}
+.zTabWrap > .zTabMenu > li{
+    display:inline-block;
+    margin:0 var(--z-spacing);
+    border: var(--z-ele-border);
+    border-bottom:none;
+}
+
+.zTabWrap > .zTabMenu > li > a{
+
+    color:var(--z-font-color);
+}
+.zTabWrap .ui-tabs-active{
+    background:#888;
+}
+.zTabWrap > ul > li > a{
+    display: block;
+    padding:var(--z-spacing);
+    border:none;
+}
+

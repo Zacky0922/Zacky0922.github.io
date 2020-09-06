@@ -1,31 +1,35 @@
 /* サイト依存の要素設定 */
-@import "./css/default.css";
 @import "./common.css";
+@import "./css/default.css";
+@import "./css/zBtn.css";
+
 
 /* Google Font：NotoSans JP*/
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap&subset=japanese');
 
 /* 変数設定 */
 :root{
-    /* 部品設定 */
-    --z-ele-margin: 5px;
-    --z-ele-padding: 10px;
-    --z-spacing:    5px;
-    --z-ele-border: 1px solid #fff;
-    --z-ele-bg:     #ccc;
-
     /* 背景 */
     --z-bg:#114;
-
-    /* パーツ設定 */
-    --z-ele-bgcolor:    #339;
-    --z-ele-bgcolor-alt:    #aaf;
 
     /* フォント系変数 */
     --z-font-color: #fff;
     --z-font-color-alt: #113;
     --z-font-size:  16px;
     --z-caption-letterspacing:  2px;
+
+    /* 部品設定 */
+    --z-margin: 5px;
+    --z-padding: 10px;
+    --z-spacing:    5px;
+    --z-ele-border: 1px solid #fff;
+    --z-ele-bg:     #ccc;
+
+
+    /* パーツ設定 */
+    --z-ele-bgcolor:    #339;
+    --z-ele-bgcolor-alt:    #aaf;
+
 
     /* 罫線 */
     --z-border-color:   #fff;
@@ -37,4 +41,14 @@
 *{
 	font-family: 'Noto Sans JP', sans-serif;
     text-underline-position: under;
+}
+
+body{
+    background:var(--z-bg);
+    color:var(--z-font-color);
+}
+
+.row > section{
+    border:3px solid rgba(255,255,255,0.5);
+    padding:var(--z-padding);
 }

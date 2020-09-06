@@ -17,6 +17,10 @@
 @import "./ex/driveway/driveway.min.css";
 @import "./ex/driveway/driveway_Zacky.css";
 
+/* jQuery/UI */
+@import "./ex/jQuery/accordion.css";
+@import "./ex/jQuery/tab.css";
+
 /* Material Icons */
 @import "./ex/MaterialIcons/googleicons.css";
 
