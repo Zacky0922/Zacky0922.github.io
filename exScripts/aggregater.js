@@ -21,7 +21,8 @@ import { getGicon } from "./ex/MaterialIcons/googleicon.js";    // func
 // tools
 import { zDate } from "./tool/date.js";    // class
 import { zList, burgerMenu } from "./tool/list.js";    // class,class
-import { zMathJax } from "./tool/math/MathJaxMacro.js";
+//MathJaxがES module対応するまで、マクロはimport扱いしない
+//import { zMathJax } from "./tool/math/MathJaxMacro.js";
 import { zMath } from "./tool/math/zMath.js";
 
 // これは最後に読み込む
@@ -30,6 +31,6 @@ import { zDebug } from "./tool/debug/debug.js";    // let
 // まとめ
 export {
     zTab, getGicon,
-    zDate, zList, burgerMenu, zMathJax, zMath, zDebug
+    zDate, zList, burgerMenu,  zMath, zDebug
 };
 zDebug.addLog("Module Aggregater loaded!");

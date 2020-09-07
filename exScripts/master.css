@@ -35,14 +35,14 @@
 /* 以下の指定は、importを上書きする可能性がある */
 
 /*  標準設定 */
-* *{
+body,*{
 	font-family: 'Noto Sans JP', sans-serif;
     text-underline-position: under;
+    color:var(--z-font-color);
 }
 
 body{
     background:var(--z-bg);
-    color:var(--z-font-color);
 }
 
 /*  bootstrap

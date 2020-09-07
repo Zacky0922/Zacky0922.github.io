@@ -11,6 +11,7 @@
 
     <!-- master -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script src="../exScripts/tool/math/MathJaxMacro.js"></script>
     <script type="module" src="../exScripts/aggregater.js"></script>
     <link rel="stylesheet" href="../exScripts/master.css">
     <title>Laboratory</title>
@@ -1169,7 +1170,7 @@ $$</textarea>
                             <div id="ans"></div>
                         </fieldset>
                         <script type="module">
-                            import { zMathJax, zMath } from "../exScripts/aggregater.js";
+                            //import { zMathJax, zMath } from "../exScripts/aggregater.js";
                             document.getElementById("eqsolver").addEventListener("keyup", function () {
                                 let sol = zMath.simultaneousEQsolver(
                                     Number(document.getElementById("a").value),
@@ -1197,7 +1198,7 @@ $$</textarea>
                             <div id="soinsu_ans"></div>
                         </fieldset>
                         <script type="module">
-                            import { zMathJax, zMath } from "../exScripts/aggregater.js";
+                            //import { zMathJax, zMath } from "../exScripts/aggregater.js";
                             document.getElementById("bunkai").addEventListener("keyup", function () {
                                 let formula = zMath.primeFactorization(Number(document.getElementById("soinsu").value), true);
                                 if (formula == null) {
@@ -1218,7 +1219,7 @@ $$</textarea>
                             <div id="tagainiso_ans"></div>
                         </fieldset>
                         <script type="module">
-                            import { zMathJax, zMath } from "../exScripts/aggregater.js";
+                            //import { zMathJax, zMath } from "../exScripts/aggregater.js";
                             document.getElementById("tagainiso").addEventListener("keyup", function () {
 
                                 let a = Number(document.getElementById("tagainiso0").value);

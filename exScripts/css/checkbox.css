@@ -1,7 +1,4 @@
 
-
-
-
 /* 隣接要素の表示制御 */
 input[type="checkbox"].zDispControl{
     display:none;
