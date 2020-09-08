@@ -19,9 +19,11 @@ import { getGicon } from "./ex/MaterialIcons/googleicon.js";    // func
 
 
 // tools
+import { zCalendar } from "./tool/listData/calendar.js";   // class
+import { zCSV } from "./tool/listData/csv.js";   // class
 import { zDate } from "./tool/date.js";    // class
 import { zList, burgerMenu } from "./tool/list.js";    // class,class
-//MathJaxがES module対応するまで、マクロはimport扱いしない
+//MathJaxがES module対応するまで、マクロはimport扱いしない（通常のロードをさせる）
 //import { zMathJax } from "./tool/math/MathJaxMacro.js";
 import { zMath } from "./tool/math/zMath.js";
 
@@ -31,6 +33,6 @@ import { zDebug } from "./tool/debug/debug.js";    // let
 // まとめ
 export {
     zTab, getGicon,
-    zDate, zList, burgerMenu,  zMath, zDebug
+    zCalendar,zCSV,zDate, zList, burgerMenu,  zMath, zDebug
 };
 zDebug.addLog("Module Aggregater loaded!");

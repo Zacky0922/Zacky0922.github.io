@@ -1,6 +1,8 @@
 /* サイト依存の要素設定 */
 @import "./common.css";
 @import "./css/default.css";
+@import "./css/form.css";
+@import "./css/table.css";
 @import "./css/zBtn.css";
 
 

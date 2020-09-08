@@ -22,7 +22,6 @@
 
     <section class="container-fluid">
         <section class="row">
-
             <section class="col-lg-6">
                 <div class="box">
                     <h2 class="zHeadList">Menu</h2>
@@ -623,7 +622,7 @@
                             </ul>
                             <style>
                                 table.入試tbl th,
-                                td {
+                                table.入試tbl td {
                                     text-align: center;
                                     white-space: nowrap;
                                 }
@@ -1015,7 +1014,6 @@
             </section>
         </section>
         <section class="row">
-
             <section class="col-lg-6">
                 <div class="box">
                     <h2 class="zHeadList">実験用</h2>
@@ -1107,7 +1105,6 @@
             </section>
         </section>
         <section class="row">
-
             <section class="col-lg-6">
                 <div class="box">
                     <h2 class="zHeadList">WEB Audio API</h2>
@@ -1127,7 +1124,6 @@
                 </div>
 
             </section>
-
             <section class="col-lg-6">
                 <div class="box">
                     <h2 class="zHeadList">MathJax</h2>
@@ -1266,7 +1262,6 @@ $$</textarea>
             </section>
         </section>
         <section class="row">
-
             <section class="col-lg-6">
                 <div class="box">
                     <h2 class="zHeadList">A-Frame</h2>
@@ -1292,23 +1287,6 @@ $$</textarea>
                     </ul>
                     <a href="ar/test.html">test</a> /
                     <a href="ar/latest_test.html">latest_test</a>
-                    <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="html,result"
-                        data-user="Zacky0922" data-slug-hash="vYLggdw"
-                        style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
-                        data-pen-title="A-Frame">
-                        <span>See the Pen <a href="https://codepen.io/Zacky0922/pen/vYLggdw">
-                                A-Frame</a> by Zacky (<a href="https://codepen.io/Zacky0922">@Zacky0922</a>)
-                            on <a href="https://codepen.io">CodePen</a>.</span>
-                    </p>
-                    <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="html,result"
-                        data-user="Zacky0922" data-slug-hash="GRombPP"
-                        style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
-                        data-pen-title="VRmaze">
-                        <span>See the Pen <a href="https://codepen.io/Zacky0922/pen/GRombPP">
-                                VRmaze</a> by Zacky (<a href="https://codepen.io/Zacky0922">@Zacky0922</a>)
-                            on <a href="https://codepen.io">CodePen</a>.</span>
-                    </p>
-                    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
                 </div>
             </section>
             <section class="col-lg-6">
@@ -1328,7 +1306,6 @@ $$</textarea>
             </section>
         </section>
         <section class="row">
-
             <section class="col-lg-6">
                 <div class="box">
                     <h2 class="zHeadList">Prettify</h2>
@@ -1373,7 +1350,22 @@ $$</textarea>
             </section>
         </section>
         <section class="row">
-
+            <section class="col-lg-6">
+                <div class="box">
+                    <h2 class="zHeadList">CSV</h2>
+                    <div class="xScrollable" id="CSVtbl"></div>
+                    <script type="module">
+                        import { zCSV } from "../exScripts/aggregater.js";
+                        let schedule = new zCSV("./schedule.csv");
+                        document.getElementById("CSVtbl").appendChild(schedule.getTable(false));
+                    </script>
+                    <div class="xScrollable" id="calendarTest"></div>
+                    <script type="module">
+                        import { zCalendar } from "../exScripts/aggregater.js";
+                        let cal = new zCalendar("calendarTest",2020,9);
+                    </script>
+                </div>
+            </section>
             <section class="col-lg-6">
                 <div class="box">
                     <h2 class="zHeadList">Local Manager</h2>
@@ -1386,6 +1378,15 @@ $$</textarea>
                             window.open("http://" + document.getElementById("myIP").value + subURL);
                         }
                     </script>
+                    <h3>IP・ホスト名</h3>
+                    <input type="text" id="myIP" value="raspberrypi">
+                    <div class="IPsample">
+                        <span onclick="setIP(this.innerText)">raspberrypi</span>
+                        <span onclick="setIP(this.innerText)">localhost</span>
+                        <span onclick="setIP(this.innerText)">192.168.1.</span>
+                        <span onclick="setIP(this.innerText)">192.168.1.171</span>
+                        <span onclick="setIP(this.innerText)">192.168.13.2</span>
+                    </div>
                     <style>
                         div.IPsample {
                             border: 1px #000 solid;
@@ -1398,68 +1399,48 @@ $$</textarea>
                             display: inline-block;
                         }
                     </style>
-                    <h3>IP・ホスト名</h3>
-                    <input type="text" id="myIP" value="raspberrypi">
-                    <div class="IPsample">
-                        <span onclick="setIP(this.innerText)">raspberrypi</span>
-                        <span onclick="setIP(this.innerText)">localhost</span>
-                        <span onclick="setIP(this.innerText)">192.168.1.</span>
-                        <span onclick="setIP(this.innerText)">192.168.1.171</span>
-                        <span onclick="setIP(this.innerText)">192.168.1.174</span>
-                        <span onclick="setIP(this.innerText)">192.168.13.2</span>
-                    </div>
-                    <h3>ローカルリンク</h3>
-                    <table>
-                        <tr>
-                            <td>Apache(index)</td>
-                            <td><a onclick="getLink(this.innerText)">/index.html</a></td>
-                        </tr>
-                        <tr>
-                            <td>GitHub labテスト用</td>
-                            <td><a onclick="getLink(this.innerText)">/test/lab/</a></td>
-                        </tr>
-                        <tr>
-                            <td>GitHub KGfesテスト</td>
-                            <td><a onclick="getLink(this.innerText)">/test/KGfes/2020jsh-test/</a></td>
-                        </tr>
-                        <tr>
-                            <td>test.php</td>
-                            <td><a onclick="getLink(this.innerText)">/test.php</a></td>
-                        </tr>
-                        <tr>
-                            <td>Volumio</td>
-                            <td><a onclick="getLink(this.innerText)">/</a></td>
-                        </tr>
-                        <tr>
-                            <td>Volumio Test Player</td>
-                            <td><a onclick="getLink(this.innerText)">/dev/</a></td>
-                        </tr>
-                        <tr>
-                            <td>phpMyAdmin</td>
-                            <td><a onclick="getLink(this.innerText)">/phpmyadmin/</a></td>
-                        </tr>
-                        <tr>
-                            <td>WordPress</td>
-                            <td><a onclick="getLink(this.innerText)">/wp/</a></td>
-                        </tr>
-                        <tr>
-                            <td>WordPress ログイン</td>
-                            <td><a onclick="getLink(this.innerText)">/wp/wp-login.php</a></td>
-                        </tr>
-                        <tr>
-                            <td>Syncthing</td>
-                            <td><a onclick="getLink(this.innerText)">:8384</a></td>
-                        </tr>
-                        <tr>
-                            <td>miniDLNA</td>
-                            <td><a onclick="getLink(this.innerText)">:8200</a></td>
-                        </tr>
-                    </table>
+
+                    <div class="xScrollable" id="localManagerTbl"></div>
+                    <script type="module">
+                        import { zCSV } from "../exScripts/aggregater.js";
+                        (function () {
+                            let csv = new zCSV("./localManager.csv");
+                            let data = csv.get();
+                            let tbl = document.createElement("table");
+                            let thead = document.createElement("thead");
+                            let tbody = document.createElement("tbody");
+                            tbl.appendChild(thead);
+                            tbl.appendChild(tbody);
+                            for (let i = 0; i < data.length; i++) {
+                                let tr = document.createElement("tr");
+                                for (let j = 0; j < data[i].length; j++) {
+                                    let td = (i == 0 || j == 0 ?
+                                        document.createElement("th") :
+                                        document.createElement("td")
+                                    );
+                                    if (i != 0 && j == 1) {
+                                        td.innerHTML = '' +
+                                            '<a onclick="getLink(this.innerText);">' +
+                                            data[i][j].trim() +
+                                            '</a>';
+                                    } else {
+                                        td.innerText = data[i][j].trim();
+                                    }
+                                    tr.appendChild(td);
+                                }
+                                if (i == 0) {
+                                    thead.appendChild(tr);
+                                } else {
+                                    tbody.appendChild(tr);
+                                }
+                            }
+                            document.getElementById("localManagerTbl").appendChild(tbl);
+                        })()
+                    </script>
                     <h3>固定URL</h3>
                     <ul>
                         <li><a href="http://volumio.local">Volumio - http://volumio.local</a></li>
                         <li><a href="http://volumio.local/dev/">Volumio Test Player - http://volumio.local/dev/</a></li>
-                        <li><a href="http://localhost:8384/">Syncthing(標準ポート) - http://localhost:8384/</a></li>
                     </ul>
                     <h2>家庭内</h2>
                     <ul>
@@ -1469,6 +1450,9 @@ $$</textarea>
                     </ul>
                 </div>
             </section>
+        </section>
+        <section class="row">
+
             <section class="col-lg-6">
                 <div class="box">
                     <h2 class="zHeadList">Debug</h2>

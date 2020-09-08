@@ -1,0 +1,12 @@
+title,url
+Apache(index),/index.html
+test.php,/test.php
+phpMyAdmin,/phpmyadmin/
+WordPress,/wp/
+WordPress ログイン,/wp/wp-login.php
+miniDLNA,:8200
+Syncthing,:8384
+GitHub labテスト用,/test/Zacky0922.github.io/lab/
+GitHub KGfesテスト,/test/KG/fes_2020jsh/2020jsh-test/
+Volumio,/
+Volumio Test Player,/dev/
