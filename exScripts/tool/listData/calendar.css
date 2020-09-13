@@ -1,0 +1,35 @@
+
+table.zCalendar{
+    table-layout: fixed;
+}
+
+/* 日曜日 */
+table.zCalendar >thead>tr>th:nth-child(1),
+table.zCalendar >tbody>tr>td:nth-child(1){
+    background:rgba(255,128,128,0.2);
+}
+/* 土曜日 */
+table.zCalendar >thead>tr>th:nth-child(7),
+table.zCalendar >tbody>tr>td:nth-child(7){
+    background:rgba(128,128,255,0.2);
+}
+
+/* 標準セル設定 */
+table.zCalendar >tbody>tr>td{
+    vertical-align: top;
+    white-space: nowrap;
+    height:50px;
+    width:4em;
+}
+table.zCalendar >tbody>tr>td:hover{
+    background:rgba(255, 225, 128, 0.3);
+}
+table.zCalendar >tbody>tr>td.zCal_today>div:nth-child(1){
+    text-decoration: underline;
+}
+
+
+/* 予定表示等 */
+table.zCalendar >tbody>tr>td>div:nth-child(1){
+    margin-bottom:5px;
+}

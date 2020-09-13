@@ -1300,7 +1300,6 @@ $$</textarea>
                     <a href="ar/nft.html">nft</a>
                     <div class="zCentering">
                         <img src="ar/hiro.jpg" />
-                        <img src="ar/pattern-KGARmarker.png" />
                     </div>
                 </div>
             </section>
@@ -1353,16 +1352,21 @@ $$</textarea>
             <section class="col-lg-6">
                 <div class="box">
                     <h2 class="zHeadList">CSV</h2>
-                    <div class="xScrollable" id="CSVtbl"></div>
-                    <script type="module">
-                        import { zCSV } from "../exScripts/aggregater.js";
-                        let schedule = new zCSV("./schedule.csv");
-                        document.getElementById("CSVtbl").appendChild(schedule.getTable(false));
-                    </script>
+
                     <div class="xScrollable" id="calendarTest"></div>
                     <script type="module">
-                        import { zCalendar } from "../exScripts/aggregater.js";
-                        let cal = new zCalendar("calendarTest",2020,9);
+                        import { zCSV, zCalendar } from "../exScripts/aggregater.js";
+                        let schedule = new zCSV("./csv/drunk.csv",
+                            function (data) {
+                                let cal = new zCalendar("calendarTest", 2020, 9);
+                                for (let i = 0; i < data.length; i++) {
+                                    for (let j = 2; j < data[i].length; j++) {
+                                        cal.addSchedule(data[i][0], data[i][1], data[i][j], "🍶");
+                                    }
+                                }
+                                cal.setCalendar();
+                            }
+                        );
                     </script>
                 </div>
             </section>
@@ -1403,38 +1407,41 @@ $$</textarea>
                     <div class="xScrollable" id="localManagerTbl"></div>
                     <script type="module">
                         import { zCSV } from "../exScripts/aggregater.js";
-                        (function () {
-                            let csv = new zCSV("./localManager.csv");
-                            let data = csv.get();
-                            let tbl = document.createElement("table");
-                            let thead = document.createElement("thead");
-                            let tbody = document.createElement("tbody");
-                            tbl.appendChild(thead);
-                            tbl.appendChild(tbody);
-                            for (let i = 0; i < data.length; i++) {
-                                let tr = document.createElement("tr");
-                                for (let j = 0; j < data[i].length; j++) {
-                                    let td = (i == 0 || j == 0 ?
-                                        document.createElement("th") :
-                                        document.createElement("td")
-                                    );
-                                    if (i != 0 && j == 1) {
-                                        td.innerHTML = '' +
-                                            '<a onclick="getLink(this.innerText);">' +
-                                            data[i][j].trim() +
-                                            '</a>';
-                                    } else {
-                                        td.innerText = data[i][j].trim();
+                        (function (data) {
+                            let csv = new zCSV("./csv/localManager.csv",
+                                // コールバック関数
+                                function (data) {
+                                    let tbl = document.createElement("table");
+                                    let thead = document.createElement("thead");
+                                    let tbody = document.createElement("tbody");
+                                    tbl.appendChild(thead);
+                                    tbl.appendChild(tbody);
+                                    for (let i = 0; i < data.length; i++) {
+                                        let tr = document.createElement("tr");
+                                        for (let j = 0; j < data[i].length; j++) {
+                                            let td = (i == 0 || j == 0 ?
+                                                document.createElement("th") :
+                                                document.createElement("td")
+                                            );
+                                            if (i != 0 && j == 1) {
+                                                td.innerHTML = '' +
+                                                    '<a onclick="getLink(this.innerText);">' +
+                                                    data[i][j].trim() +
+                                                    '</a>';
+                                            } else {
+                                                td.innerText = data[i][j].trim();
+                                            }
+                                            tr.appendChild(td);
+                                        }
+                                        if (i == 0) {
+                                            thead.appendChild(tr);
+                                        } else {
+                                            tbody.appendChild(tr);
+                                        }
                                     }
-                                    tr.appendChild(td);
+                                    document.getElementById("localManagerTbl").appendChild(tbl);
                                 }
-                                if (i == 0) {
-                                    thead.appendChild(tr);
-                                } else {
-                                    tbody.appendChild(tr);
-                                }
-                            }
-                            document.getElementById("localManagerTbl").appendChild(tbl);
+                            );
                         })()
                     </script>
                     <h3>固定URL</h3>

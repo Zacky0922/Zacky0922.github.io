@@ -1,30 +1,26 @@
 class zCSV {
-    constructor(src) {
+    constructor(src, callbackFunc) {
         // データ格納変数
         this.data = new Array();
-
+        let csv = this.data;
         // CSV取得用HTTPリクエスト
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", src, false);    // 第3引数false＝同期処理（読込完了までwait）
+        //xhr.withCredentials = true;     // CORS対応
+        xhr.open("GET", src, true);    // 第3引数false＝同期処理（読込完了までwait）
         xhr.send(null);
-
-        // ロード完了で配列化処理
-        let tmp = xhr.responseText.split("\n");
-        for (let i = 0; i < tmp.length; i++) {
-            this.data[i] = tmp[i].split(",");
-        }
-
-        // 本当は非同期で読込んでいる間に他のjsが実行したいが、
-        // 読込より早くget()メソッドが実行されると困る（データがない）
-        /*
         xhr.onload = function () {
+            // ロード完了で配列化処理
             let tmp = xhr.responseText.split("\n");
-            alert(tmp);
-            for (let i = 0; i < tmp.length; ++i) {
-                this.data[i] =tmp[i].split(",");
+            for (let i = 0; i < tmp.length; i++) {
+                csv[i] = tmp[i].split(",");
             }
+            // コンソールに配列を出力
+            console.groupCollapsed("CSV data gotten by zCSV\nfrom "+src);
+            console.table(csv);
+            console.groupEnd();
+            // 配列を含むコールバック関数
+            callbackFunc(csv);
         }
-        */
     }
 
     get() {
@@ -36,10 +32,10 @@ class zCSV {
         let tbody = document.createElement("tbody");
         tbl.appendChild(thead);
         tbl.appendChild(tbody);
-        for (let i = 0; i < this.data.length; i++){
+        for (let i = 0; i < this.data.length; i++) {
             let tr = document.createElement("tr");
-            for (let j = 0; j < this.data[i].length; j++){
-                let td = (i == 0 || (th_flag && j == 0 ) ?
+            for (let j = 0; j < this.data[i].length; j++) {
+                let td = (i == 0 || (th_flag && j == 0) ?
                     document.createElement("th") :
                     document.createElement("td")
                 );
@@ -47,7 +43,7 @@ class zCSV {
                 tr.appendChild(td);
             }
             if (i == 0) {
-                thead.appendChild(tr);    
+                thead.appendChild(tr);
             } else {
                 tbody.appendChild(tr);
             }

@@ -3,20 +3,28 @@ class zCalendar {
         this.id = id;   // table要素の親要素id
         this.y = y;
         this.m = m;
-        // 予定表初期設定
-        let today = new Date();
-        this.schedule = new Array();
-        this.schedule[0] = [
-            [today.getFullYear(),today.getMonth()+1,today.getDate()],
-            "<div>Today!</div>"
-        ];
 
+        // 予定表初期設定
+        this.schedule = new Array();
+        this.today = new Date();
+        //this.schedule[0] = [this.today.getFullYear(), this.today.getMonth() + 1, this.today.getDate(), "Today!"];
+
+        // 祝祭日設定
+        this.setHoliday();
         // table初期化
         this.initTbl();
-        // 初期表示
-        this.setCalendar();
-    }
+        // table設定関連（calendar.css）
+        this.tbl.classList.add("zCalendar");
 
+    }
+    // 予定追加
+    addSchedule(y, m, d, html) {
+        this.schedule[this.schedule.length] = [y, m, d, html];
+    }
+    // 祝祭日設定
+    setHoliday() {
+
+    }
     // 初期化
     initTbl() {
         // table生成・代入
@@ -59,6 +67,7 @@ class zCalendar {
         // 曜日
         let tr = document.createElement("tr");
         let date = ["日", "月", "火", "水", "木", "金", "土"];
+        //let date = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         for (let i = 0; i < 7; i++) {
             let th = document.createElement("th");
             th.appendChild(
@@ -93,16 +102,27 @@ class zCalendar {
                     let day = document.createElement("div");
                     day.innerText = d;
                     td.appendChild(day);
+                    // 当日処理
+                    if (
+                        (this.today.getFullYear() == this.y) &&
+                        (this.today.getMonth() + 1 == this.m) &&
+                        (this.today.getDate() == d)
+                    ) {
+                        td.classList.add("zCal_today");
+                    }
                 }
                 tr.appendChild(td);
 
                 // 予定があれば追加 debug中
                 for (let s = 0; s < this.schedule.length; s++) {
-                    //alert(this.schedule[s]);
-                    if (this.schedule[s][0] == [this.y, this.m, d]) {
-                        let td0 = document.createElement("td");
-                        td0.innerHTML = this.schedule[s][1];
-                        tr.appendChild(td0);
+                    if (
+                        (this.schedule[s][0] == this.y) &&
+                        (this.schedule[s][1] == this.m) &&
+                        (this.schedule[s][2] == d)
+                    ) {
+                        let ele = document.createElement("div");
+                        ele.innerHTML = this.schedule[s][3];
+                        td.appendChild(ele);
                     }
                 }
 
@@ -115,9 +135,6 @@ class zCalendar {
                 break;  //最終日到達でbreak
             }
         }
-    }
-    addSchedule(y, m, d, html) {
-        this.schedule[this.schedule.length] = [[y, m, d],html];
     }
 
 }
