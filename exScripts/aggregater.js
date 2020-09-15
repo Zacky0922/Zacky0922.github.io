@@ -14,25 +14,20 @@
 //import 'https://code.jquery.com/jquery-3.3.1.min.js';
 import "./ex/jQuery/jquery-3.5.1.min.js";
 import "./ex/jQuery/jquery-ui.min.js";
-import { zTab } from "./ex/jQuery/jquery_Zacky.js";
-import { getGicon } from "./ex/MaterialIcons/googleicon.js";    // func
+export { zTab } from "./ex/jQuery/jquery_Zacky.js";
+export { getGicon } from "./ex/MaterialIcons/googleicon.js";    // func
 
 
 // tools
-import { zCalendar } from "./tool/listData/calendar.js";   // class
-import { zCSV } from "./tool/listData/csv.js";   // class
-import { zDate } from "./tool/date.js";    // class
-import { zList, burgerMenu } from "./tool/list.js";    // class,class
+export { zCalendar } from "./tool/listData/calendar.js";   // class
+export { zCSV,zCSVs } from "./tool/listData/csv.js";   // class
+export { zDate } from "./tool/date.js";    // class
+export { zList, burgerMenu } from "./tool/list.js";    // class,class
 //MathJaxがES module対応するまで、マクロはimport扱いしない（通常のロードをさせる）
 //import { zMathJax } from "./tool/math/MathJaxMacro.js";
-import { zMath } from "./tool/math/zMath.js";
+export { zMath } from "./tool/math/zMath.js";
 
 // これは最後に読み込む
 import { zDebug } from "./tool/debug/debug.js";    // let
-
-// まとめ
-export {
-    zTab, getGicon,
-    zCalendar,zCSV,zDate, zList, burgerMenu,  zMath, zDebug
-};
+export { zDebug };
 zDebug.addLog("Module Aggregater loaded!");

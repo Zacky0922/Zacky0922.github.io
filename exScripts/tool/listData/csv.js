@@ -52,4 +52,39 @@ class zCSV {
     }
 }
 
-export { zCSV };
+class zCSVs{
+    constructor(csvs, callbackFunc) {
+        //  連想配列形式でCSV名称：URLを指定
+        //  csvs = {name: csv_url, name1: csv_url1}
+
+        let loaded = 0;
+        let csv = new Array();
+        for (let name in csvs) {
+            // 連想配列定義
+            csv[name] = new Array();
+            // CSV取得用HTTPリクエスト
+            let xhr = new XMLHttpRequest();
+            //xhr.withCredentials = true;     // CORS対応
+            xhr.open("GET", csvs[name], true);    // 第3引数false＝同期処理（読込完了までwait）
+            xhr.send(null);
+            xhr.onload = function () {
+                // ロード完了で配列化処理
+                let tmp = xhr.responseText.split("\n");
+                for (let i = 0; i < tmp.length; i++) {
+                    csv[name][i] = tmp[i].split(",");
+                }
+                // コンソールに配列を出力
+                console.groupCollapsed("CSV data gotten by zCSVs\nfrom " + csvs[name]);
+                console.table(csv[name]);
+                console.groupEnd();
+                // 配列を含むコールバック関数
+                if (Object.keys(csvs).length == ++loaded) {
+                    callbackFunc(csv);
+                }
+            }
+        }
+
+    }
+}
+
+export { zCSV ,zCSVs};
