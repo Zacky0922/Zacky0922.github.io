@@ -1363,6 +1363,7 @@ $$</textarea>
                             drunk:  "./csv/drunk.csv"
                         }, function (csv) {
                             let cal = new zCalendar("calendarTest0");
+                            /*
                             // 祝祭日登録
                             cal.setHolidays(csv["holidays"]);
                             // 有給休暇登録
@@ -1375,7 +1376,8 @@ $$</textarea>
                                     cal.addSchedule(csv["drunk"][i][0], csv["drunk"][i][1], csv["drunk"][i][j], "🍶");
                                 }
                             }
-                            cal.setCalendar();
+                            */
+                            cal.setCalendar(undefined,undefined,cal.getTbody());
                         }
                         );
                     </script>

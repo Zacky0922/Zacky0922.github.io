@@ -1,33 +1,33 @@
+// 非export変数
+// 本日
+let today = new Date();
+// 予定登録
+// 複数のカレンダーを同一ページに表示する可能性を考えて次の連想配列を適用
+// array[this.id][i] = [y/0,m,d/0,week,date,html,divCl,tdCl]
+// y=0 毎年繰り返し　d=0 第n週○曜日指定
+let schedule = new Array();
+let setRegularSchedule = new Array();   // 毎年イベント登録済みフラグ
+
 class zCalendar {
-    constructor(id, ymd = new Date()) {
-        // 第2引数＝初期表示年月
-        this.id = id;   // table要素の親要素id
-        this.y = ymd.getFullYear();
-        this.m = ymd.getMonth()+1;  //Math.ceil(Math.random() * 12);
-        this.setHolidayYear = new Array();
-        // 予定表初期設定
-        this.schedule = new Array();
-        this.today = new Date();
-        //this.schedule[0] = [this.today.getFullYear(), this.today.getMonth() + 1, this.today.getDate(), "Today!"];
+    constructor(id) {
+        this.id = id;
+        this.wrap = document.getElementById(id);
 
         // table初期化
-        this.initTbl();
-        // table設定関連（calendar.css）
-        this.tbl.classList.add("zCalendar");
-
-        // 日付変更監視　thisの処理が難しい・・・debug
-        /*
-        let date = this.cap.children[1];
-        let cap_old = date.innerText;
-        let setCal = this.setCalendar;
-        setInterval(function () {
-            if (cap_old != date.innerText) {
-                let ymd = date.innerText.split("-");
-                setCal(Number(ymd[0]), Number(ymd[1]));
-            }
-        }, 100);
-        */
+        this.tbody = document.createElement("tbody");   // captionイベントハンドラ用に早めに生成
+        // table生成・代入
+        this.tbl = document.createElement("table");
+        this.tbl.classList.add("zCalendar");    // table設定関連（calendar.css）
+        this.wrap.appendChild(this.tbl);
+        // caption生成
+        this.setCaption(today.getFullYear(), today.getMonth() + 1);
+        // thead生成
+        this.setThead();
+        // tbody生成（空箱）
+        this.tbl.appendChild(this.tbody);
     }
+
+
     // 祝祭日設定
     setHolidays(csv, y = this.y) {
         // 重複セット防止
@@ -36,6 +36,7 @@ class zCalendar {
         } else {
             this.setHolidayYear.push(y);
         }
+        return;
 
         // 祝祭日セット
         for (let i = 1; i < csv.length; i++) {
@@ -86,36 +87,42 @@ class zCalendar {
     addSchedule(y, m, d, html, divCl = null, tdCl = null) {
         this.schedule[this.schedule.length] = [y, m, d, html, divCl, tdCl];
     }
-    // 初期化
-    initTbl() {
-        // table生成・代入
-        this.tbl = document.createElement("table");
-        document.getElementById(this.id).appendChild(this.tbl);
 
-        // caption生成
-        this.tbl.appendChild(this.setCaption());
-        // thead生成
-        this.tbl.appendChild(this.setThead());
 
-        // tbody生成（空箱）
-        this.tbody = document.createElement("tbody");
-        this.tbl.appendChild(this.tbody);
-    }
-    setCaption() {
+    setCaption(y, m) {
         // caption生成
-        this.cap = document.createElement("caption");
-        let pre = document.createElement("span");
-        pre.innerText = "[前]";
+        let cap = document.createElement("caption");
+        let preY = document.createElement("span");
+        preY.classList.add("zCal_control");
+        preY.innerText = "[前年]";
+        let preM = document.createElement("span");
+        preM.classList.add("zCal_control");
+        preM.innerText = "[前月]";
         let ym = document.createElement("span");
-        ym.innerText = this.y + "-" + this.m;   // 以下のイベント処理に影響するのでtext format確認
-        let pro = document.createElement("span");
-        pro.innerText = "[後]";
-        this.cap.appendChild(pre);
-        this.cap.appendChild(ym);
-        this.cap.appendChild(pro);
+        ym.innerText = y + "-" + m;   // 以下のイベント処理に影響するのでtext format確認
+        let proM = document.createElement("span");
+        proM.classList.add("zCal_control");
+        proM.innerText = "[次月]";
+        let proY = document.createElement("span");
+        proY.classList.add("zCal_control");
+        proY.innerText = "[次年]";
+        cap.appendChild(preY);
+        cap.appendChild(preM);
+        cap.appendChild(ym);
+        cap.appendChild(proM);
+        cap.appendChild(proY);
 
-        // 注）以下、イベントハンドラ内のthisはクリック要素を指す
-        pre.addEventListener("click", function () {
+        // イベントハンドラ対応
+        // 注）イベントハンドラ内のthisはクリック要素を指す
+        let f = this.setCalendar;
+        let tbody = this.tbody;
+        preY.addEventListener("click", function () {
+            let ymd = ym.innerText.split("-");
+            ymd[0] = Number(ymd[0]) - 1;
+            ym.innerText = ymd[0] + "-" + ymd[1];
+            f(ymd[0], ymd[1], tbody);
+        });
+        preM.addEventListener("click", function () {
             let ymd = ym.innerText.split("-");
             if (ymd[1] == 1) {
                 ymd[0] = Number(ymd[0]) - 1;
@@ -124,9 +131,9 @@ class zCalendar {
                 ymd[1] = Number(ymd[1]) - 1;
             }
             ym.innerText = ymd[0] + "-" + ymd[1];
-            //zCalendar.changeDate(this.y, this.m);
+            f(ymd[0], ymd[1], tbody);
         });
-        pro.addEventListener("click", function () {
+        proM.addEventListener("click", function () {
             let ymd = ym.innerText.split("-");
             if (ymd[1] == 12) {
                 ymd[0] = Number(ymd[0]) + 1;
@@ -135,9 +142,15 @@ class zCalendar {
                 ymd[1] = Number(ymd[1]) + 1;
             }
             ym.innerText = ymd[0] + "-" + ymd[1];
+            f(ymd[0], ymd[1], tbody);
         });
-
-        return this.cap;
+        proY.addEventListener("click", function () {
+            let ymd = ym.innerText.split("-");
+            ymd[0] = Number(ymd[0]) + 1;
+            ym.innerText = ymd[0] + "-" + ymd[1];
+            f(ymd[0], ymd[1], tbody);
+        });
+        this.tbl.appendChild(cap);
     }
     setThead() {
         // thead生成
@@ -155,25 +168,25 @@ class zCalendar {
             tr.appendChild(th);
         }
         thead.appendChild(tr);
-        return thead;
+        this.tbl.appendChild(thead);
     }
 
-    changeDate(y, m) {
-        this.y = y;
-        this.m = m;
-        this.setCalendar();
-    }
-    setCalendar(y = this.y, m = this.m) {
-        this.y = y;
-        this.m = m;
-
+    // イベントハンドラから呼ばれる可能性があるので「this」禁止
+    setCalendar(y, m, tbody) {
+        tbody.innerHTML = "";
+        if (y == undefined) {
+            y = today.getFullYear();
+        }
+        if (m == undefined) {
+            m = today.getMonth() + 1;
+        }
         // 月の初日の曜日を取得
-        let blankCells = (new Date(this.y, this.m - 1, 1)).getDay();   // 日＝0,土=6
+        let blankCells = (new Date(y, m - 1, 1)).getDay();   // 日＝0,土=6
         // 日付
         let d = 1 - blankCells;
         while (true) {
             let tr = document.createElement("tr");
-            this.tbody.appendChild(tr);
+            tbody.appendChild(tr);
             for (let i = 0; i < 7; i++) {
                 let td = document.createElement("td");
                 if (d > 0) {
@@ -183,9 +196,9 @@ class zCalendar {
                     td.classList.add("zCal_day");
                     // 当日処理
                     if (
-                        (this.today.getFullYear() == this.y) &&
-                        (this.today.getMonth() + 1 == this.m) &&
-                        (this.today.getDate() == d)
+                        (today.getFullYear() == y) &&
+                        (today.getMonth() + 1 == m) &&
+                        (today.getDate() == d)
                     ) {
                         td.classList.add("zCal_today");
                     }
@@ -193,33 +206,38 @@ class zCalendar {
                 tr.appendChild(td);
 
                 // 予定があれば追加
-                for (let s = 0; s < this.schedule.length; s++) {
+                /*
+                for (let s = 0; s < schedule.length; s++) {
                     if (
-                        (this.schedule[s][0] == this.y) &&
-                        (this.schedule[s][1] == this.m) &&
-                        (this.schedule[s][2] == d)
+                        (schedule[s][0] == y) &&
+                        (schedule[s][1] == m) &&
+                        (schedule[s][2] == d)
                     ) {
                         let ele = document.createElement("div");
-                        ele.innerHTML = this.schedule[s][3];
-                        if (this.schedule[s][4] != null) {
-                            ele.classList.add(this.schedule[s][4]);
+                        ele.innerHTML = schedule[s][3];
+                        if (schedule[s][4] != null) {
+                            ele.classList.add(schedule[s][4]);
                         }
-                        if (this.schedule[s][5] != null) {
-                            td.classList.add(this.schedule[s][5]);
+                        if (schedule[s][5] != null) {
+                            td.classList.add(schedule[s][5]);
                         }
                         td.appendChild(ele);
                     }
                 }
+                */
 
                 d++;
-                if (d > (new Date(this.y, this.m, 0)).getDate()) {
+                if (d > (new Date(y, m, 0)).getDate()) {
                     break;  //最終日到達でbreak
                 }
             }
-            if (d > (new Date(this.y, this.m, 0)).getDate()) {
+            if (d > (new Date(y, m, 0)).getDate()) {
                 break;  //最終日到達でbreak
             }
         }
+    }
+    getTbody() {
+        return this.tbody;
     }
 
 }

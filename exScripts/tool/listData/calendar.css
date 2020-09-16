@@ -2,6 +2,10 @@
 table.zCalendar{
     table-layout: fixed;
 }
+table.zCalendar>caption>span.zCal_control{
+    padding:0 3px;
+    cursor: pointer;
+}
 
 /* 日曜日・祝祭日 */
 table.zCalendar >thead>tr>th:nth-child(1),
