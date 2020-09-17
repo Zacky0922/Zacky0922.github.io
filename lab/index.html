@@ -1359,13 +1359,13 @@ $$</textarea>
                         import { zCSVs, zCalendar } from "../exScripts/aggregater.js";
                         let calendar = new zCSVs({
                             holidays: "./csv/holiday.csv",
-                            paid:   "./csv/paidHolidays.csv",
-                            drunk:  "./csv/drunk.csv"
+                            paid: "./csv/paidHolidays.csv",
+                            drunk: "./csv/drunk.csv"
                         }, function (csv) {
                             let cal = new zCalendar("calendarTest0");
-                            /*
                             // 祝祭日登録
                             cal.setHolidays(csv["holidays"]);
+                            /*
                             // 有給休暇登録
                             for(let i = 1;i < csv["paid"].length;i++){
                                 cal.addSchedule(csv["paid"][i][0], csv["paid"][i][1], csv["paid"][i][2], csv["paid"][i][3],"holiday" );
@@ -1377,7 +1377,7 @@ $$</textarea>
                                 }
                             }
                             */
-                            cal.setCalendar(undefined,undefined,cal.getTbody());
+                            cal.setCalendar(undefined, undefined, cal.getTbody());
                         }
                         );
                     </script>
@@ -1394,17 +1394,20 @@ $$</textarea>
                         function getLink(subURL) {
                             window.open("http://" + document.getElementById("myIP").value + subURL);
                         }
+                        function getLink2(subURL) {
+                            window.open("https://" + document.getElementById("myIP").value + subURL);
+                        }
                     </script>
                     <h3>IP・ホスト名</h3>
                     <input type="text" id="myIP" value="raspberrypi">
                     <div class="IPsample">
-                        <span onclick="setIP(this.innerText)">raspberrypi</span>
                         <span onclick="setIP(this.innerText)">192.168.1.171</span>
+                        <span onclick="setIP(this.innerText)">raspberrypi</span>
                         <span onclick="setIP(this.innerText)">localhost</span>
                         <span onclick="setIP(this.innerText)">192.168.1.</span>
                         <span onclick="setIP(this.innerText)">192.168.13.2</span>
-                        <span onclick="setIP(this.innerText)">www.zacky.ninja-x.jp</span>
-                        <span onclick="setIP(this.innerText)">www.zacky.xxxxxxxx.jp</span>
+                        <span onclick="setIP(this.innerText)">zacky.xxxxxxxx.jp</span>
+                        <span onclick="setIP(this.innerText)">zacky.ninja-x.jp</span>
                     </div>
                     <style>
                         div.IPsample {
@@ -1433,21 +1436,33 @@ $$</textarea>
                                     tbl.appendChild(tbody);
                                     for (let i = 0; i < data.length; i++) {
                                         let tr = document.createElement("tr");
-                                        for (let j = 0; j < data[i].length; j++) {
-                                            let td = (i == 0 || j == 0 ?
-                                                document.createElement("th") :
-                                                document.createElement("td")
-                                            );
-                                            if (i != 0 && j == 1) {
-                                                td.innerHTML = '' +
-                                                    '<a onclick="getLink(this.innerText);">' +
-                                                    data[i][j].trim() +
-                                                    '</a>';
-                                            } else {
-                                                td.innerText = data[i][j].trim();
-                                            }
-                                            tr.appendChild(td);
+                                        let th = document.createElement("th") ;
+                                        th.innerHTML = data[i][0].trim();
+                                        tr.appendChild(th);
+                                        let td0 = (i == 0 ?
+                                            document.createElement("th") :
+                                            document.createElement("td")
+                                        );
+                                        let td1 = (i == 0 ?
+                                            document.createElement("th") :
+                                            document.createElement("td")
+                                        );
+                                        if (i != 0) {
+                                            td0.innerHTML = '' +
+                                                '<a onclick="getLink('+"'"+ data[i][1].trim()+"'"+ ');">' +
+                                                data[i][1].trim() +
+                                                '</a>';
+                                            td1.innerHTML = '' +
+                                                '<a onclick="getLink2(' + "'" +  data[i][1].trim() + "'" + ');">' +
+                                                "[https]" +
+                                                '</a>';
+                                        } else {
+                                            td0.innerText = data[i][1].trim();
+                                            td1.innerText = "https";
                                         }
+                                        tr.appendChild(td0);
+                                        tr.appendChild(td1);
+
                                         if (i == 0) {
                                             thead.appendChild(tr);
                                         } else {
