@@ -1,0 +1,1002 @@
+﻿<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+  <!-- meta設定 -->
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+  <meta name="robots" content="noindex,nofollow" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-163335381-1');
+  </script>
+  <!-- PWA設定 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="./manifest.json">
+  <!-- MyScripts -->
+  <script src="./script/function.js?lv=0" type="text/javascript"></script>
+  <!--
+  <script src="./script/MathJaxMacro2.js" type="text/x-mathjax-config"></script>
+  -->
+
+  <script src="./script/MathJaxMacro.js" type="text/x-mathjax-config"></script>
+  <script type="text/javascript" defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <!--
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-ams-chtml.js">
+  -->
+  <title>PWA test App</title>
+</head>
+
+<body>
+  <div id="container">
+
+    <section>
+      <h2 onclick="this.parentElement.children[1].classList.toggle('zUndisp')">debug</h2>
+      <dl class="debug">
+        <dt>MathJax - display mode</dt>
+        <dd>$$\dfrac{d}{dx}\int_{a}^{x}{f(t)dt} = f(x)$$</dd>
+        <dt>MathJax - inline mode</dt>
+        <dd>$\Delta\rm{ABC}$について、$a^2+b^2=c^2$が成り立つとき、$c$を斜辺とする直角三角形である。<br />
+          \(\sin^2\theta+\cos^2\theta =1\)は、三平方の定理の応用である。</dd>
+        <dt>MathJax - Real Time Preview (onkeyup)</dt>
+        <dd>
+          <textarea id="realtimePreviewInput" rows="5" onkeyup="document.getElementById('realtimePreview').innerText=this.value;
+            reMathJax('realtimePreview')">$$e^{i\theta}=\cos\theta+i\sin\theta$$</textarea>
+          <input type="button" value="init" onclick="document.getElementById('realtimePreviewInput').value=
+          '$$e^{i\\theta}=\\cos\\theta+i\\sin\\theta$$';
+          document.getElementById('realtimePreview').innerText=
+          document.getElementById('realtimePreviewInput').value;
+          reMathJax('realtimePreview')">
+          <div id="realtimePreview" style="border:#888 1px solid">
+            $$e^{i\theta}=\cos\theta+i\sin\theta$$
+          </div>
+        </dd>
+        <dt>jQuery</dt>
+        <dd id="jQueryCheck">jQuery is NOT ready.</dd>
+        <script>
+          $(function () {
+            // if document is ready
+            $("#jQueryCheck").empty();
+            $("#jQueryCheck").append("jQuery is ready.(OK)");
+          });
+        </script>
+        <dt>abc.js</dt>
+        <dd>
+          <div class="score">
+            L:1/4
+            CDEFGABc
+          </div>
+          <div class="score">
+            M:4/4
+            L:1/8
+            K:C
+            V:1
+            "C"[CEG]4 "F"[FAc]2 "G"[GBd]2 | "C"[CEGc]8 ||
+            V:2 bass
+            C,G,F,G, r
+          </div>
+        </dd>
+        <dt>debugMsg</dt>
+        <dd><input type="button" class="zBtn" value="debugMsg('test')" onclick="debugMsg('test')"></dd>
+      </dl>
+
+    </section>
+
+    <section>
+      <h2>test</h2>
+      <div>
+        <h3>見出し</h3>
+        <div class="SW_zUndisp">
+          <div>DOM</div>
+          <div>DOM</div>
+          <div>DOM</div>
+          <script>
+            setDispToggle('[詳細を開く]', '[詳細を閉じる]');
+          </script>
+        </div>
+        <div class="SW_disp">
+          <div>DOM</div>
+          <script>
+            setDispToggle('[詳細を開く]', '[詳細を閉じる]');
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>snap test</h2>
+      <div class="zSnap pickupTopics">
+        <div>04/20
+          <div>てすと</div>
+          <div>せつめい</div>
+        </div>
+        <div>
+          <div>せつめい</div>
+        </div>
+        <div>
+          <div>あ</div>
+        </div>
+        <div>
+          <div>あ</div>
+          <div>せつめい</div>
+        </div>
+        <div>
+          <div>あ</div>
+          <div>せつめい</div>
+        </div>
+        <div>
+          <div>あ</div>
+          <div>せつめい</div>
+        </div>
+        <div>
+          <div>あ</div>
+          <div>せつめい</div>
+        </div>
+        <div>
+          <div>あ</div>
+          <div>せつめい</div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Links</h2>
+      <div class="centering">
+        <a href="https://jsh.kgef.ac.jp/" class="zBtn" target="_blank">学校WEBサイト</a><br />
+        <a href="https://jsh.kgef.ac.jp/kg/" class="zBtn" target="_blank">総合</a>
+        <a href="https://jsh.kgef.ac.jp/kjs/" class="zBtn" target="_blank">中学</a>
+        <a href="https://jsh.kgef.ac.jp/khs/" class="zBtn" target="_blank">高校</a><br />
+        <a href="https://jsh.kgef.ac.jp/news/14196/" class="zBtn" target="_blank">KGコロナまとめページ</a><br />
+        <a href="https://jsh.kgef.ac.jp/khs/club/brassband/" class="zBtn" target="_blank">吹奏楽部</a>
+        <a href="https://jsh.kgef.ac.jp/wp-admin/" class="zBtn" target="_blank">wp-admin</a><br />
+        <a class="zBtn" target="_blank" href="http://kbs.kgef.ac.jp/seiseki/">成績管理サーバー<br />(教員用≠S)</a>
+        <a class="zBtn" target="_blank" href="https://kbs.kgef.ac.jp/seiseki/">成績管理サーバー<br />(教員用=S)</a>
+        <a class="zBtn" target="_blank" href="https://hs.kgef.ac.jp/kobetsu/mstmnt/">マスタ管理サーバー<br />(管理者用)</a><br />
+        <a href="https://machicomi.jp/admin/login.html" class="zBtn" target="_blank">まちcomi</a><br />
+        <a href="https://learn.studysapuri.jp/ja/login" class="zBtn" target="_blank">スタディサプリ<br />（生徒用login）</a>
+        <a href="https://link.studysapuri.jp/ja/login" class="zBtn" target="_blank">スタディサプリ<br />for TEACHERS</a>
+      </div>
+      <div id="linkTab">
+        <div id="linkTab_COVID-19">
+          <ul>
+            <li>
+              <a href="https://toyokeizai.net/sp/visual/tko/covid19/" target="_blank">新型コロナウイルス国内感染の状況 － 東洋経済</a>
+            </li>
+            <li>
+              <a href="https://stopcovid19.metro.tokyo.lg.jp/" target="_blank">東京都 新型コロナウイルス感染症対策サイト</a>
+            </li>
+            <li>
+              <a href="https://saitama.stopcovid19.jp/" target="_blank">埼玉県 新型コロナウイルス感染症対策サイト（非公式）</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://www.sosmap.pw/">sosmapjapan</a>
+            </li>
+            <li>
+              <a href="https://gis.jag-japan.com/covid19jp/" target="_blank">都道府県別新型コロナウイルス感染者数マップ</a>
+            </li>
+          </ul>
+        </div>
+        <div id="linkTab_Google">
+          <ul>
+            <li>
+              <a href="https://www.google.co.jp/" target="_blank">Google</a>
+            </li>
+            <li>
+              <a href="https://www.google.com/calendar/" target="_blank">Calendar</a>
+            </li>
+            <li>
+              <a href="https://play.google.com/" target="_blank">Play</a>
+            </li>
+            <li>
+              <a href="https://keep.google.com/" target="_blank">Keep</a>
+            </li>
+            <li>
+              <a href="https://maps.google.co.jp/" target="_blank">Maps</a>
+            </li>
+            <li>
+              <a href="https://photos.google.com/" target="_blank">Photo</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+            </li>
+            <li>
+              <a href="https://mail.google.com/" target="_blank">Mail</a>
+            </li>
+            <li>
+              <a href="https://contacts.google.com/" target="_blank">連絡先</a>
+            </li>
+            <li>
+              <a href="https://drive.google.com/" target="_blank">Drive</a>
+            </li>
+            <li>
+              <a href="https://analytics.google.com/" target="_blank">Analytics</a>
+            </li>
+            <li>
+              <a href="https://datastudio.google.com" target="_blank">Data Portal (Data Studio)</a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/" target="_blank">+</a>
+            </li>
+            <li>
+              <a href="https://remotedesktop.google.com/access/" target="_blank">RemoteDesktop</a>
+            </li>
+            <li>
+              <a href="https://docs.google.com/forms/u/0/" target="_blank">Forms</a>
+            </li>
+          </ul>
+          <hr />
+          <ul>
+            <li>
+              <a href="http://www.ryokurian.jp/atelier/google/maps.html" target="_blank">googleマップで複数の住所を一括表示</a>
+            </li>
+            <li>
+              <a href="http://www.iphiroba.jp" target="_blank">IPひろば</a>
+            </li>
+          </ul>
+        </div>
+        <div id="linkTab_Microsoft">
+          <ul>
+            <li>
+              <a href="https://www.office.com/" target="_blank">Office</a>
+            </li>
+            <li>
+              <a href="https://outlook.office.com/mail/" target="_blank">Outlook</a>
+            </li>
+            <li>
+              <a href="https://teams.microsoft.com/" target="_blank">Teams</a>
+            </li>
+
+            <li>
+              <a href="https://onedrive.live.com/about/ja-jp/" target="_blank">OneDrive</a>
+            </li>
+            <li>
+              <a href="https://office.com/start/default.aspx" target="_blank">Office Online</a>
+            </li>
+            <li>
+              <a href="http://office.microsoft.com/ja-jp/templates/" target="_blank">Office Template</a>
+            </li>
+            <li>
+              <a href="http://www.microsoft.com/ja-jp/office/pipc/default.aspx" target="_blank">Microsoft Office 活用総合サイト
+                - 楽しもう
+                Office ライフ</a>
+            </li>
+          </ul>
+        </div>
+        <div id="linkTab_SNS&WorkingTool">
+          <ul>
+            <li>
+              <a href="http://mixi.jp/" target="_blank">mixi</a>
+            </li>
+            <li>
+              <a href="http://www.facebook.com/" target="_blank">Facebook</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/" target="_blank">Twitter</a>
+            </li>
+            <li>
+              <a href="http://www.club-circus.jp/" target="_blank">オンライン初音島 - Club Circus</a>
+            </li>
+            <li>
+              <a href="https://trello.com" target="_blank">Trello</a>
+            </li>
+            <li>
+              <a href="https://slack.com/" target="_blank">Slack</a>
+            </li>
+            <li>
+              <a href="https://discordapp.com/activity" target="_blank">discord</a>
+            </li>
+            <li>
+              <a href="https://live.cybozu.co.jp/" target="_blank">サイボウズLive</a>
+            </li>
+            <li>
+              <a href="http://www.freeml.com/" target="_blank">freeml</a>
+            </li>
+            <li>
+              <a href="http://mail.yahoo.co.jp/" target="_blank">Yahoo!JAPAN - メールログイン</a>
+            </li>
+            <li>
+              <a href="http://gmail.shibaura-it.ac.jp/" target="_blank">SHIBAURA-IT - Gmail</a>
+            </li>
+            <li>
+              <a href="http://livedoor.blogcms.jp/member/" target="_blank">livedoor Blog マイページ</a>
+            </li>
+            <li>
+              <a href="https://soundcloud.com/" target="_blank">SoundCloud</a>
+            </li>
+            <li>
+              <a href="https://app.diagrams.net/" target="_blank">diagrams.net</a>
+            </li>
+          </ul>
+        </div>
+
+        <div id="linkTab_大学講座">
+          <ul>
+            <li><a href="https://www.jmooc.jp/" target="_blank">JMOOC</a></li>
+          </ul>
+
+        </div>
+
+        <div id="linkTab_数学">
+          <div id="数学tab">
+            <div id="数学学習">
+              <ul>
+                <li><a href="http://w3e.kanazawa-it.ac.jp/math/" target="_blank">KIT数学ナビゲーション</a><br />
+                  金沢工業大学が公開している学習資料集です。<br />
+                  高校数学の基礎から大学数学の入門編までが丁寧に解説されています。</li>
+                <li>
+                  <a href="http://www.geocities.jp/ikemath/" target="_blank">高校数学教材 - ikemath</a>
+                  <br />埼玉県春日部高等学校 池内仁史先生のサイトです。
+                  <br />豊富な教材があるので、是非参考にしてください。(ここのプリントだけでも、GMARCHは狙えるんじゃないかなぁ…)</li>
+                <li>
+                  <a href="http://www.osaka-kyoiku.ac.jp/~tomodak/" target="_blank">VISUAL数学を目指して</a>
+                  <br />グラフ描画ソフトGRAPES開発者、大阪教育大学 友田勝久先生のサイトです。
+                  <br />難しい関数のグラフも、この&quot;Grapes&quot;というソフトで一発描画できますので、悩んだ時に是非。</li>
+                <li>
+                  <a href="http://www.koshigaya.bunkyo.ac.jp/shiraish/" target="_blank">文教大学教育学部学校教育課程 白石和夫のページ</a>
+                  <br />十進BASIC開発者のサイトです。
+                  <br />教育用プログラミングの代表例ですので、興味がある人は是非。</li>
+                <li>
+                  <a href="http://www.hyuki.com/" target="_blank">結城浩 - The Essence of Programming</a>
+                  <br />数学ガールの作者のサイトです。
+                  <br />ハイレベルな数学に触れたい人は是非。(小説版もありますが、漫画版もｵｽｽﾒ)</li>
+                <li>
+                  <a href="http://www.geil.co.jp/" target="_blank">Yokota Lab</a>
+                  <br />
+                  <strike>芝浦工業大学</strike>(現在は退官され、個人のHPになりました) 横田教授のサイトです。
+                  <br />大学初等数学について、詳細な解説が相当量掲載されています。</li>
+                <li>
+                  <a href="http://projecteuler.net/" target="_blank">Project Euler</a>(公式・英語版)
+                  <ul>
+                    <li>
+                      <a href="http://odz.sakura.ne.jp/projecteuler/" target="_blank">ProjectEuler</a>(日本語版)</li>
+                  </ul>挑戦し甲斐のある数学の問題を有志が集めたサイトです。
+                  <br />全て「1分ルール」をもとに作られた小問ですが、コンピュータの知識が必要な場合もあります。</li>
+                <li>
+                  <a href="http://docs.latexlab.org/" target="_blank">latexlab.org</a>
+                </li>
+              </ul>
+            </div>
+            <div id="数学software">
+              <ul>
+                <li><a href="http://www.osaka-kyoiku.ac.jp/~tomodak/" target="_blank">VISUAL数学を目指して</a><br>
+                  グラフ描画ソフトGRAPES開発者、大阪教育大学 友田勝久先生のサイトです。<br />
+                  難しい関数のグラフも、この"GRAPES"というソフトで一発描画できますので、悩んだ時に是非。</li>
+                <li><a href="https://grapes-light.app/" target="_blank">GRAPES-light</a><br>
+                  GRAPESのWEB版です。</li>
+
+
+
+                <li><a href="http://www.geogebra.org/" target="_blank">GeoGebra</a><br>
+                  代数(algebra)・幾何(geometry)で利用可能なグラフ・図形描画ソフトです。<br />
+                  図中に表示する数式には、$\LaTeX$の利用もでき、ソフト上で描画したグラフ・図形を動的なコンテンツとしてWeb上で利用できる形で出力できます。<br />
+                  ※本サイトでもグラフ・図形の描画にGeoGebraによる動的コンテンツを利用していましたが、対応端末の観点からSVGGraph.jsに切替中です。</li>
+                <li><a href="http://defghi1977.html.xdomain.jp/tech/SVGGraph/SVGGraph.htm"
+                    target="_blank">関数グラフ描画スクリプト・SVGGraph.js</a><br />
+                  数学のグラフをSVG形式で描画するJavaScriptです。<br />
+                  ユーザ入力のパラメータやアニメーション、PNG出力も可能です。<br />
+                  ※本サイトでもグラフ・図形の描画にSVGGraph.jsによる動的コンテンツを利用しています。</li>
+              </ul>
+              <h3>$\TeX$関連</h3>
+              <ul>
+                <li><a href="http://oku.edu.mie-u.ac.jp/~okumura/" target="_blank">奥村 晴彦 | Haruhiko Okumura</a><br>
+                  日本国内での$\TeX$の普及にご尽力されている三重大学の奥村教授のサイトです。</li>
+                <li><a href="http://www.math.sci.hokudai.ac.jp/~abenori/" target="_blank">あべのりページ</a><br>
+                  北海道大学の阿部紀行先生のサイトです。<br />
+                  煩わしい$\LaTeX$環境を一括構築できる"TeXインストーラ 3"を配布しています。</li>
+                <li><a href="http://www.nexyzbb.ne.jp/~hataeins/mathtex/" target="_blank">MathTeX工房</a><br>
+                  数学練習問題作成ソフト"MathTeX"の開発者 畑さん(高校数学教諭@北海道)のサイトです。<br />
+                  MathTeXは$\LaTeX$データで練習問題を自動生成してくれるソフトです。</li>
+                <li><a href="http://www.mathjax.org/" target="_blank">MathJax</a><br>
+                  $\LaTeX$やMathMLで記述した数式を、JavaScriptを利用してブラウザ上で表示する描画エンジンです。<br />
+                  アメリカ数学会(American Mathematical Society：AMS)のwebサイトでも採用され、世界標準となっているツールです。<br />
+                  ※本サイトでも数式表示に$\LaTeX$ベースで記述したMathJaxを利用しています。</li>
+              </ul>
+              <h3>その他</h3>
+              <ul>
+                <li><a href="http://www.wolfram.com/" target="_blank">Wolfram</a>
+                  数学に特化したソフトウェアメーカーです。
+                  <ul>
+                    <li><a href="http://www.wolframalpha.com/" target="_blank">Wolfram|Alpha</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div id="Programing">
+              <h3>Basic</h3>
+              <ul>
+                <li><a href="http://www.koshigaya.bunkyo.ac.jp/shiraish/" target="_blank">文教大学教育学部学校教育課程
+                    白石和夫のページ</a><br>
+                  十進BASIC開発者のサイトです。<br>
+                  教育用プログラミングの代表例ですので、興味がある人は是非。</li>
+                <li><a href="http://smileboom.com/special/petitcom/" target="_blank">プチコン</a> /
+                  <a href="http://smileboom.com/special/ptcm2/" target="_blank">プチコンmkII</a>
+                  - <a href="http://smileboom.com/" target="_blank">スマイルブーム</a><br>
+                  プチコンシリーズは、ニンテンドーDSi/DSiLL/3DS（DSiウェア）上で動作するBASICプログラミングソフトです。</li>
+              </ul>
+              <h3>Arduino(C/C++)</h3>
+              <ul>
+                <li><a href="http://www.arduino.cc/" target="_blank">Arduino公式サイト</a></li>
+                <li><a href="http://www.musashinodenpa.com/arduino/ref/" target="_blank">Arduino日本語リファレンス - 武蔵野電波</a>
+                </li>
+              </ul>
+              <p>Arduinoとは、Atmel社の8bitマイコンを搭載した、マイコンボードです。<br>
+                ハードウェア・プログラミング(C/C++)初心者でも扱いやすく、世界中で普及しています。</p>
+              <h3>Processing(Java)</h3>
+              <ul>
+                <li><a href="http://processing.org/" target="_blank">Processing公式サイト</a></li>
+                <li><a href="http://www.technotype.net/processing/reference/index_ext.html"
+                    target="_blank">Processing日本語リファレンス -
+                    technotype</a></li>
+                <li><a href="http://www.openprocessing.org/" target="_blank">OpenProcessing</a><br>
+                  Processingで作成したスケッチを公開できるサイトです。</li>
+              </ul>
+              <p>Processingとは、Javaの汎用関数をパッケージングしたプログラミング環境です。<br>
+                ソフトウェア・プログラミング初心者でも扱いやすく、世界中で普及しています。</p>
+              <p>ArduinoとProcessingは、どちらもマサチューセッツ工科大学メディアラボ(MIT Media Lab.)で開発されたツールであり、とても相性が良いので、平行した学習が可能です。</p>
+
+              <h3>Raspberry Pi</h3>
+              <ul>
+                <li><a href="https://www.raspberrypi.org/" target="_blank">Raspberry Pi</a></li>
+                <li><a href="https://volumio.org/" target="_blank">Volumio</a></li>
+                <li><a href="https://osmc.tv/" target="_blank">OSMC</a></li>
+              </ul>
+
+              <h3>Visualize Programming</h3>
+              <ul>
+                <li><a href="http://scratch.mit.edu/" target="_blank">Scratch</a> - MIT Media Lab.<br>
+                  ブロックを組み合わせてプログラムを視覚的に作成できるツールです。<br>
+                  構造化プログラミングの構造が目に見えるだけでなく、ハードウェアとの連携も多く提供されていて、汎用的に教材利用できます。</li>
+                <li><a href="http://www.mext.go.jp/programin/" target="_blank">プログラミン</a> - <a
+                    href="http://www.mext.go.jp/" target="_blank">文部科学省</a><br>
+                  文科省による和製Scratchです。</li>
+              </ul>
+              <h3>ハードウェア</h3>
+              <ul>
+                <li><a href="http://fritzing.org" target="_blank">
+                    Fritzing</a><br>
+                  回路図作成ソフトです。</li>
+              </ul>
+            </div>
+          </div>
+          <script type="text/javascript">
+            setTab("数学tab");
+          </script>
+        </div>
+        <div id="linkTab_音楽">
+
+
+          <h3>吹奏楽連盟</h3>
+          <ul>
+            <li><a href="http://www.ajba.or.jp/" target="_blank">一般社団法人 全日本吹奏楽連盟</a>
+              <ul>
+                <li><a href="http://www.ajba.or.jp/nksuiren/" target="_blank">西関東吹奏楽連盟</a>
+                  <ul>
+                    <li><a href="http://www.ajba.or.jp/saitama/" target="_blank">埼玉県吹奏楽連盟</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <h3>その他、公的吹奏楽団体</h3>
+          <ul>
+            <li><a href="https://www.japanbandclinic.com" target="_blank">日本吹奏楽指導者クリニック（日本バンドクリニック）</a></li>
+            <li><a href="http://www.japan-mba.org/" target="_blank">一般社団法人日本マーチングバンド協会（JMBA）</a></li>
+            <li><a href="http://www.jba-honbu.or.jp/" target="_blank">公益社団法人 日本吹奏楽指導者協会(JBA)</a>
+              <ul>
+                <li><a href="https://saitamajba.web.fc2.com/" target="_blank">埼玉県部会</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="http://www.suisougaku.or.jp/" target="_blank">一般社団法人 日本吹奏楽普及協会</a></li>
+            <li><a href="http://jbbda.jp" target="_blank">日本ブラスバンド指導者協会</a></li>
+            <li><a href="http://ajbsc.jp/" target="_blank">全日本ブラスシンフォニーコンクール</a></li>
+            <li><a href="http://www.jmecps.or.jp/" target="_blank">公益財団法人 日本音楽教育文化振興会(JMECPS) - 日本管楽合奏コンテスト</a></li>
+            <li><a href="http://www.jwecc.net/" target="_blank">日本管楽合奏指揮者会議(JWECC)</a></li>
+            <li><a href="http://www.nipponkousuiren.com/" target="_blank">日本高等学校吹奏楽連盟</a></li>
+            <li><a href="http://saitama-wind.sakura.ne.jp/sinjinsen/" target="_blank">埼玉吹奏楽コンクール新人戦</a></li>
+            <li><a href="http://swingbrass.com/" target="_blank">日本学校吹奏楽ジャズ・ポップス大演奏会実行委員会</a></li>
+            <li><a href="http://kyo-en.music.coocan.jp/" target="_blank">21世紀の吹奏楽“響宴”</a></li>
+            <li><a href="http://saitamabigband.com/" target="_blank">埼玉県ビッグバンド連盟</a></li>
+          </ul>
+          <h3>情報サイト</h3>
+          <ul>
+            <li><a href="http://www.tv-asahi.co.jp/daimei/" target="_blank">題名のない音楽会　‐　テレビ朝日</a></li>
+            <li><a href="http://www4.nhk.or.jp/hibiki/" target="_blank">吹奏楽のひびき　‐　NHK FM</a></li>
+            <li><a href="http://www.asahi.com/edu/suisogaku/" target="_blank">吹奏楽　‐　朝日新聞デジタル</a></li>
+            <li><a href="http://www.ongakunotomo.co.jp/magazine/bandjournal/" target="_blank">Band Journal
+                バンドジャーナル　‐　音楽之友社</a>
+            </li>
+            <li><a href="http://bild-net.com/" target="_blank">NPO法人吹奏楽振興ネットワーク</a></li>
+            <li><a href="https://www.concertsquare.jp/" target="_blank">コンサートスクウェア</a></li>
+            <li><a href="http://www5b.biglobe.ne.jp/~brass/" target="_blank">吹奏楽私的こだわりの部屋</a></li>
+            <li><a href="http://ns.to/wind/" target="_blank">埼玉県発！吹奏楽情報局へようこそ！</a></li>
+            <li><a href="http://www.musicabella.jp/" target="_blank">Musica Bella</a></li>
+          </ul>
+          <h3>吹奏楽譜出版社</h3>
+          <ul>
+            <li><a href="http://www.music8.com/" target="_blank">ミュージックエイト</a></li>
+            <li><a href="http://brass.winds-score.com/" target="_blank">ウインズスコア</a></li>
+            <li><a href="http://www.gakufu.co.jp/" target="_blank">ロケットミュージック</a></li>
+            <li><a href="http://www.brain-music.com/" target="_blank">ブレーン</a></li>
+            <li><a href="http://www.fostermusic.jp/" target="_blank">フォスターミュージック</a></li>
+            <li><a href="http://www.teeda-japan.com/teeda_publishing/index.html" target="_blank">ティーダ出版</a></li>
+            <li><a href="http://www.cafua.com/" target="_blank">CAFUAレコード</a></li>
+            <li><a href="http://www.hustlecopy.co.jp/" target="_blank">東京ハッスルコピー</a></li>
+            <li><a href="http://www.print-gakufu.com/" target="_blank">ヤマハ「ぷりんと楽譜」</a></li>
+            <li><a href="http://www.atelierm.net/" target="_blank">アトリエ・エム</a></li>
+            <li><a href="http://www.accord-publishing.jp/" target="_blank">アコード出版</a></li>
+            <li><a href="http://www.wind-art.com/" target="_blank">ウインドアート出版</a></li>
+            <li><a href="http://askswinds.com/" target="_blank">吹奏楽楽譜情報ASKS Winds ～吹奏人のための情報サイト～</a> - <a
+                href="http://askswinds.com/shop/" target="_blank">吹奏楽楽譜販売ASKS Winds</a></li>
+            <li><a href="http://www.universal-music.co.jp/new-sounds-in-brass" target="_blank">ニュー・サウンズ・イン・ブラス -
+                UNIVERSAL MUSIC
+                JAPAN</a></li>
+            <li><a href="https://www.nexuss.net/" target="_blank">ネクサス音楽出版</a></li>
+          </ul>
+          <h3>作編曲家・グループ(準備中)</h3>
+          <ul>
+            <li><a href="" target="_blank"></a></li>
+            <li><a href="" target="_blank"></a></li>
+            <li><a href="" target="_blank"></a></li>
+            <li><a href="" target="_blank"></a></li>
+          </ul>
+          <h3>小ネタ(準備中)</h3>
+          <ul>
+            <li><a href="http://vio.la.coocan.jp/" target="_blank">vio.la.coocan</a> - <a
+                href="http://vio.la.coocan.jp/jokes/violajoke.html" target="_blank">Viola Jokes in Japanese</a></li>
+            <li><a href="" target="_blank"></a></li>
+            <li><a href="" target="_blank"></a></li>
+            <li><a href="" target="_blank"></a></li>
+          </ul>
+          <h3>フリー楽譜</h3>
+          <ul>
+            <li><a href="https://musescore.com/sheetmusic/" target="_blank">Sheet Music | MuseScore</a><br>
+              フリーソフトMuseScoreのオンライン楽譜共有。</li>
+            <li><a href="http://imslp.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8"
+                target="_blank">ペトルッチ楽譜ライブラリー</a><br>
+              日本語有。著作権切れ楽譜掲載サイト </li>
+            <li><a href="http://www.free-scores.com/" target="_blank">free-scores.com</a><br>
+              英語。無料楽譜サイト。</li>
+            <li><a href="http://rusticana.seesaa.net/" target="_blank">RUSTICANA</a><br>
+              日本語。クラシック無料楽譜、格安楽譜含む</li>
+            <li><a href="http://webapp1.dlib.indiana.edu/inharmony/welcome.do" target="_blank">IN Harmony: Sheet Music
+                from
+                Indiana</a><br>
+              英語。インディアナ州立大学ライブラリー</li>
+            <li><a href="http://www.partita.ru/" target="_blank">Partita</a><br>
+              ロシア語サイト。<br>
+              メニューは左から順に、
+              マーチ、ワルツ、タンゴ、フォックストロット、トラディッショナル、その他、
+              コンサート、ジャズ、アンサンブル、ソロ、文学、フォーラム、検索
+            </li>
+          </ul>
+          <h3>その他便利サービス</h3>
+          <ul>
+            <li><a href="https://soundcloud.com/">SoundCloud</a></li>
+          </ul>
+
+
+
+
+
+        </div>
+        <div id="linkTab_仕事用">
+          <ul>
+            <li>
+              <a href="http://www.mext.go.jp/" target="_blank">文部科学省</a>
+              <ul>
+                <li>
+                  <a href="http://www.mext.go.jp/programin/" target="_blank">プログラミン</a> - 和製Scratch</li>
+                <li>
+                  <a href="http://www.mext.go.jp/unesco/" target="_blank">日本ユネスコ国内委員会</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.jma.go.jp" target="_blank">気象庁</a>
+              <ul>
+                <li>
+                  <a href="http://www.jma-net.go.jp/kumagaya/" target="_blank">熊谷地方気象台</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="http://scratch.mit.edu/" target="_blank">MIT Media Lab. - Scratch</a>
+            </li>
+            <li>
+              <a href="http://www.jst.go.jp/" target="_blank">独立行政法人 科学技術振興機構 - Japan Science nad Technology
+                Agency(JST)</a>
+              <br />
+              <ul>
+                <li>
+                  <a href="https://ssh.jst.go.jp/" target="_blank">スーパー・サイエンス・ハイスクール(SSH)</a>
+                </li>
+                <li>
+                  <a href="http://spp.jst.go.jp/" target="_blank">サイエンス・パートナーシップ・プログラム(SPP)</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://hayabusa.mlw.jp/jpoint/index.aspx" target="_blank">はやぶさメール ログイン</a>
+            </li>
+            <li>
+              <a href="http://bhso.benesse.ne.jp/" target="_blank">Benesse High School Online</a>
+            </li>
+            <li>
+              <a href="https://ten.tokyo-shoseki.co.jp/" target="_blank">東書Eネット</a>
+            </li>
+            <li>
+              <a href="http://www.shigaku.or.jp/" target="_blank">財団法人日本私学教育研究所</a>
+            </li>
+            <li>
+              <a href="http://www.saitamashigaku.com/" target="_blank">社団法人埼玉県私立中学高等学校協会 - 埼玉私学ドットコム</a>
+            </li>
+            <li>
+              <a href="https://www.e-staff.jp/" target="_blank">E-Staff - Educational Network</a>
+            </li>
+            <li>
+              <a href="http://www.ajba.or.jp/saitama/" target="_blank">埼玉県吹奏楽連盟</a>
+            </li>
+            <li>
+              <a href="http://www.music8.com/" target="_blank">ミュージックエイト</a>
+            </li>
+            <li>
+              <a href="http://www.winds-score.com/" target="_blank">Winds Score</a>
+            </li>
+            <li>
+              <a href="http://www.ymm.co.jp/score/wind_inst.php" target="_blank">ヤマハミュージックメディア　―　吹奏楽（NSB、ウインズスコア）</a>
+            </li>
+            <li>
+              <a href="http://jp.yamaha.com/" target="_blank">ヤマハ</a>
+            </li>
+            <li>
+              <a href="http://www.shimokura-gakki.com/" target="_blank">下倉楽器</a>
+            </li>
+            <li>
+              <a href="http://www.hokushin-t.jp/" target="_blank">北辰図書 - 北辰テスト</a>
+            </li>
+            <li>
+              <a href="http://www.kanken.or.jp/" target="_blank">財団法人 日本漢字能力検定協会</a>
+            </li>
+            <li>
+              <a href="http://www.su-gaku.net/" target="_blank">財団法人 日本数学検定協会</a>
+            </li>
+            <li>
+              <a href="http://www.eiken.or.jp/" target="_blank">公益財団法人 日本英語検定協会</a>
+            </li>
+            <li>
+              <a href="http://www.jreast.co.jp/" target="_blank">JR東日本</a>
+            </li>
+            <li>
+              <a href="http://www.new-shuttle.jp/" target="_blank">埼玉新都市交通株式会社　ニューシャトル</a>
+            </li>
+          </ul>
+        </div>
+        <div id="入試情報">
+
+
+          <ul>
+            <li><a href="http://www.dnc.ac.jp/" target="_blank">独立行政法人 大学入試センター</a></li>
+          </ul>
+          <style>
+            table.入試tbl th,
+            td {
+              text-align: center;
+              white-space: nowrap;
+            }
+          </style>
+          <div class="xScroll centering">
+            <table class="入試tbl">
+              <thead>
+                <tr>
+                  <th>予備校・教育事業者</th>
+                  <th>模試</th>
+                  <th>進学情報</th>
+                  <th>教員用</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th><a href="http://www.benesse.co.jp/" target="_blank">Benesse</a></th>
+                  <td><a href="http://manabi.benesse.ne.jp/assess/moshi/" target="_blank">進研模試</a><br>
+                    <a href="http://manabi.benesse.ne.jp/assess/ss/" target="_blank">スタディーサポート</a><br>
+                    <a href="http://gtec.for-students.jp/" target="_blank">GTEC for STUDENTS</a></td>
+                  <td><a href="https://manabi.benesse.ne.jp/wi/jsp/gy1_toroku/login_failure_digi.jsp"
+                      target="_blank">進研模試デジタルサービス</a><br>
+                    <a href="http://manabi.benesse.ne.jp/" target="_blank">マナビジョン</a><br>
+                    <a href="http://manabi.benesse.ne.jp/nyushi/kakomon/" target="_blank">大学入試過去問ダウンロードサービス</a>
+                  </td>
+                  <td><a href="http://bhso.benesse.ne.jp/" target="_blank">Benesse High School Online</a></td>
+                </tr>
+                <tr>
+                  <th><a href="http://www.yozemi.ac.jp" target="_blank">代々木ゼミナール</a></th>
+                  <td><a href="http://www.yozemi.ac.jp/test/index.html" target="_blank">代ゼミ模試</a></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th><a href="http://www.kawai-juku.ac.jp/" target="_blank">河合塾</a></th>
+                  <td><a href="http://www.kawai-juku.ac.jp/trial-exam/zento/" target="_blank">全統模試</a></td>
+                  <td><a href="http://www.keinet.ne.jp/" target="_blank">Kei-Net</a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th><a href="http://www2.sundai.ac.jp/yobi/sv/index.html" target="_blank">駿台予備校</a></th>
+                  <td><a href="http://www2.sundai.ac.jp/yobi/sv/moshi/index.html" target="_blank">駿台模試</a></td>
+                  <td><a href="http://www2.sundai.ac.jp/yobi/sv/news/index.html" target="_blank">大学入試情報</a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th><a href="http://www.toshin.com/" target="_blank">東進ハイスクール</a></th>
+                  <td><a href="http://www.toshin.com/hs/event/exam/" target="_blank">東進模試</a><br>
+                    <a href="http://www.toitsutest.com/" target="_blank">全国統一テスト</a></td>
+                  <td><a href="http://www.toshin.com/nyushi/index_niji.php" target="_blank">大学入試問題 過去問データベース</a><br>
+                    <a href="http://www.toshin.com/univ/" target="_blank">大学案内</a></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>リクルート</th>
+                  <td></td>
+                  <td><a href="https://studysapuri.jp/" target="_blank">スタディサプリ</a></td>
+                  <td><a href="https://link.studysapuri.jp/ja/login" target="_blank">スタディサプリ<br>for Teachers</a></td>
+                </tr>
+                <tr style="display:none">
+                  <th><a href="http://www.zkai.co.jp/" target="_blank">Z会</a></th>
+                  <td>会員のみ申込可。<br>
+                    ただし、河合塾共催なので<br>
+                    事実上会員外も申込可</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>その他</th>
+                  <td></td>
+                  <td>
+                    <a href="http://www.cybercollege.jp/" target="_blank">サイバーカレッジ</a><br>
+                    <a href="http://passnavi.evidus.com/" target="_blank">大学受験パスナビ：旺文社</a>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="linkTab_就職活動">
+
+          <ul>
+            <li><a href="https://next.rikunabi.com/?__m=1470023187365-4004116335281282271" target="_blank">リクナビNEXT</a>
+            </li>
+            <li><a href="http://tenshoku.mynavi.jp/" target="_blank">マイナビ転職</a></li>
+            <li><a href="https://www.green-japan.com/" target="_blank">Green</a><br>
+              IT/Web業界</li>
+            <li><a href="http://jp.indeed.com/" target="_blank">indeed</a></li>
+            <li><a href="https://doda.jp/" target="_blank">DODA</a></li>
+          </ul>
+        </div>
+
+        <div id="linkTab_資格">
+          <ul>
+            <li><a href="http://www.eiken.or.jp/eiken.html" target="_blank">実用英語技能検定</a></li>
+            <li><a href="http://www.kanken.or.jp/kanken/" target="_blank">日本漢字能力検定</a></li>
+            <li><a href="http://www.su-gaku.net/" target="_blank">実用数学技能検定</a></li>
+            <li><a href="http://www.ipa.go.jp/" target="_blank">IPA 独立行政法人 情報処理推進機構</a><br>
+              ITパスポート、情報処理技術者試験</li>
+            <li><a href="http://www.toeic.or.jp/" target="_blank">TOEIC</a></li>
+            <li><a href="http://www.ets.org/jp/toefl" target="_blank">TOEFL</a></li>
+            <li><a href="http://www.sekaken.jp/" target="_blank">世界遺産検定 ― NPO法人 世界遺産アカデミー</a></li>
+            <li><a href="http://www.newskentei.jp/" target="_blank">ニュース時事能力検定</a></li>
+          </ul>
+
+        </div>
+
+        <div id="linkTab_ペーパークラフト">
+          <ul>
+            <li><a href="http://www.tamasoft.co.jp/pepakura/index.html" target="_blank">ペパクラデザイナー</a></li>
+            <li><a href="http://global.yamaha-motor.com/jp/yamahastyle/entertainment/papercraft/"
+                target="_blank">ペーパークラフト - ヤマハ発動機</a></li>
+            <li><a href="http://cp.c-ij.com/ja/contents/1006/" target="_blank">ペーパークラフト - Canon</a></li>
+            <li><a href="http://paperm.jp/index.html" target="_blank">ペーパーミュージアム - サンワサプライ</a></li>
+            <li><a href="http://www.westjr.co.jp/fan/paper/" target="_blank">JR西日本 鉄道ファンコーナー ペーパークラフト</a></li>
+            <li><a href="http://www.h7.dion.ne.jp/~kagaku/polyhedraPaperCraft/polyhedraPaperCraft.html"
+                target="_blank">科学体験クラブ府中 - 正多面体ペーパークラフト</a></li>
+            <li><a href="http://www.tamasoft.co.jp/pepakuradb/" target="_blank">ペーパークラフトデータベース</a></li>
+            <li>JAXA系<ul>
+                <li><a href="http://www.satnavi.jaxa.jp/kids/papercraft/" target="_blank">第一衛星利用ミッション本部 - 子どもと楽しむ衛星ガイド -
+                    ペーパークラフト</a></li>
+                <li><a href="http://www.jaxaclub.jp/recommend/craft/list.html" target="_blank">JAXAクラブ(更新終了)</a></li>
+                <li><a href="http://www.kids.isas.jaxa.jp/ex/index.html" target="_blank">ウチューンズ</a></li>
+            </li>
+          </ul>
+          </ul>
+        </div>
+        <div id="linkTab_その他">
+          <ul>
+            <li><a href="http://tenshoku.mynavi.jp/" target="_blank">マイナビ転職</a></li>
+            <li><a href="http://next.rikunabi.com/" target="_blank">リクナビNEXT</a></li>
+            <li><a href="https://archive.org/" target="_blank">Internet Archive</a></li>
+            <li><a href="http://www.jset.gr.jp/" target="_blank">日本教育工学会</a></li>
+            <li><a href="http://www.ipa.go.jp/" target="_blank">独立行政法人 情報処理推進機構 IPA</a></li>
+            <li><a href="http://ci.nii.ac.jp/" target="_blank">CiNii</a></li>
+            <li><a href="http://evernote.com/intl/jp/" target="_blank">Evernote</a></li>
+            <li><a href="https://picky-pics.com/" target="_blank">Picky-Pics</a></li>
+            <li><a href="https://www.dropbox.com/" target="_blank">Dropbox</a></li>
+            <li><a href="http://ch.nicovideo.jp/menu/anime/" target="_blank">ニコニコアニメチャンネル</a>　／　<a
+                href="http://jk.nicovideo.jp/" target="_blank">ニコニコ実況</a></li>
+            <li><a href="http://www.osaka-kyoiku.ac.jp/~yukis/" target="_blank">大阪教育大学 - Y.Seo's Mathematics Education
+                Laboratry</a></li>
+            <li><a href="http://www.johokusaitama.ac.jp/" target="_blank">城北埼玉中学・高等学校</a>
+              <ul>
+                <li><a href="http://www.jottama-ob.com/" target="_blank">城北埼玉中学・高等学校同窓会　薫風会</a></li>
+                <li><a href="http://jottamabrass.web.fc2.com/" target="_blank">城北埼玉中学・高等学校吹奏楽部</a></li>
+                <li><a href="https://sites.google.com/site/jotabraob/" target="_blank">城北埼玉中学高等学校・吹奏楽部　OB会</a></li>
+              </ul>
+            </li>
+            <li><a href="http://www.mydocomo.com/" target="_blank">My docomo</a>
+              <ul>
+                <li><a href="https://mail.smt.docomo.ne.jp/" target="_blank">ドコモネール(ブラウザ版)</a></li>
+              </ul>
+            </li>
+            <li><a href="http://web.airdroid.com/" target="_blank">AirDroid</a></li>
+          </ul>
+        </div>
+        <div id="linkTab_ネットショッピング">
+          <ul>
+            <li><a href="https://www.amazon.co.jp/" target="_blank">amazon</a></li>
+            <li><a href="http://honto.jp/" target="_blank">honto</a></li>
+            <li><a href="http://www.expansys.jp/" target="_blank">EXPANSYS</a></li>
+            <li><a href="http://tsite.jp/" target="_blank">Tsite</a></li>
+            <li><a href="http://www.tokyu-hands.co.jp/" target="_blank">東急ハンズ</a></li>
+          </ul>
+        </div>
+        <div id="linkTab_Tech・Art">
+          <div id="TechArtTab">
+
+
+            <div id="TechArtTab_ロボット大会">
+              <ul>
+                <li><a href="http://www.ntf.or.jp/" target="_blank">公益財団法人ニューテクノロジー振興財団 - つくばチャレンジ・全日本マイクロマウス大会</a></li>
+                <li><a href="http://www.RobotGrandPrix.com" target="_blank">社団法人日本機械学会(ロボティクス･メカトロニクス部門) - ロボットグランプリ</a>
+                </li>
+                <li>社団法人日本機械学会 ロボティクス・メカトロニクス部門ロボコンプロデュース実行委員会・メカトロニクス教育研究会 - ロボコンプロデュース<br />
+                  ※毎年運営母体が変わるため、固定リンクが貼れません…</li>
+                <li><a href="http://www.jspe.or.jp/" target="_blank">社団法人精密工学会 - 国際マイクロメカニズムコンテスト</a></li>
+                <li><a href="http://www.etrobo.jp/" target="_blank">社団法人組み込みシステム技術協会 - ETロボコン</a></li>
+                <li><a href="http://www.official-robocon.com/" target="_blank">ロボコン(高専・大学・ABU・IDC)</a></li>
+                <li>全国高等学校ロボット競技大会<br />
+                  ※毎年運営母体が変わる(各都道府県教育関連部署)ため、固定リンクが貼れません…</li>
+                <li><a href="http://www.firstjapan.jp/" target="_blank">NPO法人青少年科学技術振興会 - FIRST LEGO League (FLL)</a>
+                </li>
+                <li><a href="http://www.rescue-robot-contest.org/" target="_blank">RESUCUE ROBOT CONTEST<br />
+                    レスキューロボットコンテスト</a></li>
+                <li><a href="http://catchrobo.net/" target="_blank">キャチロボバトルコンテスト</a></li>
+                <li><a href="http://www.inrof.org/" target="_blank">Intelligent Robot Contest Festival<br />
+                    知能ロボットコンテストフェスティバル</a></li>
+                <li><a href="http://www.robocup.or.jp/" target="_blank">ロボカップ日本委員会</a>
+                  <ul>
+                    <li><a href="http://www.robocupjunior.jp/" target="_blank">ロボカップジュニアジャパン</a></li>
+                    <li><a href="http://robosquare.city.fukuoka.lg.jp/robocup/index.html" target="_blank">ROBOSQUARE -
+                        ロボカップ</a></li>
+                  </ul>
+                </li>
+                <li><a href="http://www.mcr.gr.jp/" target="_blank">Renesas マイコンカーラリー</a>
+                  <ul>
+                    <li><a href="http://www.mcr.gr.jp/general/index.html" target="_blank">ルネサスマイコンカーラリー競技大会</a></li>
+                    <li><a href="http://www.mcr.gr.jp/index2.html" target="_blank">ジャパンマイコンカーラリー</a></li>
+                  </ul>
+                </li>
+                <li><a href="http://www.fsi.co.jp/robot/" target="_blank">富士ソフト ロボット競技会</a>
+                  <ul>
+                    <li><a href="http://www.fsi.co.jp/sumo/" target="_blank">全日本ロボット相撲大会</a></li>
+                    <li><a href="http://www.fsi.co.jp/foot/" target="_blank">全日本ロボットアメリカンフットボール大会</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div id="TechArtTab_大学ロボット関連サークル">
+              <ul>
+                <li><a href="http://srdc.info/" target="_blank">芝浦工業大学SRDC (Shibaura Robotics Development Circle)</a>
+                </li>
+                <li><a href="http://www.karakuri-sit.net/" target="_blank">芝浦工業大学ロボット遊交部からくり</a></li>
+                <li><a href="http://www21.atwiki.jp/robogi-sit/" target="_blank">芝浦工業大学ロボット技術研究サークル (ロボ技)</a></li>
+                <li><a href="http://www.rmkoubou.mce.uec.ac.jp/" target="_blank">電気通信大学ロボメカ工房</a></li>
+                <li><a href="http://mice.deca.jp" target="_blank">東京理科大学Mice</a></li>
+                <li><a href="http://denken.ws.hosei.ac.jp/home/" target="_blank">法政大学電気研究会</a></li>
+                <li><a href="http://www.waseda.jp/1g-wmmc/" target="_blank">早稲田大学マイクロマウスクラブ (WMMC)</a></li>
+              </ul>
+              <p>※とりあえず芝浦工大とマイクロマウス関連のみ</p>
+            </div>
+
+            <div id="TechArtTab_理系イベント">
+              <ul>
+                <li><a href="http://contest.jst.go.jp/" target="_blank">独立行政法人科学技術振興機構(JST) - 国際科学技術コンテスト</a></li>
+                <li><a href="http://www.jsme-fed.org/contests/index.html" target="_blank">社団法人日本機械学会 流体工学部門 -
+                    流れの夢コンテスト・流れのふしぎ展</a></li>
+                <li><a href="http://www.ja-r.net/" target="_blank">NPO法人日本モデルロケット協会 - モデルロケット全国大会</a></li>
+                <li><a href="http://www.oreilly.co.jp/mtm/" target="_blank">O'REILLY - Make: Tokyo Meeting</a></li>
+                <li><a href="http://www.eleki-jack.com/forum/" target="_blank">CQ出版社 - エレキジャック・フォーラム</a></li>
+                <li><a href="http://kosenconf.jp/" target="_blank">高専カンファレンス</a></li>
+                <li><a href="http://www.procon.gr.jp/" target="_blank">全国高等専門学校プログラミングコンテスト</a></li>
+              </ul>
+              <p>※ロボット以外の大会・イベント。未整理の項目とも言う。</p>
+            </div>
+            <div id="TechArtTab_メディア・デザイン">
+              <ul>
+                <li><a href="http://designfesta.com/" target="_blank">Art Event Design Festa</a></li>
+                <li><a href="http://megei.jp/" target="_blank">文化庁メディア芸術祭</a></li>
+                <li><a href="http://www.3331.jp/" target="_blank">3331 Arts Chiyoda</a></li>
+                <li><a href="http://www.jrtk.jp/2k540/" target="_blank">2k540 AKI-OKA ARTISAN</a></li>
+                <li><a href="http://ivrc.net/" target="_blank">International collegiate Virtual Reality Contest</br>
+                    国際学生対校バーチャルリアリティコンテスト</a></li>
+                <li><a href="http://elecontest.com/" target="_blank">電子工作コンテスト</a></li>
+
+                <li><a href="http://jptower-kitte.jp/" target="_blank">KITTE</a></li>
+                <li><a href="http://j-mediaarts.jp/" target="_blank">文化庁メディア芸術祭</a></li>
+                <li><a href="https://www.hakubutufes.info/" target="_blank">博物ふぇすてぃばる！</a></li>
+                <li><a href="http://makezine.jp/" target="_blank">Make:Japan - Maker Faire</a></li>
+                <li><a href="http://www.dcexpo.jp/" target="_blank">DIGITAL CONTENT EXPO</a><br>
+                  近未来のデジタルコンテンツが集まる展示会です。</li>
+                <li><a href="http://gugen.jp/" target="_blank">GUGEN</a><br>
+                  電子工作コンテストを前身にもつ、未来のデバイス発明コンテストです。</li>
+              </ul>
+            </div>
+            <div id="TechArtTab_FabLab系">
+              <ul>
+                <li><a href="http://fablabjapan.org/" target="_blank">FabLab Japan</a></li>
+                <li><a href="http://www.fpga-cafe.com/" target="_blank">FPGA-CAFE/FabLab Tsukuba</a></li>
+                <li><a href="http://fablabjapan.org/kamakura/" target="_blank">FabLab Kamakura</a></li>
+                <li><a href="http://www.fabcafe.com/" target="_blank">FabCafe</a></li>
+                <li><a href="http://handazukecafe.com/" target="_blank">SWITCH SCIENCE - はんだづけカフェ</a></li>
+                <li><a href="http://gadgetcafe.jp/" target="_blank">encafe - ガジェットカフェ</a></li>
+              </ul>
+            </div>
+          </div>
+          <script type="text/javascript">
+            setTab("TechArtTab");
+          </script>
+        </div>
+        <div id="linkTab_Admin">
+          <ul>
+            <li><a href="" target="_self">Home</a></li>
+            <li><a href="semi/" target="_blank">Arduino / Processing Topics</a><br />
+              学生時代に作った研究室ゼミ資料の使い回しですが、参考程度にどうぞ。</li>
+            <li><a href="tech/" target="_blank">Zacky's techno memo</a><br />
+              最近調べたことのメモ置き場です。もし何かの足しになればご活用ください。</li>
+            <li><a href="http://www.zacky.xxxxxxxx.jp/" target="_blank">旧サイト</a></li>
+          </ul>
+        </div>
+      </div>
+      <script type="text/javascript">
+        setTab("linkTab");
+      </script>
+    </section>
+    <section>
+      <h2>about Author</h2>
+
+          <ul>
+            <li><a href="https://github.com/Zacky0922/Zacky0922.github.io" target="_blank">GitHub</a></li>
+            <li><a href="../lab/">LAB</a></li>
+            <li><a href="../KG/">KG</a></li>
+            <li><a href="../KGfes/">五峯祭</a></li>
+            <li><a href="../KGfes/gallery/private.html">五峯祭preview</a></li>
+            <li><a href="../KGsougaku/">総学</a></li>
+            <li><a href="../">がらくたindex</a></li>
+          </ul>
+    </section>
+  </div>
+  <!-- /container -->
+</body>
+<script type="text/javascript">
+  init();
+</script>
+
+</html>

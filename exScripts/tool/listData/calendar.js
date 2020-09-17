@@ -2,10 +2,9 @@
 let today = new Date();     // 本日
 // 予定登録
 // 複数のカレンダーを同一ページに表示する可能性を考えて次の連想配列を適用
-// array[this.id][i] = [y/0,m/0,d,week/0,date,html,divCl,tdCl]
+// array[this.id][i] = [y/0,m/0,d,week/0,date,html,divCl,tdCl,start Date(),end Date()]
 // y,m,w=0 毎年・毎月・毎週 繰り返し
 let schedule = new Array();
-let setRegularSchedule = new Array();   // 反復イベント登録済みフラグ（西暦）
 
 class zCalendar {
     constructor(id) {
@@ -13,7 +12,6 @@ class zCalendar {
         this.wrap = document.getElementById(id);
         // 予定一覧init
         schedule[this.id] = new Array();
-        setRegularSchedule[this.id] = new Array();
 
         // table初期化
         this.tbody = document.createElement("tbody");   // captionイベントハンドラ用に早めに生成
@@ -31,24 +29,17 @@ class zCalendar {
 
     // 祝祭日設定
     setHolidays(csv, y = (new Date()).getFullYear()) {
-        // 重複セット防止
-        if (setRegularSchedule[this.id].includes(y)) {
-            return;
-        } else {
-            setRegularSchedule[this.id].push(y);
-        }
 
         // 祝祭日セット
         for (let i = 1; i < csv.length; i++) {
-            // 施行前なら登録しない
-            if (csv[i][5] != 0 && csv[i][5] > y) {
-                continue;
-            }
-            // 施行終了なら登録しない
-            if (csv[i][6] != 0 && csv[i][6] < y) {
-                continue;
-            }
-            this.addSchedule(y, csv[i][0], csv[i][1], csv[i][2], csv[i][3], csv[i][4], null, "holiday");
+
+            this.addSchedule(
+                0, csv[i][0], csv[i][1],
+                csv[i][2], csv[i][3],
+                csv[i][4], null, "holiday",
+                (csv[i][5] == 0 ? "" : new Date(csv[i][5], 0, 1)),
+                (csv[i][6] == 0 ? "" : new Date(csv[i][6], 0, 1))
+            );
             continue;
 
             if (csv[i][1] != 0) {
@@ -62,18 +53,10 @@ class zCalendar {
                 this.addSchedule(y, csv[i][0], d, csv[i][4], null, "holiday");
             }
         }
-
+        console.table(schedule[this.id]);
         return;
 
-        // 自動計算　参考　https://enterprisezine.jp/iti/detail/865
-        // 春分の日
-        this.addSchedule(y, 3,
-            Math.floor(20.8431 + 0.242194 * (y - 1980)) - Math.floor((y - 1980) / 4),
-            "春分の日", null, "holiday");
-        // 秋分の日
-        this.addSchedule(y, 9,
-            Math.floor(23.2488 + 0.242194 * (y - 1980)) - Math.floor((y - 1980) / 4),
-            "秋分の日", null, "holiday");
+
 
         // 振替休日（1973施行）（未実装）
         for (let i = 0; i < this.schedule.length; i++) {
@@ -89,9 +72,10 @@ class zCalendar {
     }
 
     // 予定追加
-    addSchedule(y, m, d, week, date, html, divCl = null, tdCl = null) {
+    addSchedule(y, m, d, week, date, html, divCl = 0, tdCl = 0, from = 0, to = 0) {
         // array[this.id][i] = [y/0, m/0, d, week/0, date, html, divCl, tdCl]
-        schedule[this.id][schedule.length] = [y, m, d, week, date, html, divCl, tdCl];
+        schedule[this.id][schedule[this.id].length] = [y, m, d, week, date, html, divCl, tdCl, from, to];
+        //console.log(schedule[this.id]);
     }
 
     setCaption(y, m) {
@@ -124,12 +108,13 @@ class zCalendar {
         // イベントハンドラ対応
         // 注）イベントハンドラ内のthisはクリック要素を指す
         let f = this.setCalendar;
+        let id = this.id;
         let tbody = this.tbody;
         preY.addEventListener("click", function () {
             let ymd = ym.innerText.split("-");
             ymd[0] = Number(ymd[0]) - 1;
             ym.innerText = ymd[0] + "-" + ymd[1];
-            f(ymd[0], ymd[1], tbody);
+            f(ymd[0], ymd[1], tbody, id);
         });
         preM.addEventListener("click", function () {
             let ymd = ym.innerText.split("-");
@@ -140,12 +125,12 @@ class zCalendar {
                 ymd[1] = Number(ymd[1]) - 1;
             }
             ym.innerText = ymd[0] + "-" + ymd[1];
-            f(ymd[0], ymd[1], tbody);
+            f(ymd[0], ymd[1], tbody, id);
         });
         now.addEventListener("click", function () {
-            let ymd = [today.getFullYear(),today.getMonth()+1];
+            let ymd = [today.getFullYear(), today.getMonth() + 1];
             ym.innerText = ymd[0] + "-" + ymd[1];
-            f(ymd[0], ymd[1], tbody);
+            f(ymd[0], ymd[1], tbody, id);
         });
         proM.addEventListener("click", function () {
             let ymd = ym.innerText.split("-");
@@ -156,13 +141,13 @@ class zCalendar {
                 ymd[1] = Number(ymd[1]) + 1;
             }
             ym.innerText = ymd[0] + "-" + ymd[1];
-            f(ymd[0], ymd[1], tbody);
+            f(ymd[0], ymd[1], tbody, id);
         });
         proY.addEventListener("click", function () {
             let ymd = ym.innerText.split("-");
             ymd[0] = Number(ymd[0]) + 1;
             ym.innerText = ymd[0] + "-" + ymd[1];
-            f(ymd[0], ymd[1], tbody);
+            f(ymd[0], ymd[1], tbody, id);
         });
         this.tbl.appendChild(cap);
     }
@@ -186,7 +171,11 @@ class zCalendar {
     }
 
     // イベントハンドラから呼ばれる可能性があるので「this」禁止（＝対策としてtbodyを引数で利用）
-    setCalendar(y = today.getFullYear(), m = today.getMonth() + 1, tbody) {
+    setCalendar(y = today.getFullYear(), m = today.getMonth() + 1, tbody, id = tbody.parentNode.parentNode.id) {
+        // 念のため整形
+        y = Number(y);
+        m = Number(m);
+
         // init
         tbody.innerHTML = "";
 
@@ -194,8 +183,24 @@ class zCalendar {
         let blankCells = (new Date(y, m - 1, 1)).getDay();   // 日＝0,土=6
         // 日付
         let d = 1 - blankCells;
-        let endDay = (new Date(y, m, 0)).getDate(); // 翌月1日
-        while (true) {
+        let endDay = (new Date(y, m, 0)).getDate(); // 月末の日（28～31）
+
+        // 自動計算　参考　https://enterprisezine.jp/iti/detail/865
+        let equinox;
+        switch (m) {
+            case 3:
+                // 春分の日
+                equinox = Math.floor(20.8431 + 0.242194 * (y - 1980)) - Math.floor((y - 1980) / 4);
+                break;
+            case 9:
+                // 秋分の日
+                equinox = Math.floor(23.2488 + 0.242194 * (y - 1980)) - Math.floor((y - 1980) / 4);
+                break;
+            default:
+                equinox = 0;
+        }
+
+        while (d <= endDay) {
             let tr = document.createElement("tr");
             tbody.appendChild(tr);
             for (let i = 0; i < 7; i++) {
@@ -205,6 +210,7 @@ class zCalendar {
                     day.innerText = d;
                     td.appendChild(day);
                     td.classList.add("zCal_day");
+
                     // 当日処理
                     if (
                         (today.getFullYear() == y) &&
@@ -213,36 +219,76 @@ class zCalendar {
                     ) {
                         td.classList.add("zCal_today");
                     }
-                }
-                tr.appendChild(td);
 
-                // 予定があれば追加
-                for (let s = 0; s < schedule.length; s++) {
-                    // 固定日登録
-                    if (
-                        (schedule[s][0] != 0) &&
-                        (schedule[s][1] != 0) &&
-                        (schedule[s][2] != 0)
-                    ) {
+                    // 予定があれば追加
+                    // 春分・秋分
+                    if ((m == 3 || m == 9) && equinox == d) {
                         let ele = document.createElement("div");
-                        ele.innerHTML = schedule[s][3];
-                        if (schedule[s][4] != null) {
-                            ele.classList.add(schedule[s][4]);
-                        }
-                        if (schedule[s][5] != null) {
-                            td.classList.add(schedule[s][5]);
-                        }
+                        ele.innerHTML = (m == 3 ? "春分の日" : "秋分の日");
+                        td.classList.add("holiday");
                         td.appendChild(ele);
                     }
-                }
+                    for (let s = 0; s < schedule[id].length; s++) {
+                        // 対象年度判定
+                        if (schedule[id][s][8] != 0) {
+                            if (y < schedule[id][s][8].getFullYear()) {
+                                continue;
+                            }
+                        }
+                        if (schedule[id][s][9] != 0) {
+                            if (y > schedule[id][s][9].getFullYear()) {
+                                continue;
+                            }
+                        }
+                        // 対称月判定
+                        if (schedule[id][s][1] != 0) {
+                            if (schedule[id][s][1] != m) {
+                                continue;
+                            }
+                        }
+                        // 予定枠作成（条件に合えば要素追加）
+                        let flag = false;
 
-                d++;
-                if (d > endDay) {
+                        // 固定日登録（毎年・固定年）
+                        if (
+                            (schedule[id][s][1] == m) &&
+                            (schedule[id][s][2] == d)
+                        ) {
+                            if (
+                                (schedule[id][s][0] == 0) ||
+                                (schedule[id][s][0] == y)
+                            ) {
+                                flag = true;
+                            }
+                        }
+                        // 第n週○曜日登録
+                        else if (schedule[id][s][2] == 0) {
+                            if (
+                                (7 * (schedule[id][s][3] - 1) < d) &&
+                                (d <= 7 * schedule[id][s][3]) &&
+                                ((new Date(y, m-1, d)).getDay() == schedule[id][s][4])
+                            ) {
+                                flag = true;
+                            }
+                        }
+                        // 予定代入
+                        if (flag) {
+                            let ele = document.createElement("div");
+                            ele.innerHTML = schedule[id][s][5];
+                            if (schedule[id][s][4] != 0) {
+                                ele.classList.add(schedule[id][s][6]);
+                            }
+                            if (schedule[id][s][5] != 0) {
+                                td.classList.add(schedule[id][s][7]);
+                            }
+                            td.appendChild(ele);
+                        }
+                    }
+                }
+                tr.appendChild(td);
+                if (++d > endDay) {
                     break;  //最終日到達でbreak
                 }
-            }
-            if (d > endDay) {
-                break;  //最終日到達でbreak
             }
         }
     }

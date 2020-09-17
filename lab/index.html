@@ -1365,19 +1365,20 @@ $$</textarea>
                             let cal = new zCalendar("calendarTest0");
                             // 祝祭日登録
                             cal.setHolidays(csv["holidays"]);
-                            /*
                             // 有給休暇登録
-                            for(let i = 1;i < csv["paid"].length;i++){
-                                cal.addSchedule(csv["paid"][i][0], csv["paid"][i][1], csv["paid"][i][2], csv["paid"][i][3],"holiday" );
+                            for (let i = 1; i < csv["paid"].length; i++) {
+                                cal.addSchedule(csv["paid"][i][0], csv["paid"][i][1], csv["paid"][i][2],
+                                    "", "",
+                                    csv["paid"][i][3], "holiday");
                             }
                             // 飲み日程登録
                             for (let i = 0; i < csv["drunk"].length; i++) {
                                 for (let j = 2; j < csv["drunk"][i].length; j++) {
-                                    cal.addSchedule(csv["drunk"][i][0], csv["drunk"][i][1], csv["drunk"][i][j], "🍶");
+                                    cal.addSchedule(csv["drunk"][i][0], csv["drunk"][i][1], csv["drunk"][i][j],
+                                        "", "", "🍽")
                                 }
                             }
-                            */
-                            cal.setCalendar(undefined, undefined, cal.getTbody());
+                            cal.setCalendar(undefined, undefined, cal.getTbody(), cal.id);
                         }
                         );
                     </script>
@@ -1436,7 +1437,7 @@ $$</textarea>
                                     tbl.appendChild(tbody);
                                     for (let i = 0; i < data.length; i++) {
                                         let tr = document.createElement("tr");
-                                        let th = document.createElement("th") ;
+                                        let th = document.createElement("th");
                                         th.innerHTML = data[i][0].trim();
                                         tr.appendChild(th);
                                         let td0 = (i == 0 ?
@@ -1449,11 +1450,11 @@ $$</textarea>
                                         );
                                         if (i != 0) {
                                             td0.innerHTML = '' +
-                                                '<a onclick="getLink('+"'"+ data[i][1].trim()+"'"+ ');">' +
+                                                '<a onclick="getLink(' + "'" + data[i][1].trim() + "'" + ');">' +
                                                 data[i][1].trim() +
                                                 '</a>';
                                             td1.innerHTML = '' +
-                                                '<a onclick="getLink2(' + "'" +  data[i][1].trim() + "'" + ');">' +
+                                                '<a onclick="getLink2(' + "'" + data[i][1].trim() + "'" + ');">' +
                                                 "[https]" +
                                                 '</a>';
                                         } else {
