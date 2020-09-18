@@ -53,7 +53,6 @@ class zCalendar {
                 this.addSchedule(y, csv[i][0], d, csv[i][4], null, "holiday");
             }
         }
-        console.table(schedule[this.id]);
         return;
 
 
@@ -266,7 +265,7 @@ class zCalendar {
                             if (
                                 (7 * (schedule[id][s][3] - 1) < d) &&
                                 (d <= 7 * schedule[id][s][3]) &&
-                                ((new Date(y, m-1, d)).getDay() == schedule[id][s][4])
+                                ((new Date(y, m - 1, d)).getDay() == schedule[id][s][4])
                             ) {
                                 flag = true;
                             }
@@ -275,12 +274,10 @@ class zCalendar {
                         if (flag) {
                             let ele = document.createElement("div");
                             ele.innerHTML = schedule[id][s][5];
-                            if (schedule[id][s][4] != 0) {
-                                ele.classList.add(schedule[id][s][6]);
-                            }
-                            if (schedule[id][s][5] != 0) {
-                                td.classList.add(schedule[id][s][7]);
-                            }
+                            //クラスがあるときだけ、の方がいいけど…
+                            ele.classList.add(schedule[id][s][6]);
+                            td.classList.add(schedule[id][s][7]);
+
                             td.appendChild(ele);
                         }
                     }

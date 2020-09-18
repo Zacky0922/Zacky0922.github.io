@@ -1391,7 +1391,6 @@ $$</textarea>
                         function setIP(myIP) {
                             document.getElementById("myIP").value = myIP;
                         }
-
                         function getLink(subURL) {
                             window.open("http://" + document.getElementById("myIP").value + subURL);
                         }
@@ -1404,6 +1403,7 @@ $$</textarea>
                     <div class="IPsample">
                         <span onclick="setIP(this.innerText)">192.168.1.171</span>
                         <span onclick="setIP(this.innerText)">raspberrypi</span>
+                        <span onclick="setIP(this.innerText)">volumio.local</span>
                         <span onclick="setIP(this.innerText)">localhost</span>
                         <span onclick="setIP(this.innerText)">192.168.1.</span>
                         <span onclick="setIP(this.innerText)">192.168.13.2</span>
@@ -1475,11 +1475,6 @@ $$</textarea>
                             );
                         })()
                     </script>
-                    <h3>固定URL</h3>
-                    <ul>
-                        <li><a href="http://volumio.local">Volumio - http://volumio.local</a></li>
-                        <li><a href="http://volumio.local/dev/">Volumio Test Player - http://volumio.local/dev/</a></li>
-                    </ul>
                     <h2>家庭内</h2>
                     <ul>
                         <li><a href="http://192.168.1.1">ゲートウェイ - http://192.168.1.1</a></li>
@@ -1499,10 +1494,44 @@ $$</textarea>
                         value="get debug data" \>
                 </div>
             </section>
+            <section class="col-lg-6">
+                <div class="box">
+                    <h2 class="zHeadList">Link test</h2>
+                    <div id="LinkMenu"></div>
+                    <div id="LinkList0" class="zGridFit"></div>
+                    <script type="module">
+                        import { zCSV } from "../exScripts/aggregater.js";
+                        (function (data) {
+                            let csv = new zCSV("./csv/linkDB.csv",
+                                // コールバック関数
+                                function (data) {
+                                    let ul = document.createElement("ul");
+                                    for(let i = 1 ; i < data.length;i++ ){
+                                        //let li = document.createElement("li");
+                                        let a = document.createElement("a");
+                                        if(data[i][1] == 0){
+                                            continue;
+                                        }
+                                        a.innerHTML = data[i][1];
+                                        if(data[i][2]!=0){
+                                            a.href = data[i][2];
+                                            a.target = "_blank";
+                                        }
+                                        a.classList.add("zBtn");
+                                        //li.appendChild(a);
+                                        //ul.appendChild(li);
+                                        document.getElementById("LinkList0").appendChild(a);
+                                    }
+                                    //document.getElementById("LinkList0").appendChild(ul);
+                                }
+                            );
+                        })()
+                    </script>
+                </div>
+            </section>
         </section>
 
     </section>
-
 
 </body>
 
