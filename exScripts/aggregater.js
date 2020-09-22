@@ -22,7 +22,7 @@ export { getGicon } from "./ex/MaterialIcons/googleicon.js";    // func
 export { zCalendar } from "./tool/listData/calendar.js";   // class
 export { zCSV,zCSVs } from "./tool/listData/csv.js";   // class
 export { zDate } from "./tool/date.js";    // class
-export { zList, burgerMenu } from "./tool/list.js";    // class,class
+export { zList, burgerMenu } from "./tool/listData/list.js";    // class,class
 //MathJaxがES module対応するまで、マクロはimport扱いしない（通常のロードをさせる）
 //import { zMathJax } from "./tool/math/MathJaxMacro.js";
 export { zMath } from "./tool/math/zMath.js";

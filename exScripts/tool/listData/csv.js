@@ -64,7 +64,7 @@ class zCSVs{
             csv[name] = new Array();
             // CSV取得用HTTPリクエスト
             let xhr = new XMLHttpRequest();
-            //xhr.withCredentials = true;     // CORS対応
+            xhr.withCredentials = true;     // CORS対応
             xhr.open("GET", csvs[name], true);    // 第3引数false＝同期処理（読込完了までwait）
             xhr.send(null);
             xhr.onload = function () {

@@ -1,4 +1,4 @@
-import { zList } from "../../tool/list.js";
+import { zList } from "../../aggregater.js";
 
 // タブ生成
 class zTab {

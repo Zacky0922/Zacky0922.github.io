@@ -6,6 +6,11 @@ WordPress,/wp/
 WordPress ログイン,/wp/wp-login.php
 miniDLNA,:8200
 Syncthing,:8384
-GitHub labテスト用,/test/Zacky0922.github.io/lab/
+GitHubテスト用,/test/Zacky0922.github.io/
+GitHubテスト：lab,/test/Zacky0922.github.io/lab/
+GitHubテスト：Private,/test/Zacky0922.github.io/private/
+GitHubテスト：KG,/test/KG/
+GitHubテスト：総学,/test/KGsougaku/
+GitHubテスト：math,/test/math/
 Volumio,/
 Volumio Test Player,/dev/

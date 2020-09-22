@@ -1,4 +1,4 @@
-import { zDebug } from "../debug/debug.js";
+import { zDebug } from "../../aggregater.js";
 
 let zMath = new (class zMath {
 
