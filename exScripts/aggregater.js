@@ -26,6 +26,7 @@ export { zList, burgerMenu } from "./tool/listData/list.js";    // class,class
 //MathJaxがES module対応するまで、マクロはimport扱いしない（通常のロードをさせる）
 //import { zMathJax } from "./tool/math/MathJaxMacro.js";
 export { zMath } from "./tool/math/zMath.js";
+export { keisu,SQcomplete} from "../math/script/math/mathLib.js";
 
 // これは最後に読み込む
 import { zDebug } from "./tool/debug/debug.js";    // let
