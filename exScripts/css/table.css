@@ -6,7 +6,7 @@ table caption{
 }
 tr > *{
     border: 1px var(--z-border-color,#000) solid;
-    padding:var(--z-spacing);
+    padding:var(--z-spacing,5px);
 }
 th{
     text-align:center;
