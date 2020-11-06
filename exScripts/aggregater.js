@@ -10,6 +10,8 @@
 
 */
 
+console.log("Load:exScripts/aggregater.js");
+
 // ex
 //import 'https://code.jquery.com/jquery-3.3.1.min.js';
 import "./ex/jQuery/jquery-3.5.1.min.js";
