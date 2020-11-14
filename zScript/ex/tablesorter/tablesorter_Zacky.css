@@ -1,0 +1,20 @@
+table.tablesorter .tablesorter-header {
+  cursor: pointer;
+}
+table.tablesorter .tablesorter-header-inner::after { 
+
+}
+/* 昇順・降順 */
+.tablesorter-header.tablesorter-headerAsc .tablesorter-header-inner::after{
+  content: '▲';
+  font-size:small;
+  margin-left: 0.5em;
+}
+.tablesorter-header.tablesorter-headerDesc .tablesorter-header-inner::after{
+  content: '▼';
+  font-size:small;
+  margin-left: 0.5em;
+}
+.tablesorter-header.tablesorter-headerUnSorted .tablesorter-header-inner::after{
+
+}

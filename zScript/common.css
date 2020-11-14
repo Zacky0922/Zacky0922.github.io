@@ -1,0 +1,25 @@
+/* 標準CSS */
+
+
+/*  基本設定 from myLibrary */
+
+:root{
+
+
+}
+
+
+
+
+
+/*  標準設定 */
+body{
+    margin:     0;
+    padding:    0;
+    text-underline-position: under;    
+}
+
+body{
+    background:var(--z-bg);
+}
+
