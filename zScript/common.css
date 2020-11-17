@@ -4,6 +4,17 @@
 /*  基本設定 from myLibrary */
 
 :root{
+--body-bg:#ddd;
+--body-letterspacing:0.1em;
+
+
+
+--font-color:#114;
+--font-color-alt:#114;
+--font-size:16px;
+
+
+--ele-border:var(--font-color) solid 1px;
 
 
 }
@@ -16,10 +27,16 @@
 body{
     margin:     0;
     padding:    0;
+    border:none;
     text-underline-position: under;    
+
+    background:var(--body-bg);
+    letter-spacing: var(--body-letterspacing);
+    color:var(--font-color);
+    font-size: var(--font-size);
 }
 
-body{
-    background:var(--z-bg);
+a{
+    
+    color:var(--font-color);
 }
-
