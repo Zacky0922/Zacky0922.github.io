@@ -5,7 +5,6 @@
 
 :root{
 --body-bg:#ddd;
---body-letterspacing:0.1em;
 
 
 
@@ -39,4 +38,16 @@ body{
 a{
     
     color:var(--font-color);
+}
+
+
+
+/* table */
+table th{
+    text-align: center;
+}
+/* ScrollHint */
+.js-scrollable > table th,
+.js-scrollable > table td{
+    white-space: nowrap;
 }
