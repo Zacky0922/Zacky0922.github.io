@@ -11,38 +11,80 @@
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <script>
+    // onloadEvents
+    window.addEventListener("load", function () {
+      /* jQuery @onload */
+      $(".jq_accordion").accordion({
+        active: false,
+        collapsible: true,
+        heightStyle: "content"
+      });
+    });
+  </script>
   <title>test</title>
 </head>
 
 <body>
+  <a href="https://zacky.xxxxxxxx.jp/test/Zacky0922.github.io/GAStest/">GAStest</a>
+  <div id="links" class="jq_accordion"></div>
   <script>
-    function zJson(name = null, mode = "read", f = null, arg = null) {
-      $.ajax({
-        type: "GET", async: false,
-        url: "https://script.google.com/macros/s/AKfycbx5s8sAi88B44_F8etE8a86E2XuYke3ZbN2vakKueegEN-vEDFahK1WRg/exec?list=" + name
-      }).then(
-        // 通信success
-        data => {
-          console.log("Ajax通信success");
-          if (f == null) {
-            console.log(data);
-            for (let i in data) {
-              for (let j in data[i]) {
-                console.log(j + " : " + data[i][j] + "\n")
-              }
-            }
-          } else {
-            (arg == null) ? f() : f(arg);
+
+    $.ajax({
+      type: "GET", async: false,
+      url: "https://script.google.com/macros/s/AKfycbx5s8sAi88B44_F8etE8a86E2XuYke3ZbN2vakKueegEN-vEDFahK1WRg/exec?list=z_links"
+    }).then(
+      // 通信success
+      data => {
+        console.log("Ajax通信success");
+        console.log(data);
+        /*
+        for (let i in data) {
+          for (let j in data[i]) {
+            console.log(j + " : " + data[i][j] + "\n")
           }
-        },
-        // 通信error
-        error => {
-          console.log("Ajax通信error");
-          console.log(error);
         }
-      );
-    }
-    zJson("z_links")
+        */
+        let div = document.getElementById("links");
+        div.classList.add("jq_accordion", "ui-accordion", "ui-widget", "ui-helper-reset");
+        let linkObj = {};
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].disable == "disable") {
+            continue;
+          } else if (data[i].category == "") {
+            // カテゴリ未設定対応
+            data[i].category = "未分類";
+          }
+          if (linkObj[data[i].category] == undefined) {
+            // カテゴリ未定義の場合、見出しとリストを用意する
+            let h = document.createElement("h5");
+            h.classList.add("h4", "ui-accordion-header", "ui-corner-top", "ui-accordion-header-collapsed", "ui-corner-all", "ui-state-default", "ui-accordion-icons");
+            h.innerText = data[i].category;
+            div.appendChild(h);
+            let ul = document.createElement("ul");
+            ul.classList.add("ui-accordion-content", "ui-corner-bottom", "ui-helper-reset", "ui-widget-content");
+            linkObj[data[i].category] = { "ul": ul };
+            div.appendChild(linkObj[data[i].category].ul);
+          }
+          let li = document.createElement("li");
+          let a = document.createElement("a");
+          a.innerHTML = data[i].title;
+          if (data[i].href != "") {
+            a.href = data[i].href;
+          }
+          a.target = (data[i].target == "" ? "_blank" : data[i].target);
+          li.appendChild(a);
+          linkObj[data[i].category].ul.appendChild(li);
+        }
+      },
+      // 通信error
+      error => {
+        console.log("Ajax通信error");
+        console.log(error);
+      }
+    );
+
 
     /*
       参考
