@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+  <!-- meta設定 -->
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <title>test</title>
+</head>
+
+<body>
+  <script>
+    function zJson(name = null, mode = "read", f = null, arg = null) {
+      $.ajax({
+        type: "GET", async: false,
+        url: "https://script.google.com/macros/s/AKfycbx5s8sAi88B44_F8etE8a86E2XuYke3ZbN2vakKueegEN-vEDFahK1WRg/exec?list=" + name
+      }).then(
+        // 通信success
+        data => {
+          console.log("Ajax通信success");
+          if (f == null) {
+            console.log(data);
+            for (let i in data) {
+              for (let j in data[i]) {
+                console.log(j + " : " + data[i][j] + "\n")
+              }
+            }
+          } else {
+            (arg == null) ? f() : f(arg);
+          }
+        },
+        // 通信error
+        error => {
+          console.log("Ajax通信error");
+          console.log(error);
+        }
+      );
+    }
+    zJson("z_links")
+
+    /*
+      参考
+      https://qiita.com/tonkotsuboy_com/items/0722ad92f370ab0c411b
+      https://www.it-swarm-ja.tech/ja/jquery/jquery-ajax%E3%81%AFhttp-url%E3%81%8B%E3%82%89responsetext%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%BE%E3%81%99/967376440/
+    */
+  </script>
+</body>
+
+</html>
