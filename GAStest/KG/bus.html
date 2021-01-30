@@ -1,0 +1,236 @@
+<!--
+■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ 
+■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ 
+このページの更新には、特権管理者権限が必要です。
+通常のアカウントでは更新しないでください！
+■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ 
+■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ ■ □ 
+-->
+
+<section class="EntryPanel">
+    <div class="container bg-white">
+        <div class="EntryPanel__main">
+            <div id="sitepolicy" class="EntryPanel__body mb50">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 col-xs-offset-1 col-xs-10">
+                        <div class="text-c"><img class="frame05 shadow"
+                                src="/wp-content/themes/kokusaigakuin2017/assets/images/schoolbus/schoolbus01.png"
+                                alt="スクールバス" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-white">
+        <div class="EntryPanel__main">
+            <div id="sitepolicy" class="EntryPanel__body mb50">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 col-xs-offset-1 col-xs-10">
+                        <div class="text-c">
+                            <h3 id="busTblTitle" class="ttl_border ttl_stripe_gray">スクールバス運行予定表</h3>
+                        </div>
+                        <div class="table-responsive scroll-box">
+                            <table id="busTbl" class="busTbl" border="#000">
+                                <tr>
+                                    <td>[Error]最新のブラウザをご利用ください。</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="table-responsive scroll-box">
+                            <table class="busTbl" border="#000">
+                                <caption style="text-align: center;">路線バス</caption>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>上尾発 学校行</th>
+                                        <th>蓮田発 学校行</th>
+                                        <th>学校発 上尾行</th>
+                                        <th>学校発 蓮田行</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>平日</th>
+                                        <td>7:05</td>
+                                        <td>7:05</td>
+                                        <td class="noBus">×</td>
+                                        <td class="noBus">×</td>
+                                    </tr>
+                                    <tr>
+                                        <th>土曜</th>
+                                        <td>7:05</td>
+                                        <td>7:05</td>
+                                        <td class="noBus">×</td>
+                                        <td class="noBus">×</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-c">
+                            ※祝日・日曜日の運行はありません。
+                        </div>
+                        <div class="text-c">
+                            <h3 id="busPassTitle" class="ttl_border ttl_stripe_gray">スクールバス定期券販売日</h3>
+                        </div>
+                        <div id="busPass" class="text-c"></div>
+                        <div class="text-c">
+                            <h3 class="ttl_border ttl_stripe_gray">発着場案内</h3>
+                        </div>
+                        <h4 class="title_bold fc-gray">＊上尾駅東口　（セブンイレブン前）</h4>
+                        <div class="text-c mb40"><img
+                                src="/wp-content/themes/kokusaigakuin2017/assets/images/schoolbus/schoolbus02.gif"
+                                alt="バス発着場案内地図" /></div>
+                        <h4 class="title_bold fc-gray">＊蓮田駅西口　（埼玉りそな銀行向かい側）</h4>
+                        <div class="text-c mb40"><img
+                                src="/wp-content/themes/kokusaigakuin2017/assets/images/schoolbus/schoolbus03.gif"
+                                alt="バス発着場案内地図" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function setHead(id, tx) {
+        document.getElementById(id).innerText = tx;
+    }
+    function setRow(data, header = false) {
+        let tr = document.createElement("tr");
+        // ここで整形
+        let tx = [(header ? "日(曜)" : data.day + "(" + data.yobi + ")"), data.ageo0, data.hasuda0, data.ageo1, data.hasuda1, data.remark];
+        for (let i = 0; i < tx.length; i++) {
+            let td = document.createElement((i == 0 || header) ? "th" : "td");
+            td.innerText = tx[i];
+            tr.appendChild(td);
+            // 運行しない場合
+            if (tx[i] == "✕") {
+                td.classList.add("noBus");
+            } else if (tx[i] == "〃") {
+                td.classList.add("repeatMark");
+            }
+        }
+        // 日曜チェック
+        if (data.yobi == "日") {
+            tr.classList.add("sunday");
+        }
+        return tr;
+    }
+    $.ajax({
+        "type": "GET", "async": false,
+        "url": "https://script.google.com/macros/s/AKfycbygYn92oqaOVmzjdtv9Tug4jGebaOq9oYW6mKIM2Foiasqbd_hTJdVnuw/exec"
+        // exec or dev
+    }).then(
+        // 通信success
+        data => {
+            console.log("Ajax通信success");
+            console.log(data);
+            let timeTbl = data.time;
+            let passTbl = data.pass;
+            // 時刻表見出し
+            setHead("busTblTitle", timeTbl[0].config1);
+            // 時刻表処理
+            let tbl = document.getElementById("busTbl");
+            tbl.innerHTML = ""; // 初期化
+            let thead = document.createElement("thead");
+            thead.appendChild(setRow(timeTbl[0], true));
+            tbl.appendChild(thead);
+            let tbody = document.createElement("tbody");
+            for (let i = 1; i < timeTbl.length; i++) {
+                tbody.appendChild(setRow(timeTbl[i]));
+            }
+            tbl.appendChild(tbody);
+
+            // 定期券見出し
+            setHead("busPassTitle", passTbl[0].title);
+            // 定期券処理
+            let pass = document.getElementById("busPass");
+            // 日付
+            let d = document.createElement("div");
+            d.classList.add("text-c");
+            d.style.fontSize = "x-large";
+            for (let i = 0; i < passTbl.length; i++) {
+                if (passTbl[i].day == "") { continue; }
+                d.innerText += (i == 0 ? "" : "　") +
+                    passTbl[i].id + passTbl[i].day + "日(" + passTbl[i].yobi + ")";
+            }
+            pass.appendChild(d);
+            // 備考など
+            let biko = document.createElement("div");
+            biko.classList.add("text-c");
+            let bikoTbl = document.createElement("table");
+
+            let dl = document.createElement("dl");
+            for (let i = 0; i < passTbl.length; i++) {
+                if (passTbl[i].option1 == "") { continue; }
+                let tr = document.createElement("tr");
+                let th = document.createElement("th");
+                th.innerText = passTbl[i].option0;
+                let td = document.createElement("td");
+                td.innerText = passTbl[i].option1;
+                tr.appendChild(th);
+                tr.appendChild(td);
+                bikoTbl.appendChild(tr);
+                continue;
+                let dt = document.createElement("dt");
+                dt.innerText = passTbl[i].option0;
+                let dd = document.createElement("dd");
+                dd.innerText = passTbl[i].option1;
+                dl.appendChild(dt);
+                dl.appendChild(dd);
+            }
+            biko.appendChild(bikoTbl);
+            pass.appendChild(biko);
+        },
+        // 通信error
+        error => {
+            console.log("Ajax通信error");
+            console.log(error);
+            // エラー表示
+            document.getElementById("busTbl").innerHTML = "もう一度、ページを読込み直してください";
+            document.getElementById("busPass").innerText = "もう一度、ページを読込み直してください";
+        }
+    );
+</script>
+<style>
+    table.busTbl {
+        margin: auto;
+    }
+
+    table.busTbl th {
+        text-align: center;
+    }
+
+    table.busTbl th,
+    table.busTbl td {
+        padding: 0 5px;
+        white-space: nowrap;
+    }
+
+    table.busTbl tr.sunday {
+        background: #fdd;
+    }
+
+    table.busTbl td.repeatMark {
+        text-align: center;
+    }
+
+    table.busTbl td.noBus {
+        background: #ccc;
+        text-align: center;
+    }
+
+    table.busTbl tr.sunday>td.noBus {
+        background: none;
+    }
+
+    #busPass table {
+        display: inline-block;
+    }
+
+    #busPass table,
+    #busPass table * {
+        text-align: left;
+        vertical-align: top;
+        padding: 3px 5px;
+    }
+</style>
