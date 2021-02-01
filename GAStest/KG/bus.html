@@ -136,7 +136,9 @@
             tbl.appendChild(thead);
             let tbody = document.createElement("tbody");
             for (let i = 1; i < timeTbl.length; i++) {
+                if(timeTbl[i].day != "" ){
                 tbody.appendChild(setRow(timeTbl[i]));
+                }
             }
             tbl.appendChild(tbody);
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+  <!-- meta設定 -->
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+  <title>test</title>
+</head>
+
+<body>
+  <script>
+    $.ajax({
+      type: "GET", async: false,
+      url: "https://script.google.com/macros/s/AKfycbzvM19FscO7DfbCeHp6-zP9_h5qDQC8WwbXjZygcXhX9hOEHki2-Mm2oA/exec?"+
+      "id=1YMINVGlulvoPQ7ym4otpfHLowSYTM9QvnpZbPRNSt2M"+
+      "&mode=all"
+    }).then(
+      // 通信success
+      data => {
+        console.log("Ajax通信success");
+        console.log(data);
+      },
+      // 通信error
+      error => {
+        console.log("Ajax通信error");
+        console.log(error);
+      }
+    );
+
+  </script>
+</body>
+
+</html>
